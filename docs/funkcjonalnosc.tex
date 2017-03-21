@@ -1,0 +1,11 @@
+{\let\clearpage\relax \chapter{Funkcjonalność}}
+\section{Instrukcje}
+Językiem, w którym gracze będą pisali swoje programy, będzie Redcode. Instrukcje, które zamierzamy zaimplementować, to: DAT, MOV, ADD, SUB, MUL, DIV, MOD, JMP, JMZ, JMN, DJN, SPL, CMP, SNE, SLT, LDP, STP, NOP. Jeśli postępy w pracy nad projektem będą zadowalające, graczom udostepnione zostaną modyfikatory instrukcji.
+
+Pamięć, w której operować będą instrukcje, zostanie zrealizowana jako tablica instrukcji. Adresowi w pamięci odpowiadać będzie indeks tablicy.
+
+\section{Interfejs graficzny}
+Planujemy udostępnić użytkownikowi interfejs graficzny z poziomu przeglądarki internetowej. Pierwszym etapem gry będzie stworzenie wojownika. Chcemy umożliwić graczowi pisanie programu poprzez zaznaczanie i wstawianie pożądanych instrukcji. Drugim sposobem na tworzenie wojownika będzie wczytanie go z pliku. W początkowych iteracjach projektu założymy, że program jest napisany poprawnie (bez błędów składniowych).
+Jeżeli starczy nam czasu, dodamy integrację z bazą danych NoSQL, dzięki czemu możliwe będzie zapisywanie i wczytywanie utworzonych wcześniej wojowników.
+
+Po stworzeniu programu przez obu użytkowników rozpocznie się "walka". Zamierzamy zwizualizować stan rywalizacji jako dwuwymiarową tablicę, której każda komórka odpowiadać będzie adresowi w pamięci. Kolory tych komórek odpowiadać będą procesom użytkowników, co umożliwi ocenę, jaką część pamięci kontroluje każdy z graczy.
