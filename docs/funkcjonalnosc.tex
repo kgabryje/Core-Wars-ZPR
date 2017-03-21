@@ -1,11 +1,29 @@
 {\let\clearpage\relax \chapter{Funkcjonalność}}
-\section{Instrukcje}
-Językiem, w którym gracze będą pisali swoje programy, będzie Redcode. Instrukcje, które zamierzamy zaimplementować, to: DAT, MOV, ADD, SUB, MUL, DIV, MOD, JMP, JMZ, JMN, DJN, SPL, CMP, SNE, SLT, LDP, STP, NOP. Jeśli postępy w pracy nad projektem będą zadowalające, graczom udostepnione zostaną modyfikatory instrukcji.
+\
+Nasz projekt będzie oferował użytkownikom następujące funckjonalności:
 
-Pamięć, w której operować będą instrukcje, zostanie zrealizowana jako tablica instrukcji. Adresowi w pamięci odpowiadać będzie indeks tablicy.
+\section{Instrukcje RedCode}
+Językiem, w którym gracze będą pisali swoje programy, będzie Redcode. Zestaw instrukcji, które zamierzamy zaimplementować, jest zgodny ze standardem \textit{ICWS '88} i zawiera polecenia: \textit{MOV, ADD, SUB, JMP, JMZ, JMN, CMP, SLT, DJN, SPL, NOP}. Jeśli postępy w pracy nad projektem będą zadowalające, graczom udostepnione zostaną dotatkowe instrukcje wraz z modyfikatorami, opisane w dokumencie \textit{ICWS '94 Standard Draft}.
+\label{instrukcje}
+\section{Tworzenie wojowników (Wprowadzanie instrukcji)}
+Każdy wojownik (program w języku RedCode) będzie się składał zestawu instrukcji, opisanych w punkcie \ref{instrukcje}. Gracze będą mieli możliwość wprowadzenia tych instrukcji do programu na kilka sposobów:
+\begin{enumerate}
+	\item Wprowadzenie instrukcji z poziomu interfesju graficznego:
+	\newline
+	Gracz dostanie możliwość tworzenia programu poprzez zaznaczanie widocznych na ekranie elementów wizualnych, które pozwolą na wstawianie instrukcji w pożądanej kolejności.
+	
+	\item Wczytanie kodu RedCode z pliku tekstowego:
+	\newline
+	W początkowych iteracjach projektu założymy, że program jest napisany poprawnie (bez błędów składniowych). W późniejszych etapach może zostać dodana walidacja wczytywanych plików.
+
+	\item Pobranie kodu z bazy danych, np. NoSQL:
+	\newline
+	Gdy bazowa funkcjonalność zostanie zaimplementowana, oraz postanowimy, że taka funkcjonalność będzie pożądana w naszej aplikacji, zostanie dodana także integracja z bazą danych, dzięki czemu możliwe będzie zapisywanie i wczytywanie utworzonych wcześniej wojowników.
+
+\end{enumerate}
 
 \section{Interfejs graficzny}
-Planujemy udostępnić użytkownikowi interfejs graficzny z poziomu przeglądarki internetowej. Pierwszym etapem gry będzie stworzenie wojownika. Chcemy umożliwić graczowi pisanie programu poprzez zaznaczanie i wstawianie pożądanych instrukcji. Drugim sposobem na tworzenie wojownika będzie wczytanie go z pliku. W początkowych iteracjach projektu założymy, że program jest napisany poprawnie (bez błędów składniowych).
-Jeżeli starczy nam czasu, dodamy integrację z bazą danych NoSQL, dzięki czemu możliwe będzie zapisywanie i wczytywanie utworzonych wcześniej wojowników.
+Planujemy udostępnić użytkownikowi interfejs graficzny z poziomu przeglądarki internetowej. Za jego pomocą będzie odbywać się wszelka interakcja użytkownika z grą - tworzenie wojownika, a następnie wizualizacja pojedynku a także prezentację interesujących danych dotyczących przebiegu gry. 
 
-Po stworzeniu programu przez obu użytkowników rozpocznie się "walka". Zamierzamy zwizualizować stan rywalizacji jako dwuwymiarową tablicę, której każda komórka odpowiadać będzie adresowi w pamięci. Kolory tych komórek odpowiadać będą procesom użytkowników, co umożliwi ocenę, jaką część pamięci kontroluje każdy z graczy.
+Zamierzamy zwizualizować stan rywalizacji jako dwuwymiarową tablicę, której każda komórka odpowiadać będzie adresowi w pamięci. Kolory tych komórek odpowiadać będą procesom użytkowników, co umożliwi ocenę, jaką część pamięci kontroluje każdy z graczy.
+
