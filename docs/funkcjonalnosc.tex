@@ -1,29 +1,50 @@
+
 {\let\clearpage\relax \chapter{Funkcjonalność}}
-\
 Nasz projekt będzie oferował użytkownikom następujące funckjonalności:
 
-\section{Instrukcje RedCode}
-Językiem, w którym gracze będą pisali swoje programy, będzie Redcode. Zestaw instrukcji, które zamierzamy zaimplementować, jest zgodny ze standardem \textit{ICWS '88} i zawiera polecenia: \textit{MOV, ADD, SUB, JMP, JMZ, JMN, CMP, SLT, DJN, SPL, NOP}. Jeśli postępy w pracy nad projektem będą zadowalające, graczom udostepnione zostaną dotatkowe instrukcje wraz z modyfikatorami, opisane w dokumencie \textit{ICWS '94 Standard Draft}.
-\label{instrukcje}
+\section{Interfejs graficzny}
+
+Użytkownikowi zostanie udostępniony interfejs graficzny z poziomu przeglądarki internetowej. Za jego pomocą będzie odbywać się wszelka interakcja użytkownika z grą, a będzie się ona składać z następujących etapów:
+
+\
+\begin{enumerate}
+	\item Wprowadzenie wojownika poprzez wpisanie w odpowiednim polu kodu lub wczytanie istniejącego już zestawu instrukcji z pliku/bazy danych;
+
+	\item Obserwacja walki wraz z możliwością ingerencji w ustawienia, m. in. szybkości rozgrywki;
+
+	\item Wyświetlenie interesujących danych dotyczących walki;
+
+	\item Zapis wojownika/statystyk do bazy danych.
+	
+\end{enumerate}
+
+\
+
+Zamierzamy zwizualizować stan rywalizacji jako dwuwymiarową tablicę, jak na rys. \ref{gametable}, gdzie każdej komórka odpowiadać będzie adresowi w pamięci. Kolory poszczególnych komórek odpowiadać będą procesom użytkowników, co umożliwi ocenę, jaką część pamięci kontroluje każdy z graczy.
+
+\
+
+\includegraphics[width=\linewidth]{utils/pic1.png}
+\captionof{figure}{Przykładowa plansza obrazująca stan rozgrywki}
+\label{gametable}
+
+\
+
 \section{Tworzenie wojowników (Wprowadzanie instrukcji)}
 Każdy wojownik (program w języku RedCode) będzie się składał zestawu instrukcji, opisanych w punkcie \ref{instrukcje}. Gracze będą mieli możliwość wprowadzenia tych instrukcji do programu na kilka sposobów:
-\begin{enumerate}
-	\item Wprowadzenie instrukcji z poziomu interfesju graficznego:
-	\newline
-	Gracz dostanie możliwość tworzenia programu poprzez zaznaczanie widocznych na ekranie elementów wizualnych, które pozwolą na wstawianie instrukcji w pożądanej kolejności.
-	
-	\item Wczytanie kodu RedCode z pliku tekstowego:
-	\newline
-	W początkowych iteracjach projektu założymy, że program jest napisany poprawnie (bez błędów składniowych). W późniejszych etapach może zostać dodana walidacja wczytywanych plików.
 
-	\item Pobranie kodu z bazy danych, np. NoSQL:
+\
+\begin{enumerate}
+	\item Wprowadzenie instrukcji z poziomu interfesju graficznego lub z pliku tekstowego:
 	\newline
-	Gdy bazowa funkcjonalność zostanie zaimplementowana, oraz postanowimy, że taka funkcjonalność będzie pożądana w naszej aplikacji, zostanie dodana także integracja z bazą danych, dzięki czemu możliwe będzie zapisywanie i wczytywanie utworzonych wcześniej wojowników.
+		Gracz dostanie możliwość tworzenia programu poprzez wpisanie kodu w wyznaczonym miejscu interfejsu graficznego, lub załadowania kodu z pliku tekstowego. Zostanie zaimplementowana walidacja kodu pod względem poprawności składni.
+	
+	\item Pobranie kodu z relacyjnej bazy danych, np. SQLite
+	\newline
+		Zostanie również dodana integracja z bazą danych, dzięki czemu możliwe będzie 	zapisywanie i wczytywanie utworzonych wcześniej wojowników.
 
 \end{enumerate}
 
-\section{Interfejs graficzny}
-Planujemy udostępnić użytkownikowi interfejs graficzny z poziomu przeglądarki internetowej. Za jego pomocą będzie odbywać się wszelka interakcja użytkownika z grą - tworzenie wojownika, a następnie wizualizacja pojedynku a także prezentację interesujących danych dotyczących przebiegu gry. 
-
-Zamierzamy zwizualizować stan rywalizacji jako dwuwymiarową tablicę, której każda komórka odpowiadać będzie adresowi w pamięci. Kolory tych komórek odpowiadać będą procesom użytkowników, co umożliwi ocenę, jaką część pamięci kontroluje każdy z graczy.
-
+\section{Instrukcje RedCode}
+Językiem, w którym gracze będą pisali swoje programy, będzie Redcode. Zestaw instrukcji, które zamierzamy zaimplementować, jest zgodny ze standardem \textit{ICWS '88} i zawiera polecenia: \textit{MOV, ADD, SUB, JMP, JMZ, JMN, CMP, SLT, DJN, SPL, NOP}.
+\label{instrukcje}
