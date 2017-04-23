@@ -4,8 +4,8 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#ifndef increment_TYPES_H
-#define increment_TYPES_H
+#ifndef mars_TYPES_H
+#define mars_TYPES_H
 
 #include <iosfwd>
 
@@ -18,7 +18,7 @@
 #include <thrift/cxxfunctional.h>
 
 
-namespace test {
+namespace MARS {
 
 } // namespace
 

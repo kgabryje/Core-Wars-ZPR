@@ -4,13 +4,13 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-#include "increment_constants.h"
+#include "mars_constants.h"
 
-namespace test {
+namespace MARS {
 
-const incrementConstants g_increment_constants;
+const marsConstants g_mars_constants;
 
-incrementConstants::incrementConstants() {
+marsConstants::marsConstants() {
 }
 
 } // namespace

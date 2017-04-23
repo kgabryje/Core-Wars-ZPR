@@ -5,6 +5,7 @@
 #include "Initializer.h"
 #include "parser/RedcodeParser.h"
 #include "parser/ParserException.h"
+#include "ServerConnector.h"
 
 using namespace std;
 
@@ -31,8 +32,8 @@ vector<shared_ptr<Instruction>> Initializer::sendCodeRequestAndParse() {
 }
 
 std::string Initializer::demandCode() {
-    //tutaj połączenie do serwera i odbiór kodu, pewnie w klasie ServerConnector
-    return "sample RedCode";
+    std::string code = ServerConnector::getInstance().getCode();
+    return code;
 }
 
 void Initializer::sendParsingResult(std::string message) {

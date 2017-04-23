@@ -2,22 +2,21 @@ GEN_SRC := IncrementService.cpp increment_constants.cpp increment_types.cpp
 GEN_OBJ := $(patsubst %.cpp,%.o, $(GEN_SRC))
 
 THRIFT_DIR := /usr/local/include/thrift
-BOOST_DIR := /usr/local/include
 
-INC := -I$(THRIFT_DIR) -I$(BOOST_DIR)
+INC := -I$(THRIFT_DIR)
 
 .PHONY: all clean
 
 all: server client
 
 %.o: %.cpp
-	$(CXX) -Wall -DHAVE_INTTYPES_H -DHAVE_NETINET_IN_H $(INC) -c $< -o $@
+	$(CXX) -Wall $(INC) -c $< -o $@
 
 server: server.o $(GEN_OBJ)
-	$(CXX) $^ -o $@ -L/usr/local/lib -lthrift
+	$(CXX) $^ -o $@ -lthrift
 
 client: client.o $(GEN_OBJ)
-	$(CXX) $^ -o $@ -L/usr/local/lib -lthrift
+	$(CXX) $^ -o $@ -lthrift
 
 clean:
 	$(RM) *.o server client

@@ -14,7 +14,6 @@ public:
 
 private:
     MarsSimulator mars;
-    ServerConnector connector;
 
     void initialize();
     void sendResultDontWaitForResponse(int i);
