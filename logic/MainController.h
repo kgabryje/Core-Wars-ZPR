@@ -4,6 +4,8 @@
 
 #include <logic/mars/MarsSimulator.h>
 #include "ServerConnector.h"
+#include <thread>
+#include <chrono>
 
 class MainController {
 

@@ -37,5 +37,5 @@ std::string Initializer::demandCode() {
 
 void Initializer::sendParsingResult(std::string message) {
 //tutaj wysyłanie do ServerConnector info sukces albo jest bład,podaj kod jeszcze raz
-    cout<<message<<endl;
+    cout << message << endl;
 }
