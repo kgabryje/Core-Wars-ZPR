@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
 
   IncrementServiceClient client(protocol);
   transport->open();
-  client.increment(5);
+  client.unlock();
   transport->close();
 
   return 0;

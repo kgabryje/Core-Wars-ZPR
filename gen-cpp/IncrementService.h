@@ -22,6 +22,7 @@ class IncrementServiceIf {
  public:
   virtual ~IncrementServiceIf() {}
   virtual int32_t increment(const int32_t num) = 0;
+  virtual void unlock() = 0;
 };
 
 class IncrementServiceIfFactory {
@@ -54,6 +55,9 @@ class IncrementServiceNull : virtual public IncrementServiceIf {
   int32_t increment(const int32_t /* num */) {
     int32_t _return = 0;
     return _return;
+  }
+  void unlock() {
+    return;
   }
 };
 
@@ -161,6 +165,80 @@ class IncrementService_increment_presult {
 
 };
 
+
+class IncrementService_unlock_args {
+ public:
+
+  IncrementService_unlock_args(const IncrementService_unlock_args&);
+  IncrementService_unlock_args& operator=(const IncrementService_unlock_args&);
+  IncrementService_unlock_args() {
+  }
+
+  virtual ~IncrementService_unlock_args() throw();
+
+  bool operator == (const IncrementService_unlock_args & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const IncrementService_unlock_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const IncrementService_unlock_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class IncrementService_unlock_pargs {
+ public:
+
+
+  virtual ~IncrementService_unlock_pargs() throw();
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class IncrementService_unlock_result {
+ public:
+
+  IncrementService_unlock_result(const IncrementService_unlock_result&);
+  IncrementService_unlock_result& operator=(const IncrementService_unlock_result&);
+  IncrementService_unlock_result() {
+  }
+
+  virtual ~IncrementService_unlock_result() throw();
+
+  bool operator == (const IncrementService_unlock_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const IncrementService_unlock_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const IncrementService_unlock_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class IncrementService_unlock_presult {
+ public:
+
+
+  virtual ~IncrementService_unlock_presult() throw();
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class IncrementServiceClient : virtual public IncrementServiceIf {
  public:
   IncrementServiceClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -189,6 +267,9 @@ class IncrementServiceClient : virtual public IncrementServiceIf {
   int32_t increment(const int32_t num);
   void send_increment(const int32_t num);
   int32_t recv_increment();
+  void unlock();
+  void send_unlock();
+  void recv_unlock();
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -205,10 +286,12 @@ class IncrementServiceProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_increment(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_unlock(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   IncrementServiceProcessor(boost::shared_ptr<IncrementServiceIf> iface) :
     iface_(iface) {
     processMap_["increment"] = &IncrementServiceProcessor::process_increment;
+    processMap_["unlock"] = &IncrementServiceProcessor::process_unlock;
   }
 
   virtual ~IncrementServiceProcessor() {}
@@ -246,6 +329,15 @@ class IncrementServiceMultiface : virtual public IncrementServiceIf {
     return ifaces_[i]->increment(num);
   }
 
+  void unlock() {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->unlock();
+    }
+    ifaces_[i]->unlock();
+  }
+
 };
 
 // The 'concurrent' client is a thread safe client that correctly handles
@@ -279,6 +371,9 @@ class IncrementServiceConcurrentClient : virtual public IncrementServiceIf {
   int32_t increment(const int32_t num);
   int32_t send_increment(const int32_t num);
   int32_t recv_increment(const int32_t seqid);
+  void unlock();
+  int32_t send_unlock();
+  void recv_unlock(const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

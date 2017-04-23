@@ -6,6 +6,9 @@
 #include <thrift/server/TThreadedServer.h>
 
 #include <unistd.h>
+#include <condition_variable>
+#include <thread>
+#include <iostream>
 
 using namespace ::apache::thrift;
 using namespace ::apache::thrift::protocol;
@@ -16,16 +19,31 @@ using boost::shared_ptr;
 
 using namespace  ::test;
 
+std::condition_variable cv;
+std::mutex m;
+
+bool i = false;
+
 class IncrementServiceHandler : virtual public IncrementServiceIf {
  public:
   IncrementServiceHandler() {
     printf("server started\n");
   }
 
-  void ping() {
-    printf("ping\n");
+  void unlock() {
+    {
+      std::lock_guard<std::mutex> lk(m);
+      i = true;
+      std::cerr << "Unlocking...\n";
+    }
+    cv.notify_all();
   }
+
   int32_t increment(const int32_t num) {
+    std::unique_lock<std::mutex> lk(m);
+    std::cerr << "Waiting... \n";
+    cv.wait(lk, []{return i;});
+    i = false;
     printf("increment from %d to %d\n", num, num + 1);
     return num + 1;
   }
