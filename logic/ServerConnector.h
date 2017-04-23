@@ -1,0 +1,10 @@
+#ifndef CORE_WARS_ZPR_VIEWCONNECTOR_H
+#define CORE_WARS_ZPR_VIEWCONNECTOR_H
+
+
+class ServerConnector {
+
+};
+
+
+#endif //CORE_WARS_ZPR_VIEWCONNECTOR_H
