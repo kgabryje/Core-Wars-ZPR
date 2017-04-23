@@ -198,7 +198,20 @@ uint32_t MARS_receiveFromJS_args::read(::apache::thrift::protocol::TProtocol* ip
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    xfer += iprot->skip(ftype);
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->c.read(iprot);
+          this->__isset.c = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
     xfer += iprot->readFieldEnd();
   }
 
@@ -211,6 +224,10 @@ uint32_t MARS_receiveFromJS_args::write(::apache::thrift::protocol::TProtocol* o
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("MARS_receiveFromJS_args");
+
+  xfer += oprot->writeFieldBegin("c", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->c.write(oprot);
+  xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -226,6 +243,10 @@ uint32_t MARS_receiveFromJS_pargs::write(::apache::thrift::protocol::TProtocol* 
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
   xfer += oprot->writeStructBegin("MARS_receiveFromJS_pargs");
+
+  xfer += oprot->writeFieldBegin("c", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->c)).write(oprot);
+  xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -256,20 +277,7 @@ uint32_t MARS_receiveFromJS_result::read(::apache::thrift::protocol::TProtocol* 
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->success);
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
+    xfer += iprot->skip(ftype);
     xfer += iprot->readFieldEnd();
   }
 
@@ -284,11 +292,6 @@ uint32_t MARS_receiveFromJS_result::write(::apache::thrift::protocol::TProtocol*
 
   xfer += oprot->writeStructBegin("MARS_receiveFromJS_result");
 
-  if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRING, 0);
-    xfer += oprot->writeString(this->success);
-    xfer += oprot->writeFieldEnd();
-  }
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -318,20 +321,7 @@ uint32_t MARS_receiveFromJS_presult::read(::apache::thrift::protocol::TProtocol*
     if (ftype == ::apache::thrift::protocol::T_STOP) {
       break;
     }
-    switch (fid)
-    {
-      case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString((*(this->success)));
-          this->__isset.success = true;
-        } else {
-          xfer += iprot->skip(ftype);
-        }
-        break;
-      default:
-        xfer += iprot->skip(ftype);
-        break;
-    }
+    xfer += iprot->skip(ftype);
     xfer += iprot->readFieldEnd();
   }
 
@@ -397,18 +387,19 @@ void MARSClient::recv_getCode(std::string& _return)
   throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getCode failed: unknown result");
 }
 
-void MARSClient::receiveFromJS(std::string& _return)
+void MARSClient::receiveFromJS(const Code& c)
 {
-  send_receiveFromJS();
-  recv_receiveFromJS(_return);
+  send_receiveFromJS(c);
+  recv_receiveFromJS();
 }
 
-void MARSClient::send_receiveFromJS()
+void MARSClient::send_receiveFromJS(const Code& c)
 {
   int32_t cseqid = 0;
   oprot_->writeMessageBegin("receiveFromJS", ::apache::thrift::protocol::T_CALL, cseqid);
 
   MARS_receiveFromJS_pargs args;
+  args.c = &c;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -416,7 +407,7 @@ void MARSClient::send_receiveFromJS()
   oprot_->getTransport()->flush();
 }
 
-void MARSClient::recv_receiveFromJS(std::string& _return)
+void MARSClient::recv_receiveFromJS()
 {
 
   int32_t rseqid = 0;
@@ -442,16 +433,11 @@ void MARSClient::recv_receiveFromJS(std::string& _return)
     iprot_->getTransport()->readEnd();
   }
   MARS_receiveFromJS_presult result;
-  result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
   iprot_->getTransport()->readEnd();
 
-  if (result.__isset.success) {
-    // _return pointer has now been filled
-    return;
-  }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "receiveFromJS failed: unknown result");
+  return;
 }
 
 bool MARSProcessor::dispatchCall(::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, const std::string& fname, int32_t seqid, void* callContext) {
@@ -550,8 +536,7 @@ void MARSProcessor::process_receiveFromJS(int32_t seqid, ::apache::thrift::proto
 
   MARS_receiveFromJS_result result;
   try {
-    iface_->receiveFromJS(result.success);
-    result.__isset.success = true;
+    iface_->receiveFromJS(args.c);
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
       this->eventHandler_->handlerError(ctx, "MARS.receiveFromJS");
@@ -671,19 +656,20 @@ void MARSConcurrentClient::recv_getCode(std::string& _return, const int32_t seqi
   } // end while(true)
 }
 
-void MARSConcurrentClient::receiveFromJS(std::string& _return)
+void MARSConcurrentClient::receiveFromJS(const Code& c)
 {
-  int32_t seqid = send_receiveFromJS();
-  recv_receiveFromJS(_return, seqid);
+  int32_t seqid = send_receiveFromJS(c);
+  recv_receiveFromJS(seqid);
 }
 
-int32_t MARSConcurrentClient::send_receiveFromJS()
+int32_t MARSConcurrentClient::send_receiveFromJS(const Code& c)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
   oprot_->writeMessageBegin("receiveFromJS", ::apache::thrift::protocol::T_CALL, cseqid);
 
   MARS_receiveFromJS_pargs args;
+  args.c = &c;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -694,7 +680,7 @@ int32_t MARSConcurrentClient::send_receiveFromJS()
   return cseqid;
 }
 
-void MARSConcurrentClient::recv_receiveFromJS(std::string& _return, const int32_t seqid)
+void MARSConcurrentClient::recv_receiveFromJS(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -733,18 +719,12 @@ void MARSConcurrentClient::recv_receiveFromJS(std::string& _return, const int32_
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
       MARS_receiveFromJS_presult result;
-      result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
       iprot_->getTransport()->readEnd();
 
-      if (result.__isset.success) {
-        // _return pointer has now been filled
-        sentry.commit();
-        return;
-      }
-      // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "receiveFromJS failed: unknown result");
+      sentry.commit();
+      return;
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);

@@ -27,7 +27,7 @@ class MARSHandler : virtual public MARSIf {
     printf("getCode\n");
   }
 
-  void receiveFromJS(std::string& _return) {
+  void receiveFromJS(const Code& c) {
     // Your implementation goes here
     printf("receiveFromJS\n");
   }

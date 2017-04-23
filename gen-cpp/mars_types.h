@@ -20,6 +20,54 @@
 
 namespace MARS {
 
+class Code;
+
+typedef struct _Code__isset {
+  _Code__isset() : code(false) {}
+  bool code :1;
+} _Code__isset;
+
+class Code : public virtual ::apache::thrift::TBase {
+ public:
+
+  Code(const Code&);
+  Code& operator=(const Code&);
+  Code() : code() {
+  }
+
+  virtual ~Code() throw();
+  std::string code;
+
+  _Code__isset __isset;
+
+  void __set_code(const std::string& val);
+
+  bool operator == (const Code & rhs) const
+  {
+    if (!(code == rhs.code))
+      return false;
+    return true;
+  }
+  bool operator != (const Code &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const Code & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+  virtual void printTo(std::ostream& out) const;
+};
+
+void swap(Code &a, Code &b);
+
+inline std::ostream& operator<<(std::ostream& out, const Code& obj)
+{
+  obj.printTo(out);
+  return out;
+}
+
 } // namespace
 
 #endif

@@ -27,27 +27,32 @@ class MARSHandler : virtual public MARSIf {
     printf("server started\n");
   }
 
-  void receiveFromJS(std::string& _return) {
-      {
-          std::lock_guard<std::mutex> lk(m);
-          code = _return;
-          received = true;
+  void receiveFromJS(const Code& c) {
+      if (waiting) {
+          {
+              std::lock_guard<std::mutex> lk(m);
+              code = c.code;
+              received = true;
+          }
+          cv.notify_all();
       }
-      cv.notify_all();
   }
 
   void getCode(std::string& _return) {
       std::unique_lock<std::mutex> lk(m);
       std::cerr << "Waiting... \n";
+      waiting = true;
       cv.wait(lk, [this]{return received;});
       std::cerr << "Got it \n";
       _return = code;
       received = false;
+      waiting = false;
   }
 
 private:
     std::string code;
     bool received = false;
+    bool waiting = false;
 };
 
 int main(int argc, char **argv) {

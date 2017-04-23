@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <vector>
+#include <iostream>
 #include "mars/Instruction.h"
 
 static const char *const successMessage = "success";

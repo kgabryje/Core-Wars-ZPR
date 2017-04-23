@@ -19,6 +19,7 @@ vector<shared_ptr<Instruction>> Initializer::sendCodeRequestAndParse() {
     while (!codeIsFine) {
         string code = demandCode();
         try {
+            std::cout << "Received instructions: " << code << std::endl;
             instructions = parser.parse(code);
             message = successMessage;
             codeIsFine = true;

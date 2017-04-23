@@ -22,7 +22,7 @@ class MARSIf {
  public:
   virtual ~MARSIf() {}
   virtual void getCode(std::string& _return) = 0;
-  virtual void receiveFromJS(std::string& _return) = 0;
+  virtual void receiveFromJS(const Code& c) = 0;
 };
 
 class MARSIfFactory {
@@ -55,7 +55,7 @@ class MARSNull : virtual public MARSIf {
   void getCode(std::string& /* _return */) {
     return;
   }
-  void receiveFromJS(std::string& /* _return */) {
+  void receiveFromJS(const Code& /* c */) {
     return;
   }
 };
@@ -152,6 +152,10 @@ class MARS_getCode_presult {
 
 };
 
+typedef struct _MARS_receiveFromJS_args__isset {
+  _MARS_receiveFromJS_args__isset() : c(false) {}
+  bool c :1;
+} _MARS_receiveFromJS_args__isset;
 
 class MARS_receiveFromJS_args {
  public:
@@ -162,9 +166,16 @@ class MARS_receiveFromJS_args {
   }
 
   virtual ~MARS_receiveFromJS_args() throw();
+  Code c;
 
-  bool operator == (const MARS_receiveFromJS_args & /* rhs */) const
+  _MARS_receiveFromJS_args__isset __isset;
+
+  void __set_c(const Code& val);
+
+  bool operator == (const MARS_receiveFromJS_args & rhs) const
   {
+    if (!(c == rhs.c))
+      return false;
     return true;
   }
   bool operator != (const MARS_receiveFromJS_args &rhs) const {
@@ -184,35 +195,25 @@ class MARS_receiveFromJS_pargs {
 
 
   virtual ~MARS_receiveFromJS_pargs() throw();
+  const Code* c;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _MARS_receiveFromJS_result__isset {
-  _MARS_receiveFromJS_result__isset() : success(false) {}
-  bool success :1;
-} _MARS_receiveFromJS_result__isset;
 
 class MARS_receiveFromJS_result {
  public:
 
   MARS_receiveFromJS_result(const MARS_receiveFromJS_result&);
   MARS_receiveFromJS_result& operator=(const MARS_receiveFromJS_result&);
-  MARS_receiveFromJS_result() : success() {
+  MARS_receiveFromJS_result() {
   }
 
   virtual ~MARS_receiveFromJS_result() throw();
-  std::string success;
 
-  _MARS_receiveFromJS_result__isset __isset;
-
-  void __set_success(const std::string& val);
-
-  bool operator == (const MARS_receiveFromJS_result & rhs) const
+  bool operator == (const MARS_receiveFromJS_result & /* rhs */) const
   {
-    if (!(success == rhs.success))
-      return false;
     return true;
   }
   bool operator != (const MARS_receiveFromJS_result &rhs) const {
@@ -226,19 +227,12 @@ class MARS_receiveFromJS_result {
 
 };
 
-typedef struct _MARS_receiveFromJS_presult__isset {
-  _MARS_receiveFromJS_presult__isset() : success(false) {}
-  bool success :1;
-} _MARS_receiveFromJS_presult__isset;
 
 class MARS_receiveFromJS_presult {
  public:
 
 
   virtual ~MARS_receiveFromJS_presult() throw();
-  std::string* success;
-
-  _MARS_receiveFromJS_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -272,9 +266,9 @@ class MARSClient : virtual public MARSIf {
   void getCode(std::string& _return);
   void send_getCode();
   void recv_getCode(std::string& _return);
-  void receiveFromJS(std::string& _return);
-  void send_receiveFromJS();
-  void recv_receiveFromJS(std::string& _return);
+  void receiveFromJS(const Code& c);
+  void send_receiveFromJS(const Code& c);
+  void recv_receiveFromJS();
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -335,14 +329,13 @@ class MARSMultiface : virtual public MARSIf {
     return;
   }
 
-  void receiveFromJS(std::string& _return) {
+  void receiveFromJS(const Code& c) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->receiveFromJS(_return);
+      ifaces_[i]->receiveFromJS(c);
     }
-    ifaces_[i]->receiveFromJS(_return);
-    return;
+    ifaces_[i]->receiveFromJS(c);
   }
 
 };
@@ -378,9 +371,9 @@ class MARSConcurrentClient : virtual public MARSIf {
   void getCode(std::string& _return);
   int32_t send_getCode();
   void recv_getCode(std::string& _return, const int32_t seqid);
-  void receiveFromJS(std::string& _return);
-  int32_t send_receiveFromJS();
-  void recv_receiveFromJS(std::string& _return, const int32_t seqid);
+  void receiveFromJS(const Code& c);
+  int32_t send_receiveFromJS(const Code& c);
+  void recv_receiveFromJS(const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
