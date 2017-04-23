@@ -120,9 +120,13 @@ test.IncrementServiceClient = function(input, output) {
 };
 test.IncrementServiceClient.prototype = {};
 test.IncrementServiceClient.prototype.increment = function(num, callback) {
-  this.send_increment(num, callback); 
-  if (!callback) {
+  if (callback === undefined) {
+    this.send_increment(num);
     return this.recv_increment();
+  } else {
+    var postData = this.send_increment(num, true);
+    return this.output.getTransport()
+      .jqRequest(this, postData, arguments, this.recv_increment);
   }
 };
 
@@ -132,20 +136,7 @@ test.IncrementServiceClient.prototype.send_increment = function(num, callback) {
   args.num = num;
   args.write(this.output);
   this.output.writeMessageEnd();
-  if (callback) {
-    var self = this;
-    this.output.getTransport().flush(true, function() {
-      var result = null;
-      try {
-        result = self.recv_increment();
-      } catch (e) {
-        result = e;
-      }
-      callback(result);
-    });
-  } else {
-    return this.output.getTransport().flush();
-  }
+  return this.output.getTransport().flush(callback);
 };
 
 test.IncrementServiceClient.prototype.recv_increment = function() {

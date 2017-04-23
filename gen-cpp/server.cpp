@@ -3,6 +3,9 @@
 #include <thrift/transport/TServerSocket.h>
 #include <thrift/transport/THttpServer.h>
 #include <thrift/protocol/TJSONProtocol.h>
+#include <thrift/server/TThreadedServer.h>
+
+#include <unistd.h>
 
 using namespace ::apache::thrift;
 using namespace ::apache::thrift::protocol;
@@ -37,7 +40,7 @@ int main(int argc, char **argv) {
   shared_ptr<TTransportFactory> transportFactory(new THttpServerTransportFactory());
   shared_ptr<TProtocolFactory> protocolFactory(new TJSONProtocolFactory());
 
-  TSimpleServer server(processor, serverTransport, transportFactory, protocolFactory);
+  TThreadedServer server(processor, serverTransport, transportFactory, protocolFactory);
   server.serve();
   return 0;
 }
