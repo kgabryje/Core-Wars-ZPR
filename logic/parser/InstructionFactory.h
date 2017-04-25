@@ -8,7 +8,7 @@
 class InstructionFactory {
 
 public:
-    static std::shared_ptr<Instruction> createInstruction(const InstructionData &data);
+    static Instruction createInstruction(const InstructionData &data);
 };
 
 

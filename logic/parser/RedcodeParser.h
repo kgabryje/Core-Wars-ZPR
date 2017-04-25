@@ -2,16 +2,15 @@
 #define CORE_WARS_ZPR_REDCODEPARSER_H
 
 
-#include <memory>
 #include "InstructionData.h"
 #include "../mars/Instruction.h"
 
 class RedcodeParser {
 public:
-    std::vector<std::shared_ptr<Instruction>> parse(string fileContents);
+    std::vector<Warrior> parse(vector<ViewInput>);
 
 private:
-    vector<InstructionData> preprocessCode();
+    vector<InstructionData> preprocessCode(const ViewInput &input);
 };
 
 

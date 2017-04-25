@@ -1,19 +1,19 @@
 #ifndef CORE_WARS_ZPR_MARSSIMULATOR_H
 #define CORE_WARS_ZPR_MARSSIMULATOR_H
 
-#include <vector>
-#include <memory>
+#include <logic/MarsResult.h>
+#include <c++/vector>
 #include "Instruction.h"
-
+#include <logic/Player.h>
 class MarsSimulator {
 
 public:
-    void setInstructions(std::vector<std::shared_ptr<Instruction>> instructions);
-    int doStuff();
+    void setPlayers(std::vector<Player> players);
+    MarsResult doStuff();
 
 private:
     int testCounter = 0;
-    std::vector<std::shared_ptr<Instruction>> instructions;
+    std::vector<Player> players;
 };
 
 

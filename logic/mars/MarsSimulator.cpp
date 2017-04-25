@@ -1,13 +1,17 @@
 #include <iostream>
+#include <logic/Player.h>
+#include <logic/MarsResult.h>
 #include "MarsSimulator.h"
 
-void MarsSimulator::setInstructions(
-        std::vector<std::shared_ptr<Instruction>> instructions) {
-    this->instructions = instructions;
-    for (auto const &instr: instructions)
-        instr.get()->test();
+void MarsSimulator::setPlayers(
+        std::vector<Player> players) {
+    this->players = players;
+
 }
 
-int MarsSimulator::doStuff() {
-    return testCounter++;
+MarsResult MarsSimulator::doStuff() {
+    testCounter++;
+    for (auto const &player: players)
+        player.test();
+    return MarsResult();
 }

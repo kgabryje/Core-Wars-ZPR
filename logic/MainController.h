@@ -17,7 +17,8 @@ private:
     ServerConnector connector;
 
     void initialize();
-    void sendResultDontWaitForResponse(int i);
+    bool isAppCancelled = false;
+    void sendResultDontWaitForResponse(MarsResult mr);
 };
 
 

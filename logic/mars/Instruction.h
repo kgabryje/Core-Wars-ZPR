@@ -7,12 +7,12 @@
 class Instruction {
 public:
     Instruction();
-    Instruction(const InstructionOperator *operatorA, const InstructionOperator *operatorB);
+    Instruction(const InstructionOperator operatorA, const InstructionOperator operatorB);
     void test();
 
 private:
-    const InstructionOperator *operatorA;
-    const InstructionOperator *operatorB;
+    const InstructionOperator operatorA;
+    const InstructionOperator operatorB;
 
 };
 
