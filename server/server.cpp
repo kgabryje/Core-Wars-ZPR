@@ -1,4 +1,4 @@
-#include "MARS.h"
+#include "../gen-cpp/MARS.h"
 #include <thrift/server/TSimpleServer.h>
 #include <thrift/transport/TServerSocket.h>
 #include <thrift/transport/THttpServer.h>
