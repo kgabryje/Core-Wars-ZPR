@@ -8,7 +8,7 @@
 #include "Instruction.h"
 #include "InstructionOperator.h"
 
-class DatInstruction : public Instruction{
+class DatInstruction : public Instruction {
 public:
     DatInstruction(const InstructionOperator *operatorA, const InstructionOperator *operatorB);
 };

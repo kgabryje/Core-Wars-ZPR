@@ -8,7 +8,7 @@ class Instruction {
 public:
     Instruction();
     Instruction(const InstructionOperator *operatorA, const InstructionOperator *operatorB);
-    void test();
+    virtual void test();
 
 private:
     const InstructionOperator *operatorA;

@@ -11,7 +11,7 @@ public:
     std::vector<std::shared_ptr<Instruction>> parse(string fileContents);
 
 private:
-    vector<InstructionData> preprocessCode();
+    vector<InstructionData> preprocessCode(const string& data);
 };
 
 
