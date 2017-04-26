@@ -4,7 +4,7 @@
 
 
 #include <vector>
-#include <logic/view/ViewInput.h>
+#include "logic/view/ViewInput.h"
 #include "Player.h"
 
 class PlayerCreator {

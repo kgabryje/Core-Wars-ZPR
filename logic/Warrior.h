@@ -1,7 +1,7 @@
 #ifndef CORE_WARS_ZPR_WARRIOR_H
 #define CORE_WARS_ZPR_WARRIOR_H
 
-#include <logic/mars/Instruction.h>
+#include "logic/mars/Instruction.h"
 #include <vector>
 
 
