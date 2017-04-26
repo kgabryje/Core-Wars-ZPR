@@ -1,0 +1,10 @@
+#ifndef CORE_WARS_ZPR_MARSRESULT_H
+#define CORE_WARS_ZPR_MARSRESULT_H
+
+
+class MarsResult {
+
+};
+
+
+#endif //CORE_WARS_ZPR_MARSRESULT_H
