@@ -6,7 +6,7 @@ client_source = [path.join('logic', folder, f) for folder in ['', 'parser', 'mar
 server_source = [path.join('server', 'server.cpp')]
 tests_source = [path.join('test_cases', f) for f in listdir('test_cases') if f.endswith('.cpp')]
 
-env = Environment(CPPPATH = ['.', '/usr/local/include/thrift'], LIBS = 'thrift', CPPFLAGS = '-std=c++11')
+env = Environment(CPPPATH = '.', LIBS = 'thrift', CPPFLAGS = '-std=c++11')
 
 gen_cpp_o = env.Object(gen_cpp)
 client_o = env.Object(client_source)
