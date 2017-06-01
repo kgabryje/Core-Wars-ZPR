@@ -1,24 +1,27 @@
 #include <vector>
 #include "RedcodeParser.h"
-
-#include "InstructionFactory.h"
-#include "ParserException.h"
+#include "RawCodeFormatter.h"
+#include "InstructionParser.h"
 
 
 vector<shared_ptr<Instruction>> RedcodeParser::parse(string fileContents) {
-    vector<InstructionData> metaInstructions = preprocessCode(fileContents);
+
+    RawCodeFormatter formatter;
+    vector<string> codeLines = formatter.format(fileContents);
+    InstructionParser instructionParser;
+    vector<Instruction> metaInstructions = instructionParser.parseInstructions(codeLines);
     vector<shared_ptr<Instruction>> redCodeInstructions;
 
-    for (const InstructionData &instr : metaInstructions) {
+ //   for (const InstructionData &instr : metaInstructions) {
 //        if(instr.getCode() == "code: 7")
 //            throw ParserException();
-        redCodeInstructions.push_back(InstructionFactory::createInstruction(instr));
-    }
+ //       redCodeInstructions.push_back(InstructionFactory::createInstruction(instr));
+  //  }
 
     return redCodeInstructions;
 }
 
-vector<InstructionData> RedcodeParser::preprocessCode(const string& data) {
+vector<InstructionData> RedcodeParser::preprocessCode(const string &data) {
     vector<InstructionData> metaInstructions;
     int i = 6;
     while (--i > 0) {
@@ -30,3 +33,4 @@ vector<InstructionData> RedcodeParser::preprocessCode(const string& data) {
     }
     return metaInstructions;
 }
+
