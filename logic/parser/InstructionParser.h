@@ -4,12 +4,13 @@
 #include <vector>
 #include <string>
 #include <logic/mars/Instruction.h>
+#include <c++/memory>
 
 using namespace std;
 class InstructionParser {
 
 public:
-    vector<Instruction> parseInstructions(vector<string> rawInstructions);
+    vector<shared_ptr<Instruction>> parseInstructions(vector<string> rawInstructions);
 };
 
 

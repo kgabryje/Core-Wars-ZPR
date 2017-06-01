@@ -8,29 +8,9 @@ vector<shared_ptr<Instruction>> RedcodeParser::parse(string fileContents) {
 
     RawCodeFormatter formatter;
     vector<string> codeLines = formatter.format(fileContents);
+
     InstructionParser instructionParser;
-    vector<Instruction> metaInstructions = instructionParser.parseInstructions(codeLines);
-    vector<shared_ptr<Instruction>> redCodeInstructions;
+    vector<shared_ptr<Instruction>> instructions = instructionParser.parseInstructions(codeLines);
 
- //   for (const InstructionData &instr : metaInstructions) {
-//        if(instr.getCode() == "code: 7")
-//            throw ParserException();
- //       redCodeInstructions.push_back(InstructionFactory::createInstruction(instr));
-  //  }
-
-    return redCodeInstructions;
+    return instructions;
 }
-
-vector<InstructionData> RedcodeParser::preprocessCode(const string &data) {
-    vector<InstructionData> metaInstructions;
-    int i = 6;
-    while (--i > 0) {
-        const string code = data;
-        const string fieldA = "fieldA: " + to_string(i);
-        const string fieldB = "fieldB: " + to_string(i);
-
-        metaInstructions.push_back(InstructionData(code, fieldA, fieldB));
-    }
-    return metaInstructions;
-}
-

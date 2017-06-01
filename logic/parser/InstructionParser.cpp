@@ -2,20 +2,20 @@
 #include "InstructionDataExtractor.h"
 #include "ParserException.h"
 
-vector<Instruction> InstructionParser::parseInstructions(vector<std::string> rawInstructions) {
+vector<shared_ptr<Instruction>> InstructionParser::parseInstructions(vector<std::string> rawInstructions) {
 
     vector<InstructionData>metaInstructions;
-    vector<Instruction> instructions;
+    vector<shared_ptr<Instruction>> instructions;
     InstructionDataExtractor extractor;
+
     for (string line: rawInstructions) {
         if(!extractor.isInstructionValid(line))
             throw new ParserException();
-       // InstructionData metaInstr = extractor.tryExtract(line);
-
+        else {
+            // InstructionData metaInstr = extractor.tryExtract(line);
+        }
 
     }
 return instructions;
-
-
 
 }
