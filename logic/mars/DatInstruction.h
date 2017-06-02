@@ -11,6 +11,8 @@
 class DatInstruction : public Instruction {
 public:
     DatInstruction(const InstructionOperator *operatorA, const InstructionOperator *operatorB);
+
+    DatInstruction();
 };
 
 

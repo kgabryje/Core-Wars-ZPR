@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include <logic/mars/Instruction.h>
-#include <c++/memory>
+#include <memory>
 
 using namespace std;
 class InstructionParser {

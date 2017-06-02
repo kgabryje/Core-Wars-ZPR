@@ -2,17 +2,14 @@
 #include "ParserException.h"
 #include "../mars/DatInstruction.h"
 #include "../mars/MovInstruction.h"
+#include "CoreWarsConstants.h"
 
-shared_ptr<Instruction> InstructionFactory::createInstruction(const InstructionData &data) {
-    string a = data.getA_field();
-    string b = data.getB_field();
-    const InstructionOperator *aOper = new InstructionOperator("", int(a.at( a.length() - 1 ) - 48));
-    const InstructionOperator *bOper = new InstructionOperator("", int(b.at( b.length() - 1 ) - 48));
-    string dataCode =  data.getCode();
-    if(dataCode == "DAT")
-        return shared_ptr<Instruction>(new DatInstruction(aOper, bOper));
-    else if(dataCode == "MOV")
-        return shared_ptr<Instruction>(new MovInstruction(aOper, bOper));
+shared_ptr<Instruction> InstructionFactory::createInstruction(const string &code) {
+
+    if (code == ParserConstants::INSTR_CODE_DAT)
+        return shared_ptr<Instruction>(new DatInstruction());
+    else if (code == ParserConstants::INSTR_CODE_MOV)
+        return shared_ptr<Instruction>(new MovInstruction());
     else
-        throw ParserException();
+        throw ParserException(ParserConstants::UKNOWN_CODE_EXCEPTION + code);
 }

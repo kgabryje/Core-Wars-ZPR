@@ -9,6 +9,8 @@
 
 class MovInstruction : public Instruction {
 public:
+    MovInstruction();
+
     MovInstruction(const InstructionOperator *operatorA, const InstructionOperator *operatorB);
 };
 

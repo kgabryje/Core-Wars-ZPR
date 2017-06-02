@@ -8,21 +8,15 @@
 
 TEST_CASE( "Unknown instruction type has been provided","[parser]" ) {
     const string code = "LOL";
-    const string fieldA = "smth";
-    const string fieldB = "smth";
-    InstructionData instr(code, fieldA, fieldB);
     REQUIRE_THROWS(
-        InstructionFactory::createInstruction(instr)
+            InstructionFactory::createInstruction(code)
     );
 };
 
 TEST_CASE( "Correct instruction type has been provided","[parser]" ) {
     const string code = "MOV";
-    const string fieldA = "smth";
-    const string fieldB = "smth";
-    InstructionData instr(code, fieldA, fieldB);
     REQUIRE_NOTHROW(
-        InstructionFactory::createInstruction(instr)
+            InstructionFactory::createInstruction(code)
     );
 }
 

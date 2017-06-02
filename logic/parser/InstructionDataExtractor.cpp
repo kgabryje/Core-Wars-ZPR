@@ -1,9 +1,8 @@
 #include <boost/regex.hpp>
+#include <iostream>
 #include "InstructionDataExtractor.h"
-
-InstructionData InstructionDataExtractor::tryExtract(std::string rawInstr) {
-    return InstructionData("","","");
-}
+#include "ParserException.h"
+#include "CoreWarsConstants.h"
 
 bool InstructionDataExtractor::isInstructionValid(std::string rawInstr) {
 
@@ -11,6 +10,19 @@ bool InstructionDataExtractor::isInstructionValid(std::string rawInstr) {
     return (boost::regex_match(rawInstr, e));
 
 }
+
+InstructionData InstructionDataExtractor::tryExtract(std::string rawInstr) {
+
+    boost::match_results<std::string::const_iterator> results;
+
+    static const boost::regex e(getRegex());
+    if (!boost::regex_match(rawInstr, results, e))
+        throw ParserException(ParserConstants::WRONG_SYNTAX_EXCEPTION);
+
+    return InstructionData(results[1], results[2], results[3]);
+}
+
+
 //boost::match_results<std::string::const_iterator> results;
 //return (boost::regex_match(rawInstr, results, e));
 //bool RedcodeParser::testMe(string input) {
