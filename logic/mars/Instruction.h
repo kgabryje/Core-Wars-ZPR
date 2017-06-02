@@ -19,6 +19,8 @@ public:
 
     void setOperatorB(const InstructionOperator *operatorB);
 
+    const std::string &getOpCode() const;
+
 private:
     const InstructionOperator *operatorA;
     const InstructionOperator *operatorB;

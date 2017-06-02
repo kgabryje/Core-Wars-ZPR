@@ -16,8 +16,7 @@ vector<shared_ptr<Instruction>> InstructionParser::parseInstructions(vector<std:
             throw ParserException(ParserConstants::WRONG_SYNTAX_EXCEPTION);
         else {
             InstructionData metaInstr = extractor.tryExtract(line);
-            InstructionCreator creator;
-            Instruction intstr = creator.tryCreate(metaInstr);
+            Instruction intstr = InstructionCreator::tryCreate(metaInstr);
         }
 
     }

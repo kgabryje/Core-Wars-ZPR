@@ -24,3 +24,7 @@ const InstructionOperator *Instruction::getOperatorB() const {
 void Instruction::setOperatorB(const InstructionOperator *operatorB) {
     Instruction::operatorB = operatorB;
 }
+
+const std::string &Instruction::getOpCode() const {
+    return opCode;
+}

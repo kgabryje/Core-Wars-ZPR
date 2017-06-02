@@ -9,6 +9,16 @@ class InstructionAddress {
 private:
     int value;
     InstructionModifier modifier;
+public:
+    InstructionAddress(InstructionModifier modifier, int i);
+
+    int getValue() const;
+
+    void setValue(int value);
+
+    const InstructionModifier &getModifier() const;
+
+    void setModifier(const InstructionModifier &modifier);
 };
 
 

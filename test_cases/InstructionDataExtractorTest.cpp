@@ -17,6 +17,9 @@ SCENARIO("InstructionDataExtractor: validating instructions""[parser]") {
                         extractor.isInstructionValid("DWA #0, #8") == true
                 );
                 REQUIRE(
+                        extractor.isInstructionValid("DWA <0, ]8") == true
+                );
+                REQUIRE(
                         extractor.isInstructionValid("TRZ    #0") == true
                 );
                 REQUIRE(
@@ -36,7 +39,7 @@ SCENARIO("InstructionDataExtractor: validating instructions""[parser]") {
                         extractor.isInstructionValid("some random text") != true
                 );
                 REQUIRE(
-                        extractor.isInstructionValid("ABC -6,") != true
+                        extractor.isInstructionValid("ABC 6,") != true
                 );
                 REQUIRE(
                         extractor.isInstructionValid("DEF ##6") != true
@@ -51,7 +54,7 @@ SCENARIO("InstructionDataExtractor: extracting instruction components""[parser]"
     GIVEN("Simple InstructionDataExtractor and instruction as string") {
         InstructionDataExtractor extractor;
         std::string opCode = "AAA";
-        std::string aField = "#3";
+        std::string aField = "^3";
         std::string bField = "$-9";
         std::string space = " ";
         std::string empty = "";

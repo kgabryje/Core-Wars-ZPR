@@ -8,7 +8,7 @@
 class InstructionCreator {
 
 public:
-    Instruction tryCreate(InstructionData data);
+    static Instruction tryCreate(InstructionData data);
 };
 
 
