@@ -8,7 +8,7 @@
 class AddressCreator {
 
 public:
-    static InstructionAddress tryCreate(std::string);
+    static InstructionAddress *tryCreate(std::string);
 
     static int parseFromString(std::string numAsString);
 };

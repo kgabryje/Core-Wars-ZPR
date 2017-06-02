@@ -11,7 +11,7 @@ SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
         string rawAddress = modifier + value;
 
         THEN("Produce correct InstructionAddress") {
-            InstructionAddress ia = AddressCreator::tryCreate(rawAddress);
+            InstructionAddress ia = *AddressCreator::tryCreate(rawAddress);
             REQUIRE(
                     ia.getValue() == -125
             );
@@ -24,7 +24,7 @@ SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
         AND_WHEN("No modifier given") {
             string rawAddress = value;
             THEN("Parse direct mode address") {
-                InstructionAddress ia = AddressCreator::tryCreate(rawAddress);
+                InstructionAddress ia = *AddressCreator::tryCreate(rawAddress);
                 REQUIRE(
                         ia.getValue() == -125
                 );
@@ -32,13 +32,6 @@ SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
                 REQUIRE(
                         im.getModifierCode() == "$"
                 );
-            }
-        }
-        AND_WHEN("Instruction string is empty") {
-            THEN("throw ex") {
-                REQUIRE_THROWS(AddressCreator::tryCreate(rawAddress)
-                );
-
             }
         }
     }
@@ -50,7 +43,7 @@ SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
         THEN("fire exception with proper message") {
             REQUIRE_THROWS_WITH(
                     AddressCreator::tryCreate(rawAddress),
-                    ParserConstants::UKNOWN_MODIFIER_EXCEPTION
+                    ParserConstants::UKNOWN_MODIFIER_EXCEPTION + "\"" + modifier + "\""
             );
         }
     }

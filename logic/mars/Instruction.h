@@ -2,28 +2,31 @@
 #define CORE_WARS_ZPR_INSTRUCTION_H
 
 
-#include "InstructionOperator.h"
 #include <logic/parser/CoreWarsConstants.h>
+#include <boost/shared_ptr.hpp>
+#include <logic/parser/InstructionAddress.h>
 
 class Instruction {
 public:
     Instruction(const std::string opCode);
-    Instruction(const InstructionOperator *operatorA, const InstructionOperator *operatorB);
+
+    Instruction(const boost::shared_ptr<InstructionAddress> operatorA,
+                const boost::shared_ptr<InstructionAddress> operatorB);
     virtual void test();
-
-    const InstructionOperator *getOperatorA() const;
-
-    void setOperatorA(const InstructionOperator *operatorA);
-
-    const InstructionOperator *getOperatorB() const;
-
-    void setOperatorB(const InstructionOperator *operatorB);
 
     const std::string &getOpCode() const;
 
+    const boost::shared_ptr<InstructionAddress> &getAddressA() const;
+
+    void setAddressA(const boost::shared_ptr<InstructionAddress> &addressA);
+
+    const boost::shared_ptr<InstructionAddress> &getAddressB() const;
+
+    void setAddressB(const boost::shared_ptr<InstructionAddress> &addressB);
+
 private:
-    const InstructionOperator *operatorA;
-    const InstructionOperator *operatorB;
+    boost::shared_ptr<InstructionAddress> addressA;
+    boost::shared_ptr<InstructionAddress> addressB;
     const std::string opCode;
 };
 

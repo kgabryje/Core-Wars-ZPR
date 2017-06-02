@@ -5,12 +5,12 @@
 #include "ParserException.h"
 #include "CoreWarsConstants.h"
 
-InstructionAddress AddressCreator::tryCreate(std::string rawAddress) {
+InstructionAddress *AddressCreator::tryCreate(std::string rawAddress) {
 
     char rawModifier = rawAddress[0];
     InstructionModifier modifier = ModifierFactory::createModifier(rawModifier);
     int addressValue = parseFromString(rawAddress);
-    return InstructionAddress(modifier, addressValue);
+    return new InstructionAddress(modifier, addressValue);
 }
 
 int AddressCreator::parseFromString(std::string numAsString) {
