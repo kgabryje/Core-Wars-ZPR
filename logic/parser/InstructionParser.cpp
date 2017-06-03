@@ -2,21 +2,28 @@
 #include "InstructionParser.h"
 #include "InstructionDataExtractor.h"
 #include "ParserException.h"
-#include "CoreWarsConstants.h"
 #include "InstructionCreator.h"
 
-vector<shared_ptr<Instruction>> InstructionParser::parseInstructions(vector<std::string> rawInstructions) {
+vector<shared_ptr<Instruction>>
+InstructionParser::parseInstructions(std::vector<std::pair<int, std::string>> rawInstructions) {
 
-    vector<InstructionData> metaInstructions;
     vector<shared_ptr<Instruction>> instructions;
     InstructionDataExtractor extractor;
 
-    for (string line: rawInstructions) {
-        if (!extractor.isInstructionValid(line))
-            throw ParserException(ParserConstants::WRONG_SYNTAX_EXCEPTION);
+    for (pair<int, string> line: rawInstructions) {
+        if (!extractor.isInstructionValid(line.second))
+            throw ParserException(
+                    ParserConstants::WRONG_SYNTAX_EXCEPTION + "(line: " + std::to_string(line.first) + ")");
         else {
-            InstructionData metaInstr = extractor.tryExtract(line);
-            shared_ptr<Instruction> intstr = InstructionCreator::tryCreate(metaInstr);
+            try {
+                InstructionData metaInstr = extractor.tryExtract(line.second);
+                shared_ptr<Instruction> intstr = InstructionCreator::tryCreate(metaInstr);
+                instructions.push_back(intstr);
+            }
+            catch (ParserException &pe) {
+                throw ParserException(std::string(pe.what()) + " (line: " + std::to_string(line.first) + ")");
+            }
+
         }
 
     }

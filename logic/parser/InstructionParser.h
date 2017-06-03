@@ -10,7 +10,7 @@ using namespace std;
 class InstructionParser {
 
 public:
-    vector<shared_ptr<Instruction>> parseInstructions(vector<string> rawInstructions);
+    vector<shared_ptr<Instruction>> parseInstructions(vector<pair<int, string>> rawInstructions);
 };
 
 

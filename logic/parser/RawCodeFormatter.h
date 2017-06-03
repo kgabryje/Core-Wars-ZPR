@@ -7,15 +7,16 @@
 class RawCodeFormatter {
 
 public:
-    std::vector<std::string> format(std::string stringToFormat);
+    std::vector<std::pair<int, std::string>> format(std::string stringToFormat);
 private:
-    std::vector<std::string> split(std::string stringToSplit);
+    std::vector<std::pair<int, std::string>> split(std::string stringToSplit);
 
-    std::vector<std::string> deleteEmptyAndCommentedLines(std::vector<std::string> lines);
+    std::vector<std::pair<int, std::string>>
+    deleteEmptyAndCommentedLines(std::vector<std::pair<int, std::string>> lines);
 
     std::string &trim(std::string &stringToTrim);
 
-    std::vector<std::string> trimLines(std::vector<std::string> lines);
+    std::vector<std::pair<int, std::string>> trimLines(std::vector<std::pair<int, std::string>>);
 
     bool isLineEmptyOrWhitespace(const std::string &line) const;
 
