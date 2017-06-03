@@ -1,16 +1,12 @@
 #include "ParserException.h"
 
+ParserException::ParserException(const std::string &msg) : message(msg) {}
+
 
 const char *ParserException::what() const noexcept {
-    return "Problem has occurred during parsing";
-}
-
-
-ParserException::ParserException() : exception() {
-
+    return message.c_str();
 }
 
 ParserException::~ParserException() {
 
 }
-

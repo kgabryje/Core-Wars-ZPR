@@ -8,10 +8,12 @@
 
 class RedcodeParser {
 public:
-    std::vector<std::shared_ptr<Instruction>> parse(string fileContents);
-
-private:
+    static std::vector<std::shared_ptr<Instruction>> parse(string fileContents);
     vector<InstructionData> preprocessCode(const string& data);
+private:
+
+
+    string getRegex() const;
 };
 
 

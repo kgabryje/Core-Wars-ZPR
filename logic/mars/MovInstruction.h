@@ -9,7 +9,10 @@
 
 class MovInstruction : public Instruction {
 public:
-    MovInstruction(const InstructionOperator *operatorA, const InstructionOperator *operatorB);
+    MovInstruction();
+
+    MovInstruction(const boost::shared_ptr<InstructionAddress> operatorA,
+                   const boost::shared_ptr<InstructionAddress> operatorB);
 };
 
 

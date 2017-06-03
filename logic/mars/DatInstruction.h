@@ -6,11 +6,13 @@
 #define CORE_WARS_ZPR_DATINSTRUCTION_H
 
 #include "Instruction.h"
-#include "InstructionOperator.h"
 
 class DatInstruction : public Instruction {
 public:
-    DatInstruction(const InstructionOperator *operatorA, const InstructionOperator *operatorB);
+    DatInstruction();
+
+    DatInstruction(const boost::shared_ptr<InstructionAddress> operatorA,
+                   const boost::shared_ptr<InstructionAddress> operatorB);
 };
 
 

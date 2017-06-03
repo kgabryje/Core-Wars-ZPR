@@ -19,4 +19,5 @@ void MainController::initialize() {
 
 void MainController::sendResultDontWaitForResponse(int i) {
 //connector.sendRefreshRequest(i);
+    printf("Uwaga %d",i);
 }
