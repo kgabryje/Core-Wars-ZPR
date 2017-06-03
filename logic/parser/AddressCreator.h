@@ -10,7 +10,9 @@ class AddressCreator {
 public:
     static InstructionAddress *tryCreate(std::string);
 
-    static int parseFromString(std::string numAsString);
+    static int parseAddressValue(std::string numAsString);
+
+    static InstructionAddress *createDefault();
 };
 
 

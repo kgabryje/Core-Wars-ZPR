@@ -9,11 +9,11 @@ InstructionAddress *AddressCreator::tryCreate(std::string rawAddress) {
 
     char rawModifier = rawAddress[0];
     InstructionModifier modifier = ModifierFactory::createModifier(rawModifier);
-    int addressValue = parseFromString(rawAddress);
+    int addressValue = parseAddressValue(rawAddress);
     return new InstructionAddress(modifier, addressValue);
 }
 
-int AddressCreator::parseFromString(std::string numAsString) {
+int AddressCreator::parseAddressValue(std::string numAsString) {
     int value;
     try {
         value = boost::lexical_cast<int>(numAsString);
@@ -28,4 +28,11 @@ int AddressCreator::parseFromString(std::string numAsString) {
         }
     }
     return value;
+}
+
+InstructionAddress *AddressCreator::createDefault() {
+    InstructionModifier modifier = ModifierFactory::createDefaultModifier();
+    int defaultAddressValue = 0;
+    return new InstructionAddress(modifier, defaultAddressValue);
+
 }

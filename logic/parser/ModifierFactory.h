@@ -11,6 +11,8 @@ public:
     static InstructionModifier createModifier(const char rawModifier);
 
     static bool isModifierOmitted(const char modifier);
+
+    static InstructionModifier createDefaultModifier();
 };
 
 

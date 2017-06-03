@@ -26,3 +26,7 @@ bool ModifierFactory::isModifierOmitted(const char modifier) {
     return isdigit(modifier) || modifier == '-';
 
 }
+
+InstructionModifier ModifierFactory::createDefaultModifier() {
+    return DirectInstructionModifier();
+}

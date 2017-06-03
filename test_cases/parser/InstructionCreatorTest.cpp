@@ -11,7 +11,7 @@ SCENARIO("InstructionCreatorTest: create Instruction from InstructionData") {
         string aField = "#-6";
         string bField = "";
         InstructionData id(code, aField, bField);
-        THEN("OpCode and one instruction address field has proper value") {
+        THEN("OpCode and one instruction address field has proper value and second has default") {
             shared_ptr<Instruction> instr = InstructionCreator::tryCreate(id);
             REQUIRE(
                     instr->getOpCode() == code
@@ -21,6 +21,12 @@ SCENARIO("InstructionCreatorTest: create Instruction from InstructionData") {
             );
             REQUIRE(
                     instr->getAddressA()->getValue() == -6
+            );
+            REQUIRE(
+                    instr->getAddressB()->getModifier().getModifierCode() == "$"
+            );
+            REQUIRE(
+                    instr->getAddressB()->getValue() == 0
             );
         }
         AND_WHEN("Two address fields are defined") {
