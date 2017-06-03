@@ -1,6 +1,6 @@
+#include "test_cases/catch.hpp"
 #include <logic/parser/InstructionDataExtractor.h>
 #include <logic/parser/InstructionParser.h>
-#include "catch.hpp"
 
 
 SCENARIO("Checking RedCode Instructions parser" "[parser]") {

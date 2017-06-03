@@ -1,12 +1,12 @@
+#include "test_cases/catch.hpp"
 #include <logic/parser/RawCodeFormatter.h>
-#include "./catch.hpp"
 
 using namespace std;
 
 TEST_CASE("Provided text is splitted on new lines", "[parser]") {
     const string code1 = "To jest tekst podzielony";
     const string code2 = "znakami nowej linii";
-    const string code = code1 +"\n" + code2;
+    const string code = code1 + "\n" + code2;
 
     RawCodeFormatter r;
     std::vector<std::pair<int, std::string>> lines = r.format(code);
@@ -28,6 +28,7 @@ TEST_CASE("Provided text is splitted on new lines", "[parser]") {
     );
 
 };
+
 TEST_CASE("Provided text is splitted on new lines and  leading/trailing spaces are trimmed", "[parser]") {
 
 
@@ -71,7 +72,7 @@ TEST_CASE("Provided text is splitted on new lines, empty and whitespace lines ar
     const string code2 = "Even more text";
     const string code3 = "Wow much text";
     const string space = " ";
-    const string code = "\n"+ space +"\n"+"\t"+"\n"+code1 +"\n" + code2 + "\n"+"\n"+space+"\n"+code3;
+    const string code = "\n" + space + "\n" + "\t" + "\n" + code1 + "\n" + code2 + "\n" + "\n" + space + "\n" + code3;
 
     RawCodeFormatter r;
     std::vector<std::pair<int, std::string>> lines = r.format(code);

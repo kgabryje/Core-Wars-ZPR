@@ -1,4 +1,4 @@
-#include "catch.hpp"
+#include "test_cases/catch.hpp"
 #include <logic/parser/InstructionParser.h>
 #include <iostream>
 #include "logic/parser/RedcodeParser.h"

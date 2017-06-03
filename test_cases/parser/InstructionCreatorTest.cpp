@@ -1,6 +1,7 @@
+#include "test_cases/catch.hpp"
+
 #include <logic/parser/InstructionData.h>
 #include <logic/parser/InstructionCreator.h>
-#include "catch.hpp"
 
 using namespace std;
 

@@ -1,10 +1,10 @@
-#include "./catch.hpp"
-#include "../logic/parser/InstructionFactory.h"
-#include "../logic/parser/InstructionData.h"
-#include "../logic/mars/Instruction.h"
-#include "../logic/mars/DatInstruction.h"
-#include "../logic/parser/RedcodeParser.h"
-#include "../logic/parser/ParserException.h"
+#include "test_cases/catch.hpp"
+#include "logic/parser/InstructionFactory.h"
+#include "logic/parser/InstructionData.h"
+#include "logic/mars/Instruction.h"
+#include "logic/mars/DatInstruction.h"
+#include "logic/parser/RedcodeParser.h"
+#include "logic/parser/ParserException.h"
 
 SCENARIO("InstructionFactoryTest: validating instruction code", "[parser]") {
     WHEN("Unknown instruction type has been provided") {

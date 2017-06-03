@@ -1,7 +1,7 @@
+#include "test_cases/catch.hpp"
 #include <logic/parser/InstructionDataExtractor.h>
 #include <logic/parser/InstructionAddress.h>
 #include <logic/parser/AddressCreator.h>
-#include "catch.hpp"
 #include "logic/parser/RedcodeParser.h"
 
 SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
