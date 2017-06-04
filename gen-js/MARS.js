@@ -88,6 +88,168 @@ MARS.MARS_getCode_result.prototype.write = function(output) {
   return;
 };
 
+MARS.MARS_sendMessage_args = function(args) {
+};
+MARS.MARS_sendMessage_args.prototype = {};
+MARS.MARS_sendMessage_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MARS.MARS_sendMessage_args.prototype.write = function(output) {
+  output.writeStructBegin('MARS_sendMessage_args');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MARS.MARS_sendMessage_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined && args.success !== null) {
+      this.success = args.success;
+    }
+  }
+};
+MARS.MARS_sendMessage_result.prototype = {};
+MARS.MARS_sendMessage_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.STRING) {
+        this.success = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MARS.MARS_sendMessage_result.prototype.write = function(output) {
+  output.writeStructBegin('MARS_sendMessage_result');
+  if (this.success !== null && this.success !== undefined) {
+    output.writeFieldBegin('success', Thrift.Type.STRING, 0);
+    output.writeString(this.success);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MARS.MARS_getMessage_args = function(args) {
+  this.message = null;
+  if (args) {
+    if (args.message !== undefined && args.message !== null) {
+      this.message = args.message;
+    }
+  }
+};
+MARS.MARS_getMessage_args.prototype = {};
+MARS.MARS_getMessage_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.STRING) {
+        this.message = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MARS.MARS_getMessage_args.prototype.write = function(output) {
+  output.writeStructBegin('MARS_getMessage_args');
+  if (this.message !== null && this.message !== undefined) {
+    output.writeFieldBegin('message', Thrift.Type.STRING, 1);
+    output.writeString(this.message);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MARS.MARS_getMessage_result = function(args) {
+};
+MARS.MARS_getMessage_result.prototype = {};
+MARS.MARS_getMessage_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MARS.MARS_getMessage_result.prototype.write = function(output) {
+  output.writeStructBegin('MARS_getMessage_result');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 MARS.MARS_receiveFromJS_args = function(args) {
   this.c = null;
   if (args) {
@@ -177,13 +339,9 @@ MARS.MARSClient = function(input, output) {
 };
 MARS.MARSClient.prototype = {};
 MARS.MARSClient.prototype.getCode = function(callback) {
-  if (callback === undefined) {
-    this.send_getCode();
+  this.send_getCode(callback); 
+  if (!callback) {
     return this.recv_getCode();
-  } else {
-    var postData = this.send_getCode(true);
-    return this.output.getTransport()
-      .jqRequest(this, postData, arguments, this.recv_getCode);
   }
 };
 
@@ -192,7 +350,20 @@ MARS.MARSClient.prototype.send_getCode = function(callback) {
   var args = new MARS.MARS_getCode_args();
   args.write(this.output);
   this.output.writeMessageEnd();
-  return this.output.getTransport().flush(callback);
+  if (callback) {
+    var self = this;
+    this.output.getTransport().flush(true, function() {
+      var result = null;
+      try {
+        result = self.recv_getCode();
+      } catch (e) {
+        result = e;
+      }
+      callback(result);
+    });
+  } else {
+    return this.output.getTransport().flush();
+  }
 };
 
 MARS.MARSClient.prototype.recv_getCode = function() {
@@ -215,14 +386,104 @@ MARS.MARSClient.prototype.recv_getCode = function() {
   }
   throw 'getCode failed: unknown result';
 };
-MARS.MARSClient.prototype.receiveFromJS = function(c, callback) {
-  if (callback === undefined) {
-    this.send_receiveFromJS(c);
-    this.recv_receiveFromJS();
+MARS.MARSClient.prototype.sendMessage = function(callback) {
+  this.send_sendMessage(callback); 
+  if (!callback) {
+    return this.recv_sendMessage();
+  }
+};
+
+MARS.MARSClient.prototype.send_sendMessage = function(callback) {
+  this.output.writeMessageBegin('sendMessage', Thrift.MessageType.CALL, this.seqid);
+  var args = new MARS.MARS_sendMessage_args();
+  args.write(this.output);
+  this.output.writeMessageEnd();
+  if (callback) {
+    var self = this;
+    this.output.getTransport().flush(true, function() {
+      var result = null;
+      try {
+        result = self.recv_sendMessage();
+      } catch (e) {
+        result = e;
+      }
+      callback(result);
+    });
   } else {
-    var postData = this.send_receiveFromJS(c, true);
-    return this.output.getTransport()
-      .jqRequest(this, postData, arguments, this.recv_receiveFromJS);
+    return this.output.getTransport().flush();
+  }
+};
+
+MARS.MARSClient.prototype.recv_sendMessage = function() {
+  var ret = this.input.readMessageBegin();
+  var fname = ret.fname;
+  var mtype = ret.mtype;
+  var rseqid = ret.rseqid;
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(this.input);
+    this.input.readMessageEnd();
+    throw x;
+  }
+  var result = new MARS.MARS_sendMessage_result();
+  result.read(this.input);
+  this.input.readMessageEnd();
+
+  if (null !== result.success) {
+    return result.success;
+  }
+  throw 'sendMessage failed: unknown result';
+};
+MARS.MARSClient.prototype.getMessage = function(message, callback) {
+  this.send_getMessage(message, callback); 
+  if (!callback) {
+  this.recv_getMessage();
+  }
+};
+
+MARS.MARSClient.prototype.send_getMessage = function(message, callback) {
+  this.output.writeMessageBegin('getMessage', Thrift.MessageType.CALL, this.seqid);
+  var args = new MARS.MARS_getMessage_args();
+  args.message = message;
+  args.write(this.output);
+  this.output.writeMessageEnd();
+  if (callback) {
+    var self = this;
+    this.output.getTransport().flush(true, function() {
+      var result = null;
+      try {
+        result = self.recv_getMessage();
+      } catch (e) {
+        result = e;
+      }
+      callback(result);
+    });
+  } else {
+    return this.output.getTransport().flush();
+  }
+};
+
+MARS.MARSClient.prototype.recv_getMessage = function() {
+  var ret = this.input.readMessageBegin();
+  var fname = ret.fname;
+  var mtype = ret.mtype;
+  var rseqid = ret.rseqid;
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(this.input);
+    this.input.readMessageEnd();
+    throw x;
+  }
+  var result = new MARS.MARS_getMessage_result();
+  result.read(this.input);
+  this.input.readMessageEnd();
+
+  return;
+};
+MARS.MARSClient.prototype.receiveFromJS = function(c, callback) {
+  this.send_receiveFromJS(c, callback); 
+  if (!callback) {
+  this.recv_receiveFromJS();
   }
 };
 
@@ -232,7 +493,20 @@ MARS.MARSClient.prototype.send_receiveFromJS = function(c, callback) {
   args.c = c;
   args.write(this.output);
   this.output.writeMessageEnd();
-  return this.output.getTransport().flush(callback);
+  if (callback) {
+    var self = this;
+    this.output.getTransport().flush(true, function() {
+      var result = null;
+      try {
+        result = self.recv_receiveFromJS();
+      } catch (e) {
+        result = e;
+      }
+      callback(result);
+    });
+  } else {
+    return this.output.getTransport().flush();
+  }
 };
 
 MARS.MARSClient.prototype.recv_receiveFromJS = function() {

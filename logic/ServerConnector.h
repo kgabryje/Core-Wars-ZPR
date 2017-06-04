@@ -18,6 +18,7 @@ class ServerConnector {
 public:
     static ServerConnector& getInstance();
     std::string getCode();
+    void sendMessage(const std::string& message);
 private:
     ServerConnector();
     ServerConnector(const ServerConnector&) = delete;

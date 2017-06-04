@@ -22,6 +22,8 @@ class MARSIf {
  public:
   virtual ~MARSIf() {}
   virtual void getCode(std::string& _return) = 0;
+  virtual void sendMessage(std::string& _return) = 0;
+  virtual void getMessage(const std::string& message) = 0;
   virtual void receiveFromJS(const Code& c) = 0;
 };
 
@@ -53,6 +55,12 @@ class MARSNull : virtual public MARSIf {
  public:
   virtual ~MARSNull() {}
   void getCode(std::string& /* _return */) {
+    return;
+  }
+  void sendMessage(std::string& /* _return */) {
+    return;
+  }
+  void getMessage(const std::string& /* message */) {
     return;
   }
   void receiveFromJS(const Code& /* c */) {
@@ -147,6 +155,184 @@ class MARS_getCode_presult {
   std::string* success;
 
   _MARS_getCode_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+
+class MARS_sendMessage_args {
+ public:
+
+  MARS_sendMessage_args(const MARS_sendMessage_args&);
+  MARS_sendMessage_args& operator=(const MARS_sendMessage_args&);
+  MARS_sendMessage_args() {
+  }
+
+  virtual ~MARS_sendMessage_args() throw();
+
+  bool operator == (const MARS_sendMessage_args & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const MARS_sendMessage_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MARS_sendMessage_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class MARS_sendMessage_pargs {
+ public:
+
+
+  virtual ~MARS_sendMessage_pargs() throw();
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _MARS_sendMessage_result__isset {
+  _MARS_sendMessage_result__isset() : success(false) {}
+  bool success :1;
+} _MARS_sendMessage_result__isset;
+
+class MARS_sendMessage_result {
+ public:
+
+  MARS_sendMessage_result(const MARS_sendMessage_result&);
+  MARS_sendMessage_result& operator=(const MARS_sendMessage_result&);
+  MARS_sendMessage_result() : success() {
+  }
+
+  virtual ~MARS_sendMessage_result() throw();
+  std::string success;
+
+  _MARS_sendMessage_result__isset __isset;
+
+  void __set_success(const std::string& val);
+
+  bool operator == (const MARS_sendMessage_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const MARS_sendMessage_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MARS_sendMessage_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _MARS_sendMessage_presult__isset {
+  _MARS_sendMessage_presult__isset() : success(false) {}
+  bool success :1;
+} _MARS_sendMessage_presult__isset;
+
+class MARS_sendMessage_presult {
+ public:
+
+
+  virtual ~MARS_sendMessage_presult() throw();
+  std::string* success;
+
+  _MARS_sendMessage_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _MARS_getMessage_args__isset {
+  _MARS_getMessage_args__isset() : message(false) {}
+  bool message :1;
+} _MARS_getMessage_args__isset;
+
+class MARS_getMessage_args {
+ public:
+
+  MARS_getMessage_args(const MARS_getMessage_args&);
+  MARS_getMessage_args& operator=(const MARS_getMessage_args&);
+  MARS_getMessage_args() : message() {
+  }
+
+  virtual ~MARS_getMessage_args() throw();
+  std::string message;
+
+  _MARS_getMessage_args__isset __isset;
+
+  void __set_message(const std::string& val);
+
+  bool operator == (const MARS_getMessage_args & rhs) const
+  {
+    if (!(message == rhs.message))
+      return false;
+    return true;
+  }
+  bool operator != (const MARS_getMessage_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MARS_getMessage_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class MARS_getMessage_pargs {
+ public:
+
+
+  virtual ~MARS_getMessage_pargs() throw();
+  const std::string* message;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class MARS_getMessage_result {
+ public:
+
+  MARS_getMessage_result(const MARS_getMessage_result&);
+  MARS_getMessage_result& operator=(const MARS_getMessage_result&);
+  MARS_getMessage_result() {
+  }
+
+  virtual ~MARS_getMessage_result() throw();
+
+  bool operator == (const MARS_getMessage_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const MARS_getMessage_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MARS_getMessage_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class MARS_getMessage_presult {
+ public:
+
+
+  virtual ~MARS_getMessage_presult() throw();
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -266,6 +452,12 @@ class MARSClient : virtual public MARSIf {
   void getCode(std::string& _return);
   void send_getCode();
   void recv_getCode(std::string& _return);
+  void sendMessage(std::string& _return);
+  void send_sendMessage();
+  void recv_sendMessage(std::string& _return);
+  void getMessage(const std::string& message);
+  void send_getMessage(const std::string& message);
+  void recv_getMessage();
   void receiveFromJS(const Code& c);
   void send_receiveFromJS(const Code& c);
   void recv_receiveFromJS();
@@ -285,11 +477,15 @@ class MARSProcessor : public ::apache::thrift::TDispatchProcessor {
   typedef std::map<std::string, ProcessFunction> ProcessMap;
   ProcessMap processMap_;
   void process_getCode(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_sendMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_receiveFromJS(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   MARSProcessor(boost::shared_ptr<MARSIf> iface) :
     iface_(iface) {
     processMap_["getCode"] = &MARSProcessor::process_getCode;
+    processMap_["sendMessage"] = &MARSProcessor::process_sendMessage;
+    processMap_["getMessage"] = &MARSProcessor::process_getMessage;
     processMap_["receiveFromJS"] = &MARSProcessor::process_receiveFromJS;
   }
 
@@ -327,6 +523,25 @@ class MARSMultiface : virtual public MARSIf {
     }
     ifaces_[i]->getCode(_return);
     return;
+  }
+
+  void sendMessage(std::string& _return) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->sendMessage(_return);
+    }
+    ifaces_[i]->sendMessage(_return);
+    return;
+  }
+
+  void getMessage(const std::string& message) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->getMessage(message);
+    }
+    ifaces_[i]->getMessage(message);
   }
 
   void receiveFromJS(const Code& c) {
@@ -371,6 +586,12 @@ class MARSConcurrentClient : virtual public MARSIf {
   void getCode(std::string& _return);
   int32_t send_getCode();
   void recv_getCode(std::string& _return, const int32_t seqid);
+  void sendMessage(std::string& _return);
+  int32_t send_sendMessage();
+  void recv_sendMessage(std::string& _return, const int32_t seqid);
+  void getMessage(const std::string& message);
+  int32_t send_getMessage(const std::string& message);
+  void recv_getMessage(const int32_t seqid);
   void receiveFromJS(const Code& c);
   int32_t send_receiveFromJS(const Code& c);
   void recv_receiveFromJS(const int32_t seqid);

@@ -14,18 +14,24 @@
   var transport;
   var protocol;
   var client;
+  var message;
   $(document).ready(function(){
      transport = new Thrift.TXHRTransport("http://localhost:9090");
      protocol  = new Thrift.TJSONProtocol(transport);
      client    = new MARS.MARSClient(protocol);
   });
 
+  function waitForMessage() {
+      message = client.sendMessage();
+  }
   function sendCode() {
       var c = new MARS.Code();
       c.code = document.getElementById("code_text").value;
       if (c.code) {
         transport.open();
         client.receiveFromJS(c);
+        waitForMessage();
+        alert(message);
         transport.close();
       }
   }
@@ -34,7 +40,8 @@
 </head>
 <body>
   <h2>Thrift test</h2>
-      <td><input type="text" id="code_text" value=""/></td>
+  <textarea id="code_text" cols="50" rows="20"></textarea>
+      <!-- <td><input type="textarea" cols="50" rows="20" id="code_text" value=""/></td> -->
     <tr>
       <td><input type="button" id="send_button" value="send code" onclick="sendCode();"/></td>
     </tr>

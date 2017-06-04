@@ -22,12 +22,12 @@ std::condition_variable cv;
 std::mutex m;
 
 class MARSHandler : virtual public MARSIf {
- public:
-  MARSHandler() {
+public:
+    MARSHandler() {
     printf("server started\n");
-  }
+    }
 
-  void receiveFromJS(const Code& c) {
+    void receiveFromJS(const Code& c) {
       if (waiting) {
           {
               std::lock_guard<std::mutex> lk(m);
@@ -36,9 +36,27 @@ class MARSHandler : virtual public MARSIf {
           }
           cv.notify_all();
       }
-  }
+    }
 
-  void getCode(std::string& _return) {
+    void sendMessage(std::string& _return) {
+        std::unique_lock<std::mutex> lk(m);
+        waiting = true;
+        cv.wait(lk, [this]{return received;});
+        _return = message;
+        received = false;
+        waiting = false;
+    }
+
+    void getMessage(const std::string& message) {
+        if (waiting) {
+            std::lock_guard<std::mutex> lk(m);
+            this->message = message;
+            received = true;
+        }
+        cv.notify_all();
+    }
+
+    void getCode(std::string& _return) {
       std::unique_lock<std::mutex> lk(m);
       std::cerr << "Waiting... \n";
       waiting = true;
@@ -47,10 +65,11 @@ class MARSHandler : virtual public MARSIf {
       _return = code;
       received = false;
       waiting = false;
-  }
+    }
 
 private:
     std::string code;
+    std::string message;
     bool received = false;
     bool waiting = false;
 };
