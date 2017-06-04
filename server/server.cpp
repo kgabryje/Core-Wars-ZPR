@@ -41,6 +41,7 @@ public:
     void sendMessage(std::string& _return) {
         std::unique_lock<std::mutex> lk(m);
         waiting = true;
+        cv.notify_one();
         cv.wait(lk, [this]{return received;});
         _return = message;
         received = false;
@@ -48,12 +49,15 @@ public:
     }
 
     void getMessage(const std::string& message) {
-        if (waiting) {
-            std::lock_guard<std::mutex> lk(m);
+        std::unique_lock<std::mutex> lk(m);
+        cv.wait(lk, [this]{return waiting;});
+        lk.unlock();
+//        if (waiting) {
+            std::lock_guard<std::mutex> lk2(m);
             this->message = message;
             received = true;
-        }
-        cv.notify_all();
+//        }
+        cv.notify_one();
     }
 
     void getCode(std::string& _return) {
