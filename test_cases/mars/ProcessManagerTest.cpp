@@ -2,6 +2,7 @@
 #include <logic/mars/ProcessAction.h>
 #include <logic/mars/ProcessActionContinue.h>
 #include <logic/mars/ProcessActionBranch.h>
+#include <logic/mars/ProcessActionRemove.h>
 #include "test_cases/catch.hpp"
 
 SCENARIO("ProcessManagerTest: managing processes") {
@@ -32,25 +33,24 @@ SCENARIO("ProcessManagerTest: managing processes") {
                 }
             }
         }
-        WHEN("Action is ActionContinue") {
-            ProcessAction *a = new ProcessActionContinue();
+        GIVEN("Process queue: 33 - 23 - 44 - 7") {
+            int secondAddress = 22;
+            int thirdAddress = 33;
+            int fourthdAddress = 44;
+            ProcessAction *a = new ProcessActionBranch(secondAddress);
+            a->runAction(pm);
+            a = new ProcessActionBranch(thirdAddress);
+            a->runAction(pm);
+            a = new ProcessActionBranch(fourthdAddress);
+            a->runAction(pm);
+            REQUIRE(
+                    pm.getSize() == 4
+            );
+            WHEN("Action is ActionContinue") {
+                ProcessAction *a = new ProcessActionContinue();
 
-            GIVEN("Process queue: 33 - 23 - 44 - 7") {
-                int secondAddress = 22;
-                int thirdAddress = 33;
-                int fourthdAddress = 44;
-                ProcessAction *a = new ProcessActionBranch(secondAddress);
-                a->runAction(pm);
-                a = new ProcessActionBranch(thirdAddress);
-                a->runAction(pm);
-                a = new ProcessActionBranch(fourthdAddress);
-                a->runAction(pm);
-                REQUIRE(
-                        pm.getSize() == 4
-                );
 
                 THEN("Current instruction incremented and is moved at the end") {
-                    ProcessAction *a = new ProcessActionContinue();
                     REQUIRE(
                             pm.getCurrentAddress() == thirdAddress
                     );
@@ -77,7 +77,33 @@ SCENARIO("ProcessManagerTest: managing processes") {
 
                 }
             }
-        }
+            WHEN("Action is ActionRemove") {
+                ProcessAction *a = new ProcessActionRemove();
 
+
+                THEN("Current instruction incremented and is moved at the end") {
+                    REQUIRE(
+                            pm.getCurrentAddress() == thirdAddress
+                    );
+                    a->runAction(pm);
+                    REQUIRE(
+                            pm.getCurrentAddress() == secondAddress + 1
+                    );
+                    a->runAction(pm);
+                    REQUIRE(
+                            pm.getCurrentAddress() == fourthdAddress
+                    );
+                    a->runAction(pm);
+                    REQUIRE(
+                            pm.getCurrentAddress() == firstAddress + 2
+                    );
+                    a->runAction(pm);
+                    REQUIRE(
+                            pm.getSize() == 0
+                    );
+                }
+            }
+
+        }
     }
 }
