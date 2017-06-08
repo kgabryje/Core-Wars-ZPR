@@ -5,21 +5,23 @@
 #include <logic/CoreWarsConstants.h>
 #include <boost/shared_ptr.hpp>
 #include <logic/parser/InstructionModifier.h>
-#include "Operation.h"
+#include "MarsOperation.h"
+
 
 class Instruction {
 public:
     Instruction(const boost::shared_ptr<InstructionModifier> operatorA,
                 const boost::shared_ptr<InstructionModifier> operatorB);
 
-    Instruction(const boost::shared_ptr<Operation> operation);
+    Instruction(const boost::shared_ptr<MarsOperation> operation);
 
-    Instruction(const boost::shared_ptr<Operation> operation, const boost::shared_ptr<InstructionModifier> operatorA,
+    Instruction(const boost::shared_ptr<MarsOperation> operation,
+                const boost::shared_ptr<InstructionModifier> operatorA,
                 const boost::shared_ptr<InstructionModifier> operatorB);
 
-    const boost::shared_ptr<Operation> &getOperation() const;
+    const boost::shared_ptr<MarsOperation> &getOperation() const;
 
-    void setOperation(const boost::shared_ptr<Operation> &operation);
+    void setOperation(const boost::shared_ptr<MarsOperation> &operation);
 
     const boost::shared_ptr<InstructionModifier> &getAddressA() const;
 
@@ -29,10 +31,12 @@ public:
 
     void setAddressB(const boost::shared_ptr<InstructionModifier> &addressB);
 
+    void addToBValue(int i);
+
 private:
     boost::shared_ptr<InstructionModifier> addressA;
     boost::shared_ptr<InstructionModifier> addressB;
-    boost::shared_ptr<Operation> operation;
+    boost::shared_ptr<MarsOperation> operation;
 
 };
 

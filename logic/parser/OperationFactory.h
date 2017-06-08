@@ -2,13 +2,13 @@
 #define CORE_WARS_ZPR_INSTRUCTIONFACTORY_H
 
 #include "InstructionData.h"
-#include "../mars/Operation.h"
+#include "logic/mars/MarsOperation.h"
 #include <boost/shared_ptr.hpp>
 
 class OperationFactory {
 
 public:
-    static boost::shared_ptr<Operation> createOperation(const string &data);
+    static boost::shared_ptr<MarsOperation> createOperation(const string &data);
 };
 
 

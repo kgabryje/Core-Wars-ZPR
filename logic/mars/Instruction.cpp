@@ -4,9 +4,9 @@ Instruction::Instruction(const boost::shared_ptr<InstructionModifier> operatorA,
                          const boost::shared_ptr<InstructionModifier> operatorB) : addressA(
         operatorA), addressB(operatorB) {}
 
-Instruction::Instruction(const boost::shared_ptr<Operation> operation) : operation(operation) {}
+Instruction::Instruction(const boost::shared_ptr<MarsOperation> operation) : operation(operation) {}
 
-Instruction::Instruction(const boost::shared_ptr<Operation> operation,
+Instruction::Instruction(const boost::shared_ptr<MarsOperation> operation,
                          const boost::shared_ptr<InstructionModifier> operatorA,
                          const boost::shared_ptr<InstructionModifier> operatorB) : operation(operation), addressA(
         operatorA), addressB(operatorB) {}
@@ -27,11 +27,16 @@ void Instruction::setAddressB(const boost::shared_ptr<InstructionModifier> &addr
     Instruction::addressB = addressB;
 }
 
-void Instruction::setOperation(const boost::shared_ptr<Operation> &operation) {
+void Instruction::setOperation(const boost::shared_ptr<MarsOperation> &operation) {
     Instruction::operation = operation;
 }
 
-const boost::shared_ptr<Operation> &Instruction::getOperation() const {
+const boost::shared_ptr<MarsOperation> &Instruction::getOperation() const {
     return operation;
+}
+
+void Instruction::addToBValue(int i) {
+    int old = this->addressB.get()->getValue();
+    this->addressB.get()->setValue(old + i);
 }
 

@@ -7,7 +7,6 @@
 class ProcessAction {
 public:
     virtual ~ProcessAction() {}
-
     virtual void runAction(ProcessManager &pm)=0;
 };
 

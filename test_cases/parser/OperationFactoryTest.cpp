@@ -1,9 +1,5 @@
 #include "test_cases/catch.hpp"
 #include "logic/parser/OperationFactory.h"
-#include "logic/parser/InstructionData.h"
-#include "logic/mars/Operation.h"
-#include "logic/mars/MovOperation.h"
-#include "logic/mars/DatOperation.h"
 #include "logic/parser/RedcodeParser.h"
 #include "logic/parser/ParserException.h"
 
@@ -27,7 +23,7 @@ SCENARIO("OperationFactoryTest: validating operation code", "[parser]") {
             );
         }
         AND_THEN("Instruction contains proper code") {
-            boost::shared_ptr<Operation> oper = OperationFactory::createOperation(code);
+            boost::shared_ptr<MarsOperation> oper = OperationFactory::createOperation(code);
             REQUIRE(
                     oper.get()->getOpCode() == code
             );
