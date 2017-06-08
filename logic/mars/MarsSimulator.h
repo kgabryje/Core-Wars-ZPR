@@ -2,18 +2,17 @@
 #define CORE_WARS_ZPR_MARSSIMULATOR_H
 
 #include <vector>
-#include <memory>
 #include "Instruction.h"
 
 class MarsSimulator {
 
 public:
-    void setInstructions(std::vector<std::shared_ptr<Instruction>> instructions);
+    void setInstructions(std::vector<Instruction> instructions);
     int doStuff();
 
 private:
     int testCounter = 0;
-    std::vector<std::shared_ptr<Instruction>> instructions;
+    std::vector<Instruction> instructions;
 };
 
 

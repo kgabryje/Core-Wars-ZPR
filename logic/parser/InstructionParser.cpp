@@ -3,11 +3,10 @@
 #include "ParserException.h"
 #include "InstructionCreator.h"
 
-vector<shared_ptr<Instruction>>
-InstructionParser::parseInstructions(std::vector<std::pair<int, std::string>> rawInstructions) {
+vector<Instruction> InstructionParser::parseInstructions(std::vector<std::pair<int, std::string>> rawInstructions) {
 
-    vector<shared_ptr<Instruction>> instructions;
-    for (pair<int, string> line: rawInstructions) {
+    vector<Instruction> instructions;
+    for (pair<int, std::string> line: rawInstructions) {
         try {
             instructions.push_back(parseInstruction(line.second));
         }
@@ -19,7 +18,7 @@ InstructionParser::parseInstructions(std::vector<std::pair<int, std::string>> ra
     return instructions;
 }
 
-shared_ptr<Instruction> InstructionParser::parseInstruction(string line) {
+Instruction InstructionParser::parseInstruction(string line) {
 
     InstructionDataExtractor extractor;
     if (!extractor.isInstructionValid(line))

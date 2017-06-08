@@ -8,7 +8,7 @@
 class InstructionCreator {
 
 public:
-    static shared_ptr<Instruction> tryCreate(InstructionData data);
+    static Instruction tryCreate(InstructionData data);
 };
 
 

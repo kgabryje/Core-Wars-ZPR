@@ -13,7 +13,7 @@ void MainController::run() {
 
 void MainController::initialize() {
     Initializer init;
-    vector<shared_ptr<Instruction>> instructions = init.sendCodeRequestAndParse();
+    vector<Instruction> instructions = init.sendCodeRequestAndParse();
     mars.setInstructions(instructions);
 }
 

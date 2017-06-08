@@ -4,15 +4,7 @@ Instruction::Instruction(const boost::shared_ptr<InstructionAddress> operatorA,
                          const boost::shared_ptr<InstructionAddress> operatorB) : addressA(
         operatorA), addressB(operatorB) {}
 
-Instruction::Instruction(const std::string opCode) : opCode(opCode) {}
-
-void Instruction::test() {
-    printf("Test Instruction: aOper: %d, bOper: %d\n", addressA->getValue(), addressB->getValue());
-}
-
-const std::string &Instruction::getOpCode() const {
-    return opCode;
-}
+Instruction::Instruction(const boost::shared_ptr<Operation> operation) : operation(operation) {}
 
 const boost::shared_ptr<InstructionAddress> &Instruction::getAddressA() const {
     return addressA;
@@ -28,4 +20,12 @@ const boost::shared_ptr<InstructionAddress> &Instruction::getAddressB() const {
 
 void Instruction::setAddressB(const boost::shared_ptr<InstructionAddress> &addressB) {
     Instruction::addressB = addressB;
+}
+
+void Instruction::setOperation(const boost::shared_ptr<Operation> &operation) {
+    Instruction::operation = operation;
+}
+
+const boost::shared_ptr<Operation> &Instruction::getOperation() const {
+    return operation;
 }

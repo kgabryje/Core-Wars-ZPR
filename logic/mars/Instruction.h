@@ -5,16 +5,18 @@
 #include <logic/CoreWarsConstants.h>
 #include <boost/shared_ptr.hpp>
 #include <logic/parser/InstructionAddress.h>
+#include "Operation.h"
 
 class Instruction {
 public:
-    Instruction(const std::string opCode);
-
     Instruction(const boost::shared_ptr<InstructionAddress> operatorA,
                 const boost::shared_ptr<InstructionAddress> operatorB);
-    virtual void test();
 
-    const std::string &getOpCode() const;
+    Instruction(const boost::shared_ptr<Operation> operation);
+
+    const boost::shared_ptr<Operation> &getOperation() const;
+
+    void setOperation(const boost::shared_ptr<Operation> &operation);
 
     const boost::shared_ptr<InstructionAddress> &getAddressA() const;
 
@@ -27,7 +29,8 @@ public:
 private:
     boost::shared_ptr<InstructionAddress> addressA;
     boost::shared_ptr<InstructionAddress> addressB;
-    const std::string opCode;
+    boost::shared_ptr<Operation> operation;
+
 };
 
 #endif //CORE_WARS_ZPR_INSTRUCTION_H

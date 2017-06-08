@@ -12,42 +12,42 @@ SCENARIO("InstructionCreatorTest: create Instruction from InstructionData") {
         string bField = "";
         InstructionData id(code, aField, bField);
         THEN("OpCode and one instruction address field has proper value and second has default") {
-            shared_ptr<Instruction> instr = InstructionCreator::tryCreate(id);
+            Instruction instr = InstructionCreator::tryCreate(id);
             REQUIRE(
-                    instr->getOpCode() == code
+                    instr.getOperation()->getOpCode() == code
             );
             REQUIRE(
-                    instr->getAddressA()->getModifier().getModifierCode() == "#"
+                    instr.getAddressA()->getModifier().getModifierCode() == "#"
             );
             REQUIRE(
-                    instr->getAddressA()->getValue() == -6
+                    instr.getAddressA()->getValue() == -6
             );
             REQUIRE(
-                    instr->getAddressB()->getModifier().getModifierCode() == "$"
+                    instr.getAddressB()->getModifier().getModifierCode() == "$"
             );
             REQUIRE(
-                    instr->getAddressB()->getValue() == 0
+                    instr.getAddressB()->getValue() == 0
             );
         }
         AND_WHEN("Two address fields are defined") {
             string bField = "@999";
             InstructionData id(code, aField, bField);
             THEN("Both are present in the created Instruction") {
-                shared_ptr<Instruction> instr = InstructionCreator::tryCreate(id);
+                Instruction instr = InstructionCreator::tryCreate(id);
                 REQUIRE(
-                        instr->getOpCode() == code
+                        instr.getOperation()->getOpCode() == code
                 );
                 REQUIRE(
-                        instr->getAddressA()->getModifier().getModifierCode() == "#"
+                        instr.getAddressA()->getModifier().getModifierCode() == "#"
                 );
                 REQUIRE(
-                        instr->getAddressA()->getValue() == -6
+                        instr.getAddressA()->getValue() == -6
                 );
                 REQUIRE(
-                        instr->getAddressB()->getModifier().getModifierCode() == "@"
+                        instr.getAddressB()->getModifier().getModifierCode() == "@"
                 );
                 REQUIRE(
-                        instr->getAddressB()->getValue() == 999
+                        instr.getAddressB()->getValue() == 999
                 );
             }
         }

@@ -2,10 +2,9 @@
 #include "MarsSimulator.h"
 
 void MarsSimulator::setInstructions(
-        std::vector<std::shared_ptr<Instruction>> instructions) {
+        std::vector<Instruction> instructions) {
     this->instructions = instructions;
-    for (auto const &instr: instructions)
-        instr.get()->test();
+
 }
 
 int MarsSimulator::doStuff() {

@@ -9,32 +9,32 @@ SCENARIO("RedCodeParserTest: parsing isntructions from text") {
                     ";comment\n"
                     "            DAT #-23 ,   8";
             THEN("WhiteSpaces are removaed and correct instructions are produced") {
-                std::vector<std::shared_ptr<Instruction>> parsed = RedcodeParser::parse(userInput);
-                shared_ptr<Instruction> instrMOV = parsed[0];
-                shared_ptr<Instruction> instrDAT = parsed[1];
+                std::vector<Instruction> parsed = RedcodeParser::parse(userInput);
+                Instruction instrMOV = parsed[0];
+                Instruction instrDAT = parsed[1];
                 REQUIRE(
-                        instrMOV->getOpCode() == "MOV"
+                        instrMOV.getOperation()->getOpCode() == "MOV"
                 );
                 REQUIRE(
-                        instrMOV->getAddressA()->getModifier().getModifierCode() == "#"
+                        instrMOV.getAddressA()->getModifier().getModifierCode() == "#"
                 );
                 REQUIRE(
-                        instrMOV->getAddressA()->getValue() == 0
+                        instrMOV.getAddressA()->getValue() == 0
                 );
                 REQUIRE(
-                        instrDAT->getOpCode() == "DAT"
+                        instrDAT.getOperation()->getOpCode() == "DAT"
                 );
                 REQUIRE(
-                        instrDAT->getAddressA()->getModifier().getModifierCode() == "#"
+                        instrDAT.getAddressA()->getModifier().getModifierCode() == "#"
                 );
                 REQUIRE(
-                        instrDAT->getAddressA()->getValue() == -23
+                        instrDAT.getAddressA()->getValue() == -23
                 );
                 REQUIRE(
-                        instrDAT->getAddressB()->getModifier().getModifierCode() == "$"
+                        instrDAT.getAddressB()->getModifier().getModifierCode() == "$"
                 );
                 REQUIRE(
-                        instrDAT->getAddressB()->getValue() == 8
+                        instrDAT.getAddressB()->getValue() == 8
                 );
             }
         }

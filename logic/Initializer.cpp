@@ -10,11 +10,11 @@
 using namespace std;
 
 
-vector<shared_ptr<Instruction>> Initializer::sendCodeRequestAndParse() {
+vector<Instruction> Initializer::sendCodeRequestAndParse() {
     bool codeIsFine = false;
     RedcodeParser parser;
     string message;
-    vector<shared_ptr<Instruction>> instructions;
+    vector<Instruction> instructions;
 
     while (!codeIsFine) {
         string code = demandCode();
