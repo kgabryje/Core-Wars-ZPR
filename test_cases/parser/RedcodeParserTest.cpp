@@ -1,6 +1,5 @@
 #include "test_cases/catch.hpp"
 #include <logic/parser/InstructionParser.h>
-#include <iostream>
 #include "logic/parser/RedcodeParser.h"
 
 SCENARIO("RedCodeParserTest: parsing isntructions from text") {
@@ -50,6 +49,7 @@ SCENARIO("RedCodeParserTest: parsing isntructions from text") {
                 );
             }
         }
+
         AND_WHEN("UserInput is NOT correct - wrong number format") {
             string userInput_wrong = "MOV #0  ;comment\n"
                     "\n"
@@ -65,5 +65,4 @@ SCENARIO("RedCodeParserTest: parsing isntructions from text") {
         }
 
     }
-
 }

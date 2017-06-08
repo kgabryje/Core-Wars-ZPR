@@ -3,6 +3,10 @@
 
 #include <string>
 
+namespace MARSConstants {
+    const int MEMORY_ARRAY_SIZE(40);
+}
+
 namespace ParserConstants {
     const std::string WRONG_SYNTAX_EXCEPTION("Wrong instruction syntax ");
     const std::string UKNOWN_CODE_EXCEPTION("Unknown instruction: ");

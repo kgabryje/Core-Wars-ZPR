@@ -1,5 +1,4 @@
 #include "test_cases/catch.hpp"
-#include <logic/parser/InstructionDataExtractor.h>
 #include <logic/parser/InstructionAddress.h>
 #include <logic/parser/AddressCreator.h>
 #include "logic/parser/RedcodeParser.h"
@@ -43,7 +42,7 @@ SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
         THEN("fire exception with proper message") {
             REQUIRE_THROWS_WITH(
                     AddressCreator::tryCreate(rawAddress),
-                    ParserConstants::UKNOWN_MODIFIER_EXCEPTION + "\"" + modifier + "\""
+                    ParserConstants::UKNOWN_MODIFIER_EXCEPTION + "\"" + modifier + "\" "
             );
         }
     }
