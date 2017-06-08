@@ -16,7 +16,7 @@ SCENARIO("RedCodeParserTest: parsing isntructions from text") {
                         instrMOV.getOperation()->getOpCode() == "MOV"
                 );
                 REQUIRE(
-                        instrMOV.getAddressA()->getModifier().getModifierCode() == "#"
+                        instrMOV.getAddressA()->getModifierCode() == "#"
                 );
                 REQUIRE(
                         instrMOV.getAddressA()->getValue() == 0
@@ -25,13 +25,13 @@ SCENARIO("RedCodeParserTest: parsing isntructions from text") {
                         instrDAT.getOperation()->getOpCode() == "DAT"
                 );
                 REQUIRE(
-                        instrDAT.getAddressA()->getModifier().getModifierCode() == "#"
+                        instrDAT.getAddressA()->getModifierCode() == "#"
                 );
                 REQUIRE(
                         instrDAT.getAddressA()->getValue() == -23
                 );
                 REQUIRE(
-                        instrDAT.getAddressB()->getModifier().getModifierCode() == "$"
+                        instrDAT.getAddressB()->getModifierCode() == "$"
                 );
                 REQUIRE(
                         instrDAT.getAddressB()->getValue() == 8

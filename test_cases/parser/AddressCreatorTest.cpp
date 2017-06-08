@@ -1,6 +1,6 @@
 #include "test_cases/catch.hpp"
-#include <logic/parser/InstructionAddress.h>
-#include <logic/parser/AddressCreator.h>
+#include <logic/parser/InstructionModifier.h>
+#include <logic/parser/InstructionModifierCreator.h>
 #include "logic/parser/RedcodeParser.h"
 
 SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
@@ -9,27 +9,25 @@ SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
         string value = "-125";
         string rawAddress = modifier + value;
 
-        THEN("Produce correct InstructionAddress") {
-            InstructionAddress ia = *AddressCreator::tryCreate(rawAddress);
+        THEN("Produce correct InstructionModifier") {
+            InstructionModifier ia = *InstructionModifierCreator::tryCreate(rawAddress);
             REQUIRE(
                     ia.getValue() == -125
             );
-            InstructionModifier im = ia.getModifier();
             REQUIRE(
-                    im.getModifierCode() == "@"
+                    ia.getModifierCode() == "@"
             );
 
         }
         AND_WHEN("No modifier given") {
             string rawAddress = value;
             THEN("Parse direct mode address") {
-                InstructionAddress ia = *AddressCreator::tryCreate(rawAddress);
+                InstructionModifier ia = *InstructionModifierCreator::tryCreate(rawAddress);
                 REQUIRE(
                         ia.getValue() == -125
                 );
-                InstructionModifier im = ia.getModifier();
                 REQUIRE(
-                        im.getModifierCode() == "$"
+                        ia.getModifierCode() == "$"
                 );
             }
         }
@@ -41,7 +39,7 @@ SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
 
         THEN("fire exception with proper message") {
             REQUIRE_THROWS_WITH(
-                    AddressCreator::tryCreate(rawAddress),
+                    InstructionModifierCreator::tryCreate(rawAddress),
                     ParserConstants::UKNOWN_MODIFIER_EXCEPTION + "\"" + modifier + "\" "
             );
         }
@@ -53,7 +51,7 @@ SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
 
         THEN("fire exception with proper message") {
             REQUIRE_THROWS_WITH(
-                    AddressCreator::tryCreate(rawAddress),
+                    InstructionModifierCreator::tryCreate(rawAddress),
                     ParserConstants::WRONG_NUMBER_EXCEPTION
             );
         }

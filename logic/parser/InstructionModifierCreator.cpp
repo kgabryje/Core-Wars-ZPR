@@ -1,21 +1,23 @@
 #include <boost/lexical_cast/bad_lexical_cast.hpp>
 #include <boost/lexical_cast.hpp>
-#include "AddressCreator.h"
+#include "InstructionModifierCreator.h"
 #include "ModifierFactory.h"
 #include "ParserException.h"
 #include "logic/CoreWarsConstants.h"
 #include <logic/mars/Instruction.h>
 
-InstructionAddress *AddressCreator::tryCreate(std::string rawAddress) {
+boost::shared_ptr<InstructionModifier> InstructionModifierCreator::tryCreate(std::string rawAddress) {
 
     char rawModifier = rawAddress[0];
-    InstructionModifier *modifier = ModifierFactory::createModifier(rawModifier);
+    boost::shared_ptr<InstructionModifier> mod = ModifierFactory::createModifier(rawModifier);
     int addressValue = parseAddressValue(rawAddress);
-    //TODO pointer
-    return new InstructionAddress(*modifier, addressValue);
+    mod.get()->setValue(addressValue);
+
+    return mod;
+
 }
 
-int AddressCreator::parseAddressValue(std::string numAsString) {
+int InstructionModifierCreator::parseAddressValue(std::string numAsString) {
     int value;
     try {
         value = boost::lexical_cast<int>(numAsString);
@@ -32,9 +34,8 @@ int AddressCreator::parseAddressValue(std::string numAsString) {
     return value;
 }
 
-InstructionAddress *AddressCreator::createDefault() {
-    InstructionModifier modifier = ModifierFactory::createDefaultModifier();
-    int defaultAddressValue = 0;
-    return new InstructionAddress(modifier, defaultAddressValue);
+boost::shared_ptr<InstructionModifier> InstructionModifierCreator::createDefault() {
+    return ModifierFactory::createDefaultModifier();
+
 
 }

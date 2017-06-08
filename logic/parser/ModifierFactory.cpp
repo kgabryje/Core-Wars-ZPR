@@ -4,14 +4,14 @@
 #include "ImmidiateInstructionModifier.h"
 #include "DirectInstructionModifier.h"
 
-InstructionModifier *ModifierFactory::createModifier(const char rawModifier) {
+boost::shared_ptr<InstructionModifier> ModifierFactory::createModifier(const char rawModifier) {
 
     if (rawModifier == ParserConstants::MODIFIER_B_INDIRECT)
-        return new IndirectInstructionModifier();
+        return boost::shared_ptr<InstructionModifier>(new IndirectInstructionModifier());
     else if (rawModifier == ParserConstants::MODIFIER_IMMIDIATE)
-        return new ImmidiateInstructionModifier();
+        return boost::shared_ptr<InstructionModifier>(new ImmidiateInstructionModifier());
     else if (rawModifier == ParserConstants::MODIFIER_DIRECT || isModifierOmitted(rawModifier))
-        return new DirectInstructionModifier();
+        return boost::shared_ptr<InstructionModifier>(new DirectInstructionModifier());
     else
         throw ParserException(ParserConstants::UKNOWN_MODIFIER_EXCEPTION + "\"" + std::string(1, rawModifier) + "\" ");
 
@@ -23,6 +23,6 @@ bool ModifierFactory::isModifierOmitted(const char modifier) {
 
 }
 
-InstructionModifier ModifierFactory::createDefaultModifier() {
-    return DirectInstructionModifier();
+boost::shared_ptr<InstructionModifier> ModifierFactory::createDefaultModifier() {
+    return boost::shared_ptr<InstructionModifier>(new DirectInstructionModifier());
 }

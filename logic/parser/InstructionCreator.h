@@ -4,6 +4,7 @@
 
 #include <logic/mars/Instruction.h>
 #include "InstructionData.h"
+#include <boost/shared_ptr.hpp>
 
 class InstructionCreator {
 

@@ -5,15 +5,17 @@
 #include <string>
 #include "InstructionModifier.h"
 #include "IndirectInstructionModifier.h"
+#include <boost/shared_ptr.hpp>
+
 
 class ModifierFactory {
 
 public:
-    static InstructionModifier *createModifier(const char rawModifier);
+    static boost::shared_ptr<InstructionModifier> createModifier(const char rawModifier);
 
     static bool isModifierOmitted(const char modifier);
 
-    static InstructionModifier createDefaultModifier();
+    static boost::shared_ptr<InstructionModifier> createDefaultModifier();
 };
 
 

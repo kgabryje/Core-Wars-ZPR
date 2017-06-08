@@ -17,13 +17,13 @@ SCENARIO("InstructionCreatorTest: create Instruction from InstructionData") {
                     instr.getOperation()->getOpCode() == code
             );
             REQUIRE(
-                    instr.getAddressA()->getModifier().getModifierCode() == "#"
+                    instr.getAddressA()->getModifierCode() == "#"
             );
             REQUIRE(
                     instr.getAddressA()->getValue() == -6
             );
             REQUIRE(
-                    instr.getAddressB()->getModifier().getModifierCode() == "$"
+                    instr.getAddressB()->getModifierCode() == "$"
             );
             REQUIRE(
                     instr.getAddressB()->getValue() == 0
@@ -38,13 +38,13 @@ SCENARIO("InstructionCreatorTest: create Instruction from InstructionData") {
                         instr.getOperation()->getOpCode() == code
                 );
                 REQUIRE(
-                        instr.getAddressA()->getModifier().getModifierCode() == "#"
+                        instr.getAddressA()->getModifierCode() == "#"
                 );
                 REQUIRE(
                         instr.getAddressA()->getValue() == -6
                 );
                 REQUIRE(
-                        instr.getAddressB()->getModifier().getModifierCode() == "@"
+                        instr.getAddressB()->getModifierCode() == "@"
                 );
                 REQUIRE(
                         instr.getAddressB()->getValue() == 999

@@ -5,12 +5,18 @@
 
 class InstructionModifier {
 public:
-    InstructionModifier(const std::string &modifierCode);
+    InstructionModifier(const std::string &modifierCode, int value = 0);
 
-public:
     const std::string &getModifierCode() const;
 
+    int getValue() const;
+
+    void setValue(int value);
+
+    void setModifierCode(const std::string &modifierCode);
+
 private:
+    int value;
     std::string modifierCode;
 };
 

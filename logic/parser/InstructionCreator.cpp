@@ -1,6 +1,6 @@
 #include "InstructionCreator.h"
 #include "OperationFactory.h"
-#include "AddressCreator.h"
+#include "InstructionModifierCreator.h"
 
 Instruction InstructionCreator::tryCreate(InstructionData data) {
 
@@ -8,16 +8,16 @@ Instruction InstructionCreator::tryCreate(InstructionData data) {
     boost::shared_ptr<Operation> operation = OperationFactory::createOperation(data.getCode());
     Instruction instr(operation);
 
-    InstructionAddress *aAddress = AddressCreator::tryCreate(data.getA_field());
+    boost::shared_ptr<InstructionModifier> aAddress = InstructionModifierCreator::tryCreate(data.getA_field());
 
-    instr.setAddressA(boost::shared_ptr<InstructionAddress>(aAddress));
-    InstructionAddress *bAddress;
+    instr.setAddressA(aAddress);
+    boost::shared_ptr<InstructionModifier> bAddress;
     if (data.getB_field() != "") {
-        bAddress = AddressCreator::tryCreate(data.getB_field());
+        bAddress = InstructionModifierCreator::tryCreate(data.getB_field());
     } else {
-        bAddress = AddressCreator::createDefault();
+        bAddress = InstructionModifierCreator::createDefault();
     }
-    instr.setAddressB(boost::shared_ptr<InstructionAddress>(bAddress));
+    instr.setAddressB(bAddress);
 
     return instr;
 }
