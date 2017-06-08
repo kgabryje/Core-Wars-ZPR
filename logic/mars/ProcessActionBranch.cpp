@@ -1,9 +1,8 @@
 #include "ProcessActionBranch.h"
-#include "ProcessManager.h"
 
 ProcessActionBranch::ProcessActionBranch(int branchAddress) : branchAddress(branchAddress) {}
 
-int ProcessActionBranch::getBranchAddress() const {
+MemoryIndex ProcessActionBranch::getBranchAddress() const {
     return branchAddress;
 }
 

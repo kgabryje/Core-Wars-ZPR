@@ -7,12 +7,12 @@ class ProcessActionBranch : public ProcessAction {
 public:
     ProcessActionBranch(int branchAddress);
 
-    int getBranchAddress() const;
+    MemoryIndex getBranchAddress() const;
 
     virtual void runAction(ProcessManager &manager) override;
 
 private:
-    int branchAddress;
+    MemoryIndex branchAddress;
 };
 
 

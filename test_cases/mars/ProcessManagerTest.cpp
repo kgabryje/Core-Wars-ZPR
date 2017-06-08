@@ -7,36 +7,42 @@
 
 SCENARIO("ProcessManagerTest: managing processes") {
     GIVEN("ProcessManager and ProcessAction object") {
-        int firstAddress = 5;
+        int firstAddress = 9;
         ProcessManager pm(firstAddress);
+        REQUIRE(
+                pm.getCurrentAddress() == firstAddress
+        );
         WHEN("Action is ActionBranch") {
-            ProcessAction *a = new ProcessActionBranch(10);
-            THEN("Current instruction address is INCREMENTED and moved at the end AFTER newly added branch address") {
+            int firstBranchAddress = 21;
+            ProcessAction *a = new ProcessActionBranch(firstBranchAddress);
+            THEN("Current process address is INCREMENTED and moved at the end BEFORE newly added branch address") {
                 a->runAction(pm);
                 REQUIRE(
                         pm.getSize() == 2
                 );
                 REQUIRE(
-                        pm.getCurrentAddress() == 10
+                        pm.getCurrentAddress() == firstAddress + 1
                 );
                 AND_WHEN("Another branch is created") {
-                    ProcessAction *a = new ProcessActionBranch(456);
-                    THEN("3 processes in queue and next address is firstAddress + 1") {
+                    ProcessAction *a = new ProcessActionBranch(28);
+                    THEN("3 processes are in queue and next address is firstBranchAddress") {
                         a->runAction(pm);
                         REQUIRE(
                                 pm.getSize() == 3
                         );
                         REQUIRE(
-                                pm.getCurrentAddress() == firstAddress + 1
+                                pm.getCurrentAddress() == firstBranchAddress
                         );
                     }
                 }
             }
         }
-        GIVEN("Process queue: 33 - 23 - 44 - 7") {
+        GIVEN("Process queue: 11 - 33 - 23 - 37 ") {
+            ProcessManager pm(firstAddress);
             int secondAddress = 22;
             int thirdAddress = 33;
-            int fourthdAddress = 44;
+            int fourthdAddress = 37;
+
             ProcessAction *a = new ProcessActionBranch(secondAddress);
             a->runAction(pm);
             a = new ProcessActionBranch(thirdAddress);
@@ -49,8 +55,11 @@ SCENARIO("ProcessManagerTest: managing processes") {
             WHEN("Action is ActionContinue") {
                 ProcessAction *a = new ProcessActionContinue();
 
-
-                THEN("Current instruction incremented and is moved at the end") {
+                THEN("Current process incremented and is moved at the end") {
+                    REQUIRE(
+                            pm.getCurrentAddress() == firstAddress + 2
+                    );
+                    a->runAction(pm);
                     REQUIRE(
                             pm.getCurrentAddress() == thirdAddress
                     );
@@ -64,26 +73,26 @@ SCENARIO("ProcessManagerTest: managing processes") {
                     );
                     a->runAction(pm);
                     REQUIRE(
-                            pm.getCurrentAddress() == firstAddress + 2
+                            pm.getCurrentAddress() == firstAddress + 3
                     );
                     a->runAction(pm);
                     REQUIRE(
                             pm.getCurrentAddress() == thirdAddress + 1
                     );
-                    a->runAction(pm);
-                    REQUIRE(
-                            pm.getCurrentAddress() == secondAddress + 2
-                    );
 
                 }
             }
             WHEN("Action is ActionRemove") {
-                ProcessAction *a = new ProcessActionRemove();
 
+                a = new ProcessActionRemove();
 
-                THEN("Current instruction incremented and is moved at the end") {
+                THEN("Current process is killed") {
                     REQUIRE(
-                            pm.getCurrentAddress() == thirdAddress
+                            (pm.getCurrentAddress()) == firstAddress + 2
+                    );
+                    a->runAction(pm);
+                    REQUIRE(
+                            (pm.getCurrentAddress()) == thirdAddress
                     );
                     a->runAction(pm);
                     REQUIRE(
@@ -92,10 +101,6 @@ SCENARIO("ProcessManagerTest: managing processes") {
                     a->runAction(pm);
                     REQUIRE(
                             pm.getCurrentAddress() == fourthdAddress
-                    );
-                    a->runAction(pm);
-                    REQUIRE(
-                            pm.getCurrentAddress() == firstAddress + 2
                     );
                     a->runAction(pm);
                     REQUIRE(
@@ -106,4 +111,5 @@ SCENARIO("ProcessManagerTest: managing processes") {
 
         }
     }
+
 }
