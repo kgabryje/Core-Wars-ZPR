@@ -2,7 +2,7 @@
 #define CORE_WARS_ZPR_INSTRUCTION_H
 
 
-#include <logic/parser/CoreWarsConstants.h>
+#include <logic/CoreWarsConstants.h>
 #include <boost/shared_ptr.hpp>
 #include <logic/parser/InstructionAddress.h>
 

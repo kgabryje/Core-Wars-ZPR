@@ -3,7 +3,7 @@
 #include "AddressCreator.h"
 #include "ModifierFactory.h"
 #include "ParserException.h"
-#include "CoreWarsConstants.h"
+#include "logic/CoreWarsConstants.h"
 
 InstructionAddress *AddressCreator::tryCreate(std::string rawAddress) {
 

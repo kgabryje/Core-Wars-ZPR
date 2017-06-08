@@ -2,7 +2,7 @@
 #include <logic/mars/DatInstruction.h>
 #include <logic/mars/MovInstruction.h>
 #include "ModifierFactory.h"
-#include "CoreWarsConstants.h"
+#include "logic/CoreWarsConstants.h"
 #include "ParserException.h"
 #include "IndirectInstructionModifier.h"
 #include "ImmidiateInstructionModifier.h"
@@ -17,7 +17,7 @@ InstructionModifier ModifierFactory::createModifier(const char rawModifier) {
     else if (rawModifier == ParserConstants::MODIFIER_DIRECT || isModifierOmitted(rawModifier))
         return DirectInstructionModifier();
     else
-        throw ParserException(ParserConstants::UKNOWN_MODIFIER_EXCEPTION + "\"" + std::string(1, rawModifier) + "\"");
+        throw ParserException(ParserConstants::UKNOWN_MODIFIER_EXCEPTION + "\"" + std::string(1, rawModifier) + "\" ");
 
 }
 

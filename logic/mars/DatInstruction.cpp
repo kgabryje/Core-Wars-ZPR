@@ -2,7 +2,7 @@
 // Created by kamil on 26.04.17.
 //
 
-#include <logic/parser/CoreWarsConstants.h>
+#include <logic/CoreWarsConstants.h>
 #include "DatInstruction.h"
 
 DatInstruction::DatInstruction(const boost::shared_ptr<InstructionAddress> operatorA,

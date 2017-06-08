@@ -1,6 +1,6 @@
 #include "DirectInstructionModifier.h"
 #include "InstructionModifier.h"
-#include "CoreWarsConstants.h"
+#include "logic/CoreWarsConstants.h"
 
 
 DirectInstructionModifier::DirectInstructionModifier() : InstructionModifier(

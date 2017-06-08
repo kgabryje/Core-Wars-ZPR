@@ -2,7 +2,7 @@
 #include "ParserException.h"
 #include "../mars/DatInstruction.h"
 #include "../mars/MovInstruction.h"
-#include "CoreWarsConstants.h"
+#include "logic/CoreWarsConstants.h"
 
 shared_ptr<Instruction> InstructionFactory::createInstruction(const string &code) {
 

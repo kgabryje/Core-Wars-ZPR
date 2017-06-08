@@ -2,7 +2,7 @@
 #include <iostream>
 #include "InstructionDataExtractor.h"
 #include "ParserException.h"
-#include "CoreWarsConstants.h"
+#include "logic/CoreWarsConstants.h"
 
 bool InstructionDataExtractor::isInstructionValid(std::string rawInstr) {
 
