@@ -4,11 +4,12 @@
 
 #include <string>
 #include "InstructionModifier.h"
+#include "IndirectInstructionModifier.h"
 
 class ModifierFactory {
 
 public:
-    static InstructionModifier createModifier(const char rawModifier);
+    static InstructionModifier *createModifier(const char rawModifier);
 
     static bool isModifierOmitted(const char modifier);
 

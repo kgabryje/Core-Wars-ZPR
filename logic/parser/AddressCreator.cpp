@@ -4,13 +4,15 @@
 #include "ModifierFactory.h"
 #include "ParserException.h"
 #include "logic/CoreWarsConstants.h"
+#include <logic/mars/Instruction.h>
 
 InstructionAddress *AddressCreator::tryCreate(std::string rawAddress) {
 
     char rawModifier = rawAddress[0];
-    InstructionModifier modifier = ModifierFactory::createModifier(rawModifier);
+    InstructionModifier *modifier = ModifierFactory::createModifier(rawModifier);
     int addressValue = parseAddressValue(rawAddress);
-    return new InstructionAddress(modifier, addressValue);
+    //TODO pointer
+    return new InstructionAddress(*modifier, addressValue);
 }
 
 int AddressCreator::parseAddressValue(std::string numAsString) {
