@@ -14,6 +14,9 @@ public:
 
     Instruction(const boost::shared_ptr<Operation> operation);
 
+    Instruction(const boost::shared_ptr<Operation> operation, const boost::shared_ptr<InstructionAddress> operatorA,
+                const boost::shared_ptr<InstructionAddress> operatorB);
+
     const boost::shared_ptr<Operation> &getOperation() const;
 
     void setOperation(const boost::shared_ptr<Operation> &operation);

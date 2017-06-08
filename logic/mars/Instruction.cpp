@@ -6,6 +6,11 @@ Instruction::Instruction(const boost::shared_ptr<InstructionAddress> operatorA,
 
 Instruction::Instruction(const boost::shared_ptr<Operation> operation) : operation(operation) {}
 
+Instruction::Instruction(const boost::shared_ptr<Operation> operation,
+                         const boost::shared_ptr<InstructionAddress> operatorA,
+                         const boost::shared_ptr<InstructionAddress> operatorB) : operation(operation), addressA(
+        operatorA), addressB(operatorB) {}
+
 const boost::shared_ptr<InstructionAddress> &Instruction::getAddressA() const {
     return addressA;
 }
@@ -29,3 +34,4 @@ void Instruction::setOperation(const boost::shared_ptr<Operation> &operation) {
 const boost::shared_ptr<Operation> &Instruction::getOperation() const {
     return operation;
 }
+
