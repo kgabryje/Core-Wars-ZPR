@@ -53,5 +53,4 @@ SCENARIO("InstructionCreatorTest: create Instruction from InstructionData") {
         }
     }
 
-
 }
