@@ -7,6 +7,8 @@ class ImmidiateInstructionModifier : public InstructionModifier {
 public:
     ImmidiateInstructionModifier();
 
+    boost::shared_ptr<InstructionModifier> clone() const override;
+
     ImmidiateInstructionModifier(const char modifierCode);
 };
 

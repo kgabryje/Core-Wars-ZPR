@@ -4,6 +4,7 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "ProcessAction.h"
+#include "OperationParamsInstructions.h"
 
 class OperationParamsMixed;
 
@@ -16,6 +17,8 @@ public:
     const std::string &getOpCode() const;
 
     virtual boost::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams)=0;
+
+    virtual boost::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams)=0;
 
 private:
     const std::string opCode;

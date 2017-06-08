@@ -2,10 +2,13 @@
 #define CORE_WARS_ZPR_INSTRUCTIONMODIFIER_H
 
 #include <string>
+#include <boost/shared_ptr.hpp>
 
 class InstructionModifier {
 public:
     InstructionModifier(const std::string &modifierCode, int value = 0);
+
+    virtual boost::shared_ptr<InstructionModifier> clone() const = 0;
 
     const std::string &getModifierCode() const;
 

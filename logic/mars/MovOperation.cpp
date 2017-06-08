@@ -13,3 +13,13 @@ boost::shared_ptr<ProcessAction> MovOperation::runOperation(OperationParamsMixed
     i.addToBValue(num);
     return boost::shared_ptr<ProcessAction>(new ProcessActionContinue());
 }
+
+boost::shared_ptr<ProcessAction> MovOperation::runOperation(OperationParamsInstructions *operParams) {
+    Instruction first = operParams->getFirstInstruction();
+    Instruction second = operParams->getSecondInstruction();
+
+    second.setOperation(first.getOperation());
+    second.setAddressA(first.getAddressA())
+    return boost::shared_ptr<ProcessAction>(new ProcessActionContinue());
+
+}

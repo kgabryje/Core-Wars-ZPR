@@ -7,6 +7,8 @@
 class DirectInstructionModifier : public InstructionModifier {
 public:
     DirectInstructionModifier();
+
+    boost::shared_ptr<InstructionModifier> clone() const override;
 };
 
 
