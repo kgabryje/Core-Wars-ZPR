@@ -1,8 +1,5 @@
 #include <logic/mars/Instruction.h>
-#include <logic/mars/DatInstruction.h>
-#include <logic/mars/MovInstruction.h>
 #include "ModifierFactory.h"
-#include "logic/CoreWarsConstants.h"
 #include "ParserException.h"
 #include "IndirectInstructionModifier.h"
 #include "ImmidiateInstructionModifier.h"

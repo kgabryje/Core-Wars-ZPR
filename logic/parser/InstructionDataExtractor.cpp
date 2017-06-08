@@ -1,5 +1,4 @@
 #include <boost/regex.hpp>
-#include <iostream>
 #include "InstructionDataExtractor.h"
 #include "ParserException.h"
 #include "logic/CoreWarsConstants.h"
