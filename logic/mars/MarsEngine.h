@@ -7,18 +7,22 @@
 #include "Instruction.h"
 #include "OperationParams.h"
 #include <boost/optional.hpp>
+#include <vector>
 
 
 class MarsEngine {
-private:
-    std::vector<Instruction> memoryArray;
+
 public:
     MarsEngine();
 
-public:
     const OperationParams &execute(MemoryIndex mIndex);
 
     const std::vector<Instruction> getMemoryArray();
+
+    void enterWarrior(int beginAddres, std::vector<Instruction> code);
+
+private:
+    std::vector<Instruction> memoryArray;
 };
 
 

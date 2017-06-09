@@ -26,3 +26,8 @@ MarsEngine::MarsEngine() : memoryArray(MARSConstants::MEMORY_ARRAY_SIZE, Instruc
 const std::vector<Instruction> MarsEngine::getMemoryArray() {
     return memoryArray;
 }
+
+void MarsEngine::enterWarrior(int beginAddres, vector<Instruction> warrior) {
+    for (int i = 0; i < warrior.size(); i++)
+        memoryArray[beginAddres + i] = warrior[i];
+}
