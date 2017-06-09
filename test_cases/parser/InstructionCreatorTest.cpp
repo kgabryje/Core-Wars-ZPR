@@ -52,5 +52,30 @@ SCENARIO("InstructionCreatorTest: create Instruction from InstructionData") {
             }
         }
     }
-
 }
+
+SCENARIO("Create default instruction") {
+    WHEN("Default instruction is created") {
+
+        Instruction defaultInstr = InstructionCreator::createDefault();
+        THEN("It is DAT, $0,$0") {
+            REQUIRE(
+                    defaultInstr.getOperation()->getOpCode() == ParserConstants::INSTR_CODE_DAT
+            );
+            REQUIRE(
+                    defaultInstr.getAddressA()->getModifierCode() == "$"
+            );
+            REQUIRE(
+                    defaultInstr.getAddressA()->getValue() == 0
+            );
+            REQUIRE(
+                    defaultInstr.getAddressB()->getModifierCode() == "$"
+            );
+            REQUIRE(
+                    defaultInstr.getAddressB()->getValue() == 0
+            );
+        }
+    }
+}
+
+
