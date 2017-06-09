@@ -15,10 +15,12 @@ MemoryIndex &MemoryIndex::operator++(int) {
 
 MemoryIndex::MemoryIndex(int num) {
 
-    if (num < MARSConstants::MEMORY_ARRAY_SIZE)
-        index = num;
-    int modulo = num % MARSConstants::MEMORY_ARRAY_SIZE;
-    index = modulo;
+    if (isBiggerThanMemoryArray(num))
+        index = trimNumber(num);
+    else if (num < 0)
+        index = createMemoryAddressFromNegativeNum(num);
+    else index = num;
+
 }
 
 bool MemoryIndex::operator==(int cmp) {

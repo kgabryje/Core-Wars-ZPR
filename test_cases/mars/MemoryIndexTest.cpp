@@ -27,6 +27,13 @@ SCENARIO("MemoryIndexTest: initializing memory array pointer") {
             REQUIRE(*m == 3);
         }
     }
+    WHEN("Given address is negative") {
+        int addressNegative = -4;
+        THEN("MemoryIndex created with that address points to address % MEMORY_ARRAY_SIZE") {
+            MemoryIndex m(addressNegative);
+            REQUIRE(*m == MARSConstants::MEMORY_ARRAY_SIZE - 4);
+        }
+    }
 }
 
 SCENARIO("MemoryIndexTest: operating on memory array pointer") {
