@@ -15,6 +15,7 @@ namespace ParserConstants {
 
     const std::string INSTR_CODE_DAT("DAT");
     const std::string INSTR_CODE_MOV("MOV");
+    const std::string INSTR_CODE_ADD("ADD");
 
     const char MODIFIER_IMMIDIATE = '#';
     const char MODIFIER_B_INDIRECT = '@';
