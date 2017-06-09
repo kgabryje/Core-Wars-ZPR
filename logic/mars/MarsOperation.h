@@ -4,9 +4,10 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "ProcessAction.h"
-#include "OperationParamsInstructions.h"
 
 class OperationParamsMixed;
+
+class OperationParamsInstructions;
 
 class MarsOperation {
 public:

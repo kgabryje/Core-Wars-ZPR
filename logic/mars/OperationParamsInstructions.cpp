@@ -1,7 +1,7 @@
 #include "OperationParamsInstructions.h"
 
-OperationParamsInstructions::OperationParamsInstructions(Instruction instructionFirst, Instruction instructionSecond)
-        : firstInstruction(firstInstruction), secondInstruction(secondInstruction) {
+OperationParamsInstructions::OperationParamsInstructions(Instruction &instructionFirst, Instruction &instructionSecond)
+        : firstInstruction(instructionFirst), secondInstruction(instructionSecond) {
 
 
 }

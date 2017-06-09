@@ -15,11 +15,14 @@ boost::shared_ptr<ProcessAction> MovOperation::runOperation(OperationParamsMixed
 }
 
 boost::shared_ptr<ProcessAction> MovOperation::runOperation(OperationParamsInstructions *operParams) {
-    Instruction first = operParams->getFirstInstruction();
-    Instruction second = operParams->getSecondInstruction();
 
+    Instruction &first(operParams->getFirstInstruction());
+    Instruction &second(operParams->getSecondInstruction());
     second.setOperation(first.getOperation());
-    second.setAddressA(first.getAddressA())
+    second.setAddressA(first.getAddressA().get()->clone());
+    second.setAddressB(first.getAddressB().get()->clone());
+
+
     return boost::shared_ptr<ProcessAction>(new ProcessActionContinue());
 
 }

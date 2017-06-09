@@ -3,6 +3,7 @@
 
 #include "MarsOperation.h"
 #include "OperationParamsMixed.h"
+#include "OperationParamsInstructions.h"
 
 class MovOperation : public MarsOperation {
 public:

@@ -13,7 +13,7 @@ public:
 
     Instruction &getSecondInstruction() const;
 
-    OperationParamsInstructions(Instruction instructionFirst, Instruction instructionSecond);
+    OperationParamsInstructions(Instruction &instructionFirst, Instruction &instructionSecond);
 
     boost::shared_ptr<ProcessAction> accept(boost::shared_ptr<MarsOperation> operation) override;
 

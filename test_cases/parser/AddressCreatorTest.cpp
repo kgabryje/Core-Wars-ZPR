@@ -10,24 +10,24 @@ SCENARIO("AddressCreatorTest: Creating RedCode addresses from text") {
         string rawAddress = modifier + value;
 
         THEN("Produce correct InstructionModifier") {
-            InstructionModifier ia = *InstructionModifierCreator::tryCreate(rawAddress);
+            boost::shared_ptr<InstructionModifier> ia = InstructionModifierCreator::tryCreate(rawAddress);
             REQUIRE(
-                    ia.getValue() == -125
+                    ia->getValue() == -125
             );
             REQUIRE(
-                    ia.getModifierCode() == "@"
+                    ia->getModifierCode() == "@"
             );
 
         }
         AND_WHEN("No modifier given") {
             string rawAddress = value;
             THEN("Parse direct mode address") {
-                InstructionModifier ia = *InstructionModifierCreator::tryCreate(rawAddress);
+                boost::shared_ptr<InstructionModifier> ia = InstructionModifierCreator::tryCreate(rawAddress);
                 REQUIRE(
-                        ia.getValue() == -125
+                        ia->getValue() == -125
                 );
                 REQUIRE(
-                        ia.getModifierCode() == "$"
+                        ia->getModifierCode() == "$"
                 );
             }
         }
