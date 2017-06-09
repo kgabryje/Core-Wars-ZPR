@@ -54,4 +54,12 @@ int Instruction::getBValue() {
     return this->addressB.get()->getValue();
 }
 
+void Instruction::setAValue(int i) {
+    this->addressA.get()->setValue(i);
+}
+
+void Instruction::setBValue(int i) {
+    this->addressB.get()->setValue(i);
+}
+
 
