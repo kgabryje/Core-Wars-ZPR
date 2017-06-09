@@ -33,6 +33,8 @@ MemoryIndex &MemoryIndex::operator+=(int num) {
     this->index += num;
     if (index >= MARSConstants::MEMORY_ARRAY_SIZE)
         index = index % MARSConstants::MEMORY_ARRAY_SIZE;
+    if (index < 0)
+        index = MARSConstants::MEMORY_ARRAY_SIZE + index % MARSConstants::MEMORY_ARRAY_SIZE;
     return *this;
 }
 
@@ -52,6 +54,8 @@ MemoryIndex MemoryIndex::operator-(int num) {
 
 MemoryIndex &MemoryIndex::operator-=(int num) {
     this->index -= num;
+    if (index >= MARSConstants::MEMORY_ARRAY_SIZE)
+        index = index % MARSConstants::MEMORY_ARRAY_SIZE;
     if (index < 0)
         index = MARSConstants::MEMORY_ARRAY_SIZE + index % MARSConstants::MEMORY_ARRAY_SIZE;
     return *this;
