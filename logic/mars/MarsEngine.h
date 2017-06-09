@@ -5,6 +5,8 @@
 #include "MemoryIndex.h"
 #include "ProcessAction.h"
 #include "Instruction.h"
+#include "OperationParams.h"
+#include <boost/optional.hpp>
 
 
 class MarsEngine {
@@ -14,7 +16,7 @@ public:
     MarsEngine();
 
 public:
-    const ProcessAction &execute(MemoryIndex mIndex);
+    const OperationParams &execute(MemoryIndex mIndex);
 
     const std::vector<Instruction> getMemoryArray();
 };

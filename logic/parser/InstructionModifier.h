@@ -3,6 +3,13 @@
 
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include <boost/optional.hpp>
+#include <logic/mars/Instruction.h>
+#include <vector>
+
+class Instruction;
+
+class MemoryIndex;
 
 class InstructionModifier {
 public:
@@ -17,6 +24,9 @@ public:
     void setValue(int value);
 
     void setModifierCode(const std::string &modifierCode);
+
+    virtual boost::optional<Instruction>
+    findTargetInstruction(MemoryIndex mIndex, const std::vector<Instruction> memoryArray)=0;
 
 private:
     int value;
