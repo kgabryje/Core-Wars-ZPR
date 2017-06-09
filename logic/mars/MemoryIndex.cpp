@@ -34,7 +34,7 @@ MemoryIndex &MemoryIndex::operator+=(int num) {
     if (isBiggerThanMemoryArray(index))
         index = trimNumber(index);
     if (index < 0)
-        index = createMemoryAddresFromNegativeNum(index);
+        index = createMemoryAddressFromNegativeNum(index);
     return *this;
 }
 
@@ -43,7 +43,7 @@ MemoryIndex MemoryIndex::operator+(int num) {
     if (isBiggerThanMemoryArray(ret))
         ret = trimNumber(ret);
     if (ret < 0)
-        ret = createMemoryAddresFromNegativeNum(ret);
+        ret = createMemoryAddressFromNegativeNum(ret);
 
     return MemoryIndex(ret);
 }
@@ -51,7 +51,7 @@ MemoryIndex MemoryIndex::operator+(int num) {
 MemoryIndex MemoryIndex::operator-(int num) {
     int ret = this->index - num;
     if (ret < 0)
-        ret = createMemoryAddresFromNegativeNum(ret);
+        ret = createMemoryAddressFromNegativeNum(ret);
     if (isBiggerThanMemoryArray(ret))
         ret = trimNumber(ret);
     return MemoryIndex(ret);
@@ -62,7 +62,7 @@ MemoryIndex &MemoryIndex::operator-=(int num) {
     if (isBiggerThanMemoryArray(index))
         index = trimNumber(index);
     if (index < 0)
-        index = createMemoryAddresFromNegativeNum(index);
+        index = createMemoryAddressFromNegativeNum(index);
     return *this;
 }
 
@@ -74,6 +74,6 @@ int MemoryIndex::trimNumber(int num) {
     return num % MARSConstants::MEMORY_ARRAY_SIZE;
 }
 
-int MemoryIndex::createMemoryAddresFromNegativeNum(int num) {
+int MemoryIndex::createMemoryAddressFromNegativeNum(int num) {
     return MARSConstants::MEMORY_ARRAY_SIZE + num % MARSConstants::MEMORY_ARRAY_SIZE;
 }

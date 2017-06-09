@@ -29,7 +29,7 @@ private:
 
     int trimNumber(int index);
 
-    int createMemoryAddresFromNegativeNum(int ret);
+    int createMemoryAddressFromNegativeNum(int ret);
 };
 
 
