@@ -129,10 +129,7 @@ SCENARIO("MemoryIndexTest: operating on memory array pointer") {
             MemoryIndex mi = m - (-3);
             REQUIRE(m == MARSConstants::MEMORY_ARRAY_SIZE - 1);
             REQUIRE(mi == 2);
-            std::cout << MARSConstants::MEMORY_ARRAY_SIZE + 1 << std::endl;
-            std::cout << -2 * (MARSConstants::MEMORY_ARRAY_SIZE + 1) << std::endl;
             mi -= -2 * (MARSConstants::MEMORY_ARRAY_SIZE + 1);
-            std::cout << *mi << std::endl;
             REQUIRE(mi == 4);
         }
     }
