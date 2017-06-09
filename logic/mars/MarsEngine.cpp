@@ -28,6 +28,10 @@ const std::vector<Instruction> MarsEngine::getMemoryArray() {
 }
 
 void MarsEngine::enterWarrior(int beginAddres, vector<Instruction> warrior) {
-    for (int i = 0; i < warrior.size(); i++)
-        memoryArray[beginAddres + i] = warrior[i];
+    MemoryIndex index(beginAddres);
+    for (int i = 0; i < warrior.size(); i++) {
+        memoryArray[*index++] = warrior[i];
+
+
+    }
 }
