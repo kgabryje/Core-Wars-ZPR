@@ -15,7 +15,7 @@ public:
 private:
     std::string demandCode();
 
-    void sendParsingResult(std::string basic_string);
+    void sendParsingResult(const std::string& message);
 };
 
 #endif //CORE_WARS_ZPR_INITIALIZER_H

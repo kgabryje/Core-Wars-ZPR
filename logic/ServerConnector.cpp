@@ -20,3 +20,9 @@ std::string ServerConnector::getCode() {
     transport->close();
     return code;
 }
+
+void ServerConnector::sendMessage(const std::string& message) {
+    transport->open();
+    client->getMessage(message);
+    transport->close();
+}
