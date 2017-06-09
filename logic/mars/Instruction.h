@@ -7,7 +7,7 @@
 #include <logic/parser/InstructionModifier.h>
 #include "MarsOperation.h"
 
-
+class InstructionModifier;
 class Instruction {
 public:
     Instruction(const boost::shared_ptr<InstructionModifier> operatorA,
