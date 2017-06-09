@@ -1,7 +1,5 @@
 #include "MovOperation.h"
 #include "ProcessActionContinue.h"
-#include "Instruction.h"
-#include <iostream>
 
 MovOperation::MovOperation() : MarsOperation(ParserConstants::INSTR_CODE_MOV) {
 
