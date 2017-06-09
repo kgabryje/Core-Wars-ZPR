@@ -31,32 +31,49 @@ int MemoryIndex::operator*() const {
 
 MemoryIndex &MemoryIndex::operator+=(int num) {
     this->index += num;
-    if (index >= MARSConstants::MEMORY_ARRAY_SIZE)
-        index = index % MARSConstants::MEMORY_ARRAY_SIZE;
+    if (isBiggerThanMemoryArray(index))
+        index = trimNumber(index);
     if (index < 0)
-        index = MARSConstants::MEMORY_ARRAY_SIZE + index % MARSConstants::MEMORY_ARRAY_SIZE;
+        index = createMemoryAddresFromNegativeNum(index);
     return *this;
 }
 
 MemoryIndex MemoryIndex::operator+(int num) {
     int ret = this->index + num;
-    if (ret >= MARSConstants::MEMORY_ARRAY_SIZE)
-        ret = ret % MARSConstants::MEMORY_ARRAY_SIZE;
+    if (isBiggerThanMemoryArray(ret))
+        ret = trimNumber(ret);
+    if (ret < 0)
+        ret = createMemoryAddresFromNegativeNum(ret);
+
     return MemoryIndex(ret);
 }
 
 MemoryIndex MemoryIndex::operator-(int num) {
     int ret = this->index - num;
     if (ret < 0)
-        ret = MARSConstants::MEMORY_ARRAY_SIZE + ret % MARSConstants::MEMORY_ARRAY_SIZE;
+        ret = createMemoryAddresFromNegativeNum(ret);
+    if (isBiggerThanMemoryArray(ret))
+        ret = trimNumber(ret);
     return MemoryIndex(ret);
 }
 
 MemoryIndex &MemoryIndex::operator-=(int num) {
     this->index -= num;
-    if (index >= MARSConstants::MEMORY_ARRAY_SIZE)
-        index = index % MARSConstants::MEMORY_ARRAY_SIZE;
+    if (isBiggerThanMemoryArray(index))
+        index = trimNumber(index);
     if (index < 0)
-        index = MARSConstants::MEMORY_ARRAY_SIZE + index % MARSConstants::MEMORY_ARRAY_SIZE;
+        index = createMemoryAddresFromNegativeNum(index);
     return *this;
+}
+
+bool MemoryIndex::isBiggerThanMemoryArray(int numToCheck) const {
+    return numToCheck >= MARSConstants::MEMORY_ARRAY_SIZE;
+}
+
+int MemoryIndex::trimNumber(int num) {
+    return num % MARSConstants::MEMORY_ARRAY_SIZE;
+}
+
+int MemoryIndex::createMemoryAddresFromNegativeNum(int num) {
+    return MARSConstants::MEMORY_ARRAY_SIZE + num % MARSConstants::MEMORY_ARRAY_SIZE;
 }

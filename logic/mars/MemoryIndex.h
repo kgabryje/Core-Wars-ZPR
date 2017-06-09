@@ -24,6 +24,12 @@ public:
 
 private:
     int index;
+
+    bool isBiggerThanMemoryArray(int numToCheck) const;
+
+    int trimNumber(int index);
+
+    int createMemoryAddresFromNegativeNum(int ret);
 };
 
 
