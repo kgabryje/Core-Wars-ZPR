@@ -1,6 +1,7 @@
 #include "test_cases/catch.hpp"
 #include <logic/mars/MemoryIndex.h>
 #include <logic/CoreWarsConstants.h>
+#include <iostream>
 
 SCENARIO("MemoryIndexTest: initializing memory array pointer") {
     WHEN("Given address is smaller than MEMORY_ARRAY_SIZE") {
@@ -77,7 +78,7 @@ SCENARIO("MemoryIndexTest: operating on memory array pointer") {
             REQUIRE(m == 0);
         }
     }
-    WHEN("+ or += operator is used") {
+    WHEN("+ or += operator is used with positive number") {
         THEN("Memory index has correct value") {
             int address = MARSConstants::MEMORY_ARRAY_SIZE - 3;
             MemoryIndex m(address);
@@ -91,7 +92,20 @@ SCENARIO("MemoryIndexTest: operating on memory array pointer") {
             REQUIRE(mi == 3);
         }
     }
-    WHEN("- or -= operator is used") {
+    WHEN("+ or += operator is used with negative number") {
+        THEN("Memory index has correct value") {
+            int address = 3;
+            MemoryIndex m(address);
+            REQUIRE(m == address);
+            m += -1;
+            REQUIRE(m == 2);
+            MemoryIndex mi = m + (-3);
+            REQUIRE(mi == MARSConstants::MEMORY_ARRAY_SIZE - 1);
+            mi += -(MARSConstants::MEMORY_ARRAY_SIZE + 1);
+            REQUIRE(mi == MARSConstants::MEMORY_ARRAY_SIZE - 2);
+        }
+    }
+    WHEN("- or -= operator is used with positive number") {
         THEN("Memory index has correct value") {
             int address = 3;
             MemoryIndex m(address);
@@ -103,6 +117,23 @@ SCENARIO("MemoryIndexTest: operating on memory array pointer") {
             REQUIRE(mi == MARSConstants::MEMORY_ARRAY_SIZE - 2);
             mi -= (2 * MARSConstants::MEMORY_ARRAY_SIZE + 1);
             REQUIRE(mi == MARSConstants::MEMORY_ARRAY_SIZE - 3);
+        }
+    }
+    WHEN("- or -= operator is used with negative number") {
+        THEN("Memory index has correct value") {
+            int address = MARSConstants::MEMORY_ARRAY_SIZE - 3;
+            MemoryIndex m(address);
+            REQUIRE(m == address);
+            m -= -2;
+            REQUIRE(m == MARSConstants::MEMORY_ARRAY_SIZE - 1);
+            MemoryIndex mi = m - (-3);
+            REQUIRE(m == MARSConstants::MEMORY_ARRAY_SIZE - 1);
+            REQUIRE(mi == 2);
+            std::cout << MARSConstants::MEMORY_ARRAY_SIZE + 1 << std::endl;
+            std::cout << -2 * (MARSConstants::MEMORY_ARRAY_SIZE + 1) << std::endl;
+            mi -= -2 * (MARSConstants::MEMORY_ARRAY_SIZE + 1);
+            std::cout << *mi << std::endl;
+            REQUIRE(mi == 4);
         }
     }
 }
