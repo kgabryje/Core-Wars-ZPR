@@ -20,14 +20,15 @@ SCENARIO("MarsEngineTest") {
                 }
             REQUIRE(success);
         }
-        WHEN("Warrior code is inserted") {
+        WHEN("Warrior code (k lines) is inserted in the middle part of memory array") {
             int beginningAddress = 12;
             std::string userInput = "MOV #0 \n"
                     "JMP $5, @2\n"
                     "MOV #-23,8";
             std::vector<Instruction> parsed = RedcodeParser::parse(userInput);
             mars.enterWarrior(beginningAddress, parsed);
-            THEN("From beginning address starts warrior and rest is as it was before insert") {
+            THEN("Warrior starts from beginning address and it's code continues for next k lines,"
+                         "rest of the memory behaves same as before insert") {
                 bool success = true;
                 int counter = -1;
                 for (Instruction i : mars.getMemoryArray()) {
@@ -48,9 +49,59 @@ SCENARIO("MarsEngineTest") {
                         success = false;
                         break;
                     }
-
                 }
                 REQUIRE(success);
+            }
+            AND_WHEN("Warrior code (k lines) is inserted near the edge of the memory array") {
+                int beginningAddress = MARSConstants::MEMORY_ARRAY_SIZE - 2;
+                std::string userInput = "MOV #0 \n"
+                        "JMP $5, @2\n"
+                        "MOV #-23,8\n"
+                        "JMP #-23,8\n";
+                std::vector<Instruction> parsed = RedcodeParser::parse(userInput);
+                mars.enterWarrior(beginningAddress, parsed);
+                THEN("Warrior occupies the end and the beginning of the memory array, rest of the memory stays as before insert") {
+                    bool success = true;
+                    int counter = -1;
+                    for (Instruction i : mars.getMemoryArray()) {
+                        counter++;
+                        if (counter == 0) {
+                            REQUIRE(i.getOperation()->getOpCode() == "MOV");
+                            continue;
+                        }
+                        if (counter == 1) {
+                            REQUIRE(i.getOperation()->getOpCode() == "JMP");
+                            continue;
+                        }
+                        if (counter == 12) {
+                            REQUIRE(i.getOperation()->getOpCode() == "MOV");
+                            continue;
+                        }
+                        if (counter == 13) {
+                            REQUIRE(i.getOperation()->getOpCode() == "JMP");
+                            continue;
+                        }
+                        if (counter == 14) {
+                            REQUIRE(i.getOperation()->getOpCode() == "MOV");
+                            continue;
+                        }
+                        if (counter == MARSConstants::MEMORY_ARRAY_SIZE - 2) {
+                            REQUIRE(i.getOperation()->getOpCode() == "MOV");
+                            continue;
+                        }
+                        if (counter == MARSConstants::MEMORY_ARRAY_SIZE - 1) {
+                            REQUIRE(i.getOperation()->getOpCode() == "JMP");
+                            continue;
+                        }
+                        if (i.getOperation()->getOpCode() != ParserConstants::INSTR_CODE_DAT) {
+                            success = false;
+
+                            REQUIRE(counter == 0);
+                            break;
+                        }
+                    }
+                    REQUIRE(success);
+                }
             }
         }
     }
