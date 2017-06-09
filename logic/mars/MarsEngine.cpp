@@ -20,8 +20,9 @@ const OperationParams &MarsEngine::execute(MemoryIndex mIndex) {
         throw ("Unimplemented OperationParams(int,int)");
 }
 
-MarsEngine::MarsEngine() : memoryArray(MARSConstants::MEMORY_ARRAY_SIZE, InstructionCreator::createDefault()) {}
+MarsEngine::MarsEngine() : memoryArray(MARSConstants::MEMORY_ARRAY_SIZE, InstructionCreator::createDefault()) {
+}
 
 const std::vector<Instruction> MarsEngine::getMemoryArray() {
-    return vector<Instruction>();
+    return memoryArray;
 }

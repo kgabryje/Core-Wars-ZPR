@@ -1,7 +1,7 @@
 #include "test_cases/catch.hpp"
 #include <logic/mars/MemoryIndex.h>
 #include <logic/CoreWarsConstants.h>
-#include <iostream>
+
 
 SCENARIO("MemoryIndexTest: initializing memory array pointer") {
     WHEN("Given address is smaller than MEMORY_ARRAY_SIZE") {
