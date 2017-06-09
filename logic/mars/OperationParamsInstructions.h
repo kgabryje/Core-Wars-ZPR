@@ -9,9 +9,9 @@ class Instruction;
 class OperationParamsInstructions : public OperationParams {
 
 public:
-    Instruction &getFirstInstruction() const;
+    Instruction & getFirstInstruction() const;
 
-    Instruction &getSecondInstruction() const;
+    Instruction & getSecondInstruction() const;
 
     OperationParamsInstructions(Instruction &instructionFirst, Instruction &instructionSecond);
 

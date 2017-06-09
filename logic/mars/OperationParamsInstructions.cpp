@@ -6,11 +6,11 @@ OperationParamsInstructions::OperationParamsInstructions(Instruction &instructio
 
 }
 
-Instruction &OperationParamsInstructions::getFirstInstruction() const {
+Instruction & OperationParamsInstructions::getFirstInstruction() const {
     return firstInstruction;
 }
 
-Instruction &OperationParamsInstructions::getSecondInstruction() const {
+Instruction & OperationParamsInstructions::getSecondInstruction() const {
     return secondInstruction;
 }
 

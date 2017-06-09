@@ -9,7 +9,7 @@ int OperationParamsMixed::getValue() const {
 }
 
 
-const Instruction &OperationParamsMixed::getInstruction() const {
+Instruction &OperationParamsMixed::getInstruction() const {
     return instruction;
 }
 

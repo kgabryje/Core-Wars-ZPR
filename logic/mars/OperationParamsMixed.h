@@ -12,7 +12,7 @@ public:
 
     int getValue() const;
 
-    const Instruction &getInstruction() const;
+    Instruction &getInstruction() const;
 
     virtual boost::shared_ptr<ProcessAction> accept(boost::shared_ptr<MarsOperation> shared_ptr);
 
