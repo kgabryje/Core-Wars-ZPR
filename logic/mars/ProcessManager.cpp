@@ -9,8 +9,12 @@ ProcessManager::ProcessManager(MemoryIndex firstProcess) {
 }
 
 void ProcessManager::proceedToNextInstruction() {
+    jumpOver(1);
+}
+
+void ProcessManager::jumpOver(int i) {
     MemoryIndex current = processes.front();
-    ++current;
+    current += i;
     processes.pop();
     processes.push(current);
 }
@@ -31,6 +35,10 @@ MemoryIndex ProcessManager::getCurrentAddress() {
 
 int ProcessManager::getSize() {
     return processes.size();
+}
+
+void ProcessManager::jumpFromCurrentInstruction(int jumpValue) {
+    jumpOver(jumpValue);
 }
 
 

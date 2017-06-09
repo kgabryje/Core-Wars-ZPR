@@ -11,11 +11,15 @@ public:
 
     ProcessManager(MemoryIndex firstProcess);
 
+    void jumpOver(int i);
+
     void proceedToNextInstruction();
 
     void removeCurrentInstruction();
 
     void branchCurrentInstruction(MemoryIndex branchAddress);
+
+    void jumpFromCurrentInstruction(int jumpValue);
 
     MemoryIndex getCurrentAddress();
 
