@@ -31,7 +31,12 @@ public:
 
     void setAddressB(const boost::shared_ptr<InstructionModifier> &addressB);
 
+    void addToAValue(int i);
     void addToBValue(int i);
+
+    int getAValue();
+
+    int getBValue();
 
 private:
     boost::shared_ptr<InstructionModifier> addressA;

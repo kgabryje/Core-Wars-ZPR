@@ -35,8 +35,23 @@ const boost::shared_ptr<MarsOperation> &Instruction::getOperation() const {
     return operation;
 }
 
+void Instruction::addToAValue(int i) {
+    int old = this->addressA.get()->getValue();
+    this->addressA.get()->setValue(old + i);
+}
+
+
 void Instruction::addToBValue(int i) {
     int old = this->addressB.get()->getValue();
     this->addressB.get()->setValue(old + i);
 }
+
+int Instruction::getAValue() {
+    return this->addressA.get()->getValue();
+}
+
+int Instruction::getBValue() {
+    return this->addressB.get()->getValue();
+}
+
 
