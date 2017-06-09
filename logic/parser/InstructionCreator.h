@@ -10,6 +10,8 @@ class InstructionCreator {
 
 public:
     static Instruction tryCreate(InstructionData data);
+
+    static Instruction createDefault();
 };
 
 

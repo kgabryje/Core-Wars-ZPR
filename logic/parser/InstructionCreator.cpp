@@ -22,3 +22,7 @@ Instruction InstructionCreator::tryCreate(InstructionData data) {
     return instr;
 }
 
+Instruction InstructionCreator::createDefault() {
+    return InstructionCreator::tryCreate(InstructionData(ParserConstants::INSTR_CODE_DAT, "0", "0"));
+}
+
