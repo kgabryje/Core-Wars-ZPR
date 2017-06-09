@@ -18,15 +18,15 @@ SCENARIO("MovOperationTest: checking mov instr") {
         OperationParams *mixedParams = new OperationParamsMixed(num, instr);
 
         WHEN("MovOperation is executed") {
+            REQUIRE(instr.getAddressB().get()->getValue() == 8);
             boost::shared_ptr<ProcessAction> res = mixedParams->accept(movOper);
-
             THEN("ProcessAction has correct Type") {
 
                 ProcessActionContinue *con = dynamic_cast<ProcessActionContinue *> (res.get());
                 REQUIRE(con != nullptr);
 
                 AND_THEN("Instruction bValue is correct") {
-                    REQUIRE(instr.getAddressB().get()->getValue() == 8 + 5);
+                    REQUIRE(instr.getAddressB().get()->getValue() == 5);
                 }
                 AND_THEN("Instruction code is correct") {
                     REQUIRE(instr.getOperation()->getOpCode() == "DAT");
