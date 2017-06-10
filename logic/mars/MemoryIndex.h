@@ -8,7 +8,7 @@ public:
 
     MemoryIndex &operator++();
 
-    MemoryIndex &operator++(int);
+    MemoryIndex operator++(int);
 
     int operator*() const;
 

@@ -7,7 +7,7 @@ MemoryIndex &MemoryIndex::operator++() {
     return *this;
 }
 
-MemoryIndex &MemoryIndex::operator++(int) {
+MemoryIndex MemoryIndex::operator++(int) {
     MemoryIndex result(*this);
     ++(*this);
     return result;
