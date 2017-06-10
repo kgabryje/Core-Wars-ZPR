@@ -15,7 +15,7 @@ class MarsEngine {
 public:
     MarsEngine();
 
-    const OperationParams &execute(MemoryIndex mIndex);
+    boost::shared_ptr<OperationParams> execute(MemoryIndex mIndex);
 
     const std::vector<Instruction> getMemoryArray();
 
