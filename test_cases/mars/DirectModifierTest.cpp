@@ -30,6 +30,7 @@ SCENARIO("DirectModifierTest: fetching Instructions") {
                 REQUIRE(i->getAValue() == 5);
             }
         }
+        delete mars;
     }
 }
 
