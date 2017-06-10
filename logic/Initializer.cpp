@@ -17,9 +17,9 @@ vector<Instruction> Initializer::sendCodeRequestAndParse(string successMessage) 
     vector<Instruction> instructions;
 
     while (!codeIsFine) {
-        string code = demandCode();
+        MARS::Code code = demandCode();
         try {
-            instructions = parser.parse(code);
+            instructions = parser.parse(code.code);
             message = successMessage;
             codeIsFine = true;
         }
@@ -31,8 +31,8 @@ vector<Instruction> Initializer::sendCodeRequestAndParse(string successMessage) 
     return instructions;
 }
 
-std::string Initializer::demandCode() {
-    std::string code = ServerConnector::getInstance().getCode();
+MARS::Code Initializer::demandCode() {
+    MARS::Code code = ServerConnector::getInstance().getCode();
     return code;
 }
 

@@ -10,9 +10,17 @@ if (typeof MARS === 'undefined') {
 }
 MARS.Code = function(args) {
   this.code = null;
+  this.playerName = null;
+  this.warriorName = null;
   if (args) {
     if (args.code !== undefined && args.code !== null) {
       this.code = args.code;
+    }
+    if (args.playerName !== undefined && args.playerName !== null) {
+      this.playerName = args.playerName;
+    }
+    if (args.warriorName !== undefined && args.warriorName !== null) {
+      this.warriorName = args.warriorName;
     }
   }
 };
@@ -37,9 +45,20 @@ MARS.Code.prototype.read = function(input) {
         input.skip(ftype);
       }
       break;
-      case 0:
+      case 2:
+      if (ftype == Thrift.Type.STRING) {
+        this.playerName = input.readString().value;
+      } else {
         input.skip(ftype);
-        break;
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.warriorName = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
       default:
         input.skip(ftype);
     }
@@ -54,6 +73,16 @@ MARS.Code.prototype.write = function(output) {
   if (this.code !== null && this.code !== undefined) {
     output.writeFieldBegin('code', Thrift.Type.STRING, 1);
     output.writeString(this.code);
+    output.writeFieldEnd();
+  }
+  if (this.playerName !== null && this.playerName !== undefined) {
+    output.writeFieldBegin('playerName', Thrift.Type.STRING, 2);
+    output.writeString(this.playerName);
+    output.writeFieldEnd();
+  }
+  if (this.warriorName !== null && this.warriorName !== undefined) {
+    output.writeFieldBegin('warriorName', Thrift.Type.STRING, 3);
+    output.writeString(this.warriorName);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

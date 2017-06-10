@@ -18,7 +18,7 @@ using namespace apache::thrift::transport;
 class ServerConnector {
 public:
     static ServerConnector& getInstance();
-    std::string getCode();
+    MARS::Code getCode();
     void sendMessage(const std::string& message);
     void setGameInfo(const MARS::GameInfo &gameInfo);
 private:

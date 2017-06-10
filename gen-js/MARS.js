@@ -39,7 +39,7 @@ MARS.MARS_getCode_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
-      this.success = args.success;
+      this.success = new MARS.Code(args.success);
     }
   }
 };
@@ -58,8 +58,9 @@ MARS.MARS_getCode_result.prototype.read = function(input) {
     switch (fid)
     {
       case 0:
-      if (ftype == Thrift.Type.STRING) {
-        this.success = input.readString().value;
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new MARS.Code();
+        this.success.read(input);
       } else {
         input.skip(ftype);
       }
@@ -79,8 +80,8 @@ MARS.MARS_getCode_result.prototype.read = function(input) {
 MARS.MARS_getCode_result.prototype.write = function(output) {
   output.writeStructBegin('MARS_getCode_result');
   if (this.success !== null && this.success !== undefined) {
-    output.writeFieldBegin('success', Thrift.Type.STRING, 0);
-    output.writeString(this.success);
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();

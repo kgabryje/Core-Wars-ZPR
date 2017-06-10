@@ -22,6 +22,14 @@ void Code::__set_code(const std::string& val) {
   this->code = val;
 }
 
+void Code::__set_playerName(const std::string& val) {
+  this->playerName = val;
+}
+
+void Code::__set_warriorName(const std::string& val) {
+  this->warriorName = val;
+}
+
 uint32_t Code::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
@@ -51,6 +59,22 @@ uint32_t Code::read(::apache::thrift::protocol::TProtocol* iprot) {
           xfer += iprot->skip(ftype);
         }
         break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->playerName);
+          this->__isset.playerName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->warriorName);
+          this->__isset.warriorName = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
       default:
         xfer += iprot->skip(ftype);
         break;
@@ -72,6 +96,14 @@ uint32_t Code::write(::apache::thrift::protocol::TProtocol* oprot) const {
   xfer += oprot->writeString(this->code);
   xfer += oprot->writeFieldEnd();
 
+  xfer += oprot->writeFieldBegin("playerName", ::apache::thrift::protocol::T_STRING, 2);
+  xfer += oprot->writeString(this->playerName);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("warriorName", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->warriorName);
+  xfer += oprot->writeFieldEnd();
+
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
   return xfer;
@@ -80,15 +112,21 @@ uint32_t Code::write(::apache::thrift::protocol::TProtocol* oprot) const {
 void swap(Code &a, Code &b) {
   using ::std::swap;
   swap(a.code, b.code);
+  swap(a.playerName, b.playerName);
+  swap(a.warriorName, b.warriorName);
   swap(a.__isset, b.__isset);
 }
 
 Code::Code(const Code& other0) {
   code = other0.code;
+  playerName = other0.playerName;
+  warriorName = other0.warriorName;
   __isset = other0.__isset;
 }
 Code& Code::operator=(const Code& other1) {
   code = other1.code;
+  playerName = other1.playerName;
+  warriorName = other1.warriorName;
   __isset = other1.__isset;
   return *this;
 }
@@ -96,6 +134,8 @@ void Code::printTo(std::ostream& out) const {
   using ::apache::thrift::to_string;
   out << "Code(";
   out << "code=" << to_string(code);
+  out << ", " << "playerName=" << to_string(playerName);
+  out << ", " << "warriorName=" << to_string(warriorName);
   out << ")";
 }
 

@@ -30,7 +30,7 @@ public:
       if (waiting) {
           {
               std::lock_guard<std::mutex> lk(m);
-              code = c.code;
+              code = c;
               received = true;
           }
           cv.notify_all();
@@ -59,7 +59,7 @@ public:
         cv.notify_all();
     }
 
-    void getCode(std::string& _return) {
+    void getCode(Code& _return) {
       std::unique_lock<std::mutex> lk(m);
       std::cerr << "Waiting... \n";
       waiting = true;
@@ -84,7 +84,7 @@ public:
     }
 
 private:
-    std::string code;
+    Code code;
     std::string message;
     GameInfo gameInfo;
 

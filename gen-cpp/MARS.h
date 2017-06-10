@@ -21,7 +21,7 @@ namespace MARS {
 class MARSIf {
  public:
   virtual ~MARSIf() {}
-  virtual void getCode(std::string& _return) = 0;
+  virtual void getCode(Code& _return) = 0;
   virtual void sendMessage(std::string& _return) = 0;
   virtual void getMessage(const std::string& message) = 0;
   virtual void receiveFromJS(const Code& c) = 0;
@@ -56,7 +56,7 @@ class MARSIfSingletonFactory : virtual public MARSIfFactory {
 class MARSNull : virtual public MARSIf {
  public:
   virtual ~MARSNull() {}
-  void getCode(std::string& /* _return */) {
+  void getCode(Code& /* _return */) {
     return;
   }
   void sendMessage(std::string& /* _return */) {
@@ -123,15 +123,15 @@ class MARS_getCode_result {
 
   MARS_getCode_result(const MARS_getCode_result&);
   MARS_getCode_result& operator=(const MARS_getCode_result&);
-  MARS_getCode_result() : success() {
+  MARS_getCode_result() {
   }
 
   virtual ~MARS_getCode_result() throw();
-  std::string success;
+  Code success;
 
   _MARS_getCode_result__isset __isset;
 
-  void __set_success(const std::string& val);
+  void __set_success(const Code& val);
 
   bool operator == (const MARS_getCode_result & rhs) const
   {
@@ -160,7 +160,7 @@ class MARS_getCode_presult {
 
 
   virtual ~MARS_getCode_presult() throw();
-  std::string* success;
+  Code* success;
 
   _MARS_getCode_presult__isset __isset;
 
@@ -635,9 +635,9 @@ class MARSClient : virtual public MARSIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void getCode(std::string& _return);
+  void getCode(Code& _return);
   void send_getCode();
-  void recv_getCode(std::string& _return);
+  void recv_getCode(Code& _return);
   void sendMessage(std::string& _return);
   void send_sendMessage();
   void recv_sendMessage(std::string& _return);
@@ -711,7 +711,7 @@ class MARSMultiface : virtual public MARSIf {
     ifaces_.push_back(iface);
   }
  public:
-  void getCode(std::string& _return) {
+  void getCode(Code& _return) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
@@ -798,9 +798,9 @@ class MARSConcurrentClient : virtual public MARSIf {
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> getOutputProtocol() {
     return poprot_;
   }
-  void getCode(std::string& _return);
+  void getCode(Code& _return);
   int32_t send_getCode();
-  void recv_getCode(std::string& _return, const int32_t seqid);
+  void recv_getCode(Code& _return, const int32_t seqid);
   void sendMessage(std::string& _return);
   int32_t send_sendMessage();
   void recv_sendMessage(std::string& _return, const int32_t seqid);
