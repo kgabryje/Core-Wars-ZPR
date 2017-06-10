@@ -27,8 +27,8 @@ void ServerConnector::sendMessage(const std::string& message) {
     transport->close();
 }
 
-void ServerConnector::setColorTable(const std::vector<std::string>& colorTable) {
+void ServerConnector::setGameInfo(const MARS::GameInfo& gameInfo) {
     transport->open();
-    client->setColorTable(colorTable);
+    client->setGameInfo(gameInfo);
     transport->close();
 }

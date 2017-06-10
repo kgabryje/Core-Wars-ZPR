@@ -7,6 +7,7 @@
 #include <thrift/transport/THttpClient.h>
 #include <boost/make_shared.hpp>
 #include "gen-cpp/MARS.h"
+#include "gen-cpp/mars_types.h"
 
 using namespace apache::thrift;
 using namespace apache::thrift::protocol;
@@ -19,7 +20,7 @@ public:
     static ServerConnector& getInstance();
     std::string getCode();
     void sendMessage(const std::string& message);
-    void setColorTable(const std::vector<std::string>& colorTable);
+    void setGameInfo(const MARS::GameInfo &gameInfo);
 private:
     ServerConnector();
     ServerConnector(const ServerConnector&) = delete;

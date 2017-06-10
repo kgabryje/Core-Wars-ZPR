@@ -15,7 +15,7 @@
   var protocol;
   var client;
   var message;
-  var gameInfo
+  var gameInfo;
   var canvas;
   var canvasSize = 600;
   $(document).ready(function(){
@@ -23,7 +23,7 @@
      protocol  = new Thrift.TJSONProtocol(transport);
      client    = new MARS.MARSClient(protocol);
 
-    //  gameInfo = new GameInfo();
+     gameInfo = new MARS.GameInfo();
      canvas = document.getElementById("gameTable");
      canvas.width = canvasSize;
      canvas.height = canvasSize;
@@ -35,10 +35,11 @@
       message = client.sendMessage();
   }
 
-  displaySimulation() {
+  function displaySimulation() {
     document.getElementById("code_area").style.display = 'none';
     document.getElementById("display").style.display = "";
     while (1) {
+      gameInfo = client.getGameInfo();
       drawTable();
     }
   }
@@ -60,7 +61,7 @@
     var rect_size = 30;
     colors = ['blue', 'green', 'red', 'yellow', 'pink'];
     // var color_array  = new Array(Math.pow(canvasSize/rect_size, 2));
-    color_array = client.getColorTable();
+    color_array = gameInfo.colorTable;
     // for (var i = 0; i < color_array.length; i++) {
     //   color_array[i] = colors[Math.floor(Math.random()*colors.length)];
     // }

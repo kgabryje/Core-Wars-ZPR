@@ -68,27 +68,28 @@ public:
       waiting = false;
     }
 
-    void getColorTable(std::vector<std::string> & _return) {
+    void getGameInfo(GameInfo& _return) {
         std::unique_lock<std::mutex> lk(m);
-        cv.wait(lk, [this]{return table_update;});
-        _return = colorTable;
-        table_update = false;
+        cv.wait(lk, [this]{return gameInfoUpdate;});
+        _return = gameInfo;
+        gameInfoUpdate = false;
     }
 
-    void setColorTable(const std::vector<std::string> & colorTable) {
-        this->colorTable = colorTable;
-        table_update = true;
+    void setGameInfo(const GameInfo& gameInfo) {
+        this->gameInfo = gameInfo;
+        gameInfoUpdate = true;
         cv.notify_all();
     }
 
 private:
     std::string code;
     std::string message;
-    std::vector<std::string> colorTable;
+    GameInfo gameInfo;
+
 
     bool received = false;
     bool waiting = false;
-    bool table_update = false;
+    bool gameInfoUpdate = false;
 
     std::condition_variable cv;
     std::mutex m;
