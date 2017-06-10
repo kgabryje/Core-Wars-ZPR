@@ -19,6 +19,7 @@ public:
     static ServerConnector& getInstance();
     std::string getCode();
     void sendMessage(const std::string& message);
+    void setColorTable(const std::vector<std::string>& colorTable);
 private:
     ServerConnector();
     ServerConnector(const ServerConnector&) = delete;

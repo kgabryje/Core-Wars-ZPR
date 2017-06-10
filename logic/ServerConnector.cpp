@@ -26,3 +26,9 @@ void ServerConnector::sendMessage(const std::string& message) {
     client->getMessage(message);
     transport->close();
 }
+
+void ServerConnector::setColorTable(const std::vector<std::string>& colorTable) {
+    transport->open();
+    client->setColorTable(colorTable);
+    transport->close();
+}

@@ -46,7 +46,7 @@
     var rect_size = 30;
     colors = ['blue', 'green', 'red', 'yellow', 'pink'];
     // var color_array  = new Array(Math.pow(canvasSize/rect_size, 2));
-    color_array = client.sendTable();
+    color_array = client.getColorTable();
     for (var i = 0; i < color_array.length; i++) {
       color_array[i] = colors[Math.floor(Math.random()*colors.length)];
     }

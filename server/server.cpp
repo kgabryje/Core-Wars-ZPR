@@ -68,14 +68,14 @@ public:
       waiting = false;
     }
 
-    void sendTable(std::vector<std::string> & _return) {
+    void getColorTable(std::vector<std::string> & _return) {
         std::unique_lock<std::mutex> lk(m);
         cv.wait(lk, [this]{return table_update;});
         _return = colorTable;
         table_update = false;
     }
 
-    void receiveTable(const std::vector<std::string> & colorTable) {
+    void setColorTable(const std::vector<std::string> & colorTable) {
         this->colorTable = colorTable;
         table_update = true;
         cv.notify_all();

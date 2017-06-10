@@ -653,11 +653,11 @@ uint32_t MARS_receiveFromJS_presult::read(::apache::thrift::protocol::TProtocol*
 }
 
 
-MARS_sendTable_args::~MARS_sendTable_args() throw() {
+MARS_getColorTable_args::~MARS_getColorTable_args() throw() {
 }
 
 
-uint32_t MARS_sendTable_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_getColorTable_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -685,10 +685,10 @@ uint32_t MARS_sendTable_args::read(::apache::thrift::protocol::TProtocol* iprot)
   return xfer;
 }
 
-uint32_t MARS_sendTable_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_getColorTable_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MARS_sendTable_args");
+  xfer += oprot->writeStructBegin("MARS_getColorTable_args");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -696,14 +696,14 @@ uint32_t MARS_sendTable_args::write(::apache::thrift::protocol::TProtocol* oprot
 }
 
 
-MARS_sendTable_pargs::~MARS_sendTable_pargs() throw() {
+MARS_getColorTable_pargs::~MARS_getColorTable_pargs() throw() {
 }
 
 
-uint32_t MARS_sendTable_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_getColorTable_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MARS_sendTable_pargs");
+  xfer += oprot->writeStructBegin("MARS_getColorTable_pargs");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -711,11 +711,11 @@ uint32_t MARS_sendTable_pargs::write(::apache::thrift::protocol::TProtocol* opro
 }
 
 
-MARS_sendTable_result::~MARS_sendTable_result() throw() {
+MARS_getColorTable_result::~MARS_getColorTable_result() throw() {
 }
 
 
-uint32_t MARS_sendTable_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_getColorTable_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -768,11 +768,11 @@ uint32_t MARS_sendTable_result::read(::apache::thrift::protocol::TProtocol* ipro
   return xfer;
 }
 
-uint32_t MARS_sendTable_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_getColorTable_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("MARS_sendTable_result");
+  xfer += oprot->writeStructBegin("MARS_getColorTable_result");
 
   if (this->__isset.success) {
     xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_LIST, 0);
@@ -793,11 +793,11 @@ uint32_t MARS_sendTable_result::write(::apache::thrift::protocol::TProtocol* opr
 }
 
 
-MARS_sendTable_presult::~MARS_sendTable_presult() throw() {
+MARS_getColorTable_presult::~MARS_getColorTable_presult() throw() {
 }
 
 
-uint32_t MARS_sendTable_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_getColorTable_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -851,11 +851,11 @@ uint32_t MARS_sendTable_presult::read(::apache::thrift::protocol::TProtocol* ipr
 }
 
 
-MARS_receiveTable_args::~MARS_receiveTable_args() throw() {
+MARS_setColorTable_args::~MARS_setColorTable_args() throw() {
 }
 
 
-uint32_t MARS_receiveTable_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_setColorTable_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -908,10 +908,10 @@ uint32_t MARS_receiveTable_args::read(::apache::thrift::protocol::TProtocol* ipr
   return xfer;
 }
 
-uint32_t MARS_receiveTable_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_setColorTable_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MARS_receiveTable_args");
+  xfer += oprot->writeStructBegin("MARS_setColorTable_args");
 
   xfer += oprot->writeFieldBegin("colorTable", ::apache::thrift::protocol::T_LIST, 1);
   {
@@ -931,14 +931,14 @@ uint32_t MARS_receiveTable_args::write(::apache::thrift::protocol::TProtocol* op
 }
 
 
-MARS_receiveTable_pargs::~MARS_receiveTable_pargs() throw() {
+MARS_setColorTable_pargs::~MARS_setColorTable_pargs() throw() {
 }
 
 
-uint32_t MARS_receiveTable_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_setColorTable_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MARS_receiveTable_pargs");
+  xfer += oprot->writeStructBegin("MARS_setColorTable_pargs");
 
   xfer += oprot->writeFieldBegin("colorTable", ::apache::thrift::protocol::T_LIST, 1);
   {
@@ -958,11 +958,11 @@ uint32_t MARS_receiveTable_pargs::write(::apache::thrift::protocol::TProtocol* o
 }
 
 
-MARS_receiveTable_result::~MARS_receiveTable_result() throw() {
+MARS_setColorTable_result::~MARS_setColorTable_result() throw() {
 }
 
 
-uint32_t MARS_receiveTable_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_setColorTable_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -990,11 +990,11 @@ uint32_t MARS_receiveTable_result::read(::apache::thrift::protocol::TProtocol* i
   return xfer;
 }
 
-uint32_t MARS_receiveTable_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_setColorTable_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("MARS_receiveTable_result");
+  xfer += oprot->writeStructBegin("MARS_setColorTable_result");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -1002,11 +1002,11 @@ uint32_t MARS_receiveTable_result::write(::apache::thrift::protocol::TProtocol* 
 }
 
 
-MARS_receiveTable_presult::~MARS_receiveTable_presult() throw() {
+MARS_setColorTable_presult::~MARS_setColorTable_presult() throw() {
 }
 
 
-uint32_t MARS_receiveTable_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_setColorTable_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1254,18 +1254,18 @@ void MARSClient::recv_receiveFromJS()
   return;
 }
 
-void MARSClient::sendTable(std::vector<std::string> & _return)
+void MARSClient::getColorTable(std::vector<std::string> & _return)
 {
-  send_sendTable();
-  recv_sendTable(_return);
+  send_getColorTable();
+  recv_getColorTable(_return);
 }
 
-void MARSClient::send_sendTable()
+void MARSClient::send_getColorTable()
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("sendTable", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getColorTable", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  MARS_sendTable_pargs args;
+  MARS_getColorTable_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -1273,7 +1273,7 @@ void MARSClient::send_sendTable()
   oprot_->getTransport()->flush();
 }
 
-void MARSClient::recv_sendTable(std::vector<std::string> & _return)
+void MARSClient::recv_getColorTable(std::vector<std::string> & _return)
 {
 
   int32_t rseqid = 0;
@@ -1293,12 +1293,12 @@ void MARSClient::recv_sendTable(std::vector<std::string> & _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("sendTable") != 0) {
+  if (fname.compare("getColorTable") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  MARS_sendTable_presult result;
+  MARS_getColorTable_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -1308,21 +1308,21 @@ void MARSClient::recv_sendTable(std::vector<std::string> & _return)
     // _return pointer has now been filled
     return;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "sendTable failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getColorTable failed: unknown result");
 }
 
-void MARSClient::receiveTable(const std::vector<std::string> & colorTable)
+void MARSClient::setColorTable(const std::vector<std::string> & colorTable)
 {
-  send_receiveTable(colorTable);
-  recv_receiveTable();
+  send_setColorTable(colorTable);
+  recv_setColorTable();
 }
 
-void MARSClient::send_receiveTable(const std::vector<std::string> & colorTable)
+void MARSClient::send_setColorTable(const std::vector<std::string> & colorTable)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("receiveTable", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("setColorTable", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  MARS_receiveTable_pargs args;
+  MARS_setColorTable_pargs args;
   args.colorTable = &colorTable;
   args.write(oprot_);
 
@@ -1331,7 +1331,7 @@ void MARSClient::send_receiveTable(const std::vector<std::string> & colorTable)
   oprot_->getTransport()->flush();
 }
 
-void MARSClient::recv_receiveTable()
+void MARSClient::recv_setColorTable()
 {
 
   int32_t rseqid = 0;
@@ -1351,12 +1351,12 @@ void MARSClient::recv_receiveTable()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("receiveTable") != 0) {
+  if (fname.compare("setColorTable") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  MARS_receiveTable_presult result;
+  MARS_setColorTable_presult result;
   result.read(iprot_);
   iprot_->readMessageEnd();
   iprot_->getTransport()->readEnd();
@@ -1597,38 +1597,38 @@ void MARSProcessor::process_receiveFromJS(int32_t seqid, ::apache::thrift::proto
   }
 }
 
-void MARSProcessor::process_sendTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void MARSProcessor::process_getColorTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("MARS.sendTable", callContext);
+    ctx = this->eventHandler_->getContext("MARS.getColorTable", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "MARS.sendTable");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "MARS.getColorTable");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "MARS.sendTable");
+    this->eventHandler_->preRead(ctx, "MARS.getColorTable");
   }
 
-  MARS_sendTable_args args;
+  MARS_getColorTable_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "MARS.sendTable", bytes);
+    this->eventHandler_->postRead(ctx, "MARS.getColorTable", bytes);
   }
 
-  MARS_sendTable_result result;
+  MARS_getColorTable_result result;
   try {
-    iface_->sendTable(result.success);
+    iface_->getColorTable(result.success);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "MARS.sendTable");
+      this->eventHandler_->handlerError(ctx, "MARS.getColorTable");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("sendTable", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getColorTable", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -1637,51 +1637,51 @@ void MARSProcessor::process_sendTable(int32_t seqid, ::apache::thrift::protocol:
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "MARS.sendTable");
+    this->eventHandler_->preWrite(ctx, "MARS.getColorTable");
   }
 
-  oprot->writeMessageBegin("sendTable", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getColorTable", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "MARS.sendTable", bytes);
+    this->eventHandler_->postWrite(ctx, "MARS.getColorTable", bytes);
   }
 }
 
-void MARSProcessor::process_receiveTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void MARSProcessor::process_setColorTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("MARS.receiveTable", callContext);
+    ctx = this->eventHandler_->getContext("MARS.setColorTable", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "MARS.receiveTable");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "MARS.setColorTable");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "MARS.receiveTable");
+    this->eventHandler_->preRead(ctx, "MARS.setColorTable");
   }
 
-  MARS_receiveTable_args args;
+  MARS_setColorTable_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "MARS.receiveTable", bytes);
+    this->eventHandler_->postRead(ctx, "MARS.setColorTable", bytes);
   }
 
-  MARS_receiveTable_result result;
+  MARS_setColorTable_result result;
   try {
-    iface_->receiveTable(args.colorTable);
+    iface_->setColorTable(args.colorTable);
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "MARS.receiveTable");
+      this->eventHandler_->handlerError(ctx, "MARS.setColorTable");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("receiveTable", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("setColorTable", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -1690,17 +1690,17 @@ void MARSProcessor::process_receiveTable(int32_t seqid, ::apache::thrift::protoc
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "MARS.receiveTable");
+    this->eventHandler_->preWrite(ctx, "MARS.setColorTable");
   }
 
-  oprot->writeMessageBegin("receiveTable", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("setColorTable", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "MARS.receiveTable", bytes);
+    this->eventHandler_->postWrite(ctx, "MARS.setColorTable", bytes);
   }
 }
 
@@ -2033,19 +2033,19 @@ void MARSConcurrentClient::recv_receiveFromJS(const int32_t seqid)
   } // end while(true)
 }
 
-void MARSConcurrentClient::sendTable(std::vector<std::string> & _return)
+void MARSConcurrentClient::getColorTable(std::vector<std::string> & _return)
 {
-  int32_t seqid = send_sendTable();
-  recv_sendTable(_return, seqid);
+  int32_t seqid = send_getColorTable();
+  recv_getColorTable(_return, seqid);
 }
 
-int32_t MARSConcurrentClient::send_sendTable()
+int32_t MARSConcurrentClient::send_getColorTable()
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("sendTable", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getColorTable", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  MARS_sendTable_pargs args;
+  MARS_getColorTable_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -2056,7 +2056,7 @@ int32_t MARSConcurrentClient::send_sendTable()
   return cseqid;
 }
 
-void MARSConcurrentClient::recv_sendTable(std::vector<std::string> & _return, const int32_t seqid)
+void MARSConcurrentClient::recv_getColorTable(std::vector<std::string> & _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -2085,7 +2085,7 @@ void MARSConcurrentClient::recv_sendTable(std::vector<std::string> & _return, co
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("sendTable") != 0) {
+      if (fname.compare("getColorTable") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -2094,7 +2094,7 @@ void MARSConcurrentClient::recv_sendTable(std::vector<std::string> & _return, co
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      MARS_sendTable_presult result;
+      MARS_getColorTable_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -2106,7 +2106,7 @@ void MARSConcurrentClient::recv_sendTable(std::vector<std::string> & _return, co
         return;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "sendTable failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getColorTable failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -2116,19 +2116,19 @@ void MARSConcurrentClient::recv_sendTable(std::vector<std::string> & _return, co
   } // end while(true)
 }
 
-void MARSConcurrentClient::receiveTable(const std::vector<std::string> & colorTable)
+void MARSConcurrentClient::setColorTable(const std::vector<std::string> & colorTable)
 {
-  int32_t seqid = send_receiveTable(colorTable);
-  recv_receiveTable(seqid);
+  int32_t seqid = send_setColorTable(colorTable);
+  recv_setColorTable(seqid);
 }
 
-int32_t MARSConcurrentClient::send_receiveTable(const std::vector<std::string> & colorTable)
+int32_t MARSConcurrentClient::send_setColorTable(const std::vector<std::string> & colorTable)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("receiveTable", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("setColorTable", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  MARS_receiveTable_pargs args;
+  MARS_setColorTable_pargs args;
   args.colorTable = &colorTable;
   args.write(oprot_);
 
@@ -2140,7 +2140,7 @@ int32_t MARSConcurrentClient::send_receiveTable(const std::vector<std::string> &
   return cseqid;
 }
 
-void MARSConcurrentClient::recv_receiveTable(const int32_t seqid)
+void MARSConcurrentClient::recv_setColorTable(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -2169,7 +2169,7 @@ void MARSConcurrentClient::recv_receiveTable(const int32_t seqid)
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("receiveTable") != 0) {
+      if (fname.compare("setColorTable") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -2178,7 +2178,7 @@ void MARSConcurrentClient::recv_receiveTable(const int32_t seqid)
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      MARS_receiveTable_presult result;
+      MARS_setColorTable_presult result;
       result.read(iprot_);
       iprot_->readMessageEnd();
       iprot_->getTransport()->readEnd();

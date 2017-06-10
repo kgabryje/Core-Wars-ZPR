@@ -332,10 +332,10 @@ MARS.MARS_receiveFromJS_result.prototype.write = function(output) {
   return;
 };
 
-MARS.MARS_sendTable_args = function(args) {
+MARS.MARS_getColorTable_args = function(args) {
 };
-MARS.MARS_sendTable_args.prototype = {};
-MARS.MARS_sendTable_args.prototype.read = function(input) {
+MARS.MARS_getColorTable_args.prototype = {};
+MARS.MARS_getColorTable_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -353,14 +353,14 @@ MARS.MARS_sendTable_args.prototype.read = function(input) {
   return;
 };
 
-MARS.MARS_sendTable_args.prototype.write = function(output) {
-  output.writeStructBegin('MARS_sendTable_args');
+MARS.MARS_getColorTable_args.prototype.write = function(output) {
+  output.writeStructBegin('MARS_getColorTable_args');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-MARS.MARS_sendTable_result = function(args) {
+MARS.MARS_getColorTable_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
@@ -368,8 +368,8 @@ MARS.MARS_sendTable_result = function(args) {
     }
   }
 };
-MARS.MARS_sendTable_result.prototype = {};
-MARS.MARS_sendTable_result.prototype.read = function(input) {
+MARS.MARS_getColorTable_result.prototype = {};
+MARS.MARS_getColorTable_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -414,8 +414,8 @@ MARS.MARS_sendTable_result.prototype.read = function(input) {
   return;
 };
 
-MARS.MARS_sendTable_result.prototype.write = function(output) {
-  output.writeStructBegin('MARS_sendTable_result');
+MARS.MARS_getColorTable_result.prototype.write = function(output) {
+  output.writeStructBegin('MARS_getColorTable_result');
   if (this.success !== null && this.success !== undefined) {
     output.writeFieldBegin('success', Thrift.Type.LIST, 0);
     output.writeListBegin(Thrift.Type.STRING, this.success.length);
@@ -435,7 +435,7 @@ MARS.MARS_sendTable_result.prototype.write = function(output) {
   return;
 };
 
-MARS.MARS_receiveTable_args = function(args) {
+MARS.MARS_setColorTable_args = function(args) {
   this.colorTable = null;
   if (args) {
     if (args.colorTable !== undefined && args.colorTable !== null) {
@@ -443,8 +443,8 @@ MARS.MARS_receiveTable_args = function(args) {
     }
   }
 };
-MARS.MARS_receiveTable_args.prototype = {};
-MARS.MARS_receiveTable_args.prototype.read = function(input) {
+MARS.MARS_setColorTable_args.prototype = {};
+MARS.MARS_setColorTable_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -489,8 +489,8 @@ MARS.MARS_receiveTable_args.prototype.read = function(input) {
   return;
 };
 
-MARS.MARS_receiveTable_args.prototype.write = function(output) {
-  output.writeStructBegin('MARS_receiveTable_args');
+MARS.MARS_setColorTable_args.prototype.write = function(output) {
+  output.writeStructBegin('MARS_setColorTable_args');
   if (this.colorTable !== null && this.colorTable !== undefined) {
     output.writeFieldBegin('colorTable', Thrift.Type.LIST, 1);
     output.writeListBegin(Thrift.Type.STRING, this.colorTable.length);
@@ -510,10 +510,10 @@ MARS.MARS_receiveTable_args.prototype.write = function(output) {
   return;
 };
 
-MARS.MARS_receiveTable_result = function(args) {
+MARS.MARS_setColorTable_result = function(args) {
 };
-MARS.MARS_receiveTable_result.prototype = {};
-MARS.MARS_receiveTable_result.prototype.read = function(input) {
+MARS.MARS_setColorTable_result.prototype = {};
+MARS.MARS_setColorTable_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -531,8 +531,8 @@ MARS.MARS_receiveTable_result.prototype.read = function(input) {
   return;
 };
 
-MARS.MARS_receiveTable_result.prototype.write = function(output) {
-  output.writeStructBegin('MARS_receiveTable_result');
+MARS.MARS_setColorTable_result.prototype.write = function(output) {
+  output.writeStructBegin('MARS_setColorTable_result');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -696,26 +696,26 @@ MARS.MARSClient.prototype.recv_receiveFromJS = function() {
 
   return;
 };
-MARS.MARSClient.prototype.sendTable = function(callback) {
+MARS.MARSClient.prototype.getColorTable = function(callback) {
   if (callback === undefined) {
-    this.send_sendTable();
-    return this.recv_sendTable();
+    this.send_getColorTable();
+    return this.recv_getColorTable();
   } else {
-    var postData = this.send_sendTable(true);
+    var postData = this.send_getColorTable(true);
     return this.output.getTransport()
-      .jqRequest(this, postData, arguments, this.recv_sendTable);
+      .jqRequest(this, postData, arguments, this.recv_getColorTable);
   }
 };
 
-MARS.MARSClient.prototype.send_sendTable = function(callback) {
-  this.output.writeMessageBegin('sendTable', Thrift.MessageType.CALL, this.seqid);
-  var args = new MARS.MARS_sendTable_args();
+MARS.MARSClient.prototype.send_getColorTable = function(callback) {
+  this.output.writeMessageBegin('getColorTable', Thrift.MessageType.CALL, this.seqid);
+  var args = new MARS.MARS_getColorTable_args();
   args.write(this.output);
   this.output.writeMessageEnd();
   return this.output.getTransport().flush(callback);
 };
 
-MARS.MARSClient.prototype.recv_sendTable = function() {
+MARS.MARSClient.prototype.recv_getColorTable = function() {
   var ret = this.input.readMessageBegin();
   var fname = ret.fname;
   var mtype = ret.mtype;
@@ -726,36 +726,36 @@ MARS.MARSClient.prototype.recv_sendTable = function() {
     this.input.readMessageEnd();
     throw x;
   }
-  var result = new MARS.MARS_sendTable_result();
+  var result = new MARS.MARS_getColorTable_result();
   result.read(this.input);
   this.input.readMessageEnd();
 
   if (null !== result.success) {
     return result.success;
   }
-  throw 'sendTable failed: unknown result';
+  throw 'getColorTable failed: unknown result';
 };
-MARS.MARSClient.prototype.receiveTable = function(colorTable, callback) {
+MARS.MARSClient.prototype.setColorTable = function(colorTable, callback) {
   if (callback === undefined) {
-    this.send_receiveTable(colorTable);
-    this.recv_receiveTable();
+    this.send_setColorTable(colorTable);
+    this.recv_setColorTable();
   } else {
-    var postData = this.send_receiveTable(colorTable, true);
+    var postData = this.send_setColorTable(colorTable, true);
     return this.output.getTransport()
-      .jqRequest(this, postData, arguments, this.recv_receiveTable);
+      .jqRequest(this, postData, arguments, this.recv_setColorTable);
   }
 };
 
-MARS.MARSClient.prototype.send_receiveTable = function(colorTable, callback) {
-  this.output.writeMessageBegin('receiveTable', Thrift.MessageType.CALL, this.seqid);
-  var args = new MARS.MARS_receiveTable_args();
+MARS.MARSClient.prototype.send_setColorTable = function(colorTable, callback) {
+  this.output.writeMessageBegin('setColorTable', Thrift.MessageType.CALL, this.seqid);
+  var args = new MARS.MARS_setColorTable_args();
   args.colorTable = colorTable;
   args.write(this.output);
   this.output.writeMessageEnd();
   return this.output.getTransport().flush(callback);
 };
 
-MARS.MARSClient.prototype.recv_receiveTable = function() {
+MARS.MARSClient.prototype.recv_setColorTable = function() {
   var ret = this.input.readMessageBegin();
   var fname = ret.fname;
   var mtype = ret.mtype;
@@ -766,7 +766,7 @@ MARS.MARSClient.prototype.recv_receiveTable = function() {
     this.input.readMessageEnd();
     throw x;
   }
-  var result = new MARS.MARS_receiveTable_result();
+  var result = new MARS.MARS_setColorTable_result();
   result.read(this.input);
   this.input.readMessageEnd();
 

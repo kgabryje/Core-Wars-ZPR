@@ -9,6 +9,6 @@ service MARS {
   string sendMessage(),
   void getMessage(1: string message),
 	void receiveFromJS(1: Code c),
-	list<string> sendTable(),
-	void receiveTable(1: list<string> colorTable)
+	list<string> getColorTable(),
+	void setColorTable(1: list<string> colorTable)
 }
