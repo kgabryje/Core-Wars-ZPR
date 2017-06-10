@@ -1,7 +1,7 @@
 #include <logic/mars/Instruction.h>
 #include "ModifierFactory.h"
 #include "ParserException.h"
-#include "ImmidiateInstructionModifier.h"
+#include "ImmediateInstructionModifier.h"
 #include "DirectInstructionModifier.h"
 
 boost::shared_ptr<InstructionModifier> ModifierFactory::createModifier(const char rawModifier) {

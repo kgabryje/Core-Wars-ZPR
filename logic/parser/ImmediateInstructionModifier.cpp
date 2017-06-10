@@ -1,4 +1,4 @@
-#include "ImmidiateInstructionModifier.h"
+#include "ImmediateInstructionModifier.h"
 #include "logic/CoreWarsConstants.h"
 
 ImmidiateInstructionModifier::ImmidiateInstructionModifier() : InstructionModifier(
