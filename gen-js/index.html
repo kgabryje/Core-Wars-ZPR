@@ -31,16 +31,17 @@
   function waitForMessage() {
       message = client.sendMessage();
   }
+
   function sendCode() {
-      var c = new MARS.Code();
-      c.code = document.getElementById("code_text").value;
-      if (c.code) {
-        transport.open();
-        client.receiveFromJS(c);
-        waitForMessage();
-        alert(message);
-        transport.close();
-      }
+    var c = new MARS.Code();
+    c.code = document.getElementById("code_text").value;
+    if (c.code) {
+      transport.open();
+      client.receiveFromJS(c);
+      waitForMessage();
+      alert(message);
+      transport.close();
+    }
   }
   function drawTable() {
     var rect_size = 30;
@@ -66,15 +67,51 @@
 </head>
 <body>
   <h2>Thrift test</h2>
+  <div>
   <textarea id="code_text" cols="50" rows="20"></textarea>
       <!-- <td><input type="textarea" cols="50" rows="20" id="code_text" value=""/></td> -->
     <tr>
       <td><input type="button" id="send_button" value="send code" onclick="sendCode();"/></td>
     </tr>
+  </div>
+  <div>
     <tr>
-      <td><input type="button" id="draw_table" value="draw table" onclick="drawTable();"/></td>
+      <!-- <td><input type="button" id="load_from_file" value="Load code" onclick="loadFromFile();"/></td> -->
+      <input type="file" id="files" name="files[]" multiple />
+<output id="list"></output>
+
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // files is a FileList of File objects. List some properties.
+    var output = [];
+    for (var i = 0, f; f = files[i]; i++) {
+      var reader = new FileReader();
+      reader.readAsText(f);
+      output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                  f.size, ' bytes, last modified: ',
+                  f.lastModifiedDate ? f.lastModifiedDate.toLocaleDateString() : 'n/a',
+                  '</li>');
+      reader.onload = (function(theFile) {
+        return function(e) {
+          document.getElementById("code_text").value = reader.result;
+          // Render thumbnail.
+
+        };
+      })(f);
+    }
+    document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+  }
+
+  document.getElementById('files').addEventListener('change', handleFileSelect, false);
+</script>
     </tr>
+  </div>
+  <div>
+    <td><input type="button" id="draw_table" value="draw table" onclick="drawTable();"/></td>
     <canvas id="gameTable" width="" height="" style="border:1px solid #d3d3d3;">
+  </div>
   Your browser does not support the HTML5 canvas tag.</canvas>
 </body>
 </html>
