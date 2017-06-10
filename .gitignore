@@ -1,3 +1,10 @@
+tests
+CoreWars
+Server
+cmake-build*
+.sconsign*
+.SConstruct*
+*~
 ##############################C++##############################
 
 # Prerequisites
