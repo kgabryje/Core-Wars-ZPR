@@ -332,10 +332,10 @@ MARS.MARS_receiveFromJS_result.prototype.write = function(output) {
   return;
 };
 
-MARS.MARS_getColorTable_args = function(args) {
+MARS.MARS_getGameInfo_args = function(args) {
 };
-MARS.MARS_getColorTable_args.prototype = {};
-MARS.MARS_getColorTable_args.prototype.read = function(input) {
+MARS.MARS_getGameInfo_args.prototype = {};
+MARS.MARS_getGameInfo_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -353,23 +353,23 @@ MARS.MARS_getColorTable_args.prototype.read = function(input) {
   return;
 };
 
-MARS.MARS_getColorTable_args.prototype.write = function(output) {
-  output.writeStructBegin('MARS_getColorTable_args');
+MARS.MARS_getGameInfo_args.prototype.write = function(output) {
+  output.writeStructBegin('MARS_getGameInfo_args');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
 };
 
-MARS.MARS_getColorTable_result = function(args) {
+MARS.MARS_getGameInfo_result = function(args) {
   this.success = null;
   if (args) {
     if (args.success !== undefined && args.success !== null) {
-      this.success = Thrift.copyList(args.success, [null]);
+      this.success = new MARS.GameInfo(args.success);
     }
   }
 };
-MARS.MARS_getColorTable_result.prototype = {};
-MARS.MARS_getColorTable_result.prototype.read = function(input) {
+MARS.MARS_getGameInfo_result.prototype = {};
+MARS.MARS_getGameInfo_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -383,21 +383,9 @@ MARS.MARS_getColorTable_result.prototype.read = function(input) {
     switch (fid)
     {
       case 0:
-      if (ftype == Thrift.Type.LIST) {
-        var _size0 = 0;
-        var _rtmp34;
-        this.success = [];
-        var _etype3 = 0;
-        _rtmp34 = input.readListBegin();
-        _etype3 = _rtmp34.etype;
-        _size0 = _rtmp34.size;
-        for (var _i5 = 0; _i5 < _size0; ++_i5)
-        {
-          var elem6 = null;
-          elem6 = input.readString().value;
-          this.success.push(elem6);
-        }
-        input.readListEnd();
+      if (ftype == Thrift.Type.STRUCT) {
+        this.success = new MARS.GameInfo();
+        this.success.read(input);
       } else {
         input.skip(ftype);
       }
@@ -414,20 +402,11 @@ MARS.MARS_getColorTable_result.prototype.read = function(input) {
   return;
 };
 
-MARS.MARS_getColorTable_result.prototype.write = function(output) {
-  output.writeStructBegin('MARS_getColorTable_result');
+MARS.MARS_getGameInfo_result.prototype.write = function(output) {
+  output.writeStructBegin('MARS_getGameInfo_result');
   if (this.success !== null && this.success !== undefined) {
-    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
-    output.writeListBegin(Thrift.Type.STRING, this.success.length);
-    for (var iter7 in this.success)
-    {
-      if (this.success.hasOwnProperty(iter7))
-      {
-        iter7 = this.success[iter7];
-        output.writeString(iter7);
-      }
-    }
-    output.writeListEnd();
+    output.writeFieldBegin('success', Thrift.Type.STRUCT, 0);
+    this.success.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -435,16 +414,16 @@ MARS.MARS_getColorTable_result.prototype.write = function(output) {
   return;
 };
 
-MARS.MARS_setColorTable_args = function(args) {
-  this.colorTable = null;
+MARS.MARS_setGameInfo_args = function(args) {
+  this.gameInfo = null;
   if (args) {
-    if (args.colorTable !== undefined && args.colorTable !== null) {
-      this.colorTable = Thrift.copyList(args.colorTable, [null]);
+    if (args.gameInfo !== undefined && args.gameInfo !== null) {
+      this.gameInfo = new MARS.GameInfo(args.gameInfo);
     }
   }
 };
-MARS.MARS_setColorTable_args.prototype = {};
-MARS.MARS_setColorTable_args.prototype.read = function(input) {
+MARS.MARS_setGameInfo_args.prototype = {};
+MARS.MARS_setGameInfo_args.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -458,21 +437,9 @@ MARS.MARS_setColorTable_args.prototype.read = function(input) {
     switch (fid)
     {
       case 1:
-      if (ftype == Thrift.Type.LIST) {
-        var _size8 = 0;
-        var _rtmp312;
-        this.colorTable = [];
-        var _etype11 = 0;
-        _rtmp312 = input.readListBegin();
-        _etype11 = _rtmp312.etype;
-        _size8 = _rtmp312.size;
-        for (var _i13 = 0; _i13 < _size8; ++_i13)
-        {
-          var elem14 = null;
-          elem14 = input.readString().value;
-          this.colorTable.push(elem14);
-        }
-        input.readListEnd();
+      if (ftype == Thrift.Type.STRUCT) {
+        this.gameInfo = new MARS.GameInfo();
+        this.gameInfo.read(input);
       } else {
         input.skip(ftype);
       }
@@ -489,20 +456,11 @@ MARS.MARS_setColorTable_args.prototype.read = function(input) {
   return;
 };
 
-MARS.MARS_setColorTable_args.prototype.write = function(output) {
-  output.writeStructBegin('MARS_setColorTable_args');
-  if (this.colorTable !== null && this.colorTable !== undefined) {
-    output.writeFieldBegin('colorTable', Thrift.Type.LIST, 1);
-    output.writeListBegin(Thrift.Type.STRING, this.colorTable.length);
-    for (var iter15 in this.colorTable)
-    {
-      if (this.colorTable.hasOwnProperty(iter15))
-      {
-        iter15 = this.colorTable[iter15];
-        output.writeString(iter15);
-      }
-    }
-    output.writeListEnd();
+MARS.MARS_setGameInfo_args.prototype.write = function(output) {
+  output.writeStructBegin('MARS_setGameInfo_args');
+  if (this.gameInfo !== null && this.gameInfo !== undefined) {
+    output.writeFieldBegin('gameInfo', Thrift.Type.STRUCT, 1);
+    this.gameInfo.write(output);
     output.writeFieldEnd();
   }
   output.writeFieldStop();
@@ -510,10 +468,10 @@ MARS.MARS_setColorTable_args.prototype.write = function(output) {
   return;
 };
 
-MARS.MARS_setColorTable_result = function(args) {
+MARS.MARS_setGameInfo_result = function(args) {
 };
-MARS.MARS_setColorTable_result.prototype = {};
-MARS.MARS_setColorTable_result.prototype.read = function(input) {
+MARS.MARS_setGameInfo_result.prototype = {};
+MARS.MARS_setGameInfo_result.prototype.read = function(input) {
   input.readStructBegin();
   while (true)
   {
@@ -531,8 +489,8 @@ MARS.MARS_setColorTable_result.prototype.read = function(input) {
   return;
 };
 
-MARS.MARS_setColorTable_result.prototype.write = function(output) {
-  output.writeStructBegin('MARS_setColorTable_result');
+MARS.MARS_setGameInfo_result.prototype.write = function(output) {
+  output.writeStructBegin('MARS_setGameInfo_result');
   output.writeFieldStop();
   output.writeStructEnd();
   return;
@@ -696,26 +654,26 @@ MARS.MARSClient.prototype.recv_receiveFromJS = function() {
 
   return;
 };
-MARS.MARSClient.prototype.getColorTable = function(callback) {
+MARS.MARSClient.prototype.getGameInfo = function(callback) {
   if (callback === undefined) {
-    this.send_getColorTable();
-    return this.recv_getColorTable();
+    this.send_getGameInfo();
+    return this.recv_getGameInfo();
   } else {
-    var postData = this.send_getColorTable(true);
+    var postData = this.send_getGameInfo(true);
     return this.output.getTransport()
-      .jqRequest(this, postData, arguments, this.recv_getColorTable);
+      .jqRequest(this, postData, arguments, this.recv_getGameInfo);
   }
 };
 
-MARS.MARSClient.prototype.send_getColorTable = function(callback) {
-  this.output.writeMessageBegin('getColorTable', Thrift.MessageType.CALL, this.seqid);
-  var args = new MARS.MARS_getColorTable_args();
+MARS.MARSClient.prototype.send_getGameInfo = function(callback) {
+  this.output.writeMessageBegin('getGameInfo', Thrift.MessageType.CALL, this.seqid);
+  var args = new MARS.MARS_getGameInfo_args();
   args.write(this.output);
   this.output.writeMessageEnd();
   return this.output.getTransport().flush(callback);
 };
 
-MARS.MARSClient.prototype.recv_getColorTable = function() {
+MARS.MARSClient.prototype.recv_getGameInfo = function() {
   var ret = this.input.readMessageBegin();
   var fname = ret.fname;
   var mtype = ret.mtype;
@@ -726,36 +684,36 @@ MARS.MARSClient.prototype.recv_getColorTable = function() {
     this.input.readMessageEnd();
     throw x;
   }
-  var result = new MARS.MARS_getColorTable_result();
+  var result = new MARS.MARS_getGameInfo_result();
   result.read(this.input);
   this.input.readMessageEnd();
 
   if (null !== result.success) {
     return result.success;
   }
-  throw 'getColorTable failed: unknown result';
+  throw 'getGameInfo failed: unknown result';
 };
-MARS.MARSClient.prototype.setColorTable = function(colorTable, callback) {
+MARS.MARSClient.prototype.setGameInfo = function(gameInfo, callback) {
   if (callback === undefined) {
-    this.send_setColorTable(colorTable);
-    this.recv_setColorTable();
+    this.send_setGameInfo(gameInfo);
+    this.recv_setGameInfo();
   } else {
-    var postData = this.send_setColorTable(colorTable, true);
+    var postData = this.send_setGameInfo(gameInfo, true);
     return this.output.getTransport()
-      .jqRequest(this, postData, arguments, this.recv_setColorTable);
+      .jqRequest(this, postData, arguments, this.recv_setGameInfo);
   }
 };
 
-MARS.MARSClient.prototype.send_setColorTable = function(colorTable, callback) {
-  this.output.writeMessageBegin('setColorTable', Thrift.MessageType.CALL, this.seqid);
-  var args = new MARS.MARS_setColorTable_args();
-  args.colorTable = colorTable;
+MARS.MARSClient.prototype.send_setGameInfo = function(gameInfo, callback) {
+  this.output.writeMessageBegin('setGameInfo', Thrift.MessageType.CALL, this.seqid);
+  var args = new MARS.MARS_setGameInfo_args();
+  args.gameInfo = gameInfo;
   args.write(this.output);
   this.output.writeMessageEnd();
   return this.output.getTransport().flush(callback);
 };
 
-MARS.MARSClient.prototype.recv_setColorTable = function() {
+MARS.MARSClient.prototype.recv_setGameInfo = function() {
   var ret = this.input.readMessageBegin();
   var fname = ret.fname;
   var mtype = ret.mtype;
@@ -766,7 +724,7 @@ MARS.MARSClient.prototype.recv_setColorTable = function() {
     this.input.readMessageEnd();
     throw x;
   }
-  var result = new MARS.MARS_setColorTable_result();
+  var result = new MARS.MARS_setGameInfo_result();
   result.read(this.input);
   this.input.readMessageEnd();
 
