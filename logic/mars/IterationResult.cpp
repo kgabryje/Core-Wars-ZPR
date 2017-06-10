@@ -1,25 +1,26 @@
 #include "IterationResult.h"
 
-const std::vector<Instruction> &IterationResult::getResult() const {
-    return result;
+
+const std::vector<Instruction> &IterationResult::getMemoryArray() const {
+    return memoryArray;
 }
 
-void IterationResult::setResult(const std::vector<Instruction> &result) {
-    IterationResult::result = result;
+void IterationResult::setMemoryArray(const std::vector<Instruction> &memoryArray) {
+    IterationResult::memoryArray = memoryArray;
 }
 
-const ProcessManager &IterationResult::getFirst() const {
-    return first;
+const std::deque<MemoryIndex> &IterationResult::getFirstWarriorProcessesIndexes() const {
+    return firstWarriorProcessesIndexes;
 }
 
-void IterationResult::setFirst(const ProcessManager &first) {
-    IterationResult::first = first;
+void IterationResult::setFirstWarriorProcessesIndexes(const std::deque<MemoryIndex> &firstWarriorProcessesIndexes) {
+    IterationResult::firstWarriorProcessesIndexes = firstWarriorProcessesIndexes;
 }
 
-const ProcessManager &IterationResult::getSecond() const {
-    return second;
+const std::deque<MemoryIndex> &IterationResult::getSecondWarriorProcessesIndexes() const {
+    return secondWarriorProcessesIndexes;
 }
 
-void IterationResult::setSecond(const ProcessManager &second) {
-    IterationResult::second = second;
+void IterationResult::setSecondWarriorProcessesIndexes(const std::deque<MemoryIndex> &secondWarriorProcessesIndexes) {
+    IterationResult::secondWarriorProcessesIndexes = secondWarriorProcessesIndexes;
 }

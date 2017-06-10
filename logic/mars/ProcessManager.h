@@ -28,10 +28,10 @@ public:
 
     int getSize() const;
 
-    const std::queue<MemoryIndex> &getProcesses() const;
+    const std::deque<MemoryIndex> &getProcesses() const;
 
 private:
-    std::queue<MemoryIndex> processes;
+    std::deque<MemoryIndex> processes;
 
 };
 

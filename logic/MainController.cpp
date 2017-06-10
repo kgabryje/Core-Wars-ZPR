@@ -29,9 +29,9 @@ void MainController::initialize() {
 void MainController::sendResultDontWaitForResponse(IterationResult result) {
 
     MARS::GameInfo gameInfo;
-    gameInfo.__set_firstPlayerProcessesNumber(result.getFirst().getSize());
-    gameInfo.__set_secondPlayerProcessesNumber(result.getSecond().getSize());
-    for (Instruction i: result.getResult()) {
+    gameInfo.__set_firstPlayerProcessesNumber(result.getFirstWarriorProcessesIndexes().size());
+    gameInfo.__set_secondPlayerProcessesNumber(result.getSecondWarriorProcessesIndexes().size());
+    for (Instruction i: result.getMemoryArray()) {
         if (i.getOperation()->getOpCode() == "DAT")
             gameInfo.colorTable.push_back("blue");
         else if (i.getOperation()->getOpCode() == "MOV")

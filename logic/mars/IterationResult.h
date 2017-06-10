@@ -6,22 +6,23 @@
 
 class IterationResult {
 public:
-    const std::vector<Instruction> &getResult() const;
 
-    void setResult(const std::vector<Instruction> &result);
+    const std::vector<Instruction> &getMemoryArray() const;
 
-    const ProcessManager &getFirst() const;
+    void setMemoryArray(const std::vector<Instruction> &memoryArray);
 
-    void setFirst(const ProcessManager &first);
+    const std::deque<MemoryIndex> &getFirstWarriorProcessesIndexes() const;
 
-    const ProcessManager &getSecond() const;
+    void setFirstWarriorProcessesIndexes(const std::deque<MemoryIndex> &firstWarriorProcessesIndexes);
 
-    void setSecond(const ProcessManager &second);
+    const std::deque<MemoryIndex> &getSecondWarriorProcessesIndexes() const;
+
+    void setSecondWarriorProcessesIndexes(const std::deque<MemoryIndex> &secondWarriorProcessesIndexes);
 
 private:
-    std::vector<Instruction> result;
-    ProcessManager first;
-    ProcessManager second;
+    std::vector<Instruction> memoryArray;
+    std::deque<MemoryIndex> firstWarriorProcessesIndexes;
+    std::deque<MemoryIndex> secondWarriorProcessesIndexes;
 };
 
 

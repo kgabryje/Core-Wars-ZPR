@@ -18,9 +18,9 @@ IterationResult MarsSimulator::doStuff() {
     doIteration(firstWarriorManager);
     doIteration(secondWarriorManager);
     IterationResult result;
-    result.setFirst(firstWarriorManager);
-    result.setSecond(secondWarriorManager);
-    result.setResult(mars.getMemoryArray());
+    result.setFirstWarriorProcessesIndexes(firstWarriorManager.getProcesses());
+    result.setSecondWarriorProcessesIndexes(secondWarriorManager.getProcesses());
+    result.setMemoryArray(mars.getMemoryArray());
     return result;
 }
 
