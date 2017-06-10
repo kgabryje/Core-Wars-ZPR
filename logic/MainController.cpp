@@ -25,20 +25,19 @@ void MainController::initialize() {
 
 void MainController::sendResultDontWaitForResponse(vector<Instruction> result) {
 
-    std::vector<string> colors;
+    MARS::GameInfo gameInfo;
     int counter = 0;
     for (Instruction i: result) {
         if (i.getOperation()->getOpCode() == "DAT")
-            colors.push_back("blue");
+            gameInfo.colorTable.push_back("blue");
         else {
-            colors.push_back("red");
+            gameInfo.colorTable.push_back("red");
             counter++;
         }
     }
 
-    ServerConnector::getInstance().setColorTable(colors);
+    ServerConnector::getInstance().setGameInfo(gameInfo);
     std::cout << "Iteracja: " << iteration << " Liczba instrukcji nie DAT: " << counter << endl;
-
 }
 
 MainController::MainController() {}
