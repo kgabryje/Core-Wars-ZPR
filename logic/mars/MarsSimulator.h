@@ -4,6 +4,7 @@
 #include <vector>
 #include "Instruction.h"
 #include "MarsEngine.h"
+#include "IterationResult.h"
 
 class MarsSimulator {
 
@@ -12,7 +13,7 @@ public:
 
     void setWarriors(std::pair<std::vector<Instruction>, std::vector<Instruction>> instructions);
 
-    std::vector<Instruction> doStuff();
+    IterationResult doStuff();
 
 private:
     MarsEngine mars;

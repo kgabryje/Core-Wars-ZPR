@@ -26,7 +26,9 @@ public:
 
     MemoryIndex getCurrentAddress();
 
-    int getSize();
+    int getSize() const;
+
+    const std::queue<MemoryIndex> &getProcesses() const;
 
 private:
     std::queue<MemoryIndex> processes;

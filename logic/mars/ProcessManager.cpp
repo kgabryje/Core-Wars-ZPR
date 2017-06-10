@@ -33,7 +33,7 @@ MemoryIndex ProcessManager::getCurrentAddress() {
     return processes.front();
 }
 
-int ProcessManager::getSize() {
+int ProcessManager::getSize() const {
     return processes.size();
 }
 
@@ -49,6 +49,10 @@ void ProcessManager::setFirstProcess(MemoryIndex firstAddress) {
 
 ProcessManager::ProcessManager() {
 
+}
+
+const std::queue<MemoryIndex> &ProcessManager::getProcesses() const {
+    return processes;
 }
 
 

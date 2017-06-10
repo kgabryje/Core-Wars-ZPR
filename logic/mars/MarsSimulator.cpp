@@ -2,6 +2,7 @@
 #include <boost/shared_ptr.hpp>
 #include "MarsSimulator.h"
 #include "OperationParamsInstructions.h"
+#include "IterationResult.h"
 #include <random>
 
 void MarsSimulator::setWarriors(
@@ -12,11 +13,15 @@ void MarsSimulator::setWarriors(
 
 }
 
-std::vector<Instruction> MarsSimulator::doStuff() {
+IterationResult MarsSimulator::doStuff() {
 
     doIteration(firstWarriorManager);
     doIteration(secondWarriorManager);
-    return mars.getMemoryArray();
+    IterationResult result;
+    result.setFirst(firstWarriorManager);
+    result.setSecond(secondWarriorManager);
+    result.setResult(mars.getMemoryArray());
+    return result;
 }
 
 void MarsSimulator::setWarrior(std::vector<Instruction> warrior, ProcessManager &warriorManager) {

@@ -17,7 +17,8 @@ public:
 private:
     MarsSimulator mars;
     void initialize();
-    void sendResultDontWaitForResponse(std::vector<Instruction> result);
+
+    void sendResultDontWaitForResponse(IterationResult result);
 
     int iteration = 0;
 };
