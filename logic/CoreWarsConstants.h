@@ -7,10 +7,13 @@ namespace MARSConstants {
     const int MEMORY_ARRAY_SIZE(400);
 }
 namespace ViewConstants {
+
     const std::string INSTR_COLOR_DAT("blue");
     const std::string INSTR_COLOR_MOV("red");
     const std::string INSTR_COLOR_ADD("pink");
     const std::string INSTR_COLOR_JMP("green");
+    const std::string FIRST_PLAYER_COLOR("white");
+    const std::string SECOND_PLAYER_COLOR("black");
 }
 
 namespace ParserConstants {

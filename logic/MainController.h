@@ -1,9 +1,8 @@
 #ifndef CORE_WARS_ZPR_MAINCONTROLLER_H
 #define CORE_WARS_ZPR_MAINCONTROLLER_H
 
-
 #include <logic/mars/MarsSimulator.h>
-#include "ServerConnector.h"
+#include <logic/view/ViewConnector.h>
 #include <thread>
 #include <chrono>
 
@@ -16,11 +15,10 @@ public:
 
 private:
     MarsSimulator mars;
+    ViewConnector view;
     void initialize();
 
-    void sendResultDontWaitForResponse(IterationResult result);
-
-    int iteration = 0;
+    void runMARS();
 };
 
 

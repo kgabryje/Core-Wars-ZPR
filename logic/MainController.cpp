@@ -1,20 +1,16 @@
 #include <logic/mars/IterationResult.h>
+#include <logic/view/ViewConnector.h>
+#include <logic/ServerConnector.h>
 #include "MainController.h"
 #include "Initializer.h"
 
+
+MainController::MainController() {}
+
 void MainController::run() {
-    IterationResult result;
+
     initialize();
-    while (1) {
-        std::cout << "Iteracja: " << iteration << std::endl;
-        iteration++;
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
-        result = mars.doStuff();
-
-        sendResultDontWaitForResponse(result);
-
-    }
+    runMARS();
 }
 
 void MainController::initialize() {
@@ -26,25 +22,21 @@ void MainController::initialize() {
     mars.setWarriors(std::pair<std::vector<Instruction>, std::vector<Instruction>>(firstWarrior, secondWarrior));
 }
 
-void MainController::sendResultDontWaitForResponse(IterationResult result) {
+void MainController::runMARS() {
+    while (1) {
 
-    MARS::GameInfo gameInfo;
-    gameInfo.__set_firstPlayerProcessesNumber(result.getFirstWarriorProcessesIndexes().size());
-    gameInfo.__set_secondPlayerProcessesNumber(result.getSecondWarriorProcessesIndexes().size());
-    for (Instruction i: result.getMemoryArray()) {
-        if (i.getOperation()->getOpCode() == ParserConstants::INSTR_CODE_DAT)
-            gameInfo.colorTable.push_back(ViewConstants::INSTR_COLOR_DAT);
-        else if (i.getOperation()->getOpCode() == ParserConstants::INSTR_CODE_MOV)
-            gameInfo.colorTable.push_back(ViewConstants::INSTR_COLOR_MOV);
-        else if (i.getOperation()->getOpCode() == ParserConstants::INSTR_CODE_JMP)
-            gameInfo.colorTable.push_back(ViewConstants::INSTR_COLOR_JMP);
-        else if (i.getOperation()->getOpCode() == ParserConstants::INSTR_CODE_ADD)
-            gameInfo.colorTable.push_back(ViewConstants::INSTR_COLOR_ADD);
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+        IterationResult result = mars.doStuff();
+
+        view.sendToView(result);
     }
 
-    ServerConnector::getInstance().setGameInfo(gameInfo);
 }
 
-MainController::MainController() {}
+
+
+
+
 
 

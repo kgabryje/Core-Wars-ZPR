@@ -13,7 +13,6 @@ using namespace apache::thrift;
 using namespace apache::thrift::protocol;
 using namespace apache::thrift::transport;
 
-//using boost::shared_ptr;
 
 class ServerConnector {
 public:
