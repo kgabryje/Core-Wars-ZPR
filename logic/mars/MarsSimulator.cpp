@@ -10,9 +10,9 @@ void MarsSimulator::setInstructions(
 
 std::vector<Instruction> MarsSimulator::doStuff() {
     MemoryIndex mi = pm.getCurrentAddress();
-    boost::shared_ptr<OperationParams> params = mars.execute(mi);
-    boost::shared_ptr<MarsOperation> addOper = mars.getOperation(mi);
-    boost::shared_ptr<ProcessAction> res = params->accept(addOper);
+    std::shared_ptr<OperationParams> params = mars.execute(mi);
+    std::shared_ptr<MarsOperation> addOper = mars.getOperation(mi);
+    std::shared_ptr<ProcessAction> res = params->accept(addOper);
     res->runAction(pm);
     return mars.getMemoryArray();
 

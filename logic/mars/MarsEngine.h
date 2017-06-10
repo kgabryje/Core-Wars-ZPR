@@ -15,13 +15,13 @@ class MarsEngine {
 public:
     MarsEngine();
 
-    boost::shared_ptr<OperationParams> execute(MemoryIndex mIndex);
+    std::shared_ptr<OperationParams> execute(MemoryIndex mIndex);
 
     const std::vector<Instruction> getMemoryArray();
 
     void enterWarrior(int beginAddres, std::vector<Instruction> code);
 
-    boost::shared_ptr<MarsOperation> getOperation(MemoryIndex index);
+    std::shared_ptr<MarsOperation> getOperation(MemoryIndex index);
 
 private:
     std::vector<Instruction> memoryArray;

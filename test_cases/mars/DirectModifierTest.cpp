@@ -6,7 +6,7 @@
 
 MarsEngine *prepareMars();
 
-boost::shared_ptr<InstructionModifier> prepareInstrMod(string value);
+std::shared_ptr<InstructionModifier> prepareInstrMod(string value);
 
 
 SCENARIO("DirectModifierTest: fetching Instructions") {
@@ -15,7 +15,7 @@ SCENARIO("DirectModifierTest: fetching Instructions") {
         MemoryIndex indexOne(8);
 
         WHEN("Direct modifier points to empty memory (DAT default)") {
-            boost::shared_ptr<InstructionModifier> minus2 = prepareInstrMod("-3");
+            std::shared_ptr<InstructionModifier> minus2 = prepareInstrMod("-3");
             THEN("Fetched instruction has DAT operation and 2 zeros") {
                 boost::optional<Instruction> i = minus2->findTargetInstruction(indexOne, mars->getMemoryArray());
                 REQUIRE(i->getOperation()->getOpCode() == ParserConstants::INSTR_CODE_DAT);
@@ -24,7 +24,7 @@ SCENARIO("DirectModifierTest: fetching Instructions") {
             }
         }
         AND_WHEN("Direct modifier points to inserted instruction") {
-            boost::shared_ptr<InstructionModifier> plus2 = prepareInstrMod("3");
+            std::shared_ptr<InstructionModifier> plus2 = prepareInstrMod("3");
             THEN("That particular instruction is fetched") {
                 boost::optional<Instruction> i = plus2->findTargetInstruction(indexOne, mars->getMemoryArray());
                 REQUIRE(i->getOperation()->getOpCode() == ParserConstants::INSTR_CODE_JMP);
@@ -50,7 +50,7 @@ MarsEngine *prepareMars() {
     return mars;
 }
 
-boost::shared_ptr<InstructionModifier> prepareInstrMod(string value) {
+std::shared_ptr<InstructionModifier> prepareInstrMod(string value) {
     string rawAddress = value;
     return InstructionModifierCreator::tryCreate(rawAddress);
 

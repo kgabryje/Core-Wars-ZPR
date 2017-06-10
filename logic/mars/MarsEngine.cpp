@@ -3,7 +3,7 @@
 #include "OperationParamsInstructions.h"
 #include "OperationParamsMixed.h"
 
-boost::shared_ptr<OperationParams> MarsEngine::execute(MemoryIndex mIndex) {
+std::shared_ptr<OperationParams> MarsEngine::execute(MemoryIndex mIndex) {
     Instruction instrToExecute = memoryArray[*mIndex];
     boost::optional<Instruction> aFieldInstruction = instrToExecute.getAddressA()->findTargetInstruction(mIndex,
                                                                                                          getMemoryArray());
@@ -11,13 +11,13 @@ boost::shared_ptr<OperationParams> MarsEngine::execute(MemoryIndex mIndex) {
                                                                                                          getMemoryArray());
     if (aFieldInstruction)
         if (bFieldInstruction)
-            return boost::shared_ptr<OperationParams>(
+            return std::shared_ptr<OperationParams>(
                     new OperationParamsInstructions(*aFieldInstruction, *bFieldInstruction));
         else
-            return boost::shared_ptr<OperationParams>(
+            return std::shared_ptr<OperationParams>(
                     new OperationParamsMixed(instrToExecute.getBValue(), *aFieldInstruction));
     else if (bFieldInstruction)
-        return boost::shared_ptr<OperationParams>(
+        return std::shared_ptr<OperationParams>(
                 new OperationParamsMixed(instrToExecute.getAValue(), *bFieldInstruction));
     else
         throw ("Unimplemented OperationParams(int,int)");
@@ -36,7 +36,7 @@ void MarsEngine::enterWarrior(int beginAddres, vector<Instruction> warrior) {
         memoryArray[*index++] = warrior[i];
 }
 
-boost::shared_ptr<MarsOperation> MarsEngine::getOperation(MemoryIndex index) {
+std::shared_ptr<MarsOperation> MarsEngine::getOperation(MemoryIndex index) {
     Instruction i = memoryArray[*index];
     return i.getOperation();
 }
