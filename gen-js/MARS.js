@@ -332,6 +332,212 @@ MARS.MARS_receiveFromJS_result.prototype.write = function(output) {
   return;
 };
 
+MARS.MARS_sendTable_args = function(args) {
+};
+MARS.MARS_sendTable_args.prototype = {};
+MARS.MARS_sendTable_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MARS.MARS_sendTable_args.prototype.write = function(output) {
+  output.writeStructBegin('MARS_sendTable_args');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MARS.MARS_sendTable_result = function(args) {
+  this.success = null;
+  if (args) {
+    if (args.success !== undefined && args.success !== null) {
+      this.success = Thrift.copyList(args.success, [null]);
+    }
+  }
+};
+MARS.MARS_sendTable_result.prototype = {};
+MARS.MARS_sendTable_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 0:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.success = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readString().value;
+          this.success.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MARS.MARS_sendTable_result.prototype.write = function(output) {
+  output.writeStructBegin('MARS_sendTable_result');
+  if (this.success !== null && this.success !== undefined) {
+    output.writeFieldBegin('success', Thrift.Type.LIST, 0);
+    output.writeListBegin(Thrift.Type.STRING, this.success.length);
+    for (var iter7 in this.success)
+    {
+      if (this.success.hasOwnProperty(iter7))
+      {
+        iter7 = this.success[iter7];
+        output.writeString(iter7);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MARS.MARS_receiveTable_args = function(args) {
+  this.colorTable = null;
+  if (args) {
+    if (args.colorTable !== undefined && args.colorTable !== null) {
+      this.colorTable = Thrift.copyList(args.colorTable, [null]);
+    }
+  }
+};
+MARS.MARS_receiveTable_args.prototype = {};
+MARS.MARS_receiveTable_args.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size8 = 0;
+        var _rtmp312;
+        this.colorTable = [];
+        var _etype11 = 0;
+        _rtmp312 = input.readListBegin();
+        _etype11 = _rtmp312.etype;
+        _size8 = _rtmp312.size;
+        for (var _i13 = 0; _i13 < _size8; ++_i13)
+        {
+          var elem14 = null;
+          elem14 = input.readString().value;
+          this.colorTable.push(elem14);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 0:
+        input.skip(ftype);
+        break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MARS.MARS_receiveTable_args.prototype.write = function(output) {
+  output.writeStructBegin('MARS_receiveTable_args');
+  if (this.colorTable !== null && this.colorTable !== undefined) {
+    output.writeFieldBegin('colorTable', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRING, this.colorTable.length);
+    for (var iter15 in this.colorTable)
+    {
+      if (this.colorTable.hasOwnProperty(iter15))
+      {
+        iter15 = this.colorTable[iter15];
+        output.writeString(iter15);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
+MARS.MARS_receiveTable_result = function(args) {
+};
+MARS.MARS_receiveTable_result.prototype = {};
+MARS.MARS_receiveTable_result.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    input.skip(ftype);
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MARS.MARS_receiveTable_result.prototype.write = function(output) {
+  output.writeStructBegin('MARS_receiveTable_result');
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+
 MARS.MARSClient = function(input, output) {
     this.input = input;
     this.output = (!output) ? input : output;
@@ -339,9 +545,13 @@ MARS.MARSClient = function(input, output) {
 };
 MARS.MARSClient.prototype = {};
 MARS.MARSClient.prototype.getCode = function(callback) {
-  this.send_getCode(callback); 
-  if (!callback) {
+  if (callback === undefined) {
+    this.send_getCode();
     return this.recv_getCode();
+  } else {
+    var postData = this.send_getCode(true);
+    return this.output.getTransport()
+      .jqRequest(this, postData, arguments, this.recv_getCode);
   }
 };
 
@@ -350,20 +560,7 @@ MARS.MARSClient.prototype.send_getCode = function(callback) {
   var args = new MARS.MARS_getCode_args();
   args.write(this.output);
   this.output.writeMessageEnd();
-  if (callback) {
-    var self = this;
-    this.output.getTransport().flush(true, function() {
-      var result = null;
-      try {
-        result = self.recv_getCode();
-      } catch (e) {
-        result = e;
-      }
-      callback(result);
-    });
-  } else {
-    return this.output.getTransport().flush();
-  }
+  return this.output.getTransport().flush(callback);
 };
 
 MARS.MARSClient.prototype.recv_getCode = function() {
@@ -387,9 +584,13 @@ MARS.MARSClient.prototype.recv_getCode = function() {
   throw 'getCode failed: unknown result';
 };
 MARS.MARSClient.prototype.sendMessage = function(callback) {
-  this.send_sendMessage(callback); 
-  if (!callback) {
+  if (callback === undefined) {
+    this.send_sendMessage();
     return this.recv_sendMessage();
+  } else {
+    var postData = this.send_sendMessage(true);
+    return this.output.getTransport()
+      .jqRequest(this, postData, arguments, this.recv_sendMessage);
   }
 };
 
@@ -398,20 +599,7 @@ MARS.MARSClient.prototype.send_sendMessage = function(callback) {
   var args = new MARS.MARS_sendMessage_args();
   args.write(this.output);
   this.output.writeMessageEnd();
-  if (callback) {
-    var self = this;
-    this.output.getTransport().flush(true, function() {
-      var result = null;
-      try {
-        result = self.recv_sendMessage();
-      } catch (e) {
-        result = e;
-      }
-      callback(result);
-    });
-  } else {
-    return this.output.getTransport().flush();
-  }
+  return this.output.getTransport().flush(callback);
 };
 
 MARS.MARSClient.prototype.recv_sendMessage = function() {
@@ -435,9 +623,13 @@ MARS.MARSClient.prototype.recv_sendMessage = function() {
   throw 'sendMessage failed: unknown result';
 };
 MARS.MARSClient.prototype.getMessage = function(message, callback) {
-  this.send_getMessage(message, callback); 
-  if (!callback) {
-  this.recv_getMessage();
+  if (callback === undefined) {
+    this.send_getMessage(message);
+    this.recv_getMessage();
+  } else {
+    var postData = this.send_getMessage(message, true);
+    return this.output.getTransport()
+      .jqRequest(this, postData, arguments, this.recv_getMessage);
   }
 };
 
@@ -447,20 +639,7 @@ MARS.MARSClient.prototype.send_getMessage = function(message, callback) {
   args.message = message;
   args.write(this.output);
   this.output.writeMessageEnd();
-  if (callback) {
-    var self = this;
-    this.output.getTransport().flush(true, function() {
-      var result = null;
-      try {
-        result = self.recv_getMessage();
-      } catch (e) {
-        result = e;
-      }
-      callback(result);
-    });
-  } else {
-    return this.output.getTransport().flush();
-  }
+  return this.output.getTransport().flush(callback);
 };
 
 MARS.MARSClient.prototype.recv_getMessage = function() {
@@ -481,9 +660,13 @@ MARS.MARSClient.prototype.recv_getMessage = function() {
   return;
 };
 MARS.MARSClient.prototype.receiveFromJS = function(c, callback) {
-  this.send_receiveFromJS(c, callback); 
-  if (!callback) {
-  this.recv_receiveFromJS();
+  if (callback === undefined) {
+    this.send_receiveFromJS(c);
+    this.recv_receiveFromJS();
+  } else {
+    var postData = this.send_receiveFromJS(c, true);
+    return this.output.getTransport()
+      .jqRequest(this, postData, arguments, this.recv_receiveFromJS);
   }
 };
 
@@ -493,20 +676,7 @@ MARS.MARSClient.prototype.send_receiveFromJS = function(c, callback) {
   args.c = c;
   args.write(this.output);
   this.output.writeMessageEnd();
-  if (callback) {
-    var self = this;
-    this.output.getTransport().flush(true, function() {
-      var result = null;
-      try {
-        result = self.recv_receiveFromJS();
-      } catch (e) {
-        result = e;
-      }
-      callback(result);
-    });
-  } else {
-    return this.output.getTransport().flush();
-  }
+  return this.output.getTransport().flush(callback);
 };
 
 MARS.MARSClient.prototype.recv_receiveFromJS = function() {
@@ -521,6 +691,82 @@ MARS.MARSClient.prototype.recv_receiveFromJS = function() {
     throw x;
   }
   var result = new MARS.MARS_receiveFromJS_result();
+  result.read(this.input);
+  this.input.readMessageEnd();
+
+  return;
+};
+MARS.MARSClient.prototype.sendTable = function(callback) {
+  if (callback === undefined) {
+    this.send_sendTable();
+    return this.recv_sendTable();
+  } else {
+    var postData = this.send_sendTable(true);
+    return this.output.getTransport()
+      .jqRequest(this, postData, arguments, this.recv_sendTable);
+  }
+};
+
+MARS.MARSClient.prototype.send_sendTable = function(callback) {
+  this.output.writeMessageBegin('sendTable', Thrift.MessageType.CALL, this.seqid);
+  var args = new MARS.MARS_sendTable_args();
+  args.write(this.output);
+  this.output.writeMessageEnd();
+  return this.output.getTransport().flush(callback);
+};
+
+MARS.MARSClient.prototype.recv_sendTable = function() {
+  var ret = this.input.readMessageBegin();
+  var fname = ret.fname;
+  var mtype = ret.mtype;
+  var rseqid = ret.rseqid;
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(this.input);
+    this.input.readMessageEnd();
+    throw x;
+  }
+  var result = new MARS.MARS_sendTable_result();
+  result.read(this.input);
+  this.input.readMessageEnd();
+
+  if (null !== result.success) {
+    return result.success;
+  }
+  throw 'sendTable failed: unknown result';
+};
+MARS.MARSClient.prototype.receiveTable = function(colorTable, callback) {
+  if (callback === undefined) {
+    this.send_receiveTable(colorTable);
+    this.recv_receiveTable();
+  } else {
+    var postData = this.send_receiveTable(colorTable, true);
+    return this.output.getTransport()
+      .jqRequest(this, postData, arguments, this.recv_receiveTable);
+  }
+};
+
+MARS.MARSClient.prototype.send_receiveTable = function(colorTable, callback) {
+  this.output.writeMessageBegin('receiveTable', Thrift.MessageType.CALL, this.seqid);
+  var args = new MARS.MARS_receiveTable_args();
+  args.colorTable = colorTable;
+  args.write(this.output);
+  this.output.writeMessageEnd();
+  return this.output.getTransport().flush(callback);
+};
+
+MARS.MARSClient.prototype.recv_receiveTable = function() {
+  var ret = this.input.readMessageBegin();
+  var fname = ret.fname;
+  var mtype = ret.mtype;
+  var rseqid = ret.rseqid;
+  if (mtype == Thrift.MessageType.EXCEPTION) {
+    var x = new Thrift.TApplicationException();
+    x.read(this.input);
+    this.input.readMessageEnd();
+    throw x;
+  }
+  var result = new MARS.MARS_receiveTable_result();
   result.read(this.input);
   this.input.readMessageEnd();
 

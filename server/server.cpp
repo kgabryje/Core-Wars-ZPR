@@ -18,9 +18,6 @@ using boost::shared_ptr;
 
 using namespace  ::MARS;
 
-std::condition_variable cv;
-std::mutex m;
-
 class MARSHandler : virtual public MARSIf {
 public:
     MARSHandler() {
@@ -57,7 +54,7 @@ public:
             this->message = message;
             received = true;
 //        }
-        cv.notify_one();
+        cv.notify_all();
     }
 
     void getCode(std::string& _return) {
@@ -71,11 +68,30 @@ public:
       waiting = false;
     }
 
+    void sendTable(std::vector<std::string> & _return) {
+        std::unique_lock<std::mutex> lk(m);
+        cv.wait(lk, [this]{return table_update;});
+        _return = colorTable;
+        table_update = false;
+    }
+
+    void receiveTable(const std::vector<std::string> & colorTable) {
+        this->colorTable = colorTable;
+        table_update = true;
+        cv.notify_all();
+    }
+
 private:
     std::string code;
     std::string message;
+    std::vector<std::string> colorTable;
+
     bool received = false;
     bool waiting = false;
+    bool table_update = false;
+
+    std::condition_variable cv;
+    std::mutex m;
 };
 
 int main(int argc, char **argv) {

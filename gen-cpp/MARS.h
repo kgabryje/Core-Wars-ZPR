@@ -25,6 +25,8 @@ class MARSIf {
   virtual void sendMessage(std::string& _return) = 0;
   virtual void getMessage(const std::string& message) = 0;
   virtual void receiveFromJS(const Code& c) = 0;
+  virtual void sendTable(std::vector<std::string> & _return) = 0;
+  virtual void receiveTable(const std::vector<std::string> & colorTable) = 0;
 };
 
 class MARSIfFactory {
@@ -64,6 +66,12 @@ class MARSNull : virtual public MARSIf {
     return;
   }
   void receiveFromJS(const Code& /* c */) {
+    return;
+  }
+  void sendTable(std::vector<std::string> & /* _return */) {
+    return;
+  }
+  void receiveTable(const std::vector<std::string> & /* colorTable */) {
     return;
   }
 };
@@ -424,6 +432,184 @@ class MARS_receiveFromJS_presult {
 
 };
 
+
+class MARS_sendTable_args {
+ public:
+
+  MARS_sendTable_args(const MARS_sendTable_args&);
+  MARS_sendTable_args& operator=(const MARS_sendTable_args&);
+  MARS_sendTable_args() {
+  }
+
+  virtual ~MARS_sendTable_args() throw();
+
+  bool operator == (const MARS_sendTable_args & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const MARS_sendTable_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MARS_sendTable_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class MARS_sendTable_pargs {
+ public:
+
+
+  virtual ~MARS_sendTable_pargs() throw();
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _MARS_sendTable_result__isset {
+  _MARS_sendTable_result__isset() : success(false) {}
+  bool success :1;
+} _MARS_sendTable_result__isset;
+
+class MARS_sendTable_result {
+ public:
+
+  MARS_sendTable_result(const MARS_sendTable_result&);
+  MARS_sendTable_result& operator=(const MARS_sendTable_result&);
+  MARS_sendTable_result() {
+  }
+
+  virtual ~MARS_sendTable_result() throw();
+  std::vector<std::string>  success;
+
+  _MARS_sendTable_result__isset __isset;
+
+  void __set_success(const std::vector<std::string> & val);
+
+  bool operator == (const MARS_sendTable_result & rhs) const
+  {
+    if (!(success == rhs.success))
+      return false;
+    return true;
+  }
+  bool operator != (const MARS_sendTable_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MARS_sendTable_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+typedef struct _MARS_sendTable_presult__isset {
+  _MARS_sendTable_presult__isset() : success(false) {}
+  bool success :1;
+} _MARS_sendTable_presult__isset;
+
+class MARS_sendTable_presult {
+ public:
+
+
+  virtual ~MARS_sendTable_presult() throw();
+  std::vector<std::string> * success;
+
+  _MARS_sendTable_presult__isset __isset;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
+typedef struct _MARS_receiveTable_args__isset {
+  _MARS_receiveTable_args__isset() : colorTable(false) {}
+  bool colorTable :1;
+} _MARS_receiveTable_args__isset;
+
+class MARS_receiveTable_args {
+ public:
+
+  MARS_receiveTable_args(const MARS_receiveTable_args&);
+  MARS_receiveTable_args& operator=(const MARS_receiveTable_args&);
+  MARS_receiveTable_args() {
+  }
+
+  virtual ~MARS_receiveTable_args() throw();
+  std::vector<std::string>  colorTable;
+
+  _MARS_receiveTable_args__isset __isset;
+
+  void __set_colorTable(const std::vector<std::string> & val);
+
+  bool operator == (const MARS_receiveTable_args & rhs) const
+  {
+    if (!(colorTable == rhs.colorTable))
+      return false;
+    return true;
+  }
+  bool operator != (const MARS_receiveTable_args &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MARS_receiveTable_args & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class MARS_receiveTable_pargs {
+ public:
+
+
+  virtual ~MARS_receiveTable_pargs() throw();
+  const std::vector<std::string> * colorTable;
+
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class MARS_receiveTable_result {
+ public:
+
+  MARS_receiveTable_result(const MARS_receiveTable_result&);
+  MARS_receiveTable_result& operator=(const MARS_receiveTable_result&);
+  MARS_receiveTable_result() {
+  }
+
+  virtual ~MARS_receiveTable_result() throw();
+
+  bool operator == (const MARS_receiveTable_result & /* rhs */) const
+  {
+    return true;
+  }
+  bool operator != (const MARS_receiveTable_result &rhs) const {
+    return !(*this == rhs);
+  }
+
+  bool operator < (const MARS_receiveTable_result & ) const;
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+  uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
+
+};
+
+
+class MARS_receiveTable_presult {
+ public:
+
+
+  virtual ~MARS_receiveTable_presult() throw();
+
+  uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
+
+};
+
 class MARSClient : virtual public MARSIf {
  public:
   MARSClient(boost::shared_ptr< ::apache::thrift::protocol::TProtocol> prot) {
@@ -461,6 +647,12 @@ class MARSClient : virtual public MARSIf {
   void receiveFromJS(const Code& c);
   void send_receiveFromJS(const Code& c);
   void recv_receiveFromJS();
+  void sendTable(std::vector<std::string> & _return);
+  void send_sendTable();
+  void recv_sendTable(std::vector<std::string> & _return);
+  void receiveTable(const std::vector<std::string> & colorTable);
+  void send_receiveTable(const std::vector<std::string> & colorTable);
+  void recv_receiveTable();
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -480,6 +672,8 @@ class MARSProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_sendMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_receiveFromJS(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_sendTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_receiveTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   MARSProcessor(boost::shared_ptr<MARSIf> iface) :
     iface_(iface) {
@@ -487,6 +681,8 @@ class MARSProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["sendMessage"] = &MARSProcessor::process_sendMessage;
     processMap_["getMessage"] = &MARSProcessor::process_getMessage;
     processMap_["receiveFromJS"] = &MARSProcessor::process_receiveFromJS;
+    processMap_["sendTable"] = &MARSProcessor::process_sendTable;
+    processMap_["receiveTable"] = &MARSProcessor::process_receiveTable;
   }
 
   virtual ~MARSProcessor() {}
@@ -553,6 +749,25 @@ class MARSMultiface : virtual public MARSIf {
     ifaces_[i]->receiveFromJS(c);
   }
 
+  void sendTable(std::vector<std::string> & _return) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->sendTable(_return);
+    }
+    ifaces_[i]->sendTable(_return);
+    return;
+  }
+
+  void receiveTable(const std::vector<std::string> & colorTable) {
+    size_t sz = ifaces_.size();
+    size_t i = 0;
+    for (; i < (sz - 1); ++i) {
+      ifaces_[i]->receiveTable(colorTable);
+    }
+    ifaces_[i]->receiveTable(colorTable);
+  }
+
 };
 
 // The 'concurrent' client is a thread safe client that correctly handles
@@ -595,6 +810,12 @@ class MARSConcurrentClient : virtual public MARSIf {
   void receiveFromJS(const Code& c);
   int32_t send_receiveFromJS(const Code& c);
   void recv_receiveFromJS(const int32_t seqid);
+  void sendTable(std::vector<std::string> & _return);
+  int32_t send_sendTable();
+  void recv_sendTable(std::vector<std::string> & _return, const int32_t seqid);
+  void receiveTable(const std::vector<std::string> & colorTable);
+  int32_t send_receiveTable(const std::vector<std::string> & colorTable);
+  void recv_receiveTable(const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
