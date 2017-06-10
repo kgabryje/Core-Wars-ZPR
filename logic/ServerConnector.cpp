@@ -13,9 +13,9 @@ ServerConnector& ServerConnector::getInstance() {
     return instance;
 }
 
-std::string ServerConnector::getCode() {
+MARS::Code ServerConnector::getCode() {
     transport->open();
-    std::string code;
+    MARS::Code code;
     client->getCode(code);
     transport->close();
     return code;

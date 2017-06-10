@@ -93,8 +93,8 @@ uint32_t MARS_getCode_result::read(::apache::thrift::protocol::TProtocol* iprot)
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString(this->success);
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -119,8 +119,8 @@ uint32_t MARS_getCode_result::write(::apache::thrift::protocol::TProtocol* oprot
   xfer += oprot->writeStructBegin("MARS_getCode_result");
 
   if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRING, 0);
-    xfer += oprot->writeString(this->success);
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -155,8 +155,8 @@ uint32_t MARS_getCode_presult::read(::apache::thrift::protocol::TProtocol* iprot
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_STRING) {
-          xfer += iprot->readString((*(this->success)));
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -974,7 +974,7 @@ uint32_t MARS_setGameInfo_presult::read(::apache::thrift::protocol::TProtocol* i
   return xfer;
 }
 
-void MARSClient::getCode(std::string& _return)
+void MARSClient::getCode(Code& _return)
 {
   send_getCode();
   recv_getCode(_return);
@@ -993,7 +993,7 @@ void MARSClient::send_getCode()
   oprot_->getTransport()->flush();
 }
 
-void MARSClient::recv_getCode(std::string& _return)
+void MARSClient::recv_getCode(Code& _return)
 {
 
   int32_t rseqid = 0;
@@ -1651,7 +1651,7 @@ void MARSProcessor::process_setGameInfo(int32_t seqid, ::apache::thrift::protoco
   return processor;
 }
 
-void MARSConcurrentClient::getCode(std::string& _return)
+void MARSConcurrentClient::getCode(Code& _return)
 {
   int32_t seqid = send_getCode();
   recv_getCode(_return, seqid);
@@ -1674,7 +1674,7 @@ int32_t MARSConcurrentClient::send_getCode()
   return cseqid;
 }
 
-void MARSConcurrentClient::recv_getCode(std::string& _return, const int32_t seqid)
+void MARSConcurrentClient::recv_getCode(Code& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;

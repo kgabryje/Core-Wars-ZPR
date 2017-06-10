@@ -2,7 +2,9 @@ namespace cpp MARS
 namespace js MARS
 
 struct Code {
-	1: string code
+	1: string code,
+	2: string playerName,
+	3: string warriorName
 }
 
 struct GameInfo {
@@ -14,7 +16,7 @@ struct GameInfo {
 }
 
 service MARS {
-	string getCode(),
+	Code getCode(),
   string sendMessage(),
   void getMessage(1: string message),
 	void receiveFromJS(1: Code c),

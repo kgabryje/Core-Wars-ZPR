@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include "mars/Instruction.h"
+#include "gen-cpp/mars_types.h"
 
 using namespace std;
 
@@ -12,7 +13,7 @@ class Initializer {
 public:
     vector<Instruction> sendCodeRequestAndParse(string successMessage);
 private:
-    std::string demandCode();
+    MARS::Code demandCode();
 
     void sendParsingResult(const std::string& message);
 };

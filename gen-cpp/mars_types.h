@@ -25,8 +25,10 @@ class Code;
 class GameInfo;
 
 typedef struct _Code__isset {
-  _Code__isset() : code(false) {}
+  _Code__isset() : code(false), playerName(false), warriorName(false) {}
   bool code :1;
+  bool playerName :1;
+  bool warriorName :1;
 } _Code__isset;
 
 class Code : public virtual ::apache::thrift::TBase {
@@ -34,19 +36,29 @@ class Code : public virtual ::apache::thrift::TBase {
 
   Code(const Code&);
   Code& operator=(const Code&);
-  Code() : code() {
+  Code() : code(), playerName(), warriorName() {
   }
 
   virtual ~Code() throw();
   std::string code;
+  std::string playerName;
+  std::string warriorName;
 
   _Code__isset __isset;
 
   void __set_code(const std::string& val);
 
+  void __set_playerName(const std::string& val);
+
+  void __set_warriorName(const std::string& val);
+
   bool operator == (const Code & rhs) const
   {
     if (!(code == rhs.code))
+      return false;
+    if (!(playerName == rhs.playerName))
+      return false;
+    if (!(warriorName == rhs.warriorName))
       return false;
     return true;
   }
