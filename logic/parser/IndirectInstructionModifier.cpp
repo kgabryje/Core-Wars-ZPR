@@ -15,8 +15,7 @@ IndirectInstructionModifier::findTargetInstruction(MemoryIndex &mIndex, const st
     mIndex += this->getValue();
     Instruction intermediateInstruction = memoryArray[*mIndex];
     mIndex += intermediateInstruction.getBValue();
-    Instruction instrd = memoryArray[*mIndex];
-    instr = instrd;
+    instr = memoryArray[*mIndex];
     return instr;
 
 }

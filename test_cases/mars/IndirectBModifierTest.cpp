@@ -7,7 +7,6 @@ MarsEngine *prepareMars();
 
 boost::shared_ptr<InstructionModifier> prepareInstrMod(std::string value);
 
-
 SCENARIO("IndirectModifierTest: fetching Instructions") {
     GIVEN("MarsEngine with added instructions and MemoryIndex") {
         MarsEngine *mars = prepareMars();
