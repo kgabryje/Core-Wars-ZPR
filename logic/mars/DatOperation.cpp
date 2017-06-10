@@ -1,5 +1,6 @@
 #include "DatOperation.h"
 #include "ProcessActionRemove.h"
+#include "OperationResult.h"
 #include <logic/CoreWarsConstants.h>
 #include <boost/make_shared.hpp>
 
@@ -7,10 +8,14 @@ DatOperation::DatOperation() : MarsOperation(ParserConstants::INSTR_CODE_DAT) {
 
 }
 
-std::shared_ptr<ProcessAction> DatOperation::runOperation(OperationParamsMixed *operParams) {
+OperationResult DatOperation::runOperation(OperationParamsMixed *operParams) {
     return std::shared_ptr<ProcessAction>(new ProcessActionRemove());
 }
 
-std::shared_ptr<ProcessAction> DatOperation::runOperation(OperationParamsInstructions *operParams) {
+OperationResult DatOperation::runOperation(OperationParamsInstructions *operParams) {
     return std::shared_ptr<ProcessAction>(new ProcessActionRemove());
+}
+
+MarsOperation *DatOperation::clone() const {
+    return new DatOperation(*this);
 }

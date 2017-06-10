@@ -8,6 +8,7 @@
 #include <logic/parser/InstructionModifier.h>
 #include "MarsOperation.h"
 
+class MarsOperation;
 class InstructionModifier;
 class Instruction {
 public:
@@ -20,17 +21,17 @@ public:
                 const std::shared_ptr<InstructionModifier> operatorA,
                 const std::shared_ptr<InstructionModifier> operatorB);
 
-    const std::shared_ptr<MarsOperation> &getOperation() const;
+    const std::shared_ptr<MarsOperation> getOperation() const;
 
-    void setOperation(const std::shared_ptr<MarsOperation> &operation);
+    void setOperation(const std::shared_ptr<MarsOperation> operation);
 
-    const std::shared_ptr<InstructionModifier> &getAddressA() const;
+    const std::shared_ptr<InstructionModifier> getAddressA() const;
 
-    void setAddressA(const std::shared_ptr<InstructionModifier> &addressA);
+    void setAddressA(const std::shared_ptr<InstructionModifier> addressA);
 
-    const std::shared_ptr<InstructionModifier> &getAddressB() const;
+    const std::shared_ptr<InstructionModifier> getAddressB() const;
 
-    void setAddressB(const std::shared_ptr<InstructionModifier> &addressB);
+    void setAddressB(const std::shared_ptr<InstructionModifier> addressB);
 
     void addToAValue(int i);
 
@@ -44,10 +45,16 @@ public:
 
     void setBValue(int i);
 
+    int getLastMemoryIndex() const;
+
+    void setLastMemoryIndex(int lastMemoryIndex);
+
 private:
     std::shared_ptr<InstructionModifier> addressA;
     std::shared_ptr<InstructionModifier> addressB;
     std::shared_ptr<MarsOperation> operation;
+
+    int lastMemoryIndex;
 
 };
 

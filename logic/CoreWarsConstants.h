@@ -4,7 +4,7 @@
 #include <string>
 
 namespace MARSConstants {
-    const int MEMORY_ARRAY_SIZE(40);
+    const int MEMORY_ARRAY_SIZE(400);
 }
 
 namespace ParserConstants {

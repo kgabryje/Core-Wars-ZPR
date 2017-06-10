@@ -4,14 +4,17 @@
 #include "MarsOperation.h"
 #include "OperationParamsMixed.h"
 #include "OperationParamsInstructions.h"
+#include "OperationResult.h"
 
 class AddOperation : public MarsOperation {
 public:
     AddOperation();
 
-    std::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams) override;
+    OperationResult runOperation(OperationParamsInstructions *operParams) override;
 
-    virtual std::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams);
+    virtual OperationResult runOperation(OperationParamsMixed *operParams);
+
+    MarsOperation *clone() const override;
 };
 
 #endif //CORE_WARS_ZPR_ADDOPERATION_H

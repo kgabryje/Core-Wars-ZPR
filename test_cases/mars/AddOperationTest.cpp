@@ -20,11 +20,11 @@ SCENARIO("AddOperationTest: checking add instr") {
 
         WHEN("AddOperation is executed") {
 
-            std::shared_ptr<ProcessAction> res = mixedParams->accept(addOper);
+            OperationResult res = mixedParams->accept(addOper);
 
             THEN("ProcessAction has correct Type") {
 
-                ProcessActionContinue *con = dynamic_cast<ProcessActionContinue *> (res.get());
+                ProcessActionContinue *con = dynamic_cast<ProcessActionContinue *> (res.getPrecessAction().get());
                 REQUIRE(con != nullptr);
 
                 AND_THEN("Instruction bValue is correct") {
@@ -53,10 +53,10 @@ SCENARIO("AddOperationTest: checking add instr") {
 
         REQUIRE(doubleInstrParams != nullptr);
         WHEN("MovOperation is executed") {
-            std::shared_ptr<ProcessAction> res = doubleInstrParams->accept(addOper);
+            OperationResult res = doubleInstrParams->accept(addOper);
             THEN("ProcessAction has correct Type") {
 
-                ProcessActionContinue *con = dynamic_cast<ProcessActionContinue *> (res.get());
+                ProcessActionContinue *con = dynamic_cast<ProcessActionContinue *> (res.getPrecessAction().get());
                 REQUIRE(con != nullptr);
 
                 AND_THEN("Instruction aValue and bValue are the same as in source instruction (copy)") {

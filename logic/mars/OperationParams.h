@@ -8,7 +8,7 @@
 class OperationParams {
 
 public:
-    virtual std::shared_ptr<ProcessAction> accept(std::shared_ptr<MarsOperation> operation)=0;
+    virtual OperationResult accept(std::shared_ptr<MarsOperation> operation)=0;
 };
 
 

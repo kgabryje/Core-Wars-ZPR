@@ -17,11 +17,13 @@ public:
 
     std::shared_ptr<OperationParams> execute(MemoryIndex mIndex);
 
-    const std::vector<Instruction> getMemoryArray();
+    const std::vector<Instruction> &getMemoryArray();
 
     void enterWarrior(int beginAddres, std::vector<Instruction> code);
 
     std::shared_ptr<MarsOperation> getOperation(MemoryIndex index);
+
+    void editMemoryArray(const std::vector<Instruction> instructionsToModify);
 
 private:
     std::vector<Instruction> memoryArray;

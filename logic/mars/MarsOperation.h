@@ -4,9 +4,11 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "ProcessAction.h"
+#include "OperationResult.h"
 
 class OperationParamsMixed;
 
+class OperationResult;
 class OperationParamsInstructions;
 
 class MarsOperation {
@@ -17,10 +19,11 @@ public:
 
     const std::string &getOpCode() const;
 
-    virtual std::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams)=0;
+    virtual OperationResult runOperation(OperationParamsMixed *operParams)=0;
 
-    virtual std::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams)=0;
+    virtual OperationResult runOperation(OperationParamsInstructions *operParams)=0;
 
+    virtual MarsOperation *clone() const = 0;
 private:
     const std::string opCode;
 };

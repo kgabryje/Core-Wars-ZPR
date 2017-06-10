@@ -4,15 +4,18 @@
 #include "MarsOperation.h"
 #include "OperationParamsMixed.h"
 #include "OperationParamsInstructions.h"
+#include "OperationResult.h"
 
 
 class JmpOperation : public MarsOperation {
 public:
     JmpOperation();
 
-    virtual std::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams) override;
+    virtual OperationResult runOperation(OperationParamsInstructions *operParams) override;
 
-    virtual std::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams) override;
+    virtual OperationResult runOperation(OperationParamsMixed *operParams) override;
+
+    MarsOperation *clone() const override;
 };
 
 

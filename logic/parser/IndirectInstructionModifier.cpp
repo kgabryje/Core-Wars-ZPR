@@ -4,8 +4,8 @@
 IndirectInstructionModifier::IndirectInstructionModifier() : InstructionModifier(
         std::string(1, ParserConstants::MODIFIER_B_INDIRECT)) {}
 
-std::shared_ptr<InstructionModifier> IndirectInstructionModifier::clone() const {
-    return std::shared_ptr<InstructionModifier>(new IndirectInstructionModifier(*this));
+InstructionModifier *IndirectInstructionModifier::clone() const {
+    return new IndirectInstructionModifier(*this);
 }
 
 

@@ -2,14 +2,17 @@
 #define CORE_WARS_ZPR_DATOPERATION_H
 
 #include "MarsOperation.h"
+#include "OperationResult.h"
 
 class DatOperation : public MarsOperation {
 public:
     DatOperation();
 
-    std::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams) override;
+    OperationResult runOperation(OperationParamsInstructions *operParams) override;
 
-    std::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams) override;
+    OperationResult runOperation(OperationParamsMixed *operParams) override;
+
+    MarsOperation *clone() const override;
 };
 
 

@@ -18,6 +18,7 @@ vector<Instruction> Initializer::sendCodeRequestAndParse() {
 
     while (!codeIsFine) {
         string code = demandCode();
+        code = "MOV 0,1";
         try {
             std::cout << "Received instructions: " << code << std::endl;
             instructions = parser.parse(code);

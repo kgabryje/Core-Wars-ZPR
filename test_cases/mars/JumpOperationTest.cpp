@@ -20,11 +20,11 @@ SCENARIO("JumpOperationTest: checking jump instr") {
 
         WHEN("AddOperation is executed") {
 
-            std::shared_ptr<ProcessAction> res = mixedParams->accept(addOper);
+            OperationResult res = mixedParams->accept(addOper);
 
             THEN("ProcessAction has correct Type") {
 
-                ProcessActionJump *con = dynamic_cast<ProcessActionJump *> (res.get());
+                ProcessActionJump *con = dynamic_cast<ProcessActionJump *> (res.getPrecessAction().get());
                 REQUIRE(con != nullptr);
 
                 AND_THEN("Jump value is correct") {
@@ -51,10 +51,10 @@ SCENARIO("JumpOperationTest: checking jump instr") {
 
         REQUIRE(doubleInstrParams != nullptr);
         WHEN("MovOperation is executed") {
-            std::shared_ptr<ProcessAction> res = doubleInstrParams->accept(addOper);
+            OperationResult res = doubleInstrParams->accept(addOper);
             THEN("ProcessAction has correct Type") {
 
-                ProcessActionJump *con = dynamic_cast<ProcessActionJump *> (res.get());
+                ProcessActionJump *con = dynamic_cast<ProcessActionJump *> (res.getPrecessAction().get());
                 REQUIRE(con != nullptr);
 
                 AND_THEN("Jump value is correct") {

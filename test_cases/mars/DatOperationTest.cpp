@@ -19,11 +19,11 @@ SCENARIO("DatOperationTest: checking DAT instr") {
         OperationParams *mixedParams = new OperationParamsMixed(num, instr);
 
         WHEN("MovOperation is executed") {
-            std::shared_ptr<ProcessAction> res = mixedParams->accept(datOper);
+            OperationResult res = mixedParams->accept(datOper);
 
             THEN("ProcessAction has correct Type") {
 
-                ProcessActionRemove *con = dynamic_cast<ProcessActionRemove *> (res.get());
+                ProcessActionRemove *con = dynamic_cast<ProcessActionRemove *> (res.getPrecessAction().get());
                 REQUIRE(con != nullptr);
 
                 AND_THEN("Parameter Instruction bValue has not changed") {
@@ -52,10 +52,10 @@ SCENARIO("DatOperationTest: checking DAT instr") {
 
         REQUIRE(doubleInstrParams != nullptr);
         WHEN("MovOperation is executed") {
-            std::shared_ptr<ProcessAction> res = doubleInstrParams->accept(datOper);
+            OperationResult res = doubleInstrParams->accept(datOper);
             THEN("ProcessAction has correct Type") {
 
-                ProcessActionRemove *con = dynamic_cast<ProcessActionRemove *> (res.get());
+                ProcessActionRemove *con = dynamic_cast<ProcessActionRemove *> (res.getPrecessAction().get());
                 REQUIRE(con != nullptr);
 
                 AND_THEN("Instruction aValue and bValue did not changed") {

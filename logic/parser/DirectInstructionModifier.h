@@ -11,7 +11,8 @@ public:
     boost::optional<Instruction>
     findTargetInstruction(MemoryIndex &mIndex, const std::vector<Instruction> memoryArray) override;
 
-    std::shared_ptr<InstructionModifier> clone() const override;
+    InstructionModifier *clone() const override;
+
 };
 
 

@@ -1,6 +1,6 @@
 #include "OperationParamsMixed.h"
 
-OperationParamsMixed::OperationParamsMixed(int i, Instruction &instruction)
+OperationParamsMixed::OperationParamsMixed(int i, Instruction instruction)
         : instruction(instruction), value(i) {
 }
 
@@ -9,10 +9,10 @@ int OperationParamsMixed::getValue() const {
 }
 
 
-Instruction &OperationParamsMixed::getInstruction() const {
+Instruction OperationParamsMixed::getInstruction() const {
     return instruction;
 }
 
-std::shared_ptr<ProcessAction> OperationParamsMixed::accept(std::shared_ptr<MarsOperation> operation) {
+OperationResult OperationParamsMixed::accept(std::shared_ptr<MarsOperation> operation) {
     return operation.get()->runOperation(this);
 }

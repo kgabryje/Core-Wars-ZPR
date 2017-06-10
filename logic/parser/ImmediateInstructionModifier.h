@@ -7,7 +7,7 @@ class ImmediateInstructionModifier : public InstructionModifier {
 public:
     ImmediateInstructionModifier();
 
-    std::shared_ptr<InstructionModifier> clone() const override;
+    InstructionModifier *clone() const override;
 
     ImmediateInstructionModifier(const char modifierCode);
 

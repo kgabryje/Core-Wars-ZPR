@@ -15,8 +15,6 @@ class InstructionModifier {
 public:
     InstructionModifier(const std::string &modifierCode, int value = 0);
 
-    virtual std::shared_ptr<InstructionModifier> clone() const = 0;
-
     const std::string &getModifierCode() const;
 
     int getValue() const;
@@ -28,6 +26,7 @@ public:
     virtual boost::optional<Instruction>
     findTargetInstruction(MemoryIndex &mIndex, const std::vector<Instruction> memoryArray)=0;
 
+    virtual InstructionModifier *clone() const = 0;
 private:
     int value;
     std::string modifierCode;

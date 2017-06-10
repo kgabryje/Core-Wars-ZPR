@@ -5,8 +5,8 @@ ImmediateInstructionModifier::ImmediateInstructionModifier() : InstructionModifi
         std::string(1, ParserConstants::MODIFIER_IMMIDIATE)) {
 }
 
-std::shared_ptr<InstructionModifier> ImmediateInstructionModifier::clone() const {
-    return std::shared_ptr<InstructionModifier>(new ImmediateInstructionModifier(*this));
+InstructionModifier *ImmediateInstructionModifier::clone() const {
+    return new ImmediateInstructionModifier(*this);
 }
 
 boost::optional<Instruction>
