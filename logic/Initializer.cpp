@@ -10,7 +10,7 @@
 using namespace std;
 
 
-vector<Instruction> Initializer::sendCodeRequestAndParse() {
+vector<Instruction> Initializer::sendCodeRequestAndParse(string successMessage) {
     bool codeIsFine = false;
     RedcodeParser parser;
     string message;
@@ -38,7 +38,6 @@ std::string Initializer::demandCode() {
 }
 
 void Initializer::sendParsingResult(const std::string& message) {
-//tutaj wysyłanie do ServerConnector info sukces albo jest bład, poproś użytkownika o poprawiony kod
     ServerConnector::getInstance().sendMessage(message);
     cout << message << endl;
 }

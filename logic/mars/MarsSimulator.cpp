@@ -5,16 +5,17 @@
 #include <random>
 
 void MarsSimulator::setWarriors(
-        std::vector<Instruction> instructions) {
+        std::pair<std::vector<Instruction>, std::vector<Instruction>> instructions) {
 
-    setWarrior(instructions, firstWarriorManager);
-    //setSec
+    setWarrior(instructions.first, firstWarriorManager);
+    setWarrior(instructions.second, secondWarriorManager);
+
 }
 
 std::vector<Instruction> MarsSimulator::doStuff() {
 
     doIteration(firstWarriorManager);
-    //doIterSecond
+    doIteration(secondWarriorManager);
     return mars.getMemoryArray();
 }
 

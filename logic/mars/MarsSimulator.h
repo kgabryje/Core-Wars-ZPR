@@ -10,7 +10,7 @@ class MarsSimulator {
 public:
     MarsSimulator();
 
-    void setWarriors(std::vector<Instruction> instructions);
+    void setWarriors(std::pair<std::vector<Instruction>, std::vector<Instruction>> instructions);
 
     std::vector<Instruction> doStuff();
 

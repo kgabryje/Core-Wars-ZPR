@@ -18,11 +18,12 @@ void MainController::run() {
 }
 
 void MainController::initialize() {
-    Initializer init;
-    vector<Instruction> firstWarrior = init.sendCodeRequestAndParse();
 
-    //vector<Instruction> secondWarrior = init.sendCodeRequestAndParse();
-    mars.setWarriors(firstWarrior);
+    Initializer init;
+    vector <Instruction> firstWarrior = init.sendCodeRequestAndParse("Kod jest poprawny. Wprowadź drugiego gracza");
+    vector <Instruction> secondWarrior = init.sendCodeRequestAndParse("success");
+
+    mars.setWarriors(std::pair<std::vector<Instruction>, std::vector<Instruction>>(firstWarrior, secondWarrior));
 }
 
 void MainController::sendResultDontWaitForResponse(vector<Instruction> result) {

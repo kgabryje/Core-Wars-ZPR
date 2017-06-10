@@ -5,13 +5,12 @@
 #include <iostream>
 #include "mars/Instruction.h"
 
-static const char *const successMessage = "success";
 using namespace std;
 
 class Initializer {
 
 public:
-    vector<Instruction> sendCodeRequestAndParse();
+    vector<Instruction> sendCodeRequestAndParse(string successMessage);
 private:
     std::string demandCode();
 
