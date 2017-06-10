@@ -1,1 +1,13 @@
 \chapter{Napotkane problemy}
+Podczas tworzenia projektu napotkaliśmy na szereg problemów. Jednym z poważniejszych
+była skąpa dokumentacja frameworku Apache Thrift na C++ i JavaScript, w wyniku czego
+wiele czasu poświęciliśmy na szukanie rozwiązań metodą prób i błędów. Okazało się również, że
+Thrift domyślnie przekazuje zapytania między klientem JavaScript a serwerem w trybie synchro-
+nicznym, Nie udało nam się ustawić trybu asynchronicznego, w wyniku czego podczas symulacji
+walki między programami przeglądarka nie jest responsywna. Ponadto problematyczna okazała
+się konfiguracja Apache Thrifta na systemie Windows. Doprowadziliśmy do jego działania, choć
+zajęło nam to wiele godzin.
+
+Jednym z naszych podstawowych błędów było niedokładnie przeprowadzona faza planowania, co wynikało z braku doświadczenia. Skutkiem tego były zmiany w strukturze kodu w trakcie trwania projektu, co doprowadzało do przedłużania i opóźniania pracy. Kolejnym poważnym błędem było zbyt późne rozpoczęcie pracy nad projektem, skutkiem czego był pośpiech i brak realizacji części założeń.
+
+Każdy z nas spędził nad projektem około 100 godzin. Sądzimy, że posiadając doświadczenie zdobyte w trakcie tego projektu, czas ten wykorzystalibyśmy znacznie bardziej produktywnie i zdążylibyśmy zaimplementować dodatkowe funkcjonalności, takie jak połączenie z bazą danych.
