@@ -26,7 +26,7 @@ public:
     void setModifierCode(const std::string &modifierCode);
 
     virtual boost::optional<Instruction>
-    findTargetInstruction(MemoryIndex mIndex, const std::vector<Instruction> memoryArray)=0;
+    findTargetInstruction(MemoryIndex &mIndex, const std::vector<Instruction> memoryArray)=0;
 
 private:
     int value;
