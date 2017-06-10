@@ -1,6 +1,4 @@
 #include "DirectInstructionModifier.h"
-#include "InstructionModifier.h"
-#include "logic/CoreWarsConstants.h"
 
 
 DirectInstructionModifier::DirectInstructionModifier() : InstructionModifier(
@@ -12,11 +10,13 @@ boost::shared_ptr<InstructionModifier> DirectInstructionModifier::clone() const 
 }
 
 boost::optional<Instruction>
-DirectInstructionModifier::findTargetInstruction(MemoryIndex mIndex, const std::vector<Instruction> memoryArray) {
+DirectInstructionModifier::findTargetInstruction(MemoryIndex &mIndex, const std::vector<Instruction> memoryArray) {
     boost::optional<Instruction> instr;
     mIndex += this->getValue();
     Instruction intermediateInstruction = memoryArray[*mIndex];
-    mIndex += intermediateInstruction.getBValue();
-    instr = memoryArray[*mIndex];
-    return instr;
+    //mIndex += intermediateInstruction.getBValue();
+    //instr = memoryArray[*mIndex];
+
+    // return instr;
+    return intermediateInstruction;
 }

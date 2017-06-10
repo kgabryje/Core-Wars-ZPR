@@ -9,7 +9,7 @@ public:
     DirectInstructionModifier();
 
     boost::optional<Instruction>
-    findTargetInstruction(MemoryIndex mIndex, const std::vector<Instruction> memoryArray) override;
+    findTargetInstruction(MemoryIndex &mIndex, const std::vector<Instruction> memoryArray) override;
 
     boost::shared_ptr<InstructionModifier> clone() const override;
 };
