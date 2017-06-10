@@ -35,12 +35,24 @@
       message = client.sendMessage();
   }
 
+  function displayPlayersInfo() {
+    document.getElementById("firstPlayerInfo").innerHTML = 'Player 1 processes no.: ' + gameInfo.firstPlayerProcessesNumber;
+    document.getElementById("secondPlayerInfo").innerHTML = 'Player 2 processes no.: ' + gameInfo.secondPlayerProcessesNumber;
+  }
+
   function displaySimulation() {
     document.getElementById("code_area").style.display = 'none';
     document.getElementById("display").style.display = "";
     while (1) {
       gameInfo = client.getGameInfo();
-      drawTable();
+      if (!gameInfo.hasEnded) {
+        displayPlayersInfo();
+        drawTable();
+      }
+      else {
+        alert(gameInfo.winner);
+        break;
+      }
     }
   }
   function sendCode() {
@@ -121,7 +133,8 @@
     </tr>
 </div>
   <div id = "display">
-    <td><input type="button" id="draw_table" value="draw table" onclick="drawTable();"/></td>
+    <p id = "firstPlayerInfo"></p>
+    <p id = "secondPlayerInfo"></p>
     <canvas id="gameTable" width="" height="" style="border:1px solid #d3d3d3;">
   </canvas>
 </div>
