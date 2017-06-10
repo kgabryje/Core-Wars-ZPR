@@ -11,3 +11,11 @@ Możliwe jest komentowanie kodu poprzez rozpoczęcie komentowanej linii znakiem 
 Wspierane są tryby adresowania natychmiastowy(immediate), pośredni(direct) i bezpośredni(indirect). Szczegółowe informacje, samouczek i przykładowe programy języka RedCode dostępne są na \href{http://vyznev.net/corewar/guide.html}{stronie internetowej}.
 
 Przed uruchomieniem wizualizacji gry w przeglądarce należy włączyć serwer oraz klienta C++. Po rozpoczęciu gry dostępne jest pole tekstowe, w którym należy wpisać kod programu, a nastepnie wcisnąć przycisk "Send code". Jeśli wystąpią błędy składniowe w programie gracza, zostanie wyświetlony komunikat zawierający informację o linijce, w której pojawił się błąd. W przeciwnym wypadku kod zostanie przyjęty, a gra poprosi o wpisanie kodu drugiego gracza. Jeżeli kod zostanie wczytany pomyślnie, rozpocznie się symulacja "walki" między dwoma programami, która zostanie zwizualizowana w postaci kolorowej tablicy. Każda komórka tablicy oznacza adres pamięci, a kolor symbolizuje instrukcję, która zapisana jest w danej komórce.
+
+Poszczególne kolory w wizualizacji odpowiadają kolejno:
+\begin{itemize}
+\item biały - proces gracza 1
+\item czarny - proces gracza 2
+\item niebieski - instrukcja DAT
+\item czerwony - instrukcja MOV
+\end{itemize}
