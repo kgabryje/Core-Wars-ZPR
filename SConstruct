@@ -9,7 +9,7 @@ tests_source = [path.join('test_cases',folder, f) for folder in ['parser','mars'
 tests_source.append(path.join('test_cases','catch_init.cpp'))
 libs = ['libthrift','libssl','openssl','libcrypto']
 
-env = Environment(CXX = 'g++-6', CPPPATH = '.', LIBS = ['thrift', 'boost_regex'], CPPFLAGS = '-std=c++11')
+env = Environment(CXX = 'g++-6', CPPPATH = '.', LIBS = ['thrift', 'boost_regex'], CPPFLAGS = '-std=c++14')
 
 gen_cpp_o = env.Object(gen_cpp)
 client_o = env.Object(client_source)
