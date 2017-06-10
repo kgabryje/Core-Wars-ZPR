@@ -653,11 +653,11 @@ uint32_t MARS_receiveFromJS_presult::read(::apache::thrift::protocol::TProtocol*
 }
 
 
-MARS_getColorTable_args::~MARS_getColorTable_args() throw() {
+MARS_getGameInfo_args::~MARS_getGameInfo_args() throw() {
 }
 
 
-uint32_t MARS_getColorTable_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_getGameInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -685,10 +685,10 @@ uint32_t MARS_getColorTable_args::read(::apache::thrift::protocol::TProtocol* ip
   return xfer;
 }
 
-uint32_t MARS_getColorTable_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_getGameInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MARS_getColorTable_args");
+  xfer += oprot->writeStructBegin("MARS_getGameInfo_args");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -696,14 +696,14 @@ uint32_t MARS_getColorTable_args::write(::apache::thrift::protocol::TProtocol* o
 }
 
 
-MARS_getColorTable_pargs::~MARS_getColorTable_pargs() throw() {
+MARS_getGameInfo_pargs::~MARS_getGameInfo_pargs() throw() {
 }
 
 
-uint32_t MARS_getColorTable_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_getGameInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MARS_getColorTable_pargs");
+  xfer += oprot->writeStructBegin("MARS_getGameInfo_pargs");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -711,11 +711,11 @@ uint32_t MARS_getColorTable_pargs::write(::apache::thrift::protocol::TProtocol* 
 }
 
 
-MARS_getColorTable_result::~MARS_getColorTable_result() throw() {
+MARS_getGameInfo_result::~MARS_getGameInfo_result() throw() {
 }
 
 
-uint32_t MARS_getColorTable_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_getGameInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -737,20 +737,8 @@ uint32_t MARS_getColorTable_result::read(::apache::thrift::protocol::TProtocol* 
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_LIST) {
-          {
-            this->success.clear();
-            uint32_t _size2;
-            ::apache::thrift::protocol::TType _etype5;
-            xfer += iprot->readListBegin(_etype5, _size2);
-            this->success.resize(_size2);
-            uint32_t _i6;
-            for (_i6 = 0; _i6 < _size2; ++_i6)
-            {
-              xfer += iprot->readString(this->success[_i6]);
-            }
-            xfer += iprot->readListEnd();
-          }
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->success.read(iprot);
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -768,23 +756,15 @@ uint32_t MARS_getColorTable_result::read(::apache::thrift::protocol::TProtocol* 
   return xfer;
 }
 
-uint32_t MARS_getColorTable_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_getGameInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("MARS_getColorTable_result");
+  xfer += oprot->writeStructBegin("MARS_getGameInfo_result");
 
   if (this->__isset.success) {
-    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_LIST, 0);
-    {
-      xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->success.size()));
-      std::vector<std::string> ::const_iterator _iter7;
-      for (_iter7 = this->success.begin(); _iter7 != this->success.end(); ++_iter7)
-      {
-        xfer += oprot->writeString((*_iter7));
-      }
-      xfer += oprot->writeListEnd();
-    }
+    xfer += oprot->writeFieldBegin("success", ::apache::thrift::protocol::T_STRUCT, 0);
+    xfer += this->success.write(oprot);
     xfer += oprot->writeFieldEnd();
   }
   xfer += oprot->writeFieldStop();
@@ -793,11 +773,11 @@ uint32_t MARS_getColorTable_result::write(::apache::thrift::protocol::TProtocol*
 }
 
 
-MARS_getColorTable_presult::~MARS_getColorTable_presult() throw() {
+MARS_getGameInfo_presult::~MARS_getGameInfo_presult() throw() {
 }
 
 
-uint32_t MARS_getColorTable_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_getGameInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -819,20 +799,8 @@ uint32_t MARS_getColorTable_presult::read(::apache::thrift::protocol::TProtocol*
     switch (fid)
     {
       case 0:
-        if (ftype == ::apache::thrift::protocol::T_LIST) {
-          {
-            (*(this->success)).clear();
-            uint32_t _size8;
-            ::apache::thrift::protocol::TType _etype11;
-            xfer += iprot->readListBegin(_etype11, _size8);
-            (*(this->success)).resize(_size8);
-            uint32_t _i12;
-            for (_i12 = 0; _i12 < _size8; ++_i12)
-            {
-              xfer += iprot->readString((*(this->success))[_i12]);
-            }
-            xfer += iprot->readListEnd();
-          }
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += (*(this->success)).read(iprot);
           this->__isset.success = true;
         } else {
           xfer += iprot->skip(ftype);
@@ -851,11 +819,11 @@ uint32_t MARS_getColorTable_presult::read(::apache::thrift::protocol::TProtocol*
 }
 
 
-MARS_setColorTable_args::~MARS_setColorTable_args() throw() {
+MARS_setGameInfo_args::~MARS_setGameInfo_args() throw() {
 }
 
 
-uint32_t MARS_setColorTable_args::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_setGameInfo_args::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -877,21 +845,9 @@ uint32_t MARS_setColorTable_args::read(::apache::thrift::protocol::TProtocol* ip
     switch (fid)
     {
       case 1:
-        if (ftype == ::apache::thrift::protocol::T_LIST) {
-          {
-            this->colorTable.clear();
-            uint32_t _size13;
-            ::apache::thrift::protocol::TType _etype16;
-            xfer += iprot->readListBegin(_etype16, _size13);
-            this->colorTable.resize(_size13);
-            uint32_t _i17;
-            for (_i17 = 0; _i17 < _size13; ++_i17)
-            {
-              xfer += iprot->readString(this->colorTable[_i17]);
-            }
-            xfer += iprot->readListEnd();
-          }
-          this->__isset.colorTable = true;
+        if (ftype == ::apache::thrift::protocol::T_STRUCT) {
+          xfer += this->gameInfo.read(iprot);
+          this->__isset.gameInfo = true;
         } else {
           xfer += iprot->skip(ftype);
         }
@@ -908,21 +864,13 @@ uint32_t MARS_setColorTable_args::read(::apache::thrift::protocol::TProtocol* ip
   return xfer;
 }
 
-uint32_t MARS_setColorTable_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_setGameInfo_args::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MARS_setColorTable_args");
+  xfer += oprot->writeStructBegin("MARS_setGameInfo_args");
 
-  xfer += oprot->writeFieldBegin("colorTable", ::apache::thrift::protocol::T_LIST, 1);
-  {
-    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->colorTable.size()));
-    std::vector<std::string> ::const_iterator _iter18;
-    for (_iter18 = this->colorTable.begin(); _iter18 != this->colorTable.end(); ++_iter18)
-    {
-      xfer += oprot->writeString((*_iter18));
-    }
-    xfer += oprot->writeListEnd();
-  }
+  xfer += oprot->writeFieldBegin("gameInfo", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += this->gameInfo.write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -931,25 +879,17 @@ uint32_t MARS_setColorTable_args::write(::apache::thrift::protocol::TProtocol* o
 }
 
 
-MARS_setColorTable_pargs::~MARS_setColorTable_pargs() throw() {
+MARS_setGameInfo_pargs::~MARS_setGameInfo_pargs() throw() {
 }
 
 
-uint32_t MARS_setColorTable_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_setGameInfo_pargs::write(::apache::thrift::protocol::TProtocol* oprot) const {
   uint32_t xfer = 0;
   apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
-  xfer += oprot->writeStructBegin("MARS_setColorTable_pargs");
+  xfer += oprot->writeStructBegin("MARS_setGameInfo_pargs");
 
-  xfer += oprot->writeFieldBegin("colorTable", ::apache::thrift::protocol::T_LIST, 1);
-  {
-    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>((*(this->colorTable)).size()));
-    std::vector<std::string> ::const_iterator _iter19;
-    for (_iter19 = (*(this->colorTable)).begin(); _iter19 != (*(this->colorTable)).end(); ++_iter19)
-    {
-      xfer += oprot->writeString((*_iter19));
-    }
-    xfer += oprot->writeListEnd();
-  }
+  xfer += oprot->writeFieldBegin("gameInfo", ::apache::thrift::protocol::T_STRUCT, 1);
+  xfer += (*(this->gameInfo)).write(oprot);
   xfer += oprot->writeFieldEnd();
 
   xfer += oprot->writeFieldStop();
@@ -958,11 +898,11 @@ uint32_t MARS_setColorTable_pargs::write(::apache::thrift::protocol::TProtocol* 
 }
 
 
-MARS_setColorTable_result::~MARS_setColorTable_result() throw() {
+MARS_setGameInfo_result::~MARS_setGameInfo_result() throw() {
 }
 
 
-uint32_t MARS_setColorTable_result::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_setGameInfo_result::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -990,11 +930,11 @@ uint32_t MARS_setColorTable_result::read(::apache::thrift::protocol::TProtocol* 
   return xfer;
 }
 
-uint32_t MARS_setColorTable_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
+uint32_t MARS_setGameInfo_result::write(::apache::thrift::protocol::TProtocol* oprot) const {
 
   uint32_t xfer = 0;
 
-  xfer += oprot->writeStructBegin("MARS_setColorTable_result");
+  xfer += oprot->writeStructBegin("MARS_setGameInfo_result");
 
   xfer += oprot->writeFieldStop();
   xfer += oprot->writeStructEnd();
@@ -1002,11 +942,11 @@ uint32_t MARS_setColorTable_result::write(::apache::thrift::protocol::TProtocol*
 }
 
 
-MARS_setColorTable_presult::~MARS_setColorTable_presult() throw() {
+MARS_setGameInfo_presult::~MARS_setGameInfo_presult() throw() {
 }
 
 
-uint32_t MARS_setColorTable_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
+uint32_t MARS_setGameInfo_presult::read(::apache::thrift::protocol::TProtocol* iprot) {
 
   apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
   uint32_t xfer = 0;
@@ -1254,18 +1194,18 @@ void MARSClient::recv_receiveFromJS()
   return;
 }
 
-void MARSClient::getColorTable(std::vector<std::string> & _return)
+void MARSClient::getGameInfo(GameInfo& _return)
 {
-  send_getColorTable();
-  recv_getColorTable(_return);
+  send_getGameInfo();
+  recv_getGameInfo(_return);
 }
 
-void MARSClient::send_getColorTable()
+void MARSClient::send_getGameInfo()
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("getColorTable", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getGameInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  MARS_getColorTable_pargs args;
+  MARS_getGameInfo_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -1273,7 +1213,7 @@ void MARSClient::send_getColorTable()
   oprot_->getTransport()->flush();
 }
 
-void MARSClient::recv_getColorTable(std::vector<std::string> & _return)
+void MARSClient::recv_getGameInfo(GameInfo& _return)
 {
 
   int32_t rseqid = 0;
@@ -1293,12 +1233,12 @@ void MARSClient::recv_getColorTable(std::vector<std::string> & _return)
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("getColorTable") != 0) {
+  if (fname.compare("getGameInfo") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  MARS_getColorTable_presult result;
+  MARS_getGameInfo_presult result;
   result.success = &_return;
   result.read(iprot_);
   iprot_->readMessageEnd();
@@ -1308,22 +1248,22 @@ void MARSClient::recv_getColorTable(std::vector<std::string> & _return)
     // _return pointer has now been filled
     return;
   }
-  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getColorTable failed: unknown result");
+  throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getGameInfo failed: unknown result");
 }
 
-void MARSClient::setColorTable(const std::vector<std::string> & colorTable)
+void MARSClient::setGameInfo(const GameInfo& gameInfo)
 {
-  send_setColorTable(colorTable);
-  recv_setColorTable();
+  send_setGameInfo(gameInfo);
+  recv_setGameInfo();
 }
 
-void MARSClient::send_setColorTable(const std::vector<std::string> & colorTable)
+void MARSClient::send_setGameInfo(const GameInfo& gameInfo)
 {
   int32_t cseqid = 0;
-  oprot_->writeMessageBegin("setColorTable", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("setGameInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  MARS_setColorTable_pargs args;
-  args.colorTable = &colorTable;
+  MARS_setGameInfo_pargs args;
+  args.gameInfo = &gameInfo;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -1331,7 +1271,7 @@ void MARSClient::send_setColorTable(const std::vector<std::string> & colorTable)
   oprot_->getTransport()->flush();
 }
 
-void MARSClient::recv_setColorTable()
+void MARSClient::recv_setGameInfo()
 {
 
   int32_t rseqid = 0;
@@ -1351,12 +1291,12 @@ void MARSClient::recv_setColorTable()
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  if (fname.compare("setColorTable") != 0) {
+  if (fname.compare("setGameInfo") != 0) {
     iprot_->skip(::apache::thrift::protocol::T_STRUCT);
     iprot_->readMessageEnd();
     iprot_->getTransport()->readEnd();
   }
-  MARS_setColorTable_presult result;
+  MARS_setGameInfo_presult result;
   result.read(iprot_);
   iprot_->readMessageEnd();
   iprot_->getTransport()->readEnd();
@@ -1597,38 +1537,38 @@ void MARSProcessor::process_receiveFromJS(int32_t seqid, ::apache::thrift::proto
   }
 }
 
-void MARSProcessor::process_getColorTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void MARSProcessor::process_getGameInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("MARS.getColorTable", callContext);
+    ctx = this->eventHandler_->getContext("MARS.getGameInfo", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "MARS.getColorTable");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "MARS.getGameInfo");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "MARS.getColorTable");
+    this->eventHandler_->preRead(ctx, "MARS.getGameInfo");
   }
 
-  MARS_getColorTable_args args;
+  MARS_getGameInfo_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "MARS.getColorTable", bytes);
+    this->eventHandler_->postRead(ctx, "MARS.getGameInfo", bytes);
   }
 
-  MARS_getColorTable_result result;
+  MARS_getGameInfo_result result;
   try {
-    iface_->getColorTable(result.success);
+    iface_->getGameInfo(result.success);
     result.__isset.success = true;
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "MARS.getColorTable");
+      this->eventHandler_->handlerError(ctx, "MARS.getGameInfo");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("getColorTable", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("getGameInfo", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -1637,51 +1577,51 @@ void MARSProcessor::process_getColorTable(int32_t seqid, ::apache::thrift::proto
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "MARS.getColorTable");
+    this->eventHandler_->preWrite(ctx, "MARS.getGameInfo");
   }
 
-  oprot->writeMessageBegin("getColorTable", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("getGameInfo", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "MARS.getColorTable", bytes);
+    this->eventHandler_->postWrite(ctx, "MARS.getGameInfo", bytes);
   }
 }
 
-void MARSProcessor::process_setColorTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
+void MARSProcessor::process_setGameInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext)
 {
   void* ctx = NULL;
   if (this->eventHandler_.get() != NULL) {
-    ctx = this->eventHandler_->getContext("MARS.setColorTable", callContext);
+    ctx = this->eventHandler_->getContext("MARS.setGameInfo", callContext);
   }
-  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "MARS.setColorTable");
+  ::apache::thrift::TProcessorContextFreer freer(this->eventHandler_.get(), ctx, "MARS.setGameInfo");
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preRead(ctx, "MARS.setColorTable");
+    this->eventHandler_->preRead(ctx, "MARS.setGameInfo");
   }
 
-  MARS_setColorTable_args args;
+  MARS_setGameInfo_args args;
   args.read(iprot);
   iprot->readMessageEnd();
   uint32_t bytes = iprot->getTransport()->readEnd();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postRead(ctx, "MARS.setColorTable", bytes);
+    this->eventHandler_->postRead(ctx, "MARS.setGameInfo", bytes);
   }
 
-  MARS_setColorTable_result result;
+  MARS_setGameInfo_result result;
   try {
-    iface_->setColorTable(args.colorTable);
+    iface_->setGameInfo(args.gameInfo);
   } catch (const std::exception& e) {
     if (this->eventHandler_.get() != NULL) {
-      this->eventHandler_->handlerError(ctx, "MARS.setColorTable");
+      this->eventHandler_->handlerError(ctx, "MARS.setGameInfo");
     }
 
     ::apache::thrift::TApplicationException x(e.what());
-    oprot->writeMessageBegin("setColorTable", ::apache::thrift::protocol::T_EXCEPTION, seqid);
+    oprot->writeMessageBegin("setGameInfo", ::apache::thrift::protocol::T_EXCEPTION, seqid);
     x.write(oprot);
     oprot->writeMessageEnd();
     oprot->getTransport()->writeEnd();
@@ -1690,17 +1630,17 @@ void MARSProcessor::process_setColorTable(int32_t seqid, ::apache::thrift::proto
   }
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->preWrite(ctx, "MARS.setColorTable");
+    this->eventHandler_->preWrite(ctx, "MARS.setGameInfo");
   }
 
-  oprot->writeMessageBegin("setColorTable", ::apache::thrift::protocol::T_REPLY, seqid);
+  oprot->writeMessageBegin("setGameInfo", ::apache::thrift::protocol::T_REPLY, seqid);
   result.write(oprot);
   oprot->writeMessageEnd();
   bytes = oprot->getTransport()->writeEnd();
   oprot->getTransport()->flush();
 
   if (this->eventHandler_.get() != NULL) {
-    this->eventHandler_->postWrite(ctx, "MARS.setColorTable", bytes);
+    this->eventHandler_->postWrite(ctx, "MARS.setGameInfo", bytes);
   }
 }
 
@@ -2033,19 +1973,19 @@ void MARSConcurrentClient::recv_receiveFromJS(const int32_t seqid)
   } // end while(true)
 }
 
-void MARSConcurrentClient::getColorTable(std::vector<std::string> & _return)
+void MARSConcurrentClient::getGameInfo(GameInfo& _return)
 {
-  int32_t seqid = send_getColorTable();
-  recv_getColorTable(_return, seqid);
+  int32_t seqid = send_getGameInfo();
+  recv_getGameInfo(_return, seqid);
 }
 
-int32_t MARSConcurrentClient::send_getColorTable()
+int32_t MARSConcurrentClient::send_getGameInfo()
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("getColorTable", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("getGameInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  MARS_getColorTable_pargs args;
+  MARS_getGameInfo_pargs args;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -2056,7 +1996,7 @@ int32_t MARSConcurrentClient::send_getColorTable()
   return cseqid;
 }
 
-void MARSConcurrentClient::recv_getColorTable(std::vector<std::string> & _return, const int32_t seqid)
+void MARSConcurrentClient::recv_getGameInfo(GameInfo& _return, const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -2085,7 +2025,7 @@ void MARSConcurrentClient::recv_getColorTable(std::vector<std::string> & _return
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("getColorTable") != 0) {
+      if (fname.compare("getGameInfo") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -2094,7 +2034,7 @@ void MARSConcurrentClient::recv_getColorTable(std::vector<std::string> & _return
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      MARS_getColorTable_presult result;
+      MARS_getGameInfo_presult result;
       result.success = &_return;
       result.read(iprot_);
       iprot_->readMessageEnd();
@@ -2106,7 +2046,7 @@ void MARSConcurrentClient::recv_getColorTable(std::vector<std::string> & _return
         return;
       }
       // in a bad state, don't commit
-      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getColorTable failed: unknown result");
+      throw ::apache::thrift::TApplicationException(::apache::thrift::TApplicationException::MISSING_RESULT, "getGameInfo failed: unknown result");
     }
     // seqid != rseqid
     this->sync_.updatePending(fname, mtype, rseqid);
@@ -2116,20 +2056,20 @@ void MARSConcurrentClient::recv_getColorTable(std::vector<std::string> & _return
   } // end while(true)
 }
 
-void MARSConcurrentClient::setColorTable(const std::vector<std::string> & colorTable)
+void MARSConcurrentClient::setGameInfo(const GameInfo& gameInfo)
 {
-  int32_t seqid = send_setColorTable(colorTable);
-  recv_setColorTable(seqid);
+  int32_t seqid = send_setGameInfo(gameInfo);
+  recv_setGameInfo(seqid);
 }
 
-int32_t MARSConcurrentClient::send_setColorTable(const std::vector<std::string> & colorTable)
+int32_t MARSConcurrentClient::send_setGameInfo(const GameInfo& gameInfo)
 {
   int32_t cseqid = this->sync_.generateSeqId();
   ::apache::thrift::async::TConcurrentSendSentry sentry(&this->sync_);
-  oprot_->writeMessageBegin("setColorTable", ::apache::thrift::protocol::T_CALL, cseqid);
+  oprot_->writeMessageBegin("setGameInfo", ::apache::thrift::protocol::T_CALL, cseqid);
 
-  MARS_setColorTable_pargs args;
-  args.colorTable = &colorTable;
+  MARS_setGameInfo_pargs args;
+  args.gameInfo = &gameInfo;
   args.write(oprot_);
 
   oprot_->writeMessageEnd();
@@ -2140,7 +2080,7 @@ int32_t MARSConcurrentClient::send_setColorTable(const std::vector<std::string> 
   return cseqid;
 }
 
-void MARSConcurrentClient::recv_setColorTable(const int32_t seqid)
+void MARSConcurrentClient::recv_setGameInfo(const int32_t seqid)
 {
 
   int32_t rseqid = 0;
@@ -2169,7 +2109,7 @@ void MARSConcurrentClient::recv_setColorTable(const int32_t seqid)
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
       }
-      if (fname.compare("setColorTable") != 0) {
+      if (fname.compare("setGameInfo") != 0) {
         iprot_->skip(::apache::thrift::protocol::T_STRUCT);
         iprot_->readMessageEnd();
         iprot_->getTransport()->readEnd();
@@ -2178,7 +2118,7 @@ void MARSConcurrentClient::recv_setColorTable(const int32_t seqid)
         using ::apache::thrift::protocol::TProtocolException;
         throw TProtocolException(TProtocolException::INVALID_DATA);
       }
-      MARS_setColorTable_presult result;
+      MARS_setGameInfo_presult result;
       result.read(iprot_);
       iprot_->readMessageEnd();
       iprot_->getTransport()->readEnd();

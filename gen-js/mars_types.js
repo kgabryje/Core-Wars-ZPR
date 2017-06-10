@@ -61,3 +61,139 @@ MARS.Code.prototype.write = function(output) {
   return;
 };
 
+MARS.GameInfo = function(args) {
+  this.colorTable = null;
+  this.hasEnded = null;
+  this.winner = null;
+  this.firstPlayerProcessesNumber = null;
+  this.secondPlayerProcessesNumber = null;
+  if (args) {
+    if (args.colorTable !== undefined && args.colorTable !== null) {
+      this.colorTable = Thrift.copyList(args.colorTable, [null]);
+    }
+    if (args.hasEnded !== undefined && args.hasEnded !== null) {
+      this.hasEnded = args.hasEnded;
+    }
+    if (args.winner !== undefined && args.winner !== null) {
+      this.winner = args.winner;
+    }
+    if (args.firstPlayerProcessesNumber !== undefined && args.firstPlayerProcessesNumber !== null) {
+      this.firstPlayerProcessesNumber = args.firstPlayerProcessesNumber;
+    }
+    if (args.secondPlayerProcessesNumber !== undefined && args.secondPlayerProcessesNumber !== null) {
+      this.secondPlayerProcessesNumber = args.secondPlayerProcessesNumber;
+    }
+  }
+};
+MARS.GameInfo.prototype = {};
+MARS.GameInfo.prototype.read = function(input) {
+  input.readStructBegin();
+  while (true)
+  {
+    var ret = input.readFieldBegin();
+    var fname = ret.fname;
+    var ftype = ret.ftype;
+    var fid = ret.fid;
+    if (ftype == Thrift.Type.STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+      if (ftype == Thrift.Type.LIST) {
+        var _size0 = 0;
+        var _rtmp34;
+        this.colorTable = [];
+        var _etype3 = 0;
+        _rtmp34 = input.readListBegin();
+        _etype3 = _rtmp34.etype;
+        _size0 = _rtmp34.size;
+        for (var _i5 = 0; _i5 < _size0; ++_i5)
+        {
+          var elem6 = null;
+          elem6 = input.readString().value;
+          this.colorTable.push(elem6);
+        }
+        input.readListEnd();
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 2:
+      if (ftype == Thrift.Type.BOOL) {
+        this.hasEnded = input.readBool().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 3:
+      if (ftype == Thrift.Type.STRING) {
+        this.winner = input.readString().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 4:
+      if (ftype == Thrift.Type.I16) {
+        this.firstPlayerProcessesNumber = input.readI16().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      case 5:
+      if (ftype == Thrift.Type.I16) {
+        this.secondPlayerProcessesNumber = input.readI16().value;
+      } else {
+        input.skip(ftype);
+      }
+      break;
+      default:
+        input.skip(ftype);
+    }
+    input.readFieldEnd();
+  }
+  input.readStructEnd();
+  return;
+};
+
+MARS.GameInfo.prototype.write = function(output) {
+  output.writeStructBegin('GameInfo');
+  if (this.colorTable !== null && this.colorTable !== undefined) {
+    output.writeFieldBegin('colorTable', Thrift.Type.LIST, 1);
+    output.writeListBegin(Thrift.Type.STRING, this.colorTable.length);
+    for (var iter7 in this.colorTable)
+    {
+      if (this.colorTable.hasOwnProperty(iter7))
+      {
+        iter7 = this.colorTable[iter7];
+        output.writeString(iter7);
+      }
+    }
+    output.writeListEnd();
+    output.writeFieldEnd();
+  }
+  if (this.hasEnded !== null && this.hasEnded !== undefined) {
+    output.writeFieldBegin('hasEnded', Thrift.Type.BOOL, 2);
+    output.writeBool(this.hasEnded);
+    output.writeFieldEnd();
+  }
+  if (this.winner !== null && this.winner !== undefined) {
+    output.writeFieldBegin('winner', Thrift.Type.STRING, 3);
+    output.writeString(this.winner);
+    output.writeFieldEnd();
+  }
+  if (this.firstPlayerProcessesNumber !== null && this.firstPlayerProcessesNumber !== undefined) {
+    output.writeFieldBegin('firstPlayerProcessesNumber', Thrift.Type.I16, 4);
+    output.writeI16(this.firstPlayerProcessesNumber);
+    output.writeFieldEnd();
+  }
+  if (this.secondPlayerProcessesNumber !== null && this.secondPlayerProcessesNumber !== undefined) {
+    output.writeFieldBegin('secondPlayerProcessesNumber', Thrift.Type.I16, 5);
+    output.writeI16(this.secondPlayerProcessesNumber);
+    output.writeFieldEnd();
+  }
+  output.writeFieldStop();
+  output.writeStructEnd();
+  return;
+};
+

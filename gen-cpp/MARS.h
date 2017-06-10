@@ -25,8 +25,8 @@ class MARSIf {
   virtual void sendMessage(std::string& _return) = 0;
   virtual void getMessage(const std::string& message) = 0;
   virtual void receiveFromJS(const Code& c) = 0;
-  virtual void getColorTable(std::vector<std::string> & _return) = 0;
-  virtual void setColorTable(const std::vector<std::string> & colorTable) = 0;
+  virtual void getGameInfo(GameInfo& _return) = 0;
+  virtual void setGameInfo(const GameInfo& gameInfo) = 0;
 };
 
 class MARSIfFactory {
@@ -68,10 +68,10 @@ class MARSNull : virtual public MARSIf {
   void receiveFromJS(const Code& /* c */) {
     return;
   }
-  void getColorTable(std::vector<std::string> & /* _return */) {
+  void getGameInfo(GameInfo& /* _return */) {
     return;
   }
-  void setColorTable(const std::vector<std::string> & /* colorTable */) {
+  void setGameInfo(const GameInfo& /* gameInfo */) {
     return;
   }
 };
@@ -433,25 +433,25 @@ class MARS_receiveFromJS_presult {
 };
 
 
-class MARS_getColorTable_args {
+class MARS_getGameInfo_args {
  public:
 
-  MARS_getColorTable_args(const MARS_getColorTable_args&);
-  MARS_getColorTable_args& operator=(const MARS_getColorTable_args&);
-  MARS_getColorTable_args() {
+  MARS_getGameInfo_args(const MARS_getGameInfo_args&);
+  MARS_getGameInfo_args& operator=(const MARS_getGameInfo_args&);
+  MARS_getGameInfo_args() {
   }
 
-  virtual ~MARS_getColorTable_args() throw();
+  virtual ~MARS_getGameInfo_args() throw();
 
-  bool operator == (const MARS_getColorTable_args & /* rhs */) const
+  bool operator == (const MARS_getGameInfo_args & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const MARS_getColorTable_args &rhs) const {
+  bool operator != (const MARS_getGameInfo_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const MARS_getColorTable_args & ) const;
+  bool operator < (const MARS_getGameInfo_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -459,102 +459,102 @@ class MARS_getColorTable_args {
 };
 
 
-class MARS_getColorTable_pargs {
+class MARS_getGameInfo_pargs {
  public:
 
 
-  virtual ~MARS_getColorTable_pargs() throw();
+  virtual ~MARS_getGameInfo_pargs() throw();
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _MARS_getColorTable_result__isset {
-  _MARS_getColorTable_result__isset() : success(false) {}
+typedef struct _MARS_getGameInfo_result__isset {
+  _MARS_getGameInfo_result__isset() : success(false) {}
   bool success :1;
-} _MARS_getColorTable_result__isset;
+} _MARS_getGameInfo_result__isset;
 
-class MARS_getColorTable_result {
+class MARS_getGameInfo_result {
  public:
 
-  MARS_getColorTable_result(const MARS_getColorTable_result&);
-  MARS_getColorTable_result& operator=(const MARS_getColorTable_result&);
-  MARS_getColorTable_result() {
+  MARS_getGameInfo_result(const MARS_getGameInfo_result&);
+  MARS_getGameInfo_result& operator=(const MARS_getGameInfo_result&);
+  MARS_getGameInfo_result() {
   }
 
-  virtual ~MARS_getColorTable_result() throw();
-  std::vector<std::string>  success;
+  virtual ~MARS_getGameInfo_result() throw();
+  GameInfo success;
 
-  _MARS_getColorTable_result__isset __isset;
+  _MARS_getGameInfo_result__isset __isset;
 
-  void __set_success(const std::vector<std::string> & val);
+  void __set_success(const GameInfo& val);
 
-  bool operator == (const MARS_getColorTable_result & rhs) const
+  bool operator == (const MARS_getGameInfo_result & rhs) const
   {
     if (!(success == rhs.success))
       return false;
     return true;
   }
-  bool operator != (const MARS_getColorTable_result &rhs) const {
+  bool operator != (const MARS_getGameInfo_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const MARS_getColorTable_result & ) const;
+  bool operator < (const MARS_getGameInfo_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
-typedef struct _MARS_getColorTable_presult__isset {
-  _MARS_getColorTable_presult__isset() : success(false) {}
+typedef struct _MARS_getGameInfo_presult__isset {
+  _MARS_getGameInfo_presult__isset() : success(false) {}
   bool success :1;
-} _MARS_getColorTable_presult__isset;
+} _MARS_getGameInfo_presult__isset;
 
-class MARS_getColorTable_presult {
+class MARS_getGameInfo_presult {
  public:
 
 
-  virtual ~MARS_getColorTable_presult() throw();
-  std::vector<std::string> * success;
+  virtual ~MARS_getGameInfo_presult() throw();
+  GameInfo* success;
 
-  _MARS_getColorTable_presult__isset __isset;
+  _MARS_getGameInfo_presult__isset __isset;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
 };
 
-typedef struct _MARS_setColorTable_args__isset {
-  _MARS_setColorTable_args__isset() : colorTable(false) {}
-  bool colorTable :1;
-} _MARS_setColorTable_args__isset;
+typedef struct _MARS_setGameInfo_args__isset {
+  _MARS_setGameInfo_args__isset() : gameInfo(false) {}
+  bool gameInfo :1;
+} _MARS_setGameInfo_args__isset;
 
-class MARS_setColorTable_args {
+class MARS_setGameInfo_args {
  public:
 
-  MARS_setColorTable_args(const MARS_setColorTable_args&);
-  MARS_setColorTable_args& operator=(const MARS_setColorTable_args&);
-  MARS_setColorTable_args() {
+  MARS_setGameInfo_args(const MARS_setGameInfo_args&);
+  MARS_setGameInfo_args& operator=(const MARS_setGameInfo_args&);
+  MARS_setGameInfo_args() {
   }
 
-  virtual ~MARS_setColorTable_args() throw();
-  std::vector<std::string>  colorTable;
+  virtual ~MARS_setGameInfo_args() throw();
+  GameInfo gameInfo;
 
-  _MARS_setColorTable_args__isset __isset;
+  _MARS_setGameInfo_args__isset __isset;
 
-  void __set_colorTable(const std::vector<std::string> & val);
+  void __set_gameInfo(const GameInfo& val);
 
-  bool operator == (const MARS_setColorTable_args & rhs) const
+  bool operator == (const MARS_setGameInfo_args & rhs) const
   {
-    if (!(colorTable == rhs.colorTable))
+    if (!(gameInfo == rhs.gameInfo))
       return false;
     return true;
   }
-  bool operator != (const MARS_setColorTable_args &rhs) const {
+  bool operator != (const MARS_setGameInfo_args &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const MARS_setColorTable_args & ) const;
+  bool operator < (const MARS_setGameInfo_args & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -562,37 +562,37 @@ class MARS_setColorTable_args {
 };
 
 
-class MARS_setColorTable_pargs {
+class MARS_setGameInfo_pargs {
  public:
 
 
-  virtual ~MARS_setColorTable_pargs() throw();
-  const std::vector<std::string> * colorTable;
+  virtual ~MARS_setGameInfo_pargs() throw();
+  const GameInfo* gameInfo;
 
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
 
 };
 
 
-class MARS_setColorTable_result {
+class MARS_setGameInfo_result {
  public:
 
-  MARS_setColorTable_result(const MARS_setColorTable_result&);
-  MARS_setColorTable_result& operator=(const MARS_setColorTable_result&);
-  MARS_setColorTable_result() {
+  MARS_setGameInfo_result(const MARS_setGameInfo_result&);
+  MARS_setGameInfo_result& operator=(const MARS_setGameInfo_result&);
+  MARS_setGameInfo_result() {
   }
 
-  virtual ~MARS_setColorTable_result() throw();
+  virtual ~MARS_setGameInfo_result() throw();
 
-  bool operator == (const MARS_setColorTable_result & /* rhs */) const
+  bool operator == (const MARS_setGameInfo_result & /* rhs */) const
   {
     return true;
   }
-  bool operator != (const MARS_setColorTable_result &rhs) const {
+  bool operator != (const MARS_setGameInfo_result &rhs) const {
     return !(*this == rhs);
   }
 
-  bool operator < (const MARS_setColorTable_result & ) const;
+  bool operator < (const MARS_setGameInfo_result & ) const;
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
   uint32_t write(::apache::thrift::protocol::TProtocol* oprot) const;
@@ -600,11 +600,11 @@ class MARS_setColorTable_result {
 };
 
 
-class MARS_setColorTable_presult {
+class MARS_setGameInfo_presult {
  public:
 
 
-  virtual ~MARS_setColorTable_presult() throw();
+  virtual ~MARS_setGameInfo_presult() throw();
 
   uint32_t read(::apache::thrift::protocol::TProtocol* iprot);
 
@@ -647,12 +647,12 @@ class MARSClient : virtual public MARSIf {
   void receiveFromJS(const Code& c);
   void send_receiveFromJS(const Code& c);
   void recv_receiveFromJS();
-  void getColorTable(std::vector<std::string> & _return);
-  void send_getColorTable();
-  void recv_getColorTable(std::vector<std::string> & _return);
-  void setColorTable(const std::vector<std::string> & colorTable);
-  void send_setColorTable(const std::vector<std::string> & colorTable);
-  void recv_setColorTable();
+  void getGameInfo(GameInfo& _return);
+  void send_getGameInfo();
+  void recv_getGameInfo(GameInfo& _return);
+  void setGameInfo(const GameInfo& gameInfo);
+  void send_setGameInfo(const GameInfo& gameInfo);
+  void recv_setGameInfo();
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;
@@ -672,8 +672,8 @@ class MARSProcessor : public ::apache::thrift::TDispatchProcessor {
   void process_sendMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_getMessage(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
   void process_receiveFromJS(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_getColorTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
-  void process_setColorTable(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_getGameInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
+  void process_setGameInfo(int32_t seqid, ::apache::thrift::protocol::TProtocol* iprot, ::apache::thrift::protocol::TProtocol* oprot, void* callContext);
  public:
   MARSProcessor(boost::shared_ptr<MARSIf> iface) :
     iface_(iface) {
@@ -681,8 +681,8 @@ class MARSProcessor : public ::apache::thrift::TDispatchProcessor {
     processMap_["sendMessage"] = &MARSProcessor::process_sendMessage;
     processMap_["getMessage"] = &MARSProcessor::process_getMessage;
     processMap_["receiveFromJS"] = &MARSProcessor::process_receiveFromJS;
-    processMap_["getColorTable"] = &MARSProcessor::process_getColorTable;
-    processMap_["setColorTable"] = &MARSProcessor::process_setColorTable;
+    processMap_["getGameInfo"] = &MARSProcessor::process_getGameInfo;
+    processMap_["setGameInfo"] = &MARSProcessor::process_setGameInfo;
   }
 
   virtual ~MARSProcessor() {}
@@ -749,23 +749,23 @@ class MARSMultiface : virtual public MARSIf {
     ifaces_[i]->receiveFromJS(c);
   }
 
-  void getColorTable(std::vector<std::string> & _return) {
+  void getGameInfo(GameInfo& _return) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->getColorTable(_return);
+      ifaces_[i]->getGameInfo(_return);
     }
-    ifaces_[i]->getColorTable(_return);
+    ifaces_[i]->getGameInfo(_return);
     return;
   }
 
-  void setColorTable(const std::vector<std::string> & colorTable) {
+  void setGameInfo(const GameInfo& gameInfo) {
     size_t sz = ifaces_.size();
     size_t i = 0;
     for (; i < (sz - 1); ++i) {
-      ifaces_[i]->setColorTable(colorTable);
+      ifaces_[i]->setGameInfo(gameInfo);
     }
-    ifaces_[i]->setColorTable(colorTable);
+    ifaces_[i]->setGameInfo(gameInfo);
   }
 
 };
@@ -810,12 +810,12 @@ class MARSConcurrentClient : virtual public MARSIf {
   void receiveFromJS(const Code& c);
   int32_t send_receiveFromJS(const Code& c);
   void recv_receiveFromJS(const int32_t seqid);
-  void getColorTable(std::vector<std::string> & _return);
-  int32_t send_getColorTable();
-  void recv_getColorTable(std::vector<std::string> & _return, const int32_t seqid);
-  void setColorTable(const std::vector<std::string> & colorTable);
-  int32_t send_setColorTable(const std::vector<std::string> & colorTable);
-  void recv_setColorTable(const int32_t seqid);
+  void getGameInfo(GameInfo& _return);
+  int32_t send_getGameInfo();
+  void recv_getGameInfo(GameInfo& _return, const int32_t seqid);
+  void setGameInfo(const GameInfo& gameInfo);
+  int32_t send_setGameInfo(const GameInfo& gameInfo);
+  void recv_setGameInfo(const int32_t seqid);
  protected:
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> piprot_;
   boost::shared_ptr< ::apache::thrift::protocol::TProtocol> poprot_;

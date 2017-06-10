@@ -99,4 +99,190 @@ void Code::printTo(std::ostream& out) const {
   out << ")";
 }
 
+
+GameInfo::~GameInfo() throw() {
+}
+
+
+void GameInfo::__set_colorTable(const std::vector<std::string> & val) {
+  this->colorTable = val;
+}
+
+void GameInfo::__set_hasEnded(const bool val) {
+  this->hasEnded = val;
+}
+
+void GameInfo::__set_winner(const std::string& val) {
+  this->winner = val;
+}
+
+void GameInfo::__set_firstPlayerProcessesNumber(const int16_t val) {
+  this->firstPlayerProcessesNumber = val;
+}
+
+void GameInfo::__set_secondPlayerProcessesNumber(const int16_t val) {
+  this->secondPlayerProcessesNumber = val;
+}
+
+uint32_t GameInfo::read(::apache::thrift::protocol::TProtocol* iprot) {
+
+  apache::thrift::protocol::TInputRecursionTracker tracker(*iprot);
+  uint32_t xfer = 0;
+  std::string fname;
+  ::apache::thrift::protocol::TType ftype;
+  int16_t fid;
+
+  xfer += iprot->readStructBegin(fname);
+
+  using ::apache::thrift::protocol::TProtocolException;
+
+
+  while (true)
+  {
+    xfer += iprot->readFieldBegin(fname, ftype, fid);
+    if (ftype == ::apache::thrift::protocol::T_STOP) {
+      break;
+    }
+    switch (fid)
+    {
+      case 1:
+        if (ftype == ::apache::thrift::protocol::T_LIST) {
+          {
+            this->colorTable.clear();
+            uint32_t _size2;
+            ::apache::thrift::protocol::TType _etype5;
+            xfer += iprot->readListBegin(_etype5, _size2);
+            this->colorTable.resize(_size2);
+            uint32_t _i6;
+            for (_i6 = 0; _i6 < _size2; ++_i6)
+            {
+              xfer += iprot->readString(this->colorTable[_i6]);
+            }
+            xfer += iprot->readListEnd();
+          }
+          this->__isset.colorTable = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 2:
+        if (ftype == ::apache::thrift::protocol::T_BOOL) {
+          xfer += iprot->readBool(this->hasEnded);
+          this->__isset.hasEnded = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 3:
+        if (ftype == ::apache::thrift::protocol::T_STRING) {
+          xfer += iprot->readString(this->winner);
+          this->__isset.winner = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 4:
+        if (ftype == ::apache::thrift::protocol::T_I16) {
+          xfer += iprot->readI16(this->firstPlayerProcessesNumber);
+          this->__isset.firstPlayerProcessesNumber = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      case 5:
+        if (ftype == ::apache::thrift::protocol::T_I16) {
+          xfer += iprot->readI16(this->secondPlayerProcessesNumber);
+          this->__isset.secondPlayerProcessesNumber = true;
+        } else {
+          xfer += iprot->skip(ftype);
+        }
+        break;
+      default:
+        xfer += iprot->skip(ftype);
+        break;
+    }
+    xfer += iprot->readFieldEnd();
+  }
+
+  xfer += iprot->readStructEnd();
+
+  return xfer;
+}
+
+uint32_t GameInfo::write(::apache::thrift::protocol::TProtocol* oprot) const {
+  uint32_t xfer = 0;
+  apache::thrift::protocol::TOutputRecursionTracker tracker(*oprot);
+  xfer += oprot->writeStructBegin("GameInfo");
+
+  xfer += oprot->writeFieldBegin("colorTable", ::apache::thrift::protocol::T_LIST, 1);
+  {
+    xfer += oprot->writeListBegin(::apache::thrift::protocol::T_STRING, static_cast<uint32_t>(this->colorTable.size()));
+    std::vector<std::string> ::const_iterator _iter7;
+    for (_iter7 = this->colorTable.begin(); _iter7 != this->colorTable.end(); ++_iter7)
+    {
+      xfer += oprot->writeString((*_iter7));
+    }
+    xfer += oprot->writeListEnd();
+  }
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("hasEnded", ::apache::thrift::protocol::T_BOOL, 2);
+  xfer += oprot->writeBool(this->hasEnded);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("winner", ::apache::thrift::protocol::T_STRING, 3);
+  xfer += oprot->writeString(this->winner);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("firstPlayerProcessesNumber", ::apache::thrift::protocol::T_I16, 4);
+  xfer += oprot->writeI16(this->firstPlayerProcessesNumber);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldBegin("secondPlayerProcessesNumber", ::apache::thrift::protocol::T_I16, 5);
+  xfer += oprot->writeI16(this->secondPlayerProcessesNumber);
+  xfer += oprot->writeFieldEnd();
+
+  xfer += oprot->writeFieldStop();
+  xfer += oprot->writeStructEnd();
+  return xfer;
+}
+
+void swap(GameInfo &a, GameInfo &b) {
+  using ::std::swap;
+  swap(a.colorTable, b.colorTable);
+  swap(a.hasEnded, b.hasEnded);
+  swap(a.winner, b.winner);
+  swap(a.firstPlayerProcessesNumber, b.firstPlayerProcessesNumber);
+  swap(a.secondPlayerProcessesNumber, b.secondPlayerProcessesNumber);
+  swap(a.__isset, b.__isset);
+}
+
+GameInfo::GameInfo(const GameInfo& other8) {
+  colorTable = other8.colorTable;
+  hasEnded = other8.hasEnded;
+  winner = other8.winner;
+  firstPlayerProcessesNumber = other8.firstPlayerProcessesNumber;
+  secondPlayerProcessesNumber = other8.secondPlayerProcessesNumber;
+  __isset = other8.__isset;
+}
+GameInfo& GameInfo::operator=(const GameInfo& other9) {
+  colorTable = other9.colorTable;
+  hasEnded = other9.hasEnded;
+  winner = other9.winner;
+  firstPlayerProcessesNumber = other9.firstPlayerProcessesNumber;
+  secondPlayerProcessesNumber = other9.secondPlayerProcessesNumber;
+  __isset = other9.__isset;
+  return *this;
+}
+void GameInfo::printTo(std::ostream& out) const {
+  using ::apache::thrift::to_string;
+  out << "GameInfo(";
+  out << "colorTable=" << to_string(colorTable);
+  out << ", " << "hasEnded=" << to_string(hasEnded);
+  out << ", " << "winner=" << to_string(winner);
+  out << ", " << "firstPlayerProcessesNumber=" << to_string(firstPlayerProcessesNumber);
+  out << ", " << "secondPlayerProcessesNumber=" << to_string(secondPlayerProcessesNumber);
+  out << ")";
+}
+
 } // namespace
