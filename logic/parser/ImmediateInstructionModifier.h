@@ -1,5 +1,5 @@
-#ifndef CORE_WARS_ZPR_IMMEDIATEINSTRUCTIONMODIFIER_H
-#define CORE_WARS_ZPR_IMMEDIATEINSTRUCTIONMODIFIER_H
+#ifndef CORE_WARS_ZPR_IMMIDIATEINSTRUCTIONMODIFIER_H
+#define CORE_WARS_ZPR_IMMIDIATEINSTRUCTIONMODIFIER_H
 
 #include "InstructionModifier.h"
 
@@ -12,7 +12,7 @@ public:
     ImmediateInstructionModifier(const char modifierCode);
 
     boost::optional<Instruction>
-    findTargetInstruction(MemoryIndex mIndex, const std::vector<Instruction> memoryArray) override;
+    findTargetInstruction(MemoryIndex &mIndex, const std::vector<Instruction> memoryArray) override;
 };
 
-#endif //CORE_WARS_ZPR_IMMEDIATEINSTRUCTIONMODIFIER_H
+#endif //CORE_WARS_ZPR_IMMIDIATEINSTRUCTIONMODIFIER_H

@@ -10,7 +10,7 @@ std::shared_ptr<InstructionModifier> ImmediateInstructionModifier::clone() const
 }
 
 boost::optional<Instruction>
-ImmediateInstructionModifier::findTargetInstruction(MemoryIndex mIndex, const std::vector<Instruction> memoryArray) {
+ImmediateInstructionModifier::findTargetInstruction(MemoryIndex &mIndex, const std::vector<Instruction> memoryArray) {
     boost::optional<Instruction> instr;
     return instr;
 }
