@@ -1,0 +1,12 @@
+\chapter{Dokumentacja użytkownika}
+Celem gry jest napisanie programu komputerowego w języku RedCode, który walczyć będzie o zasoby w symulowanym środowisku z programem napisanym przez innego gracza. Zasobem jest pamięć podzielona na 400 komórek. W każdej komórce mieści się maksymalnie jedna instrukcja programu. Zwycięża gracz, którego program wyeliminuje przeciwnika lub zajmie całą dostępną pamięć.
+Dostępne instrukcje języka RedCode:
+\begin{itemize}
+\item DAT - zabija proces
+\item MOV - przenosi dane z jednego adresu na drugi
+\item ADD - dodaje 2 liczby
+\item JMP - kontynuuje wykonanie programu od danego adresu
+\end{itemize}
+Wspierane są tryby adresowania natychmiastowy(immediate), pośredni(direct) i bezpośredni(indirect). Szczegółowe informacje, samouczek i przykładowe programy języka RedCode dostępne są na \href{http://vyznev.net/corewar/guide.html}{stronie internetowej}.
+
+Przed uruchomieniem wizualizacji gry w przeglądarce należy włączyć serwer oraz klienta C++. Po rozpoczęciu gry dostępne jest pole tekstowe, w którym należy wpisać kod programu, a nastepnie wcisnąć przycisk "Send code". Jeśli wystąpią błędy składniowe w programie gracza, zostanie wyświetlony komunikat zawierający informację o linijce, w której pojawił się błąd. W przeciwnym wypadku kod zostanie przyjęty, a gra poprosi o wpisanie kodu drugiego gracza. Jeżeli kod zostanie wczytany pomyślnie, rozpocznie się symulacja "walki" między dwoma programami, która zostanie zwizualizowana w postaci kolorowej tablicy. Każda komórka tablicy oznacza adres pamięci, a kolor symbolizuje instrukcję, która zapisana jest w danej komórce.
