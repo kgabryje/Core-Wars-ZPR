@@ -12,11 +12,15 @@ class MainController {
 public:
     void run();
 
+    MainController();
+
 private:
     MarsSimulator mars;
-
     void initialize();
-    void sendResultDontWaitForResponse(int i);
+
+    void sendResultDontWaitForResponse(std::vector<Instruction> result);
+
+    int iteration = 0;
 };
 
 

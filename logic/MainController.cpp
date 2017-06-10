@@ -2,10 +2,11 @@
 #include "Initializer.h"
 
 void MainController::run() {
-    int result;
+    vector<Instruction> result;
     initialize();
     while (1) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        iteration++;
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         result = mars.doStuff();
         sendResultDontWaitForResponse(result);
     }
@@ -17,7 +18,17 @@ void MainController::initialize() {
     mars.setInstructions(instructions);
 }
 
-void MainController::sendResultDontWaitForResponse(int i) {
-//connector.sendRefreshRequest(i);
-    printf("Uwaga %d",i);
+void MainController::sendResultDontWaitForResponse(vector<Instruction> result) {
+
+    int counter = 0;
+    for (Instruction i: result) {
+        if (i.getOperation()->getOpCode() != "DAT")
+            counter++;
+    }
+    std::cout << "Iteracja: " << iteration << " Liczba instrukcji nie DAT: " << counter << endl;
+
 }
+
+MainController::MainController() {}
+
+

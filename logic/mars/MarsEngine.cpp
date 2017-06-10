@@ -35,3 +35,8 @@ void MarsEngine::enterWarrior(int beginAddres, vector<Instruction> warrior) {
     for (int i = 0; i < warrior.size(); i++)
         memoryArray[*index++] = warrior[i];
 }
+
+boost::shared_ptr<MarsOperation> MarsEngine::getOperation(MemoryIndex index) {
+    Instruction i = memoryArray[*index];
+    return i.getOperation();
+}

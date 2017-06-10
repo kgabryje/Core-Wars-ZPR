@@ -21,6 +21,8 @@ public:
 
     void enterWarrior(int beginAddres, std::vector<Instruction> code);
 
+    boost::shared_ptr<MarsOperation> getOperation(MemoryIndex index);
+
 private:
     std::vector<Instruction> memoryArray;
 };
