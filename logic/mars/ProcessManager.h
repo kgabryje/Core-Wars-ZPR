@@ -7,9 +7,12 @@
 class ProcessManager {
 
 public:
+    ProcessManager();
     ProcessManager(int firstProcess);
 
     ProcessManager(MemoryIndex firstProcess);
+
+    void setFirstProcess(MemoryIndex firstProcess);
 
     void jumpOver(int i);
 

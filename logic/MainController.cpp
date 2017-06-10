@@ -19,8 +19,10 @@ void MainController::run() {
 
 void MainController::initialize() {
     Initializer init;
-    vector<Instruction> instructions = init.sendCodeRequestAndParse();
-    mars.setInstructions(instructions);
+    vector<Instruction> firstWarrior = init.sendCodeRequestAndParse();
+
+    //vector<Instruction> secondWarrior = init.sendCodeRequestAndParse();
+    mars.setWarriors(firstWarrior);
 }
 
 void MainController::sendResultDontWaitForResponse(vector<Instruction> result) {

@@ -10,14 +10,20 @@ class MarsSimulator {
 public:
     MarsSimulator();
 
-    void setInstructions(std::vector<Instruction> instructions);
+    void setWarriors(std::vector<Instruction> instructions);
 
     std::vector<Instruction> doStuff();
 
 private:
-    int beginAddress = 10;
-    MarsEngine mars = MarsEngine();
-    ProcessManager pm = ProcessManager(beginAddress);
+    MarsEngine mars;
+    ProcessManager firstWarriorManager;
+    ProcessManager secondWarriorManager;
+
+    void setWarrior(std::vector<Instruction> instructions, ProcessManager &warriorManager);
+
+    int getRandomMemoryAddress();
+
+    void doIteration(ProcessManager &warriorManager);
 };
 
 

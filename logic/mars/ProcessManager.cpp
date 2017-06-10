@@ -41,4 +41,14 @@ void ProcessManager::jumpFromCurrentInstruction(int jumpValue) {
     jumpOver(jumpValue);
 }
 
+void ProcessManager::setFirstProcess(MemoryIndex firstAddress) {
+    processes = std::queue<MemoryIndex>();
+    processes.push(firstAddress);
+
+}
+
+ProcessManager::ProcessManager() {
+
+}
+
 
