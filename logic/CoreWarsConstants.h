@@ -6,6 +6,12 @@
 namespace MARSConstants {
     const int MEMORY_ARRAY_SIZE(400);
 }
+namespace ViewConstants {
+    const std::string INSTR_COLOR_DAT("blue");
+    const std::string INSTR_COLOR_MOV("red");
+    const std::string INSTR_COLOR_ADD("pink");
+    const std::string INSTR_COLOR_JMP("green");
+}
 
 namespace ParserConstants {
     const std::string WRONG_SYNTAX_EXCEPTION("Wrong instruction syntax ");

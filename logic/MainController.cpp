@@ -32,14 +32,14 @@ void MainController::sendResultDontWaitForResponse(IterationResult result) {
     gameInfo.__set_firstPlayerProcessesNumber(result.getFirstWarriorProcessesIndexes().size());
     gameInfo.__set_secondPlayerProcessesNumber(result.getSecondWarriorProcessesIndexes().size());
     for (Instruction i: result.getMemoryArray()) {
-        if (i.getOperation()->getOpCode() == "DAT")
-            gameInfo.colorTable.push_back("blue");
-        else if (i.getOperation()->getOpCode() == "MOV")
-            gameInfo.colorTable.push_back("red");
-        else if (i.getOperation()->getOpCode() == "JMP")
-            gameInfo.colorTable.push_back("yellow");
-        else if (i.getOperation()->getOpCode() == "ADD")
-            gameInfo.colorTable.push_back("green");
+        if (i.getOperation()->getOpCode() == ParserConstants::INSTR_CODE_DAT)
+            gameInfo.colorTable.push_back(ViewConstants::INSTR_COLOR_DAT);
+        else if (i.getOperation()->getOpCode() == ParserConstants::INSTR_CODE_MOV)
+            gameInfo.colorTable.push_back(ViewConstants::INSTR_COLOR_MOV);
+        else if (i.getOperation()->getOpCode() == ParserConstants::INSTR_CODE_JMP)
+            gameInfo.colorTable.push_back(ViewConstants::INSTR_COLOR_JMP);
+        else if (i.getOperation()->getOpCode() == ParserConstants::INSTR_CODE_ADD)
+            gameInfo.colorTable.push_back(ViewConstants::INSTR_COLOR_ADD);
     }
 
     ServerConnector::getInstance().setGameInfo(gameInfo);
