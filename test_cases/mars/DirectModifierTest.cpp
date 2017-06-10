@@ -1,6 +1,7 @@
 #include <logic/mars/MarsEngine.h>
 #include <logic/parser/RedcodeParser.h>
 #include <logic/parser/InstructionModifierCreator.h>
+
 #include "test_cases/catch.hpp"
 
 MarsEngine *prepareMars();
@@ -12,6 +13,7 @@ SCENARIO("DirectModifierTest: fetching Instructions") {
     GIVEN("MarsEngine with added instructions and MemoryIndex") {
         MarsEngine *mars = prepareMars();
         MemoryIndex indexOne(8);
+
         WHEN("Direct modifier points to empty memory (DAT default)") {
             boost::shared_ptr<InstructionModifier> minus2 = prepareInstrMod("-3");
             THEN("Fetched instruction has DAT operation and 2 zeros") {
@@ -40,8 +42,8 @@ MarsEngine *prepareMars() {
     string userInput =
             "MOV #0 \n"
                     "JMP $5, @2\n"
-                    "MOV #-2,8";
-    "JMP #-23,8";
+                    "MOV #-2,8\n"
+                    "JMP #-23,8";
     vector<Instruction> parsed = RedcodeParser::parse(userInput);
 
     mars->enterWarrior(beginningAddress, parsed);
