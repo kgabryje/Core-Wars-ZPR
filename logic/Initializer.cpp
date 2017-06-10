@@ -19,7 +19,6 @@ vector<Instruction> Initializer::sendCodeRequestAndParse(string successMessage) 
     while (!codeIsFine) {
         string code = demandCode();
         try {
-            std::cout << "Received instructions: " << code << std::endl;
             instructions = parser.parse(code);
             message = successMessage;
             codeIsFine = true;

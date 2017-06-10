@@ -31,7 +31,6 @@ void MainController::sendResultDontWaitForResponse(IterationResult result) {
     MARS::GameInfo gameInfo;
     gameInfo.__set_firstPlayerProcessesNumber(result.getFirst().getSize());
     gameInfo.__set_secondPlayerProcessesNumber(result.getSecond().getSize());
-    int counter = 0;
     for (Instruction i: result.getResult()) {
         if (i.getOperation()->getOpCode() == "DAT")
             gameInfo.colorTable.push_back("blue");
@@ -44,7 +43,6 @@ void MainController::sendResultDontWaitForResponse(IterationResult result) {
     }
 
     ServerConnector::getInstance().setGameInfo(gameInfo);
-    std::cout << "Iteracja: " << iteration << " Liczba instrukcji nie DAT: " << counter << endl;
 }
 
 MainController::MainController() {}

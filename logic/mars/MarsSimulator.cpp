@@ -39,18 +39,11 @@ int MarsSimulator::getRandomMemoryAddress() {
 }
 
 void MarsSimulator::doIteration(ProcessManager &warriorManager) {
-    int i = 0;
-    std::cout << i++ << std::endl;//0
     MemoryIndex mi = warriorManager.getCurrentAddress();
-    std::cout << i++ << std::endl;//1
     std::shared_ptr<OperationParams> operationParams = mars.execute(mi);
-    std::cout << i++ << std::endl;//2
     std::shared_ptr<MarsOperation> operation = mars.getOperation(mi);
-    std::cout << i++ << std::endl;//3
     OperationResult iterationResult = operationParams->accept(operation);
-    std::cout << i++ << std::endl;//4
     iterationResult.getPrecessAction()->runAction(warriorManager);
-    std::cout << i++ << std::endl;//5
     mars.editMemoryArray(iterationResult.getInstructions());
 }
 
