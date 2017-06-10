@@ -8,16 +8,18 @@
 
 class ViewConnector {
 
-    void colourOperations(const Instruction &i);
-
-    void colourWarriorProcesses(int i, const std::string colour);
-
+public:
     void sendToView(IterationResult result);
 
 private:
     MARS::GameInfo gameInfo;
 
     void createViewData(const IterationResult &result);
+
+    void colourOperations(const Instruction &i);
+
+    void colourWarriorProcesses(int i, const std::string colour);
+
 };
 
 
