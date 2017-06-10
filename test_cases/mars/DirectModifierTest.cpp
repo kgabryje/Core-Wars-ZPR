@@ -23,9 +23,9 @@ SCENARIO("DirectModifierTest: fetching Instructions") {
                 REQUIRE(i->getAValue() == 0);
             }
         }
-        AND_WHEN("Direct modifier points to inserted isntruction") {
+        AND_WHEN("Direct modifier points to inserted instruction") {
             boost::shared_ptr<InstructionModifier> plus2 = prepareInstrMod("3");
-            THEN("That particular istruction is fetchec") {
+            THEN("That particular instruction is fetched") {
                 boost::optional<Instruction> i = plus2->findTargetInstruction(indexOne, mars->getMemoryArray());
                 REQUIRE(i->getOperation()->getOpCode() == ParserConstants::INSTR_CODE_JMP);
                 REQUIRE(i->getBValue() == 2);
