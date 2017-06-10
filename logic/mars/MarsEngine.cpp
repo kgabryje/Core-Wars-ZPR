@@ -79,7 +79,7 @@ void MarsEngine::editMemoryArray(const std::vector<Instruction> instructionsToMo
     for (int i = 0; i < instructionsToModify.size(); i++) {
         std::cout << "Inserting : " << instructionsToModify[i].getOperation().get()->getOpCode() << " at "
                   << instructionsToModify[i].getLastMemoryIndex() << std::endl;
-        memoryArray.insert(memoryArray.begin() + instructionsToModify[i].getLastMemoryIndex(), instructionsToModify[i]);
+        memoryArray[instructionsToModify[i].getLastMemoryIndex()] = instructionsToModify[i];
         std::cout << "Result : "
                   << memoryArray[instructionsToModify[i].getLastMemoryIndex()].getOperation().get()->getOpCode()
                   << std::endl;

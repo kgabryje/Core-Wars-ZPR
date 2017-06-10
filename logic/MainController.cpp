@@ -11,6 +11,7 @@ void MainController::run() {
         std::cout << "Test1" << std::endl;
         result = mars.doStuff();
         std::cout << "Test2" << std::endl;
+        std::cout << "result size: " << result.size() << std::endl;
         sendResultDontWaitForResponse(result);
         std::cout << "Test3" << std::endl;
     }
