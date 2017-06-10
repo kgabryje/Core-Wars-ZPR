@@ -8,7 +8,9 @@
 #include <condition_variable>
 #include <thread>
 #include <iostream>
+#include <chrono>
 
+using namespace std::literals::chrono_literals;
 using namespace ::apache::thrift;
 using namespace ::apache::thrift::protocol;
 using namespace ::apache::thrift::transport;
@@ -39,7 +41,7 @@ public:
         std::unique_lock<std::mutex> lk(m);
         waiting = true;
         cv.notify_one();
-        cv.wait(lk, [this]{return received;});
+        cv.wait_for(lk, 1000ms, [this]{return received;});
         _return = message;
         received = false;
         waiting = false;
