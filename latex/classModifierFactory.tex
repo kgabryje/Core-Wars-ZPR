@@ -1,0 +1,64 @@
+\hypertarget{classModifierFactory}{}\section{Modifier\+Factory Class Reference}
+\label{classModifierFactory}\index{Modifier\+Factory@{Modifier\+Factory}}
+
+
+{\ttfamily \#include $<$Modifier\+Factory.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \hyperlink{classModifierFactory_a2c5bcf63ebfe5acd617783ffb6468ec7}{create\+Modifier} (const char raw\+Modifier)
+\item 
+static bool \hyperlink{classModifierFactory_a44341cfff086fc453d24fe5d01c8bfa6}{is\+Modifier\+Omitted} (const char modifier)
+\item 
+static std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \hyperlink{classModifierFactory_af215ef0d0aa2e9e4860148fecfe952f8}{create\+Default\+Modifier} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class managing creating instruction modifiers, implementing factory design pattern 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classModifierFactory_af215ef0d0aa2e9e4860148fecfe952f8}\label{classModifierFactory_af215ef0d0aa2e9e4860148fecfe952f8}} 
+\index{Modifier\+Factory@{Modifier\+Factory}!create\+Default\+Modifier@{create\+Default\+Modifier}}
+\index{create\+Default\+Modifier@{create\+Default\+Modifier}!Modifier\+Factory@{Modifier\+Factory}}
+\subsubsection{\texorpdfstring{create\+Default\+Modifier()}{createDefaultModifier()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ Modifier\+Factory\+::create\+Default\+Modifier (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates shared pointer to object initialized with default constructor \begin{DoxyReturn}{Returns}
+pointer to \hyperlink{classDirectInstructionModifier}{Direct\+Instruction\+Modifier} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModifierFactory_a2c5bcf63ebfe5acd617783ffb6468ec7}\label{classModifierFactory_a2c5bcf63ebfe5acd617783ffb6468ec7}} 
+\index{Modifier\+Factory@{Modifier\+Factory}!create\+Modifier@{create\+Modifier}}
+\index{create\+Modifier@{create\+Modifier}!Modifier\+Factory@{Modifier\+Factory}}
+\subsubsection{\texorpdfstring{create\+Modifier()}{createModifier()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ Modifier\+Factory\+::create\+Modifier (\begin{DoxyParamCaption}\item[{const char}]{raw\+Modifier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates instruction modfiers 
+\begin{DoxyParams}{Parameters}
+{\em raw\+Modifier} & \hyperlink{classInstruction}{Instruction} modifier code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classInstructionModifier}{Instruction\+Modifier} object of class deduced from code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classModifierFactory_a44341cfff086fc453d24fe5d01c8bfa6}\label{classModifierFactory_a44341cfff086fc453d24fe5d01c8bfa6}} 
+\index{Modifier\+Factory@{Modifier\+Factory}!is\+Modifier\+Omitted@{is\+Modifier\+Omitted}}
+\index{is\+Modifier\+Omitted@{is\+Modifier\+Omitted}!Modifier\+Factory@{Modifier\+Factory}}
+\subsubsection{\texorpdfstring{is\+Modifier\+Omitted()}{isModifierOmitted()}}
+{\footnotesize\ttfamily bool Modifier\+Factory\+::is\+Modifier\+Omitted (\begin{DoxyParamCaption}\item[{const char}]{modifier }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em modifier} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if modifier equals \char`\"{}-\/\char`\"{} or is digit 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logic/parser/Modifier\+Factory.\+h\item 
+logic/parser/Modifier\+Factory.\+cpp\end{DoxyCompactItemize}

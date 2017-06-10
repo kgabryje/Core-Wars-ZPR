@@ -3,6 +3,9 @@
 
 #include <string>
 
+/**
+ * Parser exception class
+ */
 class ParserException : public std::exception{
 public:
     ParserException(const std::string &message);

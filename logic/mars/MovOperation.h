@@ -5,6 +5,9 @@
 #include "OperationParamsMixed.h"
 #include "OperationParamsInstructions.h"
 
+/**
+ * Class representing MOV operation
+ */
 class MovOperation : public MarsOperation {
 public:
     MovOperation();

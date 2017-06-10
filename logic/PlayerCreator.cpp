@@ -1,5 +1,10 @@
 #include "PlayerCreator.h"
 
+/**
+ *
+ * @param inputs
+ * @return
+ */
 std::vector<Player> PlayerCreator::createPlayers(std::vector<ViewInput> inputs) {
     std::vector<Player> players;
     for (auto &input: inputs) {

@@ -14,6 +14,9 @@ using namespace apache::thrift::transport;
 
 //using boost::shared_ptr;
 
+/**
+ * Singleton class acting as a connector between c++ client and server
+ */
 class ServerConnector {
 public:
     static ServerConnector& getInstance();

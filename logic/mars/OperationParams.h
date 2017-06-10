@@ -5,6 +5,9 @@
 #include "MarsOperation.h"
 #include <boost/shared_ptr.hpp>
 
+/**
+ * Base class representing operation parameters
+ */
 class OperationParams {
 
 public:

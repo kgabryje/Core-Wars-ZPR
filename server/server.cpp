@@ -24,6 +24,10 @@ public:
     printf("server started\n");
     }
 
+    /**
+     * Get redcode from browser
+     * @param c structure containing player's code
+     */
     void receiveFromJS(const Code& c) {
       if (waiting) {
           {
@@ -34,7 +38,10 @@ public:
           cv.notify_all();
       }
     }
-
+    /**
+     * Tell javascript if code parsing succeeded or not
+     * @param _return message sent to javascript
+     */
     void sendMessage(std::string& _return) {
         std::unique_lock<std::mutex> lk(m);
         waiting = true;
@@ -45,6 +52,10 @@ public:
         waiting = false;
     }
 
+    /**
+     * Receive message from c++ client whether parsing succeeded
+     * @param message
+     */
     void getMessage(const std::string& message) {
         std::unique_lock<std::mutex> lk(m);
         cv.wait(lk, [this]{return waiting;});
@@ -57,6 +68,10 @@ public:
         cv.notify_all();
     }
 
+    /**
+     * Send code from javascript to c++ client
+     * @param _return player's code
+     */
     void getCode(std::string& _return) {
       std::unique_lock<std::mutex> lk(m);
       std::cerr << "Waiting... \n";
@@ -68,6 +83,10 @@ public:
       waiting = false;
     }
 
+    /**
+     * Send vector with colors to draw to javascript
+     * @param _return table with colors
+     */
     void getColorTable(std::vector<std::string> & _return) {
         std::unique_lock<std::mutex> lk(m);
         cv.wait(lk, [this]{return table_update;});
@@ -75,6 +94,10 @@ public:
         table_update = false;
     }
 
+    /**
+     * Receive vector with colors from c++ client
+     * @param colorTable
+     */
     void setColorTable(const std::vector<std::string> & colorTable) {
         this->colorTable = colorTable;
         table_update = true;

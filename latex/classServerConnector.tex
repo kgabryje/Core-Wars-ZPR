@@ -1,0 +1,72 @@
+\hypertarget{classServerConnector}{}\section{Server\+Connector Class Reference}
+\label{classServerConnector}\index{Server\+Connector@{Server\+Connector}}
+
+
+{\ttfamily \#include $<$Server\+Connector.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classServerConnector_a92138ee10522c4fb7178a5a49a7612f0}{get\+Code} ()
+\item 
+void \hyperlink{classServerConnector_a2963c73cef3f803103a558cd13d5ed86}{send\+Message} (const std\+::string \&message)
+\item 
+void \hyperlink{classServerConnector_a382cdb4cb863d8c073c6f1a5154e5bce}{set\+Color\+Table} (const std\+::vector$<$ std\+::string $>$ \&color\+Table)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classServerConnector}{Server\+Connector} \& \hyperlink{classServerConnector_a1b254a471399bbb440ea7978cba085c9}{get\+Instance} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Singleton class acting as a connector between c++ client and server 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classServerConnector_a92138ee10522c4fb7178a5a49a7612f0}\label{classServerConnector_a92138ee10522c4fb7178a5a49a7612f0}} 
+\index{Server\+Connector@{Server\+Connector}!get\+Code@{get\+Code}}
+\index{get\+Code@{get\+Code}!Server\+Connector@{Server\+Connector}}
+\subsubsection{\texorpdfstring{get\+Code()}{getCode()}}
+{\footnotesize\ttfamily std\+::string Server\+Connector\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Gets warrior\textquotesingle{}s code from server \begin{DoxyReturn}{Returns}
+warrior code 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServerConnector_a1b254a471399bbb440ea7978cba085c9}\label{classServerConnector_a1b254a471399bbb440ea7978cba085c9}} 
+\index{Server\+Connector@{Server\+Connector}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!Server\+Connector@{Server\+Connector}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily \hyperlink{classServerConnector}{Server\+Connector} \& Server\+Connector\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+instance of \hyperlink{classServerConnector}{Server\+Connector} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServerConnector_a2963c73cef3f803103a558cd13d5ed86}\label{classServerConnector_a2963c73cef3f803103a558cd13d5ed86}} 
+\index{Server\+Connector@{Server\+Connector}!send\+Message@{send\+Message}}
+\index{send\+Message@{send\+Message}!Server\+Connector@{Server\+Connector}}
+\subsubsection{\texorpdfstring{send\+Message()}{sendMessage()}}
+{\footnotesize\ttfamily void Server\+Connector\+::send\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})}
+
+Relays message about whether warrior code parsing succeeded to server 
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classServerConnector_a382cdb4cb863d8c073c6f1a5154e5bce}\label{classServerConnector_a382cdb4cb863d8c073c6f1a5154e5bce}} 
+\index{Server\+Connector@{Server\+Connector}!set\+Color\+Table@{set\+Color\+Table}}
+\index{set\+Color\+Table@{set\+Color\+Table}!Server\+Connector@{Server\+Connector}}
+\subsubsection{\texorpdfstring{set\+Color\+Table()}{setColorTable()}}
+{\footnotesize\ttfamily void Server\+Connector\+::set\+Color\+Table (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{color\+Table }\end{DoxyParamCaption})}
+
+Sends vector of colors to server 
+\begin{DoxyParams}{Parameters}
+{\em color\+Table} & vector of colors \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logic/Server\+Connector.\+h\item 
+logic/Server\+Connector.\+cpp\end{DoxyCompactItemize}

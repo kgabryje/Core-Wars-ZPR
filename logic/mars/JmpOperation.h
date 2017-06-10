@@ -5,7 +5,9 @@
 #include "OperationParamsMixed.h"
 #include "OperationParamsInstructions.h"
 
-
+/**
+ * Class representing JMP operation
+ */
 class JmpOperation : public MarsOperation {
 public:
     JmpOperation();

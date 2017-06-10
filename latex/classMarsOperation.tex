@@ -1,0 +1,36 @@
+\hypertarget{classMarsOperation}{}\section{Mars\+Operation Class Reference}
+\label{classMarsOperation}\index{Mars\+Operation@{Mars\+Operation}}
+
+
+{\ttfamily \#include $<$Mars\+Operation.\+h$>$}
+
+Inheritance diagram for Mars\+Operation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMarsOperation}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMarsOperation_ad9897bc8c38be46877392fd999444de7}\label{classMarsOperation_ad9897bc8c38be46877392fd999444de7}} 
+{\bfseries Mars\+Operation} (const std\+::string op\+Code)
+\item 
+\mbox{\Hypertarget{classMarsOperation_a81cea2fbb13b712743fb53edfdff1962}\label{classMarsOperation_a81cea2fbb13b712743fb53edfdff1962}} 
+const std\+::string \& {\bfseries get\+Op\+Code} () const
+\item 
+\mbox{\Hypertarget{classMarsOperation_ac152b465684f88621ce38f01d60cab49}\label{classMarsOperation_ac152b465684f88621ce38f01d60cab49}} 
+virtual std\+::shared\+\_\+ptr$<$ \hyperlink{classProcessAction}{Process\+Action} $>$ {\bfseries run\+Operation} (\hyperlink{classOperationParamsMixed}{Operation\+Params\+Mixed} $\ast$oper\+Params)=0
+\item 
+\mbox{\Hypertarget{classMarsOperation_a38f03421e2eaf1c38514c97a893bed27}\label{classMarsOperation_a38f03421e2eaf1c38514c97a893bed27}} 
+virtual std\+::shared\+\_\+ptr$<$ \hyperlink{classProcessAction}{Process\+Action} $>$ {\bfseries run\+Operation} (\hyperlink{classOperationParamsInstructions}{Operation\+Params\+Instructions} $\ast$oper\+Params)=0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class representing Operation 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logic/mars/Mars\+Operation.\+h\item 
+logic/mars/Mars\+Operation.\+cpp\end{DoxyCompactItemize}

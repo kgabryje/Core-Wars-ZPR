@@ -1,0 +1,37 @@
+\hypertarget{classRawCodeFormatter}{}\section{Raw\+Code\+Formatter Class Reference}
+\label{classRawCodeFormatter}\index{Raw\+Code\+Formatter@{Raw\+Code\+Formatter}}
+
+
+{\ttfamily \#include $<$Raw\+Code\+Formatter.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ \hyperlink{classRawCodeFormatter_a6192c5bbd56a0ca5f06c5fa5f4ed34bc}{format} (std\+::string string\+To\+Format)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class managing formatting warrior code 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classRawCodeFormatter_a6192c5bbd56a0ca5f06c5fa5f4ed34bc}\label{classRawCodeFormatter_a6192c5bbd56a0ca5f06c5fa5f4ed34bc}} 
+\index{Raw\+Code\+Formatter@{Raw\+Code\+Formatter}!format@{format}}
+\index{format@{format}!Raw\+Code\+Formatter@{Raw\+Code\+Formatter}}
+\subsubsection{\texorpdfstring{format()}{format()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ int, std\+::string $>$ $>$ Raw\+Code\+Formatter\+::format (\begin{DoxyParamCaption}\item[{std\+::string}]{string\+To\+Format }\end{DoxyParamCaption})}
+
+Splits warrior code into lines, trims whitespaces and deletes commented or empty lines 
+\begin{DoxyParams}{Parameters}
+{\em string\+To\+Format} & \hyperlink{classWarrior}{Warrior} code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of Redcode instructions and instruction numbers 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logic/parser/Raw\+Code\+Formatter.\+h\item 
+logic/parser/Raw\+Code\+Formatter.\+cpp\end{DoxyCompactItemize}

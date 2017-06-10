@@ -4,6 +4,9 @@
 #include <queue>
 #include "MemoryIndex.h"
 
+/**
+ * Class for managing processes
+ */
 class ProcessManager {
 
 public:

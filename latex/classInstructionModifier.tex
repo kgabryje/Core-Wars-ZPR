@@ -1,0 +1,38 @@
+\hypertarget{classInstructionModifier}{}\section{Instruction\+Modifier Class Reference}
+\label{classInstructionModifier}\index{Instruction\+Modifier@{Instruction\+Modifier}}
+Inheritance diagram for Instruction\+Modifier\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classInstructionModifier}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classInstructionModifier_a5df9e76d602aef4ddea650fbded1a87b}\label{classInstructionModifier_a5df9e76d602aef4ddea650fbded1a87b}} 
+{\bfseries Instruction\+Modifier} (const std\+::string \&modifier\+Code, int value=0)
+\item 
+\mbox{\Hypertarget{classInstructionModifier_a9428b66e9cef33e36a23c29a560633b5}\label{classInstructionModifier_a9428b66e9cef33e36a23c29a560633b5}} 
+virtual std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ {\bfseries clone} () const =0
+\item 
+\mbox{\Hypertarget{classInstructionModifier_a895656f8ed78b2556191e619fb8df5f1}\label{classInstructionModifier_a895656f8ed78b2556191e619fb8df5f1}} 
+const std\+::string \& {\bfseries get\+Modifier\+Code} () const
+\item 
+\mbox{\Hypertarget{classInstructionModifier_a645afded73fb907e64720b1c9b53779e}\label{classInstructionModifier_a645afded73fb907e64720b1c9b53779e}} 
+int {\bfseries get\+Value} () const
+\item 
+\mbox{\Hypertarget{classInstructionModifier_ad5bc86617da41a50fc17fd2c9c306800}\label{classInstructionModifier_ad5bc86617da41a50fc17fd2c9c306800}} 
+void {\bfseries set\+Value} (int value)
+\item 
+\mbox{\Hypertarget{classInstructionModifier_ae2e69b35ffdb18e71c9c9716c57a7e31}\label{classInstructionModifier_ae2e69b35ffdb18e71c9c9716c57a7e31}} 
+void {\bfseries set\+Modifier\+Code} (const std\+::string \&modifier\+Code)
+\item 
+\mbox{\Hypertarget{classInstructionModifier_a92b1272c5bce16b9d6a04841a6ee35e1}\label{classInstructionModifier_a92b1272c5bce16b9d6a04841a6ee35e1}} 
+virtual boost\+::optional$<$ \hyperlink{classInstruction}{Instruction} $>$ {\bfseries find\+Target\+Instruction} (\hyperlink{classMemoryIndex}{Memory\+Index} \&m\+Index, const std\+::vector$<$ \hyperlink{classInstruction}{Instruction} $>$ memory\+Array)=0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logic/parser/Instruction\+Modifier.\+h\item 
+logic/parser/Instruction\+Modifier.\+cpp\end{DoxyCompactItemize}

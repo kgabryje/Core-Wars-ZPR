@@ -1,0 +1,37 @@
+\hypertarget{classOperationFactory}{}\section{Operation\+Factory Class Reference}
+\label{classOperationFactory}\index{Operation\+Factory@{Operation\+Factory}}
+
+
+{\ttfamily \#include $<$Operation\+Factory.\+h$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$ \hyperlink{classOperationFactory_a97194e25673cefb82196d74091b1d2bf}{create\+Operation} (const string \&data)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class managing creating instructions, implementing factory design pattern 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classOperationFactory_a97194e25673cefb82196d74091b1d2bf}\label{classOperationFactory_a97194e25673cefb82196d74091b1d2bf}} 
+\index{Operation\+Factory@{Operation\+Factory}!create\+Operation@{create\+Operation}}
+\index{create\+Operation@{create\+Operation}!Operation\+Factory@{Operation\+Factory}}
+\subsubsection{\texorpdfstring{create\+Operation()}{createOperation()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$ Operation\+Factory\+::create\+Operation (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Creates operations 
+\begin{DoxyParams}{Parameters}
+{\em code} & \hyperlink{classInstruction}{Instruction} code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classMarsOperation}{Mars\+Operation} object of class deduced from code 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logic/parser/Operation\+Factory.\+h\item 
+logic/parser/Operation\+Factory.\+cpp\end{DoxyCompactItemize}

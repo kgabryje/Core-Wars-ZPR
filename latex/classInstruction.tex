@@ -1,0 +1,215 @@
+\hypertarget{classInstruction}{}\section{Instruction Class Reference}
+\label{classInstruction}\index{Instruction@{Instruction}}
+
+
+{\ttfamily \#include $<$Instruction.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classInstruction_a8189c6e3e0caeaec698ae8053abf84b4}{Instruction} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ operatorA, const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ operatorB)
+\item 
+\hyperlink{classInstruction_ad1758d4d7afbf358e529e1ce5b199890}{Instruction} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$ operation)
+\item 
+\hyperlink{classInstruction_a89efff676fc87ab4f831f4e7f4d574b9}{Instruction} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$ operation, const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ operatorA, const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ operatorB)
+\item 
+const std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$ \& \hyperlink{classInstruction_a2cff68de6bb0e59aa8d32adb7c5a956a}{get\+Operation} () const
+\item 
+void \hyperlink{classInstruction_a6c3579495382c92ec38816636d2e98ef}{set\+Operation} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$ \&operation)
+\item 
+const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \& \hyperlink{classInstruction_a2a21f6752465fd7d3401d43d57b7fa83}{get\+AddressA} () const
+\item 
+void \hyperlink{classInstruction_a3d0eeea6b5824a82518383e282550a39}{set\+AddressA} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \&addressA)
+\item 
+const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \& \hyperlink{classInstruction_a587656e972cb049fe5cd22159451d508}{get\+AddressB} () const
+\item 
+void \hyperlink{classInstruction_a8537c5d0dd3696b5f48ae297f4e89dbf}{set\+AddressB} (const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \&addressB)
+\item 
+void \hyperlink{classInstruction_a69c97b99c08ae8997122fb99e139c9aa}{add\+To\+A\+Value} (int i)
+\item 
+void \hyperlink{classInstruction_af626c46ca16688de0a7b31a88817fd39}{add\+To\+B\+Value} (int i)
+\item 
+int \hyperlink{classInstruction_a86228a629fcccffffeb73b9b17201864}{get\+A\+Value} ()
+\item 
+int \hyperlink{classInstruction_a02e899031bb2cb33d6e09bcfce3f9569}{get\+B\+Value} ()
+\item 
+void \hyperlink{classInstruction_a3650c10f4821a87e865906c5095d9e98}{set\+A\+Value} (int i)
+\item 
+void \hyperlink{classInstruction_aff4dda9270970f00f48d70245a79122c}{set\+B\+Value} (int i)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class representing \hyperlink{classInstruction}{Instruction}. A single \hyperlink{classInstruction}{Instruction} consists of 2 operators and an operation 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classInstruction_a8189c6e3e0caeaec698ae8053abf84b4}\label{classInstruction_a8189c6e3e0caeaec698ae8053abf84b4}} 
+\index{Instruction@{Instruction}!Instruction@{Instruction}}
+\index{Instruction@{Instruction}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{Instruction()}{Instruction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Instruction\+::\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$}]{operatorA,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$}]{operatorB }\end{DoxyParamCaption})}
+
+Constructor without specified operation 
+\begin{DoxyParams}{Parameters}
+{\em operatorA} & first address \\
+\hline
+{\em operatorB} & second address \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInstruction_ad1758d4d7afbf358e529e1ce5b199890}\label{classInstruction_ad1758d4d7afbf358e529e1ce5b199890}} 
+\index{Instruction@{Instruction}!Instruction@{Instruction}}
+\index{Instruction@{Instruction}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{Instruction()}{Instruction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Instruction\+::\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$}]{operation }\end{DoxyParamCaption})}
+
+Constructor without specified operators 
+\begin{DoxyParams}{Parameters}
+{\em operation} & Operation \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInstruction_a89efff676fc87ab4f831f4e7f4d574b9}\label{classInstruction_a89efff676fc87ab4f831f4e7f4d574b9}} 
+\index{Instruction@{Instruction}!Instruction@{Instruction}}
+\index{Instruction@{Instruction}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{Instruction()}{Instruction()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Instruction\+::\+Instruction (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$}]{operation,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$}]{operatorA,  }\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$}]{operatorB }\end{DoxyParamCaption})}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em operation} & Operation \\
+\hline
+{\em operatorA} & First address \\
+\hline
+{\em operatorB} & Second address \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classInstruction_a69c97b99c08ae8997122fb99e139c9aa}\label{classInstruction_a69c97b99c08ae8997122fb99e139c9aa}} 
+\index{Instruction@{Instruction}!add\+To\+A\+Value@{add\+To\+A\+Value}}
+\index{add\+To\+A\+Value@{add\+To\+A\+Value}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{add\+To\+A\+Value()}{addToAValue()}}
+{\footnotesize\ttfamily void Instruction\+::add\+To\+A\+Value (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+Adds i to addressA 
+\begin{DoxyParams}{Parameters}
+{\em i} & value to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInstruction_af626c46ca16688de0a7b31a88817fd39}\label{classInstruction_af626c46ca16688de0a7b31a88817fd39}} 
+\index{Instruction@{Instruction}!add\+To\+B\+Value@{add\+To\+B\+Value}}
+\index{add\+To\+B\+Value@{add\+To\+B\+Value}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{add\+To\+B\+Value()}{addToBValue()}}
+{\footnotesize\ttfamily void Instruction\+::add\+To\+B\+Value (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+Adds i to addressB 
+\begin{DoxyParams}{Parameters}
+{\em i} & value to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInstruction_a2a21f6752465fd7d3401d43d57b7fa83}\label{classInstruction_a2a21f6752465fd7d3401d43d57b7fa83}} 
+\index{Instruction@{Instruction}!get\+AddressA@{get\+AddressA}}
+\index{get\+AddressA@{get\+AddressA}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{get\+Address\+A()}{getAddressA()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \& Instruction\+::get\+AddressA (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns first address \begin{DoxyReturn}{Returns}
+addressA 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classInstruction_a587656e972cb049fe5cd22159451d508}\label{classInstruction_a587656e972cb049fe5cd22159451d508}} 
+\index{Instruction@{Instruction}!get\+AddressB@{get\+AddressB}}
+\index{get\+AddressB@{get\+AddressB}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{get\+Address\+B()}{getAddressB()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \& Instruction\+::get\+AddressB (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns second address \begin{DoxyReturn}{Returns}
+addressB 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classInstruction_a86228a629fcccffffeb73b9b17201864}\label{classInstruction_a86228a629fcccffffeb73b9b17201864}} 
+\index{Instruction@{Instruction}!get\+A\+Value@{get\+A\+Value}}
+\index{get\+A\+Value@{get\+A\+Value}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{get\+A\+Value()}{getAValue()}}
+{\footnotesize\ttfamily int Instruction\+::get\+A\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns value of first address \begin{DoxyReturn}{Returns}
+value of first address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classInstruction_a02e899031bb2cb33d6e09bcfce3f9569}\label{classInstruction_a02e899031bb2cb33d6e09bcfce3f9569}} 
+\index{Instruction@{Instruction}!get\+B\+Value@{get\+B\+Value}}
+\index{get\+B\+Value@{get\+B\+Value}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{get\+B\+Value()}{getBValue()}}
+{\footnotesize\ttfamily int Instruction\+::get\+B\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Returns value of second address \begin{DoxyReturn}{Returns}
+value of second address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classInstruction_a2cff68de6bb0e59aa8d32adb7c5a956a}\label{classInstruction_a2cff68de6bb0e59aa8d32adb7c5a956a}} 
+\index{Instruction@{Instruction}!get\+Operation@{get\+Operation}}
+\index{get\+Operation@{get\+Operation}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{get\+Operation()}{getOperation()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$ \& Instruction\+::get\+Operation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns operation \begin{DoxyReturn}{Returns}
+operation 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classInstruction_a3d0eeea6b5824a82518383e282550a39}\label{classInstruction_a3d0eeea6b5824a82518383e282550a39}} 
+\index{Instruction@{Instruction}!set\+AddressA@{set\+AddressA}}
+\index{set\+AddressA@{set\+AddressA}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{set\+Address\+A()}{setAddressA()}}
+{\footnotesize\ttfamily void Instruction\+::set\+AddressA (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \&}]{addressA }\end{DoxyParamCaption})}
+
+Sets first address 
+\begin{DoxyParams}{Parameters}
+{\em addressA} & First address \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInstruction_a8537c5d0dd3696b5f48ae297f4e89dbf}\label{classInstruction_a8537c5d0dd3696b5f48ae297f4e89dbf}} 
+\index{Instruction@{Instruction}!set\+AddressB@{set\+AddressB}}
+\index{set\+AddressB@{set\+AddressB}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{set\+Address\+B()}{setAddressB()}}
+{\footnotesize\ttfamily void Instruction\+::set\+AddressB (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classInstructionModifier}{Instruction\+Modifier} $>$ \&}]{addressB }\end{DoxyParamCaption})}
+
+Sets second address 
+\begin{DoxyParams}{Parameters}
+{\em addressA} & Second address \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInstruction_a3650c10f4821a87e865906c5095d9e98}\label{classInstruction_a3650c10f4821a87e865906c5095d9e98}} 
+\index{Instruction@{Instruction}!set\+A\+Value@{set\+A\+Value}}
+\index{set\+A\+Value@{set\+A\+Value}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{set\+A\+Value()}{setAValue()}}
+{\footnotesize\ttfamily void Instruction\+::set\+A\+Value (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+Sets value of first address 
+\begin{DoxyParams}{Parameters}
+{\em i} & new value of first address \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInstruction_aff4dda9270970f00f48d70245a79122c}\label{classInstruction_aff4dda9270970f00f48d70245a79122c}} 
+\index{Instruction@{Instruction}!set\+B\+Value@{set\+B\+Value}}
+\index{set\+B\+Value@{set\+B\+Value}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{set\+B\+Value()}{setBValue()}}
+{\footnotesize\ttfamily void Instruction\+::set\+B\+Value (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+Sets value of second address 
+\begin{DoxyParams}{Parameters}
+{\em i} & new value of second address \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classInstruction_a6c3579495382c92ec38816636d2e98ef}\label{classInstruction_a6c3579495382c92ec38816636d2e98ef}} 
+\index{Instruction@{Instruction}!set\+Operation@{set\+Operation}}
+\index{set\+Operation@{set\+Operation}!Instruction@{Instruction}}
+\subsubsection{\texorpdfstring{set\+Operation()}{setOperation()}}
+{\footnotesize\ttfamily void Instruction\+::set\+Operation (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \hyperlink{classMarsOperation}{Mars\+Operation} $>$ \&}]{operation }\end{DoxyParamCaption})}
+
+Sets operation 
+\begin{DoxyParams}{Parameters}
+{\em operation} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+logic/mars/Instruction.\+h\item 
+logic/mars/Instruction.\+cpp\end{DoxyCompactItemize}

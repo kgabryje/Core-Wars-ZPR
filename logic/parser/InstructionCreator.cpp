@@ -3,8 +3,6 @@
 #include "InstructionModifierCreator.h"
 
 Instruction InstructionCreator::tryCreate(InstructionData data) {
-
-
     std::shared_ptr<MarsOperation> operation = OperationFactory::createOperation(data.getCode());
     Instruction instr(operation);
 

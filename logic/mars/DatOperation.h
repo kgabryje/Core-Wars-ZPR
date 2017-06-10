@@ -3,6 +3,9 @@
 
 #include "MarsOperation.h"
 
+/**
+ * Class representing DAT operation
+ */
 class DatOperation : public MarsOperation {
 public:
     DatOperation();

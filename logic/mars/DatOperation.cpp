@@ -1,7 +1,6 @@
 #include "DatOperation.h"
 #include "ProcessActionRemove.h"
 #include <logic/CoreWarsConstants.h>
-#include <boost/make_shared.hpp>
 
 DatOperation::DatOperation() : MarsOperation(ParserConstants::INSTR_CODE_DAT) {
 

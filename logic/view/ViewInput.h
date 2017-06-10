@@ -1,4 +1,4 @@
-#ifndef CORE_WARS_ZPR_VIEWINPUT_H
+#ifndef CORE_WARS_ZPR_VIEWINPUT_HServerConnector::setColorTable
 #define CORE_WARS_ZPR_VIEWINPUT_H
 
 

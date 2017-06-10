@@ -4,6 +4,9 @@
 #include "InstructionData.h"
 #include "../mars/Instruction.h"
 
+/**
+ * RedCode parser
+ */
 class RedcodeParser {
 public:
     static std::vector<Instruction> parse(string fileContents);

@@ -1,0 +1,101 @@
+\hypertarget{classMARS_1_1MARSConcurrentClient}{}\section{M\+A\+RS\+:\+:M\+A\+R\+S\+Concurrent\+Client Class Reference}
+\label{classMARS_1_1MARSConcurrentClient}\index{M\+A\+R\+S\+::\+M\+A\+R\+S\+Concurrent\+Client@{M\+A\+R\+S\+::\+M\+A\+R\+S\+Concurrent\+Client}}
+Inheritance diagram for M\+A\+RS\+:\+:M\+A\+R\+S\+Concurrent\+Client\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMARS_1_1MARSConcurrentClient}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a44e5432242b4a5aa4f8df5095ad31237}\label{classMARS_1_1MARSConcurrentClient_a44e5432242b4a5aa4f8df5095ad31237}} 
+{\bfseries M\+A\+R\+S\+Concurrent\+Client} (boost\+::shared\+\_\+ptr$<$ \+::apache\+::thrift\+::protocol\+::\+T\+Protocol $>$ prot)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a03239381b801cca92980ba68830779a4}\label{classMARS_1_1MARSConcurrentClient_a03239381b801cca92980ba68830779a4}} 
+{\bfseries M\+A\+R\+S\+Concurrent\+Client} (boost\+::shared\+\_\+ptr$<$ \+::apache\+::thrift\+::protocol\+::\+T\+Protocol $>$ iprot, boost\+::shared\+\_\+ptr$<$ \+::apache\+::thrift\+::protocol\+::\+T\+Protocol $>$ oprot)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_ad5920bf681a05c34c72b8844ae42cc23}\label{classMARS_1_1MARSConcurrentClient_ad5920bf681a05c34c72b8844ae42cc23}} 
+boost\+::shared\+\_\+ptr$<$ \+::apache\+::thrift\+::protocol\+::\+T\+Protocol $>$ {\bfseries get\+Input\+Protocol} ()
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_ae1a10971d664f7e69f9b08147426f18a}\label{classMARS_1_1MARSConcurrentClient_ae1a10971d664f7e69f9b08147426f18a}} 
+boost\+::shared\+\_\+ptr$<$ \+::apache\+::thrift\+::protocol\+::\+T\+Protocol $>$ {\bfseries get\+Output\+Protocol} ()
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a2791f9e0f7f4fbcf47805d7814fb58b3}\label{classMARS_1_1MARSConcurrentClient_a2791f9e0f7f4fbcf47805d7814fb58b3}} 
+void {\bfseries get\+Code} (std\+::string \&\+\_\+return)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a4d92e8b570eedfd91e0c002a800bbf4f}\label{classMARS_1_1MARSConcurrentClient_a4d92e8b570eedfd91e0c002a800bbf4f}} 
+int32\+\_\+t {\bfseries send\+\_\+get\+Code} ()
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a7b99d43fe1efc59bbe811efe1074902e}\label{classMARS_1_1MARSConcurrentClient_a7b99d43fe1efc59bbe811efe1074902e}} 
+void {\bfseries recv\+\_\+get\+Code} (std\+::string \&\+\_\+return, const int32\+\_\+t seqid)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a8bf493c19377e69e01fc94b40b758184}\label{classMARS_1_1MARSConcurrentClient_a8bf493c19377e69e01fc94b40b758184}} 
+void {\bfseries send\+Message} (std\+::string \&\+\_\+return)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a7dca0094b73698f263fb6f6201e5520b}\label{classMARS_1_1MARSConcurrentClient_a7dca0094b73698f263fb6f6201e5520b}} 
+int32\+\_\+t {\bfseries send\+\_\+send\+Message} ()
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a29d26ae66c87a412666bb37366adfd80}\label{classMARS_1_1MARSConcurrentClient_a29d26ae66c87a412666bb37366adfd80}} 
+void {\bfseries recv\+\_\+send\+Message} (std\+::string \&\+\_\+return, const int32\+\_\+t seqid)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a512bea2e51a5af96d0400de8212f5e78}\label{classMARS_1_1MARSConcurrentClient_a512bea2e51a5af96d0400de8212f5e78}} 
+void {\bfseries get\+Message} (const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a5df674de5c9b907d883ca6c83c9f362a}\label{classMARS_1_1MARSConcurrentClient_a5df674de5c9b907d883ca6c83c9f362a}} 
+int32\+\_\+t {\bfseries send\+\_\+get\+Message} (const std\+::string \&message)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a6864176227e2850d6f8b1e4e744cda72}\label{classMARS_1_1MARSConcurrentClient_a6864176227e2850d6f8b1e4e744cda72}} 
+void {\bfseries recv\+\_\+get\+Message} (const int32\+\_\+t seqid)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_af1b867b5428d8b73b12b579ef92b1abe}\label{classMARS_1_1MARSConcurrentClient_af1b867b5428d8b73b12b579ef92b1abe}} 
+void {\bfseries receive\+From\+JS} (const \hyperlink{classMARS_1_1Code}{Code} \&c)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a1c4f8d29e9b16f96961232ad5d190e95}\label{classMARS_1_1MARSConcurrentClient_a1c4f8d29e9b16f96961232ad5d190e95}} 
+int32\+\_\+t {\bfseries send\+\_\+receive\+From\+JS} (const \hyperlink{classMARS_1_1Code}{Code} \&c)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_ac03c1465036104325f70dd7b90b7d65e}\label{classMARS_1_1MARSConcurrentClient_ac03c1465036104325f70dd7b90b7d65e}} 
+void {\bfseries recv\+\_\+receive\+From\+JS} (const int32\+\_\+t seqid)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a6e1a523f7b3f7a86fc6c7e441072f7ef}\label{classMARS_1_1MARSConcurrentClient_a6e1a523f7b3f7a86fc6c7e441072f7ef}} 
+void {\bfseries get\+Color\+Table} (std\+::vector$<$ std\+::string $>$ \&\+\_\+return)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a3d8e8c14814bc75a56b0d44e4a64b630}\label{classMARS_1_1MARSConcurrentClient_a3d8e8c14814bc75a56b0d44e4a64b630}} 
+int32\+\_\+t {\bfseries send\+\_\+get\+Color\+Table} ()
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_ac9b85a17f818f274c012526f55c6b63f}\label{classMARS_1_1MARSConcurrentClient_ac9b85a17f818f274c012526f55c6b63f}} 
+void {\bfseries recv\+\_\+get\+Color\+Table} (std\+::vector$<$ std\+::string $>$ \&\+\_\+return, const int32\+\_\+t seqid)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a30ab9c7af1f8004627f5b3dd7c3d708d}\label{classMARS_1_1MARSConcurrentClient_a30ab9c7af1f8004627f5b3dd7c3d708d}} 
+void {\bfseries set\+Color\+Table} (const std\+::vector$<$ std\+::string $>$ \&color\+Table)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a25e1d52136ba48a6ab36dcdb26f96992}\label{classMARS_1_1MARSConcurrentClient_a25e1d52136ba48a6ab36dcdb26f96992}} 
+int32\+\_\+t {\bfseries send\+\_\+set\+Color\+Table} (const std\+::vector$<$ std\+::string $>$ \&color\+Table)
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_aaf2eb6886251ebd58e09bbba02566c5a}\label{classMARS_1_1MARSConcurrentClient_aaf2eb6886251ebd58e09bbba02566c5a}} 
+void {\bfseries recv\+\_\+set\+Color\+Table} (const int32\+\_\+t seqid)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_abbc464f5cd88899e7b55b365b8999c14}\label{classMARS_1_1MARSConcurrentClient_abbc464f5cd88899e7b55b365b8999c14}} 
+boost\+::shared\+\_\+ptr$<$ \+::apache\+::thrift\+::protocol\+::\+T\+Protocol $>$ {\bfseries piprot\+\_\+}
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a41f7e0d838a100400b56cc5763f5bf40}\label{classMARS_1_1MARSConcurrentClient_a41f7e0d838a100400b56cc5763f5bf40}} 
+boost\+::shared\+\_\+ptr$<$ \+::apache\+::thrift\+::protocol\+::\+T\+Protocol $>$ {\bfseries poprot\+\_\+}
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a7b6a397647c0f402fd48b8167afa3a97}\label{classMARS_1_1MARSConcurrentClient_a7b6a397647c0f402fd48b8167afa3a97}} 
+\+::apache\+::thrift\+::protocol\+::\+T\+Protocol $\ast$ {\bfseries iprot\+\_\+}
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_aca981420dbb6290f7ede939b6e5e65a5}\label{classMARS_1_1MARSConcurrentClient_aca981420dbb6290f7ede939b6e5e65a5}} 
+\+::apache\+::thrift\+::protocol\+::\+T\+Protocol $\ast$ {\bfseries oprot\+\_\+}
+\item 
+\mbox{\Hypertarget{classMARS_1_1MARSConcurrentClient_a795ec38fc8ea43d932d8de438d2a3678}\label{classMARS_1_1MARSConcurrentClient_a795ec38fc8ea43d932d8de438d2a3678}} 
+\+::apache\+::thrift\+::async\+::\+T\+Concurrent\+Client\+Sync\+Info {\bfseries sync\+\_\+}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+gen-\/cpp/M\+A\+R\+S.\+h\item 
+gen-\/cpp/M\+A\+R\+S.\+cpp\end{DoxyCompactItemize}

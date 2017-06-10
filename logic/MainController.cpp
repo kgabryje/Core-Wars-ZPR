@@ -1,6 +1,9 @@
 #include "MainController.h"
 #include "Initializer.h"
 
+/**
+ * Main loop of c++ client
+ */
 void MainController::run() {
     vector<Instruction> result;
     initialize();
@@ -12,6 +15,9 @@ void MainController::run() {
     }
 }
 
+/**
+ * Initializes MARS controller with Redcode instructions
+ */
 void MainController::initialize() {
     Initializer init;
     vector<Instruction> instructions = init.sendCodeRequestAndParse();

@@ -1,6 +1,5 @@
 #include "AddOperation.h"
 #include "ProcessActionContinue.h"
-#include <boost/make_shared.hpp>
 
 AddOperation::AddOperation() : MarsOperation(ParserConstants::INSTR_CODE_ADD) {
 
@@ -15,7 +14,6 @@ std::shared_ptr<ProcessAction> AddOperation::runOperation(OperationParamsMixed *
 }
 
 std::shared_ptr<ProcessAction> AddOperation::runOperation(OperationParamsInstructions *operParams) {
-
     Instruction &first = (operParams->getFirstInstruction());
     Instruction &second = (operParams->getSecondInstruction());
     second.addToAValue(first.getAValue());

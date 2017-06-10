@@ -5,13 +5,22 @@
 #include <algorithm>
 #include "RawCodeFormatter.h"
 
+/**
+ * Splits warrior code into lines, trims whitespaces and deletes commented or empty lines
+ * @param stringToFormat Warrior code
+ * @return vector of Redcode instructions and instruction numbers
+ */
 std::vector<std::pair<int, std::string>> RawCodeFormatter::format(std::string stringToFormat) {
-
     std::vector<std::pair<int, std::string>> lines = split(stringToFormat);
     lines = trimLines(lines);
     return deleteEmptyAndCommentedLines(lines);
 }
 
+/**
+ * Splits warrior code into lines
+ * @param stringToSplit Warrior code
+ * @return vector of codelines and line numbers
+ */
 std::vector<std::pair<int, std::string>> RawCodeFormatter::split(std::string stringToSplit) {
 
     std::istringstream rawCodeStream(stringToSplit);
@@ -27,6 +36,11 @@ std::vector<std::pair<int, std::string>> RawCodeFormatter::split(std::string str
     return lines;
 }
 
+/**
+ * Deletes empty or commented lines
+ * @param lines vector of codelines and line numbers
+ * @return formatted vector of instructions and line numbers
+ */
 std::vector<std::pair<int, std::string>>
 RawCodeFormatter::deleteEmptyAndCommentedLines(std::vector<std::pair<int, std::string>> lines) {
 
@@ -42,10 +56,24 @@ RawCodeFormatter::deleteEmptyAndCommentedLines(std::vector<std::pair<int, std::s
     return lines;
 }
 
+/**
+ * @param line line of warrior code
+ * @return true if line is commented
+ */
 bool RawCodeFormatter::isLineComment(const std::string &line) const { return line[0] == ';'; }
 
+/**
+ *
+ * @param line line of warrior code
+ * @return true if line is empty or whitespace
+ */
 bool RawCodeFormatter::isLineEmptyOrWhitespace(const std::string &line) const { return isspace(line[0]) || line==""; }
 
+/**
+ * trims whitespaces on the borders of line
+ * @param stringToTrim string to trim
+ * @return trimmed string
+ */
 std::string &RawCodeFormatter::trim(std::string &stringToTrim) {
 
     stringToTrim.erase(0, stringToTrim.find_first_not_of(' '));
@@ -53,6 +81,11 @@ std::string &RawCodeFormatter::trim(std::string &stringToTrim) {
     return stringToTrim;
 }
 
+/**
+ * Calls trim on lines of code
+ * @param lines vector of lines of code and line numbers
+ * @return trimmed lines of code
+ */
 std::vector<std::pair<int, std::string>> RawCodeFormatter::trimLines(std::vector<std::pair<int, std::string>> lines) {
 
     for (std::pair<int, std::string> &line: lines) {

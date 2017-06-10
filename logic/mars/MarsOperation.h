@@ -9,6 +9,9 @@ class OperationParamsMixed;
 
 class OperationParamsInstructions;
 
+/**
+ * Base class representing Operation
+ */
 class MarsOperation {
 public:
     MarsOperation(const std::string opCode);

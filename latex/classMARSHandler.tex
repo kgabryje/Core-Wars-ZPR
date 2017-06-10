@@ -1,0 +1,97 @@
+\hypertarget{classMARSHandler}{}\section{M\+A\+R\+S\+Handler Class Reference}
+\label{classMARSHandler}\index{M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}}
+Inheritance diagram for M\+A\+R\+S\+Handler\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMARSHandler}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classMARSHandler_aad361446a8dab85013f8eea681c95663}{receive\+From\+JS} (const Code \&c)
+\item 
+void \hyperlink{classMARSHandler_a59f960d2b59109d22eb25911284c167c}{send\+Message} (std\+::string \&\+\_\+return)
+\item 
+void \hyperlink{classMARSHandler_a87dbdc238b461bf59eb53e0a881aa34e}{get\+Message} (const std\+::string \&message)
+\item 
+void \hyperlink{classMARSHandler_a051b0a327d012bebb315083e5faf80e4}{get\+Code} (std\+::string \&\+\_\+return)
+\item 
+void \hyperlink{classMARSHandler_a9cc24026adecda320622810448188173}{get\+Color\+Table} (std\+::vector$<$ std\+::string $>$ \&\+\_\+return)
+\item 
+void \hyperlink{classMARSHandler_ac332bb9228000d1220fe80366fbccea4}{set\+Color\+Table} (const std\+::vector$<$ std\+::string $>$ \&color\+Table)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMARSHandler_a051b0a327d012bebb315083e5faf80e4}\label{classMARSHandler_a051b0a327d012bebb315083e5faf80e4}} 
+\index{M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}!get\+Code@{get\+Code}}
+\index{get\+Code@{get\+Code}!M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}}
+\subsubsection{\texorpdfstring{get\+Code()}{getCode()}}
+{\footnotesize\ttfamily void M\+A\+R\+S\+Handler\+::get\+Code (\begin{DoxyParamCaption}\item[{std\+::string \&}]{\+\_\+return }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send code from javascript to c++ client 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+return} & player\textquotesingle{}s code \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMARSHandler_a9cc24026adecda320622810448188173}\label{classMARSHandler_a9cc24026adecda320622810448188173}} 
+\index{M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}!get\+Color\+Table@{get\+Color\+Table}}
+\index{get\+Color\+Table@{get\+Color\+Table}!M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}}
+\subsubsection{\texorpdfstring{get\+Color\+Table()}{getColorTable()}}
+{\footnotesize\ttfamily void M\+A\+R\+S\+Handler\+::get\+Color\+Table (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{\+\_\+return }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Send vector with colors to draw to javascript 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+return} & table with colors \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMARSHandler_a87dbdc238b461bf59eb53e0a881aa34e}\label{classMARSHandler_a87dbdc238b461bf59eb53e0a881aa34e}} 
+\index{M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}!get\+Message@{get\+Message}}
+\index{get\+Message@{get\+Message}!M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}}
+\subsubsection{\texorpdfstring{get\+Message()}{getMessage()}}
+{\footnotesize\ttfamily void M\+A\+R\+S\+Handler\+::get\+Message (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Receive message from c++ client whether parsing succeeded 
+\begin{DoxyParams}{Parameters}
+{\em message} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMARSHandler_aad361446a8dab85013f8eea681c95663}\label{classMARSHandler_aad361446a8dab85013f8eea681c95663}} 
+\index{M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}!receive\+From\+JS@{receive\+From\+JS}}
+\index{receive\+From\+JS@{receive\+From\+JS}!M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}}
+\subsubsection{\texorpdfstring{receive\+From\+J\+S()}{receiveFromJS()}}
+{\footnotesize\ttfamily void M\+A\+R\+S\+Handler\+::receive\+From\+JS (\begin{DoxyParamCaption}\item[{const Code \&}]{c }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get redcode from browser 
+\begin{DoxyParams}{Parameters}
+{\em c} & structure containing player\textquotesingle{}s code \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMARSHandler_a59f960d2b59109d22eb25911284c167c}\label{classMARSHandler_a59f960d2b59109d22eb25911284c167c}} 
+\index{M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}!send\+Message@{send\+Message}}
+\index{send\+Message@{send\+Message}!M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}}
+\subsubsection{\texorpdfstring{send\+Message()}{sendMessage()}}
+{\footnotesize\ttfamily void M\+A\+R\+S\+Handler\+::send\+Message (\begin{DoxyParamCaption}\item[{std\+::string \&}]{\+\_\+return }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Tell javascript if code parsing succeeded or not 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+return} & message sent to javascript \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMARSHandler_ac332bb9228000d1220fe80366fbccea4}\label{classMARSHandler_ac332bb9228000d1220fe80366fbccea4}} 
+\index{M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}!set\+Color\+Table@{set\+Color\+Table}}
+\index{set\+Color\+Table@{set\+Color\+Table}!M\+A\+R\+S\+Handler@{M\+A\+R\+S\+Handler}}
+\subsubsection{\texorpdfstring{set\+Color\+Table()}{setColorTable()}}
+{\footnotesize\ttfamily void M\+A\+R\+S\+Handler\+::set\+Color\+Table (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{color\+Table }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Receive vector with colors from c++ client 
+\begin{DoxyParams}{Parameters}
+{\em color\+Table} & \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+server/server.\+cpp\end{DoxyCompactItemize}
