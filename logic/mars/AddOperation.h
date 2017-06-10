@@ -9,9 +9,9 @@ class AddOperation : public MarsOperation {
 public:
     AddOperation();
 
-    boost::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams) override;
+    std::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams) override;
 
-    virtual boost::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams);
+    virtual std::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams);
 };
 
 #endif //CORE_WARS_ZPR_ADDOPERATION_H

@@ -8,7 +8,7 @@
 class OperationFactory {
 
 public:
-    static boost::shared_ptr<MarsOperation> createOperation(const string &data);
+    static std::shared_ptr<MarsOperation> createOperation(const string &data);
 };
 
 

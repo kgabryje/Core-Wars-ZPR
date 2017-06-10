@@ -7,7 +7,7 @@
 #include <logic/mars/ProcessActionRemove.h>
 
 SCENARIO("DatOperationTest: checking DAT instr") {
-    boost::shared_ptr<MarsOperation> datOper = OperationFactory::createOperation(ParserConstants::INSTR_CODE_DAT);
+    std::shared_ptr<MarsOperation> datOper = OperationFactory::createOperation(ParserConstants::INSTR_CODE_DAT);
     REQUIRE(datOper.get()->getOpCode() == ParserConstants::INSTR_CODE_DAT);
     GIVEN("Params: instruction and number as OperationMixedParams") {
 
@@ -19,7 +19,7 @@ SCENARIO("DatOperationTest: checking DAT instr") {
         OperationParams *mixedParams = new OperationParamsMixed(num, instr);
 
         WHEN("MovOperation is executed") {
-            boost::shared_ptr<ProcessAction> res = mixedParams->accept(datOper);
+            std::shared_ptr<ProcessAction> res = mixedParams->accept(datOper);
 
             THEN("ProcessAction has correct Type") {
 
@@ -52,7 +52,7 @@ SCENARIO("DatOperationTest: checking DAT instr") {
 
         REQUIRE(doubleInstrParams != nullptr);
         WHEN("MovOperation is executed") {
-            boost::shared_ptr<ProcessAction> res = doubleInstrParams->accept(datOper);
+            std::shared_ptr<ProcessAction> res = doubleInstrParams->accept(datOper);
             THEN("ProcessAction has correct Type") {
 
                 ProcessActionRemove *con = dynamic_cast<ProcessActionRemove *> (res.get());

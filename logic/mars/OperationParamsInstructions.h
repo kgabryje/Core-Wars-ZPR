@@ -15,7 +15,7 @@ public:
 
     OperationParamsInstructions(Instruction &instructionFirst, Instruction &instructionSecond);
 
-    boost::shared_ptr<ProcessAction> accept(boost::shared_ptr<MarsOperation> operation) override;
+    std::shared_ptr<ProcessAction> accept(std::shared_ptr<MarsOperation> operation);
 
 private:
     Instruction &firstInstruction;

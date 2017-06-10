@@ -7,7 +7,7 @@
 #include <logic/mars/ProcessActionJump.h>
 
 SCENARIO("JumpOperationTest: checking jump instr") {
-    boost::shared_ptr<MarsOperation> addOper = OperationFactory::createOperation(ParserConstants::INSTR_CODE_JMP);
+    std::shared_ptr<MarsOperation> addOper = OperationFactory::createOperation(ParserConstants::INSTR_CODE_JMP);
     REQUIRE(addOper.get()->getOpCode() == ParserConstants::INSTR_CODE_JMP);
     GIVEN("Params: instruction and number as OperationMixedParams") {
 
@@ -20,7 +20,7 @@ SCENARIO("JumpOperationTest: checking jump instr") {
 
         WHEN("AddOperation is executed") {
 
-            boost::shared_ptr<ProcessAction> res = mixedParams->accept(addOper);
+            std::shared_ptr<ProcessAction> res = mixedParams->accept(addOper);
 
             THEN("ProcessAction has correct Type") {
 
@@ -51,7 +51,7 @@ SCENARIO("JumpOperationTest: checking jump instr") {
 
         REQUIRE(doubleInstrParams != nullptr);
         WHEN("MovOperation is executed") {
-            boost::shared_ptr<ProcessAction> res = doubleInstrParams->accept(addOper);
+            std::shared_ptr<ProcessAction> res = doubleInstrParams->accept(addOper);
             THEN("ProcessAction has correct Type") {
 
                 ProcessActionJump *con = dynamic_cast<ProcessActionJump *> (res.get());

@@ -14,7 +14,7 @@ public:
 
     Instruction &getInstruction() const;
 
-    virtual boost::shared_ptr<ProcessAction> accept(boost::shared_ptr<MarsOperation> shared_ptr);
+    virtual std::shared_ptr<ProcessAction> accept(std::shared_ptr<MarsOperation> shared_ptr);
 
 private:
     int value;

@@ -11,11 +11,11 @@
 class ModifierFactory {
 
 public:
-    static boost::shared_ptr<InstructionModifier> createModifier(const char rawModifier);
+    static std::shared_ptr<InstructionModifier> createModifier(const char rawModifier);
 
     static bool isModifierOmitted(const char modifier);
 
-    static boost::shared_ptr<InstructionModifier> createDefaultModifier();
+    static std::shared_ptr<InstructionModifier> createDefaultModifier();
 };
 
 

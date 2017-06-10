@@ -7,10 +7,10 @@ DatOperation::DatOperation() : MarsOperation(ParserConstants::INSTR_CODE_DAT) {
 
 }
 
-boost::shared_ptr<ProcessAction> DatOperation::runOperation(OperationParamsMixed *operParams) {
-    return boost::shared_ptr<ProcessAction>(new ProcessActionRemove());
+std::shared_ptr<ProcessAction> DatOperation::runOperation(OperationParamsMixed *operParams) {
+    return std::shared_ptr<ProcessAction>(new ProcessActionRemove());
 }
 
-boost::shared_ptr<ProcessAction> DatOperation::runOperation(OperationParamsInstructions *operParams) {
-    return boost::shared_ptr<ProcessAction>(new ProcessActionRemove());
+std::shared_ptr<ProcessAction> DatOperation::runOperation(OperationParamsInstructions *operParams) {
+    return std::shared_ptr<ProcessAction>(new ProcessActionRemove());
 }

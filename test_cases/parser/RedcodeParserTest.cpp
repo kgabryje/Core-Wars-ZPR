@@ -8,7 +8,7 @@ SCENARIO("RedCodeParserTest: parsing isntructions from text") {
             string userInput = "MOV #0  ;comment\n"
                     ";comment\n"
                     "            DAT #-23 ,   8";
-            THEN("WhiteSpaces are removaed and correct instructions are produced") {
+            THEN("WhiteSpaces are removed and correct instructions are produced") {
                 std::vector<Instruction> parsed = RedcodeParser::parse(userInput);
                 Instruction instrMOV = parsed[0];
                 Instruction instrDAT = parsed[1];

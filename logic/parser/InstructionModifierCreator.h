@@ -10,11 +10,11 @@
 class InstructionModifierCreator {
 
 public:
-    static boost::shared_ptr<InstructionModifier> tryCreate(std::string);
+    static std::shared_ptr<InstructionModifier> tryCreate(std::string);
 
     static int parseAddressValue(std::string numAsString);
 
-    static boost::shared_ptr<InstructionModifier> createDefault();
+    static std::shared_ptr<InstructionModifier> createDefault();
 };
 
 

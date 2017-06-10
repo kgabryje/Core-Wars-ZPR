@@ -8,7 +8,7 @@
 class OperationParams {
 
 public:
-    virtual boost::shared_ptr<ProcessAction> accept(boost::shared_ptr<MarsOperation> operation)=0;
+    virtual std::shared_ptr<ProcessAction> accept(std::shared_ptr<MarsOperation> operation)=0;
 };
 
 

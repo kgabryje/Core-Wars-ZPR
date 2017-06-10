@@ -6,10 +6,10 @@
 #include "logic/CoreWarsConstants.h"
 #include <logic/mars/Instruction.h>
 
-boost::shared_ptr<InstructionModifier> InstructionModifierCreator::tryCreate(std::string rawAddress) {
+std::shared_ptr<InstructionModifier> InstructionModifierCreator::tryCreate(std::string rawAddress) {
 
     char rawModifier = rawAddress[0];
-    boost::shared_ptr<InstructionModifier> mod = ModifierFactory::createModifier(rawModifier);
+    std::shared_ptr<InstructionModifier> mod = ModifierFactory::createModifier(rawModifier);
     int addressValue = parseAddressValue(rawAddress);
     mod.get()->setValue(addressValue);
 
@@ -34,7 +34,7 @@ int InstructionModifierCreator::parseAddressValue(std::string numAsString) {
     return value;
 }
 
-boost::shared_ptr<InstructionModifier> InstructionModifierCreator::createDefault() {
+std::shared_ptr<InstructionModifier> InstructionModifierCreator::createDefault() {
     return ModifierFactory::createDefaultModifier();
 
 

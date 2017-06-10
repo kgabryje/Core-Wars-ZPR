@@ -1,21 +1,21 @@
-#include <boost/regex.hpp>
+#include <regex>
 #include "InstructionDataExtractor.h"
 #include "ParserException.h"
 #include "logic/CoreWarsConstants.h"
 
 bool InstructionDataExtractor::isInstructionValid(std::string rawInstr) {
 
-    static const boost::regex e(getRegex());
-    return (boost::regex_match(rawInstr, e));
+    static const std::regex e(getRegex());
+    return (std::regex_match(rawInstr, e));
 
 }
 
 InstructionData InstructionDataExtractor::tryExtract(std::string rawInstr) {
 
-    boost::match_results<std::string::const_iterator> results;
+    std::match_results<std::string::const_iterator> results;
 
-    static const boost::regex e(getRegex());
-    if (!boost::regex_match(rawInstr, results, e))
+    static const std::regex e(getRegex());
+    if (!std::regex_match(rawInstr, results, e))
         throw ParserException(ParserConstants::WRONG_SYNTAX_EXCEPTION);
 
     return InstructionData(results[1], results[2], results[3]);

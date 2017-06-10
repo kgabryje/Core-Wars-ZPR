@@ -14,6 +14,6 @@ Instruction & OperationParamsInstructions::getSecondInstruction() const {
     return secondInstruction;
 }
 
-boost::shared_ptr<ProcessAction> OperationParamsInstructions::accept(boost::shared_ptr<MarsOperation> operation) {
+std::shared_ptr<ProcessAction> OperationParamsInstructions::accept(std::shared_ptr<MarsOperation> operation) {
     return operation.get()->runOperation(this);
 }

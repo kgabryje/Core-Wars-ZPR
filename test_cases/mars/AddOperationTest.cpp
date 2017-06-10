@@ -6,7 +6,7 @@
 #include <logic/mars/OperationParamsMixed.h>
 
 SCENARIO("AddOperationTest: checking add instr") {
-    boost::shared_ptr<MarsOperation> addOper = OperationFactory::createOperation(ParserConstants::INSTR_CODE_ADD);
+    std::shared_ptr<MarsOperation> addOper = OperationFactory::createOperation(ParserConstants::INSTR_CODE_ADD);
     REQUIRE(addOper.get()->getOpCode() == ParserConstants::INSTR_CODE_ADD);
     GIVEN("Params: instruction and number as OperationMixedParams") {
 
@@ -20,7 +20,7 @@ SCENARIO("AddOperationTest: checking add instr") {
 
         WHEN("AddOperation is executed") {
 
-            boost::shared_ptr<ProcessAction> res = mixedParams->accept(addOper);
+            std::shared_ptr<ProcessAction> res = mixedParams->accept(addOper);
 
             THEN("ProcessAction has correct Type") {
 
@@ -53,7 +53,7 @@ SCENARIO("AddOperationTest: checking add instr") {
 
         REQUIRE(doubleInstrParams != nullptr);
         WHEN("MovOperation is executed") {
-            boost::shared_ptr<ProcessAction> res = doubleInstrParams->accept(addOper);
+            std::shared_ptr<ProcessAction> res = doubleInstrParams->accept(addOper);
             THEN("ProcessAction has correct Type") {
 
                 ProcessActionContinue *con = dynamic_cast<ProcessActionContinue *> (res.get());

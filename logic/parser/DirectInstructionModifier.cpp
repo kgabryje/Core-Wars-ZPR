@@ -7,8 +7,8 @@ DirectInstructionModifier::DirectInstructionModifier() : InstructionModifier(
         std::string(1, ParserConstants::MODIFIER_DIRECT)) {
 }
 
-boost::shared_ptr<InstructionModifier> DirectInstructionModifier::clone() const {
-    return boost::shared_ptr<InstructionModifier>(new DirectInstructionModifier(*this));
+std::shared_ptr<InstructionModifier> DirectInstructionModifier::clone() const {
+    return std::shared_ptr<InstructionModifier>(new DirectInstructionModifier(*this));
 }
 
 boost::optional<Instruction>

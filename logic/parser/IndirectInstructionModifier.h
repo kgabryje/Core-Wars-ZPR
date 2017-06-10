@@ -8,7 +8,7 @@ class IndirectInstructionModifier : public InstructionModifier {
 public:
     IndirectInstructionModifier();
 
-    boost::shared_ptr<InstructionModifier> clone() const override;
+    std::shared_ptr<InstructionModifier> clone() const override;
 
     boost::optional<Instruction>
     findTargetInstruction(MemoryIndex mIndex, const std::vector<Instruction> memoryArray) override;

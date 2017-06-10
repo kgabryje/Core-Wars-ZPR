@@ -7,9 +7,9 @@ class DatOperation : public MarsOperation {
 public:
     DatOperation();
 
-    boost::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams) override;
+    std::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams) override;
 
-    boost::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams) override;
+    std::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams) override;
 };
 
 

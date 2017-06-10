@@ -13,6 +13,6 @@ Instruction &OperationParamsMixed::getInstruction() const {
     return instruction;
 }
 
-boost::shared_ptr<ProcessAction> OperationParamsMixed::accept(boost::shared_ptr<MarsOperation> operation) {
+std::shared_ptr<ProcessAction> OperationParamsMixed::accept(std::shared_ptr<MarsOperation> operation) {
     return operation.get()->runOperation(this);
 }

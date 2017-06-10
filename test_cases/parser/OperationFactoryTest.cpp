@@ -23,7 +23,7 @@ SCENARIO("OperationFactoryTest: validating operation code", "[parser]") {
             );
         }
         AND_THEN("Instruction contains proper code") {
-            boost::shared_ptr<MarsOperation> oper = OperationFactory::createOperation(code);
+            std::shared_ptr<MarsOperation> oper = OperationFactory::createOperation(code);
             REQUIRE(
                     oper.get()->getOpCode() == code
             );

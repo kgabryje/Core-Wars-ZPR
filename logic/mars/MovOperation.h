@@ -9,9 +9,9 @@ class MovOperation : public MarsOperation {
 public:
     MovOperation();
 
-    virtual boost::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams) override;
+    virtual std::shared_ptr<ProcessAction> runOperation(OperationParamsInstructions *operParams) override;
 
-    virtual boost::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams) override;
+    virtual std::shared_ptr<ProcessAction> runOperation(OperationParamsMixed *operParams) override;
 };
 
 
