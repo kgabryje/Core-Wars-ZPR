@@ -15,10 +15,17 @@
   var protocol;
   var client;
   var message;
+
+  var canvas;
+  var canvasSize = 600;
   $(document).ready(function(){
      transport = new Thrift.TXHRTransport("http://localhost:9090");
      protocol  = new Thrift.TJSONProtocol(transport);
      client    = new MARS.MARSClient(protocol);
+
+     canvas = document.getElementById("gameTable");
+     canvas.width = canvasSize;
+     canvas.height = canvasSize;
   });
 
   function waitForMessage() {
@@ -35,6 +42,24 @@
         transport.close();
       }
   }
+  function drawTable() {
+    var rect_size = 30;
+    colors = ['blue', 'green', 'red', 'yellow', 'black'];
+    var color_array  = new Array(Math.pow(canvasSize/rect_size, 2));
+    for (var i = 0; i < color_array.length; i++) {
+      color_array[i] = colors[Math.floor(Math.random()*colors.length)];
+    }
+
+    var ctx = canvas.getContext("2d");
+    for (var y = 0; y < Math.sqrt(color_array.length); y++) {
+      for (var x = 0; x < Math.sqrt(color_array.length); x++) {
+        ctx.fillStyle = color_array[y*Math.sqrt(color_array.length) + x];
+        ctx.fillRect(rect_size * x, rect_size * y, rect_size, rect_size);
+        ctx.strokeStyle = 'black';
+        ctx.strokeRect(rect_size * x, rect_size * y, rect_size, rect_size);
+      }
+    }
+  }
   </script>
 
 </head>
@@ -45,5 +70,10 @@
     <tr>
       <td><input type="button" id="send_button" value="send code" onclick="sendCode();"/></td>
     </tr>
+    <tr>
+      <td><input type="button" id="draw_table" value="draw table" onclick="drawTable();"/></td>
+    </tr>
+    <canvas id="gameTable" width="" height="" style="border:1px solid #d3d3d3;">
+  Your browser does not support the HTML5 canvas tag.</canvas>
 </body>
 </html>
