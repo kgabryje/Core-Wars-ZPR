@@ -41,7 +41,6 @@ MarsEngine *prepareMars() {
                     "JMP $5, @2\n"
                     "MOV #-2,8";
     "JMP #-23,8";
-    GIVEN("ha4");
     vector<Instruction> parsed = RedcodeParser::parse(userInput);
 
     mars->enterWarrior(beginningAddress, parsed);
