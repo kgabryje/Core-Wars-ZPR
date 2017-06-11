@@ -15,9 +15,7 @@ const std::deque<MemoryIndex> IterationResult::getFirstWarriorProcessesIndexes()
 }
 
 void IterationResult::setFirstWarriorProcessesIndexes(const std::deque<MemoryIndex> firstWarriorProcessesIndexes) {
-    std::cout << "tu?" << std::endl;
     IterationResult::firstWarriorProcessesIndexes = firstWarriorProcessesIndexes;
-    std::cout << "czy tu?" << std::endl;
 }
 
 const std::deque<MemoryIndex> IterationResult::getSecondWarriorProcessesIndexes() const {

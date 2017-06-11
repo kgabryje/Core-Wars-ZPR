@@ -1,22 +1,9 @@
-#include <iostream>
 #include "ViewConnector.h"
 #include "logic/ServerConnector.h"
 
 void ViewConnector::sendToView(IterationResult result) {
-//    gameInfo.colorTable = ;
     gameInfo.__set_colorTable(std::vector<std::string>());
-    int dats2 = 0;
-    for (Instruction i : result.getMemoryArray())
-        if (i.getOperation()->getOpCode() != "DAT")
-            dats2++;
-    std::cout << "Got result num2!!!" << "NOT DATS num = " << dats2 << std::endl;
     createViewData(result);
-    int dats3 = 0;
-    for (std::string s : gameInfo.colorTable)
-        if (s != ViewConstants::INSTR_COLOR_DAT)
-            dats3++;
-    std::cout << "Got result num4!!!" << "NOT DATS num = " << dats3 << std::endl;
-    std::cout << "A rozmiar to: " << gameInfo.colorTable.size() << std::endl;
     ServerConnector::getInstance().setGameInfo(gameInfo);
 }
 
@@ -30,11 +17,6 @@ void ViewConnector::createViewData(const IterationResult &result) {
         gameInfo.__set_winner(result.getPlayerName());
     } else
         gameInfo.__set_hasEnded(false);
-    int dats2 = 0;
-    for (Instruction i : result.getMemoryArray())
-        if (i.getOperation()->getOpCode() != "DAT")
-            dats2++;
-    std::cout << "Got result num3!!!" << "NOT DATS num = " << dats2 << std::endl;
     for (Instruction i: result.getMemoryArray())
         colourOperations(i);
     for (MemoryIndex mi: result.getFirstWarriorProcessesIndexes())

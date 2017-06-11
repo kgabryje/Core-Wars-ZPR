@@ -1,4 +1,3 @@
-#include <iostream>
 #include <boost/shared_ptr.hpp>
 #include "MarsSimulator.h"
 #include "OperationParamsInstructions.h"
@@ -15,21 +14,13 @@ void MarsSimulator::setWarriors(
 
 IterationResult MarsSimulator::doStuff() {
 
-    std::cout << "lol1" << std::endl;
     doIteration(firstWarriorManager);
-    std::cout << "lol3" << std::endl;
     doIteration(secondWarriorManager);
-    std::cout << "lol4" << std::endl;
     IterationResult result;
-    std::cout << "lol4" << std::endl;
     checkIfGameOver(result);
-    std::cout << "lol5" << std::endl;
     result.setFirstWarriorProcessesIndexes(firstWarriorManager.getProcesses());
-    std::cout << "lol6" << std::endl;
     result.setSecondWarriorProcessesIndexes(secondWarriorManager.getProcesses());
-    std::cout << "lol7" << std::endl;
     result.setMemoryArray(mars.getMemoryArray());
-    std::cout << "lol8" << std::endl;
 
     return result;
 }
