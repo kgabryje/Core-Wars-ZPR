@@ -14,6 +14,8 @@ namespace ViewConstants {
     const std::string INSTR_COLOR_JMP("green");
     const std::string FIRST_PLAYER_COLOR("white");
     const std::string SECOND_PLAYER_COLOR("black");
+    const std::string FIRST_PLAYER_CORRECT_CODE_MESSAGE("Kod jest poprawny. Wprowadź drugiego gracza");
+    const std::string SECOND_PLAYER_CORRECT_CODE_MESSAGE("success");
 }
 
 namespace ParserConstants {

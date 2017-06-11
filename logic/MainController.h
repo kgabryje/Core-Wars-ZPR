@@ -3,6 +3,7 @@
 
 #include <logic/mars/MarsSimulator.h>
 #include <logic/view/ViewConnector.h>
+#include <logic/view/PlayerData.h>
 #include <thread>
 #include <chrono>
 
@@ -16,9 +17,11 @@ public:
 private:
     MarsSimulator mars;
     ViewConnector view;
+    std::pair<PlayerData, PlayerData> players;
     void initialize();
-
     void runMARS();
+
+    IterationResult &addPlayerData(IterationResult &result);
 };
 
 

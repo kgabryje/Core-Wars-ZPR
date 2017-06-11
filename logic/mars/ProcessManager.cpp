@@ -51,7 +51,7 @@ ProcessManager::ProcessManager() {
 
 }
 
-const std::deque<MemoryIndex> &ProcessManager::getProcesses() const {
+const std::deque<MemoryIndex> ProcessManager::getProcesses() const {
     return processes;
 }
 

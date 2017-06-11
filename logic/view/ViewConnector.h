@@ -8,7 +8,7 @@
 
 class ViewConnector {
 public:
-    void colourOperations(const Instruction &i);
+    void colourOperations(const Instruction i);
 
     void colourWarriorProcesses(int i, const std::string colour);
 

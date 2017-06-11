@@ -25,6 +25,8 @@ private:
     int getRandomMemoryAddress();
 
     void doIteration(ProcessManager &warriorManager);
+
+    IterationResult &checkIfGameOver(IterationResult &result);
 };
 
 

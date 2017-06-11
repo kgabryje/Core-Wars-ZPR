@@ -2,22 +2,23 @@
 #include <memory>
 #include <vector>
 #include <iostream>
-#include "logic/Initializer.h"
+#include "Initializer.h"
 #include "logic/parser/RedcodeParser.h"
 #include "logic/parser/ParserException.h"
 #include "logic/ServerConnector.h"
+#include "PlayerData.h"
 
 using namespace std;
 
 
-vector<Instruction> Initializer::sendCodeRequestAndParse(string successMessage) {
+PlayerData Initializer::sendCodeRequestAndParse(string successMessage) {
     bool codeIsFine = false;
     RedcodeParser parser;
     string message;
     vector<Instruction> instructions;
-
+    MARS::Code code;
     while (!codeIsFine) {
-        MARS::Code code = demandCode();
+        code = demandCode();
         try {
             instructions = parser.parse(code.code);
             message = successMessage;
@@ -28,7 +29,12 @@ vector<Instruction> Initializer::sendCodeRequestAndParse(string successMessage) 
         }
         sendParsingResult(message);
     }
-    return instructions;
+    PlayerData player;
+    player.setInstructions(instructions);
+    player.setName(code.playerName);
+    player.setWarriorName(code.warriorName);
+
+    return player;
 }
 
 MARS::Code Initializer::demandCode() {

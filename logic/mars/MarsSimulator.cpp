@@ -15,12 +15,22 @@ void MarsSimulator::setWarriors(
 
 IterationResult MarsSimulator::doStuff() {
 
+    std::cout << "lol1" << std::endl;
     doIteration(firstWarriorManager);
+    std::cout << "lol3" << std::endl;
     doIteration(secondWarriorManager);
+    std::cout << "lol4" << std::endl;
     IterationResult result;
+    std::cout << "lol4" << std::endl;
+    checkIfGameOver(result);
+    std::cout << "lol5" << std::endl;
     result.setFirstWarriorProcessesIndexes(firstWarriorManager.getProcesses());
+    std::cout << "lol6" << std::endl;
     result.setSecondWarriorProcessesIndexes(secondWarriorManager.getProcesses());
+    std::cout << "lol7" << std::endl;
     result.setMemoryArray(mars.getMemoryArray());
+    std::cout << "lol8" << std::endl;
+
     return result;
 }
 
@@ -48,6 +58,15 @@ void MarsSimulator::doIteration(ProcessManager &warriorManager) {
 }
 
 MarsSimulator::MarsSimulator() {
+
+}
+
+IterationResult &MarsSimulator::checkIfGameOver(IterationResult &result) {
+    if (firstWarriorManager.getSize() == 0)
+        result.setLooser(1);
+    else if (secondWarriorManager.getSize() == 0)
+        result.setLooser(2);
+    return result;
 
 }
 

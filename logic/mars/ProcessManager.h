@@ -28,7 +28,7 @@ public:
 
     int getSize() const;
 
-    const std::deque<MemoryIndex> &getProcesses() const;
+    const std::deque<MemoryIndex> getProcesses() const;
 
 private:
     std::deque<MemoryIndex> processes;

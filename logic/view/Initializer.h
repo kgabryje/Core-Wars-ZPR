@@ -3,15 +3,16 @@
 
 #include <vector>
 #include <iostream>
-#include "mars/Instruction.h"
+#include "logic/mars/Instruction.h"
 #include "gen-cpp/mars_types.h"
+#include "PlayerData.h"
 
 using namespace std;
 
 class Initializer {
 
 public:
-    vector<Instruction> sendCodeRequestAndParse(string successMessage);
+    PlayerData sendCodeRequestAndParse(string successMessage);
 private:
     MARS::Code demandCode();
 
