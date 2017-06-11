@@ -1,5 +1,5 @@
-#ifndef CORE_WARS_ZPR_VIEWCONNECTOR_H
-#define CORE_WARS_ZPR_VIEWCONNECTOR_H
+#ifndef CORE_WARS_ZPR_SERVERCONNECTOR_H
+#define CORE_WARS_ZPR_SERVERCONNECTOR_H
 
 #include <thrift/transport/TSocket.h>
 #include <thrift/transport/TBufferTransports.h>

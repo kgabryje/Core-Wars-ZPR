@@ -1,9 +1,7 @@
-
 #include "ViewConnector.h"
-#include <logic/ServerConnector.h>
+#include "logic/ServerConnector.h"
 
 void ViewConnector::sendToView(IterationResult result) {
-
     createViewData(result);
     ServerConnector::getInstance().setGameInfo(gameInfo);
 }
