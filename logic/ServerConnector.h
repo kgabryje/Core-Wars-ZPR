@@ -13,7 +13,9 @@ using namespace apache::thrift;
 using namespace apache::thrift::protocol;
 using namespace apache::thrift::transport;
 
-
+/**
+ * Singleton class acting as a connector between c++ client and server
+ */
 class ServerConnector {
 public:
     static ServerConnector& getInstance();

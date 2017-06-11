@@ -4,6 +4,11 @@
 #include "ImmediateInstructionModifier.h"
 #include "DirectInstructionModifier.h"
 
+/**
+ * Creates instruction modfiers
+ * @param rawModifier Instruction modifier code
+ * @return InstructionModifier object of class deduced from code
+ */
 std::shared_ptr<InstructionModifier> ModifierFactory::createModifier(const char rawModifier) {
 
     if (rawModifier == ParserConstants::MODIFIER_B_INDIRECT)
@@ -17,12 +22,21 @@ std::shared_ptr<InstructionModifier> ModifierFactory::createModifier(const char 
 
 }
 
+/**
+ *
+ * @param modifier
+ * @return true if modifier equals "-" or is digit
+ */
 bool ModifierFactory::isModifierOmitted(const char modifier) {
 
     return isdigit(modifier) || modifier == '-';
 
 }
 
+/**
+ * Creates shared pointer to object initialized with default constructor
+ * @return pointer to DirectInstructionModifier
+ */
 std::shared_ptr<InstructionModifier> ModifierFactory::createDefaultModifier() {
     return std::shared_ptr<InstructionModifier>(new DirectInstructionModifier());
 }

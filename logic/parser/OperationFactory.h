@@ -5,6 +5,9 @@
 #include "logic/mars/MarsOperation.h"
 #include <boost/shared_ptr.hpp>
 
+/**
+ * Class managing creating instructions, implementing factory design pattern
+ */
 class OperationFactory {
 
 public:

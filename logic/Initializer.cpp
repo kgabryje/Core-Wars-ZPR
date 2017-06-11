@@ -9,7 +9,10 @@
 
 using namespace std;
 
-
+/**
+ * asks for warrior code and parses it
+ * @return vector of Redcode instructions parsed from warrior code
+ */
 vector<Instruction> Initializer::sendCodeRequestAndParse(string successMessage) {
     bool codeIsFine = false;
     RedcodeParser parser;
@@ -31,11 +34,19 @@ vector<Instruction> Initializer::sendCodeRequestAndParse(string successMessage) 
     return instructions;
 }
 
+/**
+ * Sends request for warrior code to server through ServerConnector instance
+ * @return warrior code
+ */
 MARS::Code Initializer::demandCode() {
     MARS::Code code = ServerConnector::getInstance().getCode();
     return code;
 }
 
+/**
+ * Sends info whether parsing code succeeded to server through ServerConnector instance
+ * @param message message whether parsing succeeded
+ */
 void Initializer::sendParsingResult(const std::string& message) {
     ServerConnector::getInstance().sendMessage(message);
     cout << message << endl;

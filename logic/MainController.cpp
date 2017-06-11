@@ -13,6 +13,9 @@ void MainController::run() {
     runMARS();
 }
 
+/**
+ * Initializes MARS controller with Redcode instructions
+ */
 void MainController::initialize() {
 
     Initializer init;
@@ -22,6 +25,9 @@ void MainController::initialize() {
     mars.setWarriors(std::pair<std::vector<Instruction>, std::vector<Instruction>>(firstWarrior, secondWarrior));
 }
 
+/**
+ * Main loop of c++ client
+ */
 void MainController::runMARS() {
     while (1) {
 

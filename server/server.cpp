@@ -26,6 +26,10 @@ public:
     printf("server started\n");
     }
 
+    /**
+     * Get redcode from browser
+     * @param c structure containing player's code
+     */
     void receiveFromJS(const Code& c) {
       if (waiting) {
           {
@@ -37,6 +41,10 @@ public:
       }
     }
 
+    /**
+     * Tell javascript if code parsing succeeded or not
+     * @param _return message sent to javascript
+     */
     void sendMessage(std::string& _return) {
         std::unique_lock<std::mutex> lk(m);
         waiting = true;
@@ -47,6 +55,10 @@ public:
         waiting = false;
     }
 
+    /**
+     * Receive message from c++ client whether parsing succeeded
+     * @param message
+     */
     void getMessage(const std::string& message) {
         std::unique_lock<std::mutex> lk(m);
         cv.wait(lk, [this]{return waiting;});
@@ -59,6 +71,10 @@ public:
         cv.notify_all();
     }
 
+    /**
+     * Send code from javascript to c++ client
+     * @param _return player's Code struct
+     */
     void getCode(Code& _return) {
       std::unique_lock<std::mutex> lk(m);
       std::cerr << "Waiting... \n";
@@ -70,6 +86,10 @@ public:
       waiting = false;
     }
 
+    /**
+     * Send struct with game information to javascript
+     * @param _return code information
+     */
     void getGameInfo(GameInfo& _return) {
         std::unique_lock<std::mutex> lk(m);
         cv.wait(lk, [this]{return gameInfoUpdate;});
@@ -77,6 +97,10 @@ public:
         gameInfoUpdate = false;
     }
 
+    /**
+     * Receive struct with game information from c++ client
+     * @param gameInfo
+     */
     void setGameInfo(const GameInfo& gameInfo) {
         this->gameInfo = gameInfo;
         gameInfoUpdate = true;

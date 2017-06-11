@@ -7,7 +7,9 @@
 #include "IndirectInstructionModifier.h"
 #include <boost/shared_ptr.hpp>
 
-
+/**
+ * Class managing creating instruction modifiers, implementing factory design pattern
+ */
 class ModifierFactory {
 
 public:
