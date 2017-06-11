@@ -4,6 +4,9 @@
 #include <string>
 #include <vector>
 
+/**
+ * Class managing formatting warrior code
+ */
 class RawCodeFormatter {
 
 public:

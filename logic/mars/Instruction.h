@@ -10,6 +10,10 @@
 
 class MarsOperation;
 class InstructionModifier;
+
+/**
+ * Base class representing Instruction. A single Instruction consists of 2 operators and an operation
+ */
 class Instruction {
 public:
     Instruction(const std::shared_ptr<InstructionModifier> operatorA,
