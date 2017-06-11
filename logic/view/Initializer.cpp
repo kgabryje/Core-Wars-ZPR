@@ -2,10 +2,10 @@
 #include <memory>
 #include <vector>
 #include <iostream>
-#include "Initializer.h"
-#include "parser/RedcodeParser.h"
-#include "parser/ParserException.h"
-#include "ServerConnector.h"
+#include "logic/Initializer.h"
+#include "logic/parser/RedcodeParser.h"
+#include "logic/parser/ParserException.h"
+#include "logic/ServerConnector.h"
 
 using namespace std;
 
@@ -38,5 +38,4 @@ MARS::Code Initializer::demandCode() {
 
 void Initializer::sendParsingResult(const std::string& message) {
     ServerConnector::getInstance().sendMessage(message);
-    cout << message << endl;
 }
